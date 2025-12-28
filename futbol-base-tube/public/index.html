@@ -665,6 +665,45 @@
     .ejercicio-card { border-radius: 12px; }
     .btn { padding: 10px 16px; font-size: 13px; }
 }
+/* Pending Exercises */
+.pending-section { margin-bottom: 40px; }
+.pending-title { font-family: 'Bebas Neue', sans-serif; font-size: 28px; margin-bottom: 20px; display: flex; align-items: center; gap: 12px; }
+.pending-badge { background: var(--warning); color: var(--dark); padding: 4px 12px; border-radius: 20px; font-size: 14px; font-weight: 600; }
+.pending-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); gap: 20px; }
+.pending-card { background: var(--dark-card); border: 2px solid var(--warning); border-radius: 16px; overflow: hidden; }
+.pending-card.duplicate { border-color: var(--danger); }
+.pending-card-header { display: flex; gap: 16px; padding: 16px; }
+.pending-card-thumb { width: 160px; height: 90px; border-radius: 8px; object-fit: cover; background: var(--dark); flex-shrink: 0; }
+.pending-card-info { flex: 1; min-width: 0; }
+.pending-card-title { font-weight: 700; font-size: 15px; margin-bottom: 8px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.pending-card-meta { font-size: 12px; color: var(--text-muted); display: flex; flex-wrap: wrap; gap: 8px; }
+.pending-card-meta span { display: flex; align-items: center; gap: 4px; }
+.pending-card-user { display: flex; align-items: center; gap: 8px; margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--dark-border); font-size: 13px; }
+.pending-card-user-avatar { width: 24px; height: 24px; background: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600; }
+.pending-card-body { padding: 0 16px 16px; }
+.pending-card-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+.pending-card-tag { padding: 4px 10px; background: rgba(139, 92, 246, 0.15); color: #a78bfa; border-radius: 12px; font-size: 11px; }
+.pending-card-url { font-size: 12px; color: var(--text-muted); word-break: break-all; margin-bottom: 12px; padding: 8px; background: var(--dark); border-radius: 8px; }
+.pending-card-duplicate { background: rgba(239, 68, 68, 0.1); border: 1px solid var(--danger); border-radius: 8px; padding: 10px; margin-bottom: 12px; font-size: 12px; color: var(--danger); }
+.pending-card-actions { display: flex; gap: 8px; }
+.pending-card-actions .btn { flex: 1; justify-content: center; font-size: 13px; padding: 10px 16px; }
+
+/* Reject Modal */
+.reject-modal { max-width: 450px; padding: 24px; }
+.reject-title { font-family: 'Bebas Neue', sans-serif; font-size: 24px; margin-bottom: 16px; color: var(--danger); }
+.reject-reasons { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
+.reject-reason { padding: 12px 16px; background: var(--dark); border: 2px solid var(--dark-border); border-radius: 10px; cursor: pointer; font-size: 14px; transition: all 0.2s; }
+.reject-reason:hover { border-color: var(--danger); background: rgba(239, 68, 68, 0.05); }
+.reject-reason.selected { border-color: var(--danger); background: rgba(239, 68, 68, 0.1); }
+.reject-custom { margin-top: 12px; }
+.reject-custom textarea { width: 100%; padding: 12px; background: var(--dark); border: 1px solid var(--dark-border); border-radius: 10px; color: var(--text); font-size: 14px; min-height: 80px; resize: vertical; }
+
+/* Stats Cards */
+.stats-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 16px; margin-bottom: 32px; }
+.stat-card { background: var(--dark-card); border: 1px solid var(--dark-border); border-radius: 12px; padding: 20px; text-align: center; }
+.stat-card-value { font-family: 'Bebas Neue', sans-serif; font-size: 36px; color: var(--primary); }
+.stat-card-value.warning { color: var(--warning); }
+.stat-card-label { font-size: 13px; color: var(--text-muted); }
     </style>
 </head>
 <body>
@@ -2697,5 +2736,40 @@ function submitExercise() {
     });
 }
     </script>
+ <!-- Reject Modal -->
+<div class="modal-overlay" id="rejectOverlay" onclick="closeRejectModal(event)">
+    <div class="modal-content reject-modal" onclick="event.stopPropagation()">
+        <button class="modal-close" onclick="closeRejectModal()">×</button>
+        <h2 class="reject-title">❌ Rechazar Ejercicio</h2>
+        <p style="color: var(--text-muted); margin-bottom: 16px; font-size: 14px;">Selecciona el motivo del rechazo:</p>
+        
+        <div class="reject-reasons" id="rejectReasons">
+            <div class="reject-reason" onclick="selectRejectReason(this, 'mal_etiquetado')">
+                🏷️ <strong>Mal etiquetado</strong> - Las categorías o datos no son correctos
+            </div>
+            <div class="reject-reason" onclick="selectRejectReason(this, 'duplicado')">
+                📋 <strong>Duplicado</strong> - Este ejercicio ya existe en la biblioteca
+            </div>
+            <div class="reject-reason" onclick="selectRejectReason(this, 'calidad')">
+                📉 <strong>Calidad insuficiente</strong> - El video no cumple los estándares
+            </div>
+            <div class="reject-reason" onclick="selectRejectReason(this, 'pizarra_incorrecta')">
+                🎨 <strong>Pizarra incorrecta</strong> - Usa una pizarra que no es de TopLiderCoach
+            </div>
+            <div class="reject-reason" onclick="selectRejectReason(this, 'otro')">
+                ❓ <strong>Otro motivo</strong> - Especificar abajo
+            </div>
+        </div>
+        
+        <div class="reject-custom" id="rejectCustom" style="display:none;">
+            <textarea id="rejectCustomText" placeholder="Explica el motivo del rechazo..."></textarea>
+        </div>
+        
+        <div style="display: flex; gap: 12px; margin-top: 20px;">
+            <button class="btn btn-ghost" style="flex:1;" onclick="closeRejectModal()">Cancelar</button>
+            <button class="btn btn-danger" style="flex:1;" onclick="confirmReject()">❌ Rechazar</button>
+        </div>
+    </div>
+</div>   
 </body>
 </html>
