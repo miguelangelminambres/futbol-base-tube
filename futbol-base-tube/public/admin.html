@@ -1182,17 +1182,27 @@ var REJECT_REASONS = {
 document.getElementById('tabPending').onclick = function() { showTab('Pending'); };
 
 function loadPending() {
-    if (!db) return;
+    if (!db) {
+        console.log('No hay conexión DB');
+        return;
+    }
+    
+    console.log('Cargando pendientes...');
     
     db.from('ejercicios')
         .select('*')
         .eq('estado', 'pendiente')
         .order('created_at', { ascending: true })
         .then(function(result) {
+            console.log('Resultado:', result);
+            
             if (result.error) {
-                console.error(result.error);
+                console.error('Error:', result.error);
                 return;
             }
+            
+            console.log('Ejercicios pendientes:', result.data);
+            
             pendingExercises = result.data || [];
             renderPending();
             updatePendingBadge();
