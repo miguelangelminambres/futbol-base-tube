@@ -51,11 +51,67 @@
         .user-menu { display: flex; align-items: center; gap: 12px; padding: 8px 16px; background: var(--dark-card); border-radius: 50px; cursor: pointer; border: 1px solid var(--dark-border); position: relative; }
         .user-avatar { width: 36px; height: 36px; background: var(--gradient-primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 14px; }
         .user-name { font-weight: 500; font-size: 14px; }
-        .user-dropdown { position: absolute; top: calc(100% + 8px); right: 0; background: var(--dark-card); border: 1px solid var(--dark-border); border-radius: 12px; padding: 8px; min-width: 180px; display: none; z-index: 100; }
+        .user-dropdown { position: absolute; top: calc(100% + 8px); right: 0; background: var(--dark-card); border: 1px solid var(--dark-border); border-radius: 12px; padding: 8px; min-width: 200px; display: none; z-index: 100; }
         .user-dropdown.show { display: block; }
+        .user-dropdown-header { padding: 12px 16px; border-bottom: 1px solid var(--dark-border); margin-bottom: 8px; }
+        .user-dropdown-level { font-size: 14px; font-weight: 600; color: var(--primary); }
+        .user-dropdown-xp { font-size: 12px; color: var(--text-muted); }
         .user-dropdown-item { padding: 10px 16px; border-radius: 8px; cursor: pointer; font-size: 14px; display: flex; align-items: center; gap: 10px; }
         .user-dropdown-item:hover { background: rgba(255,255,255,0.05); }
         .user-dropdown-item.danger { color: var(--danger); }
+        .user-dropdown-item.upgrade { color: var(--accent); font-weight: 600; }
+
+        /* Plan Badges */
+        .plan-badge { font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 4px; margin-left: 8px; }
+        .plan-badge.pro { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; }
+        .plan-badge.coach { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white; }
+
+        /* Header Stats */
+        .user-stats-header { display: flex; align-items: center; gap: 12px; margin-right: 8px; }
+        .xp-badge { background: rgba(245, 197, 24, 0.15); color: var(--accent); padding: 6px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; }
+        .racha-badge { background: rgba(239, 68, 68, 0.15); color: #ef4444; padding: 6px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; }
+        .limit-badge { background: rgba(139, 139, 167, 0.15); color: var(--text-muted); padding: 6px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; display: none; }
+        .limit-badge.limit-reached { background: rgba(239, 68, 68, 0.15); color: #ef4444; }
+
+        /* Upgrade Modal */
+        .upgrade-modal { max-width: 500px; padding: 0; overflow: hidden; }
+        .upgrade-header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 32px; text-align: center; }
+        .upgrade-header h2 { font-family: 'Bebas Neue', sans-serif; font-size: 32px; margin-bottom: 8px; }
+        .upgrade-header p { opacity: 0.9; font-size: 14px; }
+        .upgrade-body { padding: 24px; }
+        .upgrade-plans { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px; }
+        .upgrade-plan { background: var(--dark); border: 2px solid var(--dark-border); border-radius: 16px; padding: 20px; text-align: center; cursor: pointer; transition: all 0.3s; }
+        .upgrade-plan:hover { border-color: var(--primary); transform: translateY(-4px); }
+        .upgrade-plan.recommended { border-color: var(--accent); }
+        .upgrade-plan-badge { font-size: 10px; background: var(--accent); color: var(--dark); padding: 2px 8px; border-radius: 4px; margin-bottom: 8px; display: inline-block; }
+        .upgrade-plan-name { font-size: 18px; font-weight: 700; margin-bottom: 4px; }
+        .upgrade-plan-price { font-family: 'Bebas Neue', sans-serif; font-size: 36px; color: var(--primary); }
+        .upgrade-plan-price span { font-size: 14px; color: var(--text-muted); font-family: 'Outfit', sans-serif; }
+        .upgrade-plan-features { text-align: left; margin-top: 16px; font-size: 13px; color: var(--text-muted); }
+        .upgrade-plan-features li { margin-bottom: 8px; list-style: none; }
+        .upgrade-plan-features li::before { content: '✓ '; color: var(--primary); font-weight: bold; }
+        .upgrade-plan.recommended .upgrade-plan-features li::before { color: var(--accent); }
+        .upgrade-footer { text-align: center; font-size: 12px; color: var(--text-muted); }
+
+        /* Leaderboard Modal */
+        .leaderboard-modal { max-width: 450px; padding: 24px; }
+        .leaderboard-title { font-family: 'Bebas Neue', sans-serif; font-size: 28px; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+        .leaderboard-tabs { display: flex; gap: 8px; margin-bottom: 20px; }
+        .leaderboard-tab { flex: 1; padding: 10px; text-align: center; background: var(--dark); border-radius: 8px; cursor: pointer; font-size: 13px; font-weight: 600; color: var(--text-muted); }
+        .leaderboard-tab.active { background: var(--primary); color: white; }
+        .leaderboard-list { max-height: 400px; overflow-y: auto; }
+        .leaderboard-item { display: flex; align-items: center; gap: 12px; padding: 12px; background: var(--dark); border-radius: 10px; margin-bottom: 8px; }
+        .leaderboard-item.top-3 { background: linear-gradient(135deg, rgba(245, 197, 24, 0.1) 0%, rgba(245, 197, 24, 0.05) 100%); border: 1px solid rgba(245, 197, 24, 0.3); }
+        .leaderboard-item.me { border: 2px solid var(--primary); }
+        .leaderboard-rank { width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px; }
+        .leaderboard-rank.gold { color: #ffd700; font-size: 20px; }
+        .leaderboard-rank.silver { color: #c0c0c0; font-size: 18px; }
+        .leaderboard-rank.bronze { color: #cd7f32; font-size: 16px; }
+        .leaderboard-avatar { width: 40px; height: 40px; background: var(--gradient-primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 600; }
+        .leaderboard-info { flex: 1; }
+        .leaderboard-name { font-weight: 600; font-size: 14px; display: flex; align-items: center; gap: 6px; }
+        .leaderboard-level { font-size: 12px; color: var(--text-muted); }
+        .leaderboard-xp { font-weight: 700; color: var(--accent); font-size: 14px; }
 
         /* Hero */
         .hero { min-height: 90vh; background: var(--gradient-hero); display: flex; align-items: center; justify-content: center; text-align: center; padding: 140px 24px 80px; position: relative; overflow: hidden; }
@@ -764,13 +820,74 @@
     <!-- Toast -->
     <div class="toast" id="toast"></div>
 
+    <!-- Upgrade Modal -->
+    <div class="modal-overlay" id="upgradeOverlay" onclick="closeUpgradeModal(event)">
+        <div class="modal-content upgrade-modal" onclick="event.stopPropagation()">
+            <button class="modal-close" onclick="closeUpgradeModal()">×</button>
+            <div class="upgrade-header">
+                <h2>🚀 DESBLOQUEA TODO</h2>
+                <p>Has alcanzado el límite de ejercicios gratis este mes</p>
+            </div>
+            <div class="upgrade-body">
+                <div class="upgrade-plans">
+                    <div class="upgrade-plan" onclick="selectPlan('pro')">
+                        <div class="upgrade-plan-name">PRO</div>
+                        <div class="upgrade-plan-price">3,99€<span>/mes</span></div>
+                        <ul class="upgrade-plan-features">
+                            <li>Ejercicios ilimitados</li>
+                            <li>Sesiones ilimitadas</li>
+                            <li>Guardar favoritos</li>
+                            <li>Sin anuncios</li>
+                        </ul>
+                    </div>
+                    <div class="upgrade-plan recommended" onclick="selectPlan('coach')">
+                        <div class="upgrade-plan-badge">RECOMENDADO</div>
+                        <div class="upgrade-plan-name">COACH</div>
+                        <div class="upgrade-plan-price">6,99€<span>/mes</span></div>
+                        <ul class="upgrade-plan-features">
+                            <li>Todo de PRO</li>
+                            <li>Subir ejercicios</li>
+                            <li>Acceso a Pizarra Táctica</li>
+                            <li>XP x2 en todo</li>
+                            <li>Badge ✅ Verificado</li>
+                        </ul>
+                    </div>
+                </div>
+                <p class="upgrade-footer">Cancela cuando quieras. Sin compromiso.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Leaderboard Modal -->
+    <div class="modal-overlay" id="leaderboardOverlay" onclick="closeLeaderboardModal(event)">
+        <div class="modal-content leaderboard-modal" onclick="event.stopPropagation()">
+            <button class="modal-close" onclick="closeLeaderboardModal()">×</button>
+            <h2 class="leaderboard-title">🏆 Ranking</h2>
+            <div class="leaderboard-tabs">
+                <div class="leaderboard-tab active" onclick="loadLeaderboard('mes')">Este Mes</div>
+                <div class="leaderboard-tab" onclick="loadLeaderboard('total')">Total</div>
+            </div>
+            <div class="leaderboard-list" id="leaderboardList">
+                <div class="session-list-loading">Cargando ranking...</div>
+            </div>
+        </div>
+    </div>
+
     <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
     <script>
     var SUPABASE_URL = 'https://ltwczsyfutrshhezkyoo.supabase.co';
     var SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx0d2N6c3lmdXRyc2hoZXpreW9vIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjY5MTA2MTEsImV4cCI6MjA4MjQ4NjYxMX0.jb_Th1iqaTm7LHonlp6mBYJnMr-WhmA0D0b4BxLO9UA';
 
+    // Stripe Price IDs (configurar en Stripe Dashboard)
+    var STRIPE_PRICES = {
+        pro: 'price_PRO_MONTHLY_ID',
+        coach: 'price_COACH_MONTHLY_ID'
+    };
+
     var db = null;
     var currentUser = null;
+    var userProfile = null;
+    var userLimits = null;
     var exercises = [];
     var filteredExercises = [];
     var selectedDificultad = null;
@@ -800,7 +917,7 @@
         db.auth.getSession().then(function(result) {
             if (result.data.session) {
                 currentUser = result.data.session.user;
-                updateUIForUser();
+                loadUserProfile();
                 loadFavorites();
             }
         });
@@ -808,28 +925,133 @@
         db.auth.onAuthStateChange(function(event, session) {
             if (session) {
                 currentUser = session.user;
-                updateUIForUser();
+                loadUserProfile();
                 loadFavorites();
             } else {
                 currentUser = null;
+                userProfile = null;
+                userLimits = null;
                 updateUIForGuest();
             }
         });
     }
 
+    function loadUserProfile() {
+        db.from('perfiles').select('*').eq('id', currentUser.id).single()
+            .then(function(result) {
+                if (result.data) {
+                    userProfile = result.data;
+                    checkAndResetMonthlyLimits();
+                    updateUIForUser();
+                    updateRacha();
+                }
+            });
+    }
+
+    function checkAndResetMonthlyLimits() {
+        var mesActual = new Date().toISOString().slice(0, 7);
+        if (userProfile.mes_actual !== mesActual) {
+            db.from('perfiles').update({
+                ejercicios_vistos_mes: 0,
+                mes_actual: mesActual
+            }).eq('id', currentUser.id).then(function() {
+                userProfile.ejercicios_vistos_mes = 0;
+                userProfile.mes_actual = mesActual;
+            });
+        }
+        loadPlanLimits();
+    }
+
+    function loadPlanLimits() {
+        db.from('limites_plan').select('*').eq('plan', userProfile.plan).single()
+            .then(function(result) {
+                if (result.data) {
+                    userLimits = result.data;
+                    updateLimitsUI();
+                }
+            });
+    }
+
+    function updateRacha() {
+        db.rpc('actualizar_racha', { p_usuario_id: currentUser.id })
+            .then(function(result) {
+                if (result.data) {
+                    userProfile.racha_dias = result.data;
+                }
+            });
+    }
+
+    function updateLimitsUI() {
+        var limitBadge = document.getElementById('limitBadge');
+        if (limitBadge && userLimits) {
+            if (userLimits.ejercicios_mes === -1) {
+                limitBadge.style.display = 'none';
+            } else {
+                limitBadge.innerHTML = '👁️ ' + userProfile.ejercicios_vistos_mes + '/' + userLimits.ejercicios_mes;
+                limitBadge.style.display = 'inline-flex';
+                if (userProfile.ejercicios_vistos_mes >= userLimits.ejercicios_mes) {
+                    limitBadge.classList.add('limit-reached');
+                }
+            }
+        }
+    }
+
+    function canViewExercise() {
+        if (!currentUser) return true; // Guests can view (will prompt login)
+        if (!userLimits) return true;
+        if (userLimits.ejercicios_mes === -1) return true; // Unlimited
+        return userProfile.ejercicios_vistos_mes < userLimits.ejercicios_mes;
+    }
+
+    function incrementExerciseView() {
+        if (!currentUser || !userLimits) return;
+        if (userLimits.ejercicios_mes === -1) return; // Unlimited
+        
+        userProfile.ejercicios_vistos_mes++;
+        db.from('perfiles').update({
+            ejercicios_vistos_mes: userProfile.ejercicios_vistos_mes
+        }).eq('id', currentUser.id);
+        updateLimitsUI();
+    }
+
     function updateUIForUser() {
-        var name = currentUser.user_metadata?.nombre || currentUser.email.split('@')[0];
+        var name = userProfile?.nombre || currentUser.user_metadata?.nombre || currentUser.email.split('@')[0];
         var initial = name.charAt(0).toUpperCase();
+        var plan = userProfile?.plan || 'free';
+        var xp = userProfile?.xp || 0;
+        var nivel = userProfile?.nivel || 1;
+        var titulo = userProfile?.titulo || 'Juvenil';
+        var racha = userProfile?.racha_dias || 0;
+        
+        var planBadge = '';
+        if (plan === 'pro') planBadge = '<span class="plan-badge pro">PRO</span>';
+        if (plan === 'coach') planBadge = '<span class="plan-badge coach">COACH</span>';
+        
         document.getElementById('headerActions').innerHTML = 
+            '<div class="user-stats-header">' +
+                '<span class="xp-badge" title="Nivel ' + nivel + ' - ' + titulo + '">⭐ ' + formatNumber(xp) + ' XP</span>' +
+                (racha > 1 ? '<span class="racha-badge" title="Racha de ' + racha + ' días">🔥 ' + racha + '</span>' : '') +
+                '<span class="limit-badge" id="limitBadge"></span>' +
+            '</div>' +
             '<div class="user-menu" onclick="toggleUserMenu(event)">' +
                 '<div class="user-avatar">' + initial + '</div>' +
                 '<span class="user-name">' + name + '</span>' +
+                planBadge +
                 '<div class="user-dropdown" id="userDropdown">' +
+                    '<div class="user-dropdown-header">' +
+                        '<div class="user-dropdown-level">Nivel ' + nivel + ' - ' + titulo + '</div>' +
+                        '<div class="user-dropdown-xp">' + formatNumber(xp) + ' XP</div>' +
+                    '</div>' +
                     '<div class="user-dropdown-item" onclick="showMySessions()">📋 Mis Sesiones</div>' +
                     '<div class="user-dropdown-item" onclick="showFavorites()">❤️ Favoritos</div>' +
+                    '<div class="user-dropdown-item" onclick="showLeaderboard()">🏆 Ranking</div>' +
+                    '<div class="user-dropdown-item" onclick="showMyProfile()">👤 Mi Perfil</div>' +
+                    (plan === 'free' ? '<div class="user-dropdown-item upgrade" onclick="showUpgradeModal()">⭐ Mejorar Plan</div>' : '') +
                     '<div class="user-dropdown-item danger" onclick="logout()">🚪 Salir</div>' +
                 '</div>' +
             '</div>';
+        
+        updateLimitsUI();
     }
 
     function updateUIForGuest() {
@@ -1175,7 +1397,19 @@
     function openModal(id) {
         var ex = exercises.find(function(e) { return e.id === id; });
         if (!ex) return;
+        
+        // Check limits for logged in users
+        if (currentUser && !canViewExercise()) {
+            showUpgradeModal();
+            return;
+        }
+        
         currentExercise = ex;
+        
+        // Increment view count for logged users
+        if (currentUser) {
+            incrementExerciseView();
+        }
 
         var thumb = ex.thumbnail_url || 'https://img.youtube.com/vi/' + (ex.video_id || '') + '/maxresdefault.jpg';
         var platformIcon = '▶', platformName = 'YouTube', platformColor = '#ff0000';
@@ -1748,6 +1982,12 @@
             return;
         }
         if (!currentExercise) return;
+        
+        // Check if user can use favorites
+        if (userLimits && !userLimits.puede_favoritos) {
+            showUpgradeModal();
+            return;
+        }
 
         var isFav = favorites.indexOf(currentExercise.id) !== -1;
         if (isFav) {
@@ -1772,6 +2012,12 @@
     function toggleFavoriteCard(id, btn) {
         if (!currentUser) {
             showAuthModal('login');
+            return;
+        }
+        
+        // Check if user can use favorites
+        if (userLimits && !userLimits.puede_favoritos) {
+            showUpgradeModal();
             return;
         }
 
@@ -1810,6 +2056,117 @@
     }
 
     function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
+
+    // ==================== UPGRADE / STRIPE ====================
+    function showUpgradeModal() {
+        document.getElementById('upgradeOverlay').classList.add('active');
+    }
+
+    function closeUpgradeModal(e) {
+        if (e && e.target !== e.currentTarget) return;
+        document.getElementById('upgradeOverlay').classList.remove('active');
+    }
+
+    function selectPlan(plan) {
+        if (!currentUser) {
+            closeUpgradeModal();
+            showAuthModal('register');
+            showToast('Regístrate primero para mejorar tu plan', 'error');
+            return;
+        }
+        
+        // Por ahora, simular el upgrade (luego integrar Stripe)
+        showToast('Redirigiendo a pago...', 'success');
+        
+        // TODO: Integrar Stripe Checkout
+        // window.location.href = 'https://checkout.stripe.com/...';
+        
+        // Simulación temporal: actualizar plan directamente
+        db.from('perfiles').update({ 
+            plan: plan,
+            subscription_status: 'active'
+        }).eq('id', currentUser.id).then(function(result) {
+            if (!result.error) {
+                userProfile.plan = plan;
+                closeUpgradeModal();
+                loadPlanLimits();
+                updateUIForUser();
+                showToast('¡Plan actualizado a ' + plan.toUpperCase() + '! (Demo)', 'success');
+            }
+        });
+    }
+
+    // ==================== LEADERBOARD ====================
+    function showLeaderboard() {
+        document.getElementById('leaderboardOverlay').classList.add('active');
+        loadLeaderboard('mes');
+    }
+
+    function closeLeaderboardModal(e) {
+        if (e && e.target !== e.currentTarget) return;
+        document.getElementById('leaderboardOverlay').classList.remove('active');
+    }
+
+    function loadLeaderboard(tipo) {
+        // Update tabs
+        document.querySelectorAll('.leaderboard-tab').forEach(function(tab, i) {
+            tab.classList.toggle('active', (tipo === 'mes' && i === 0) || (tipo === 'total' && i === 1));
+        });
+        
+        var container = document.getElementById('leaderboardList');
+        container.innerHTML = '<div class="session-list-loading">Cargando ranking...</div>';
+        
+        db.from('perfiles')
+            .select('id, nombre, avatar_url, xp, nivel, titulo, plan')
+            .eq('perfil_publico', true)
+            .order('xp', { ascending: false })
+            .limit(20)
+            .then(function(result) {
+                if (result.error || !result.data || result.data.length === 0) {
+                    container.innerHTML = '<div class="session-list-empty">No hay datos aún</div>';
+                    return;
+                }
+                
+                var html = '';
+                result.data.forEach(function(user, i) {
+                    var rank = i + 1;
+                    var rankClass = rank === 1 ? 'gold' : rank === 2 ? 'silver' : rank === 3 ? 'bronze' : '';
+                    var rankIcon = rank === 1 ? '🥇' : rank === 2 ? '🥈' : rank === 3 ? '🥉' : rank;
+                    var isMe = currentUser && user.id === currentUser.id;
+                    var initial = (user.nombre || 'U').charAt(0).toUpperCase();
+                    var planBadge = '';
+                    if (user.plan === 'coach') planBadge = ' ✅';
+                    else if (user.plan === 'pro') planBadge = ' ⭐';
+                    
+                    html += '<div class="leaderboard-item' + (rank <= 3 ? ' top-3' : '') + (isMe ? ' me' : '') + '">' +
+                        '<div class="leaderboard-rank ' + rankClass + '">' + rankIcon + '</div>' +
+                        '<div class="leaderboard-avatar">' + initial + '</div>' +
+                        '<div class="leaderboard-info">' +
+                            '<div class="leaderboard-name">' + (user.nombre || 'Usuario') + planBadge + '</div>' +
+                            '<div class="leaderboard-level">Nivel ' + user.nivel + ' - ' + user.titulo + '</div>' +
+                        '</div>' +
+                        '<div class="leaderboard-xp">' + formatNumber(user.xp) + '</div>' +
+                    '</div>';
+                });
+                container.innerHTML = html;
+            });
+    }
+
+    function showMyProfile() {
+        showToast('Próximamente: Mi Perfil', 'success');
+    }
+
+    function showFavorites() {
+        if (!currentUser) {
+            showAuthModal('login');
+            return;
+        }
+        if (userLimits && !userLimits.puede_favoritos) {
+            showUpgradeModal();
+            return;
+        }
+        showToast('Próximamente: Filtrar favoritos', 'success');
+    }
     </script>
 </body>
 </html>
