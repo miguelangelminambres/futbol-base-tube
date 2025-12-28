@@ -160,7 +160,59 @@
         
         @media (max-width: 1024px) { .add-layout { grid-template-columns: 1fr; } .preview-card { position: static; } }
         @media (max-width: 768px) { .form-row, .form-row-3, .form-row-4 { grid-template-columns: 1fr; } .url-row { flex-direction: column; } .source-selector { flex-direction: column; } .library-filters { width: 100%; } .search-input { width: 100%; } }
-    </style>
+   /* Pending Section */
+.pending-section { margin-bottom: 40px; }
+.pending-title { font-family: 'Bebas Neue', sans-serif; font-size: 28px; margin-bottom: 20px; display: flex; align-items: center; gap: 12px; }
+.pending-badge { background: #f59e0b; color: var(--dark); padding: 4px 12px; border-radius: 20px; font-size: 14px; font-weight: 600; }
+.pending-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); gap: 20px; }
+.pending-card { background: var(--dark-card); border: 2px solid #f59e0b; border-radius: 16px; overflow: hidden; }
+.pending-card.duplicate { border-color: var(--danger); }
+.pending-card-header { display: flex; gap: 16px; padding: 16px; }
+.pending-card-thumb { width: 140px; height: 80px; border-radius: 8px; object-fit: cover; background: var(--dark); flex-shrink: 0; }
+.pending-card-info { flex: 1; min-width: 0; }
+.pending-card-title { font-weight: 700; font-size: 14px; margin-bottom: 6px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.pending-card-meta { font-size: 11px; color: var(--text-muted); display: flex; flex-wrap: wrap; gap: 6px; }
+.pending-card-user { display: flex; align-items: center; gap: 8px; margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--dark-border); font-size: 12px; }
+.pending-card-user-avatar { width: 24px; height: 24px; background: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 600; }
+.pending-card-body { padding: 0 16px 16px; }
+.pending-card-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+.pending-card-tag { padding: 3px 8px; background: rgba(139, 92, 246, 0.15); color: #a78bfa; border-radius: 10px; font-size: 10px; }
+.pending-card-url { font-size: 11px; color: var(--text-muted); word-break: break-all; margin-bottom: 12px; padding: 8px; background: var(--dark); border-radius: 8px; }
+.pending-card-duplicate { background: rgba(239, 68, 68, 0.1); border: 1px solid var(--danger); border-radius: 8px; padding: 10px; margin-bottom: 12px; font-size: 11px; color: var(--danger); }
+.pending-card-reenvio { background: rgba(245, 158, 11, 0.1); border: 1px solid #f59e0b; border-radius: 8px; padding: 8px; margin-bottom: 12px; font-size: 11px; color: #f59e0b; }
+.pending-card-actions { display: flex; gap: 8px; }
+.pending-card-actions .btn { flex: 1; justify-content: center; font-size: 12px; padding: 10px 14px; }
+.btn-approve { background: rgba(34, 197, 94, 0.15); color: var(--success); border: none; border-radius: 10px; cursor: pointer; }
+.btn-approve:hover { background: var(--success); color: white; }
+.btn-reject { background: rgba(239, 68, 68, 0.15); color: var(--danger); border: none; border-radius: 10px; cursor: pointer; }
+.btn-reject:hover { background: var(--danger); color: white; }
+
+/* Reject Modal */
+.modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.8); z-index: 2000; display: none; align-items: center; justify-content: center; }
+.modal-overlay.show { display: flex; }
+.modal-content { background: var(--dark-card); border-radius: 16px; padding: 24px; max-width: 450px; width: 90%; max-height: 80vh; overflow-y: auto; }
+.modal-close { position: absolute; top: 16px; right: 16px; background: none; border: none; color: var(--text-muted); font-size: 24px; cursor: pointer; }
+.reject-title { font-family: 'Bebas Neue', sans-serif; font-size: 24px; margin-bottom: 16px; color: var(--danger); }
+.reject-reasons { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
+.reject-reason { padding: 12px 16px; background: var(--dark); border: 2px solid var(--dark-border); border-radius: 10px; cursor: pointer; font-size: 13px; transition: all 0.2s; }
+.reject-reason:hover { border-color: var(--danger); background: rgba(239, 68, 68, 0.05); }
+.reject-reason.selected { border-color: var(--danger); background: rgba(239, 68, 68, 0.1); }
+.reject-custom textarea { width: 100%; padding: 12px; background: var(--dark); border: 1px solid var(--dark-border); border-radius: 10px; color: var(--text); font-size: 13px; min-height: 80px; resize: vertical; margin-top: 12px; }
+
+/* Stats Cards */
+.stats-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 12px; margin-bottom: 24px; }
+.stat-card { background: var(--dark-card); border: 1px solid var(--dark-border); border-radius: 12px; padding: 16px; text-align: center; }
+.stat-card.warning { border-color: #f59e0b; }
+.stat-card-value { font-family: 'Bebas Neue', sans-serif; font-size: 32px; color: var(--primary); }
+.stat-card.warning .stat-card-value { color: #f59e0b; }
+.stat-card-label { font-size: 11px; color: var(--text-muted); text-transform: uppercase; }
+
+@media (max-width: 768px) {
+    .pending-grid { grid-template-columns: 1fr; }
+    .pending-card-header { flex-direction: column; }
+    .pending-card-thumb { width: 100%; height: 120px; }
+}
+        </style>
 </head>
 <body>
     <div class="loading-overlay" id="loading"><div class="spinner"></div></div>
@@ -189,6 +241,7 @@
         <div class="tab active" id="tabConfig">⚙️ Configuración</div>
         <div class="tab" id="tabAdd">➕ Añadir Ejercicio</div>
         <div class="tab" id="tabLibrary">📚 Biblioteca</div>
+        <div class="tab" id="tabPending">📋 Pendientes <span class="pending-badge" id="pendingCount" style="display:none;">0</span></div>
     </nav>
     
     <!-- CONFIG -->
@@ -544,7 +597,68 @@
             </div>
         </div>
     </div>
+<!-- PENDING -->
+<div class="panel" id="panelPending">
+    <div class="stats-cards">
+        <div class="stat-card warning">
+            <div class="stat-card-value" id="statPending">0</div>
+            <div class="stat-card-label">Pendientes</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-card-value" id="statApproved">0</div>
+            <div class="stat-card-label">Aprobados hoy</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-card-value" id="statRejected">0</div>
+            <div class="stat-card-label">Rechazados hoy</div>
+        </div>
+    </div>
+    
+    <h1 class="section-title">📋 EJERCICIOS PENDIENTES</h1>
+    <div class="pending-grid" id="pendingGrid">
+        <div class="empty-state">
+            <div class="empty-icon">✅</div>
+            <div class="empty-title">No hay ejercicios pendientes</div>
+            <p>Todos los ejercicios han sido revisados</p>
+        </div>
+    </div>
+</div>
 
+<!-- Reject Modal -->
+<div class="modal-overlay" id="rejectOverlay">
+    <div class="modal-content" style="position:relative;">
+        <button class="modal-close" onclick="closeRejectModal()">×</button>
+        <h2 class="reject-title">❌ Rechazar Ejercicio</h2>
+        <p style="color: var(--text-muted); margin-bottom: 16px; font-size: 13px;">Selecciona el motivo del rechazo:</p>
+        
+        <div class="reject-reasons" id="rejectReasons">
+            <div class="reject-reason" onclick="selectRejectReason(this, 'mal_etiquetado')">
+                🏷️ <strong>Mal etiquetado</strong> - Las categorías o datos no son correctos
+            </div>
+            <div class="reject-reason" onclick="selectRejectReason(this, 'duplicado')">
+                📋 <strong>Duplicado</strong> - Este ejercicio ya existe en la biblioteca
+            </div>
+            <div class="reject-reason" onclick="selectRejectReason(this, 'calidad')">
+                📉 <strong>Calidad insuficiente</strong> - El video no cumple los estándares
+            </div>
+            <div class="reject-reason" onclick="selectRejectReason(this, 'pizarra_incorrecta')">
+                🎨 <strong>Pizarra incorrecta</strong> - Usa una pizarra que no es de TopLiderCoach
+            </div>
+            <div class="reject-reason" onclick="selectRejectReason(this, 'otro')">
+                ❓ <strong>Otro motivo</strong>
+            </div>
+        </div>
+        
+        <div id="rejectCustom" style="display:none;">
+            <textarea id="rejectCustomText" placeholder="Explica el motivo del rechazo..."></textarea>
+        </div>
+        
+        <div style="display: flex; gap: 12px; margin-top: 20px;">
+            <button class="btn" style="flex:1; background:var(--dark-border); color:var(--text);" onclick="closeRejectModal()">Cancelar</button>
+            <button class="btn" style="flex:1; background:var(--danger); color:white;" onclick="confirmReject()">❌ Rechazar</button>
+        </div>
+    </div>
+</div>
     <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
     
     <script>
@@ -1052,6 +1166,244 @@
         t.className = 'toast ' + type + ' show';
         setTimeout(function() { t.className = 'toast'; }, 3000);
     }
+    // ==================== PENDING EXERCISES ====================
+var pendingExercises = [];
+var rejectingExerciseId = null;
+var selectedRejectReason = null;
+
+var REJECT_REASONS = {
+    'mal_etiquetado': '🏷️ Las categorías o datos no son correctos. Por favor, revisa el etiquetado y vuelve a enviar.',
+    'duplicado': '📋 Este ejercicio ya existe en nuestra biblioteca.',
+    'calidad': '📉 El video no cumple nuestros estándares de calidad. Asegúrate de que sea claro y útil para entrenadores.',
+    'pizarra_incorrecta': '🎨 La imagen de pizarra debe ser creada con la Pizarra Táctica de TopLiderCoach.',
+    'otro': ''
+};
+
+document.getElementById('tabPending').onclick = function() { showTab('Pending'); };
+
+function loadPending() {
+    if (!db) return;
+    
+    db.from('ejercicios')
+        .select('*, perfiles!subido_por(nombre, email)')
+        .eq('estado', 'pendiente')
+        .order('created_at', { ascending: true })
+        .then(function(result) {
+            if (result.error) {
+                console.error(result.error);
+                return;
+            }
+            pendingExercises = result.data || [];
+            renderPending();
+            updatePendingBadge();
+            checkDuplicates();
+        });
+}
+
+function updatePendingBadge() {
+    var badge = document.getElementById('pendingCount');
+    var count = pendingExercises.length;
+    badge.textContent = count;
+    badge.style.display = count > 0 ? 'inline' : 'none';
+    document.getElementById('statPending').textContent = count;
+}
+
+function renderPending() {
+    var grid = document.getElementById('pendingGrid');
+    
+    if (!pendingExercises.length) {
+        grid.innerHTML = '<div class="empty-state"><div class="empty-icon">✅</div><div class="empty-title">No hay ejercicios pendientes</div><p>Todos los ejercicios han sido revisados</p></div>';
+        return;
+    }
+    
+    var html = '';
+    pendingExercises.forEach(function(ex) {
+        var user = ex.perfiles || {};
+        var userName = user.nombre || user.email || 'Usuario';
+        var userInitial = userName.charAt(0).toUpperCase();
+        var cats = ex.categorias || [];
+        var tagsHtml = cats.slice(0, 3).map(function(c) { return '<span class="pending-card-tag">' + c + '</span>'; }).join('');
+        if (ex.dificultad) tagsHtml += '<span class="pending-card-tag" style="background:rgba(245,197,24,0.2);color:#f59e0b;">Dif: ' + ex.dificultad + '</span>';
+        
+        var isDuplicate = ex._isDuplicate;
+        var reenvio = ex.veces_enviado > 1;
+        
+        html += '<div class="pending-card' + (isDuplicate ? ' duplicate' : '') + '" id="pending-' + ex.id + '">' +
+            '<div class="pending-card-header">' +
+                '<img class="pending-card-thumb" src="' + (ex.thumbnail_url || 'https://via.placeholder.com/140x80/16162a/8b8ba7?text=Video') + '" onerror="this.src=\'https://via.placeholder.com/140x80/16162a/8b8ba7?text=Video\'">' +
+                '<div class="pending-card-info">' +
+                    '<div class="pending-card-title">' + ex.titulo_ejercicio + '</div>' +
+                    '<div class="pending-card-meta">' +
+                        '<span>📺 ' + (ex.source || 'youtube') + '</span>' +
+                        '<span>⏱️ ' + (ex.duracion || '--') + '</span>' +
+                        (ex.tiene_imagen_pizarra ? '<span>🎨 Pizarra</span>' : '') +
+                    '</div>' +
+                    '<div class="pending-card-user">' +
+                        '<div class="pending-card-user-avatar">' + userInitial + '</div>' +
+                        '<span>' + userName + '</span>' +
+                    '</div>' +
+                '</div>' +
+            '</div>' +
+            '<div class="pending-card-body">' +
+                '<div class="pending-card-tags">' + tagsHtml + '</div>' +
+                '<div class="pending-card-url">' + ex.video_url + '</div>' +
+                (isDuplicate ? '<div class="pending-card-duplicate">⚠️ POSIBLE DUPLICADO - Esta URL ya existe en la biblioteca</div>' : '') +
+                (reenvio ? '<div class="pending-card-reenvio">🔄 Reenvío #' + ex.veces_enviado + ' - Fue rechazado anteriormente</div>' : '') +
+                '<div class="pending-card-actions">' +
+                    '<button class="btn btn-approve" onclick="approveExercise(\'' + ex.id + '\')">✅ Aprobar</button>' +
+                    '<button class="btn btn-reject" onclick="openRejectModal(\'' + ex.id + '\')">❌ Rechazar</button>' +
+                    '<button class="btn btn-view" style="flex:0.5;" onclick="window.open(\'' + ex.video_url + '\', \'_blank\')">▶</button>' +
+                '</div>' +
+            '</div>' +
+        '</div>';
+    });
+    grid.innerHTML = html;
+}
+
+function checkDuplicates() {
+    if (!pendingExercises.length) return;
+    
+    var urls = pendingExercises.map(function(ex) { return ex.video_url; });
+    
+    db.from('ejercicios')
+        .select('video_url')
+        .eq('estado', 'publicado')
+        .in('video_url', urls)
+        .then(function(result) {
+            if (result.error || !result.data) return;
+            
+            var existingUrls = result.data.map(function(e) { return e.video_url; });
+            
+            pendingExercises.forEach(function(ex) {
+                if (existingUrls.indexOf(ex.video_url) !== -1) {
+                    ex._isDuplicate = true;
+                    var card = document.getElementById('pending-' + ex.id);
+                    if (card) card.classList.add('duplicate');
+                }
+            });
+            
+            renderPending();
+        });
+}
+
+function approveExercise(id) {
+    if (!confirm('¿Aprobar este ejercicio? El usuario recibirá XP.')) return;
+    
+    showLoading(true);
+    
+    db.rpc('aprobar_ejercicio', { 
+        p_ejercicio_id: id, 
+        p_admin_id: null 
+    }).then(function(result) {
+        showLoading(false);
+        if (result.error) {
+            showToast('❌ ' + result.error.message, 'error');
+            return;
+        }
+        showToast('✅ Ejercicio aprobado', 'success');
+        pendingExercises = pendingExercises.filter(function(ex) { return ex.id !== id; });
+        renderPending();
+        updatePendingBadge();
+        loadStats();
+    });
+}
+
+function openRejectModal(id) {
+    rejectingExerciseId = id;
+    selectedRejectReason = null;
+    document.querySelectorAll('.reject-reason').forEach(function(r) { r.classList.remove('selected'); });
+    document.getElementById('rejectCustom').style.display = 'none';
+    document.getElementById('rejectCustomText').value = '';
+    document.getElementById('rejectOverlay').classList.add('show');
+}
+
+function closeRejectModal() {
+    document.getElementById('rejectOverlay').classList.remove('show');
+    rejectingExerciseId = null;
+}
+
+function selectRejectReason(el, reason) {
+    document.querySelectorAll('.reject-reason').forEach(function(r) { r.classList.remove('selected'); });
+    el.classList.add('selected');
+    selectedRejectReason = reason;
+    document.getElementById('rejectCustom').style.display = reason === 'otro' ? 'block' : 'none';
+}
+
+function confirmReject() {
+    if (!selectedRejectReason) {
+        showToast('Selecciona un motivo', 'error');
+        return;
+    }
+    
+    var motivo = REJECT_REASONS[selectedRejectReason];
+    if (selectedRejectReason === 'otro') {
+        motivo = document.getElementById('rejectCustomText').value.trim();
+        if (!motivo) {
+            showToast('Escribe el motivo', 'error');
+            return;
+        }
+    }
+    
+    showLoading(true);
+    
+    db.from('ejercicios').update({
+        estado: 'rechazado',
+        motivo_rechazo: motivo,
+        rechazado_en: new Date().toISOString()
+    }).eq('id', rejectingExerciseId).then(function(result) {
+        showLoading(false);
+        if (result.error) {
+            showToast('❌ ' + result.error.message, 'error');
+            return;
+        }
+        closeRejectModal();
+        showToast('❌ Ejercicio rechazado', 'success');
+        pendingExercises = pendingExercises.filter(function(ex) { return ex.id !== rejectingExerciseId; });
+        renderPending();
+        updatePendingBadge();
+    });
+}
+
+// Update showTab to include Pending
+var originalShowTab = showTab;
+showTab = function(name) {
+    ['Config', 'Add', 'Library', 'Pending'].forEach(function(t) {
+        var tab = document.getElementById('tab' + t);
+        var panel = document.getElementById('panel' + t);
+        if (tab) tab.className = 'tab';
+        if (panel) panel.className = 'panel';
+    });
+    document.getElementById('tab' + name).className = 'tab active';
+    document.getElementById('panel' + name).className = 'panel active';
+    if (name === 'Library' && db) { loadLibrary(); }
+    if (name === 'Pending' && db) { loadPending(); }
+};
+
+// Load pending on connect
+var originalConnectDB = connectDB;
+connectDB = function(url, key) {
+    if (!supabaseReady) { showToast('Esperando Supabase...', 'error'); return; }
+    showLoading(true);
+    try {
+        db = supabase.createClient(url, key);
+        db.from('ejercicios').select('id').limit(1).then(function(result) {
+            showLoading(false);
+            if (result.error) {
+                document.getElementById('statusDot').className = 'status-dot';
+                document.getElementById('statusText').textContent = 'Error';
+                showToast('Error: ' + result.error.message, 'error');
+                return;
+            }
+            document.getElementById('statusDot').className = 'status-dot connected';
+            document.getElementById('statusText').textContent = 'Conectado';
+            document.getElementById('statsBar').className = 'stats-bar show';
+            loadStats();
+            loadPending();
+            showToast('✅ Conectado', 'success');
+            showTab('Add');
+        });
+    } catch (err) { showLoading(false); showToast('Error: ' + err.message, 'error'); }
+};
     </script>
 </body>
 </html>
