@@ -447,25 +447,177 @@
         .toast.success { border-color: var(--primary); }
         .toast.error { border-color: var(--danger); }
 
-        /* Responsive */
-        @media (max-width: 1024px) { .biblioteca { grid-template-columns: 1fr; } .filters-sidebar { position: static; } }
-        @media (max-width: 768px) { 
-            .nav { display: none; } 
-            .hero-title-main { font-size: 36px; flex-direction: column; gap: 8px; }
-            .tube-logo { padding: 2px 12px; }
-            .hero-tagline { font-size: 16px; }
-            .hero-features { gap: 16px; }
-            .hero-feature { font-size: 13px; }
-            .hero-stats { flex-direction: column; gap: 24px; } 
-            .biblioteca-search { width: 100%; } 
-            .biblioteca-header { flex-direction: column; align-items: stretch; }
-            .session-fab { right: 16px; bottom: 16px; padding: 12px 16px; }
-            .session-fab-content { display: none; }
-            .session-drawer { width: 100%; right: -100%; }
-            .logo-text { font-size: 18px; }
-            .logo-tube { font-size: 14px; }
-        }
-    </style>
+  /* Responsive */
+@media (max-width: 1024px) { 
+    .biblioteca { grid-template-columns: 1fr; } 
+    .filters-sidebar { position: static; max-height: none; } 
+}
+
+@media (max-width: 768px) { 
+    /* Header */
+    .header-inner { padding: 12px 16px; }
+    .nav { display: none; } 
+    .logo-text { font-size: 16px; }
+    .logo-tube { font-size: 12px; padding: 2px 6px; }
+    .logo-icon { width: 40px; height: 40px; font-size: 20px; }
+    
+    /* Header Stats */
+    .user-stats-header { gap: 6px; margin-right: 4px; }
+    .xp-badge, .racha-badge, .limit-badge { padding: 4px 8px; font-size: 10px; }
+    .user-menu { padding: 6px 10px; gap: 8px; }
+    .user-avatar { width: 32px; height: 32px; font-size: 12px; }
+    .user-name { display: none; }
+    .plan-badge { font-size: 8px; padding: 2px 6px; margin-left: 0; }
+    .user-dropdown { right: -10px; min-width: 220px; }
+    
+    /* Hero */
+    .hero { padding: 100px 16px 60px; min-height: auto; }
+    .hero-badge { font-size: 12px; padding: 8px 16px; }
+    .hero-title-main { font-size: 32px; flex-direction: column; gap: 8px; }
+    .tube-logo { padding: 2px 10px; }
+    .tube-text { font-size: 24px; }
+    .hero-tagline { font-size: 14px; letter-spacing: 1px; }
+    .hero-desc { font-size: 14px; margin-bottom: 24px; }
+    .hero-features { flex-direction: column; gap: 12px; margin-bottom: 24px; }
+    .hero-feature { font-size: 13px; }
+    .hero-buttons { flex-direction: column; gap: 12px; }
+    .btn-lg { padding: 14px 24px; font-size: 14px; width: 100%; justify-content: center; }
+    .hero-stats { flex-wrap: wrap; gap: 24px; padding-top: 24px; }
+    .hero-stat { flex: 1 1 40%; }
+    .hero-stat-value { font-size: 32px; }
+    .hero-cta-text { font-size: 13px; }
+    
+    /* Biblioteca */
+    .biblioteca { padding: 24px 16px; gap: 20px; }
+    .biblioteca-header { flex-direction: column; align-items: stretch; gap: 12px; }
+    .biblioteca-title { font-size: 24px; }
+    .biblioteca-search { width: 100%; }
+    .ejercicios-grid { grid-template-columns: 1fr; gap: 16px; }
+    
+    /* Filtros en móvil */
+    .filters-sidebar { padding: 16px; border-radius: 16px; }
+    .filters-header { margin-bottom: 16px; }
+    .filter-group { margin-bottom: 14px; }
+    .filter-select { padding: 10px 14px; font-size: 13px; }
+    .difficulty-pills { gap: 6px; }
+    .difficulty-pill { padding: 8px; font-size: 13px; }
+    
+    /* Cards */
+    .ejercicio-card { border-radius: 16px; }
+    .ejercicio-body { padding: 16px; }
+    .ejercicio-title { font-size: 15px; }
+    .ejercicio-tags { gap: 6px; }
+    .ejercicio-tag { font-size: 11px; padding: 3px 10px; }
+    
+    /* Session FAB */
+    .session-fab { right: 16px; bottom: 16px; padding: 12px 16px; }
+    .session-fab-icon { width: 40px; height: 40px; font-size: 18px; }
+    .session-fab-content { display: none; }
+    .session-fab-badge { width: 24px; height: 24px; font-size: 11px; top: -6px; right: -6px; }
+    
+    /* Session Drawer - Fullscreen en móvil */
+    .session-drawer { width: 100%; right: -100%; }
+    .session-drawer-header { padding: 16px; }
+    .session-drawer-title { font-size: 20px; }
+    .session-drawer-body { padding: 12px; }
+    .session-item { padding: 10px; gap: 10px; }
+    .session-item-thumb { width: 50px; height: 34px; }
+    .session-item-title { font-size: 12px; }
+    .session-drawer-footer { padding: 16px; }
+    
+    /* Modals */
+    .modal-overlay { padding: 16px; }
+    .modal-content { border-radius: 20px; max-height: 85vh; }
+    .modal-close { width: 36px; height: 36px; font-size: 20px; top: 12px; right: 12px; }
+    
+    /* Auth Modal */
+    .auth-modal { padding: 24px; }
+    .auth-title { font-size: 28px; }
+    .auth-tabs { gap: 6px; }
+    .auth-tab { padding: 10px; font-size: 13px; }
+    .auth-input { padding: 12px 14px; font-size: 14px; }
+    
+    /* Exercise Modal */
+    .modal-body { padding: 16px; }
+    .modal-title { font-size: 18px; }
+    .modal-tags { gap: 6px; }
+    .modal-tag { font-size: 11px; padding: 4px 12px; }
+    .modal-info-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .modal-info-item { padding: 12px; }
+    .modal-info-icon { font-size: 20px; }
+    .modal-info-value { font-size: 14px; }
+    .modal-description { font-size: 13px; }
+    .modal-footer { flex-direction: column; gap: 10px; }
+    .modal-footer .btn { width: 100%; justify-content: center; }
+    
+    /* Save Session Modal */
+    .save-modal { padding: 20px; }
+    .save-modal-title { font-size: 24px; }
+    .form-row { grid-template-columns: 1fr; gap: 0; }
+    
+    /* Upgrade Modal */
+    .upgrade-modal { max-width: 100%; }
+    .upgrade-header { padding: 24px 16px; }
+    .upgrade-header h2 { font-size: 26px; }
+    .upgrade-body { padding: 16px; }
+    .upgrade-plans { grid-template-columns: 1fr; gap: 12px; }
+    .upgrade-plan { padding: 16px; }
+    .upgrade-plan-price { font-size: 32px; }
+    .upgrade-plan-features { font-size: 12px; }
+    
+    /* Leaderboard Modal */
+    .leaderboard-modal { padding: 16px; max-height: 80vh; }
+    .leaderboard-title { font-size: 24px; }
+    .leaderboard-tabs { gap: 6px; }
+    .leaderboard-tab { padding: 8px; font-size: 12px; }
+    .leaderboard-item { padding: 10px; gap: 10px; }
+    .leaderboard-avatar { width: 36px; height: 36px; font-size: 14px; }
+    .leaderboard-name { font-size: 13px; }
+    .leaderboard-level { font-size: 11px; }
+    .leaderboard-xp { font-size: 13px; }
+    
+    /* View Session Modal */
+    .view-session-modal { max-width: 100%; }
+    .view-session-header { padding: 16px; }
+    .view-session-title { font-size: 22px; }
+    .view-session-meta { gap: 10px; font-size: 12px; }
+    .view-session-objetivo { padding: 12px 16px; font-size: 13px; }
+    .view-session-exercises { padding: 12px 16px; }
+    .view-session-exercise { padding: 10px; gap: 10px; flex-wrap: wrap; }
+    .view-session-exercise-thumb { width: 60px; height: 40px; }
+    .view-session-exercise-title { font-size: 13px; }
+    .view-session-exercise-link { padding: 6px 12px; font-size: 11px; }
+    .view-session-footer { padding: 12px 16px; }
+    .view-session-footer .btn { padding: 10px 16px; font-size: 13px; }
+    
+    /* My Sessions Modal */
+    .my-sessions-modal { padding: 16px; }
+    .my-sessions-header { margin-bottom: 16px; }
+    .my-session-card { padding: 14px; }
+    .my-session-card-name { font-size: 15px; }
+    .my-session-card-meta { gap: 12px; font-size: 12px; }
+    
+    /* Add to Session Modal */
+    .sessions-list { max-height: 200px; }
+    .session-list-item { padding: 12px; }
+    .session-list-item-name { font-size: 13px; }
+    
+    /* Footer */
+    .footer { padding: 24px 16px; margin-top: 40px; }
+    .footer-text { font-size: 12px; }
+    
+    /* Toast */
+    .toast { bottom: 80px; padding: 12px 20px; font-size: 13px; max-width: calc(100% - 32px); }
+}
+
+/* Extra small devices */
+@media (max-width: 360px) {
+    .hero-title-main { font-size: 28px; }
+    .tube-text { font-size: 20px; }
+    .hero-stat-value { font-size: 28px; }
+    .ejercicio-card { border-radius: 12px; }
+    .btn { padding: 10px 16px; font-size: 13px; }
+}
 </head>
 <body>
     <header class="header">
