@@ -1381,6 +1381,31 @@ function confirmReject() {
     
     showLoading(true);
     
+    db.rpc('rechazar_ejercicio', {
+        p_ejercicio_id: idToReject,
+        p_motivo: motivo
+    }).then(function(result) {
+        showLoading(false);
+        if (result.error) {
+            showToast('❌ ' + result.error.message, 'error');
+            return;
+        }
+        closeRejectModal();
+        showToast('❌ Ejercicio rechazado', 'success');
+        
+        pendingExercises = pendingExercises.filter(function(ex) { 
+            return ex.id !== idToReject; 
+        });
+        renderPending();
+        updatePendingBadge();
+        loadTodayStats();
+    });
+}
+    
+    var idToReject = rejectingExerciseId;
+    
+    showLoading(true);
+    
     db.from('ejercicios').update({
         estado: 'rechazado',
         motivo_rechazo: motivo,
