@@ -1185,7 +1185,7 @@ function loadPending() {
     if (!db) return;
     
     db.from('ejercicios')
-        .select('*, perfiles!subido_por(nombre, email)')
+        .select('*')
         .eq('estado', 'pendiente')
         .order('created_at', { ascending: true })
         .then(function(result) {
@@ -1218,8 +1218,7 @@ function renderPending() {
     
     var html = '';
     pendingExercises.forEach(function(ex) {
-        var user = ex.perfiles || {};
-        var userName = user.nombre || user.email || 'Usuario';
+        var userName = 'Coach';
         var userInitial = userName.charAt(0).toUpperCase();
         var cats = ex.categorias || [];
         var tagsHtml = cats.slice(0, 3).map(function(c) { return '<span class="pending-card-tag">' + c + '</span>'; }).join('');
