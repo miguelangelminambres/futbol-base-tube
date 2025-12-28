@@ -1180,7 +1180,29 @@ var REJECT_REASONS = {
 };
 
 document.getElementById('tabPending').onclick = function() { showTab('Pending'); };
-
+function loadTodayStats() {
+    if (!db) return;
+    
+    var today = new Date().toISOString().split('T')[0];
+    
+    // Aprobados hoy
+    db.from('ejercicios')
+        .select('*', { count: 'exact', head: true })
+        .eq('estado', 'publicado')
+        .gte('updated_at', today)
+        .then(function(r) {
+            document.getElementById('statApproved').textContent = r.count || 0;
+        });
+    
+    // Rechazados hoy
+    db.from('ejercicios')
+        .select('*', { count: 'exact', head: true })
+        .eq('estado', 'rechazado')
+        .gte('rechazado_en', today)
+        .then(function(r) {
+            document.getElementById('statRejected').textContent = r.count || 0;
+        });
+}
 function loadPending() {
     if (!db) {
         console.log('No hay conexión DB');
@@ -1207,6 +1229,7 @@ function loadPending() {
             renderPending();
             updatePendingBadge();
             checkDuplicates();
+            loadTodayStats();
         });
 }
 
@@ -1314,6 +1337,7 @@ function approveExercise(id) {
         renderPending();
         updatePendingBadge();
         loadStats();
+        loadTodayStats();
     });
 }
 
@@ -1353,13 +1377,15 @@ function confirmReject() {
         }
     }
     
+    var idToReject = rejectingExerciseId;
+    
     showLoading(true);
     
     db.from('ejercicios').update({
         estado: 'rechazado',
         motivo_rechazo: motivo,
         rechazado_en: new Date().toISOString()
-    }).eq('id', rejectingExerciseId).then(function(result) {
+    }).eq('id', idToReject).then(function(result) {
         showLoading(false);
         if (result.error) {
             showToast('❌ ' + result.error.message, 'error');
@@ -1367,9 +1393,14 @@ function confirmReject() {
         }
         closeRejectModal();
         showToast('❌ Ejercicio rechazado', 'success');
-        pendingExercises = pendingExercises.filter(function(ex) { return ex.id !== rejectingExerciseId; });
+        
+        // Eliminar de la lista
+        pendingExercises = pendingExercises.filter(function(ex) { 
+            return ex.id !== idToReject; 
+        });
         renderPending();
         updatePendingBadge();
+        loadTodayStats();
     });
 }
 
