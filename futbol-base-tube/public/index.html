@@ -2402,33 +2402,31 @@
     }
 
     function selectPlan(plan) {
-        if (!currentUser) {
-            closeUpgradeModal();
-            showAuthModal('register');
-            showToast('Regístrate primero para mejorar tu plan', 'error');
-            return;
-        }
-        
-        // Por ahora, simular el upgrade (luego integrar Stripe)
-        showToast('Redirigiendo a pago...', 'success');
-        
-        // TODO: Integrar Stripe Checkout
-        // window.location.href = 'https://checkout.stripe.com/...';
-        
-        // Simulación temporal: actualizar plan directamente
-        db.from('perfiles').update({ 
-            plan: plan,
-            subscription_status: 'active'
-        }).eq('id', currentUser.id).then(function(result) {
-            if (!result.error) {
-                userProfile.plan = plan;
-                closeUpgradeModal();
-                loadPlanLimits();
-                updateUIForUser();
-                showToast('¡Plan actualizado a ' + plan.toUpperCase() + '! (Demo)', 'success');
-            }
-        });
+    if (!currentUser) {
+        closeUpgradeModal();
+        showAuthModal('register');
+        showToast('Regístrate primero para mejorar tu plan', 'error');
+        return;
     }
+    
+    showToast('Redirigiendo a pago...', 'success');
+    
+    db.from('perfiles').update({ 
+        plan: plan,
+        subscription_status: 'active'
+    }).eq('id', currentUser.id).then(function(result) {
+        if (!result.error) {
+            if (!userProfile) userProfile = {};
+            userProfile.plan = plan;
+            closeUpgradeModal();
+            loadPlanLimits();
+            loadUserProfile();
+            showToast('¡Plan actualizado a ' + plan.toUpperCase() + '! (Demo)', 'success');
+        } else {
+            showToast('Error: ' + result.error.message, 'error');
+        }
+    });
+}
 
     // ==================== LEADERBOARD ====================
     function showLeaderboard() {
