@@ -712,9 +712,9 @@
             </div>
             
             <div class="hero-buttons">
-                <button class="btn btn-primary btn-lg" onclick="scrollToSection('biblioteca')">🎬 Explorar Ejercicios</button>
-                <button class="btn btn-ghost btn-lg" onclick="showAuthModal('register')">🚀 Unirme a la Comunidad</button>
-            </div>
+    <button class="btn btn-primary btn-lg" onclick="scrollToSection('biblioteca')">🎬 Explorar Ejercicios</button>
+    <button class="btn btn-ghost btn-lg" id="btnUploadHero" onclick="showUploadModal()">📤 Subir Ejercicio</button>
+</div>
             
             <div class="hero-stats">
                 <div class="hero-stat">
@@ -1016,7 +1016,145 @@
             </div>
         </div>
     </div>
-
+<!-- Upload Exercise Modal -->
+<div class="modal-overlay" id="uploadOverlay" onclick="closeUploadModal(event)">
+    <div class="modal-content upload-modal" onclick="event.stopPropagation()">
+        <button class="modal-close" onclick="closeUploadModal()">×</button>
+        
+        <div class="upload-header">
+            <h2>📤 Subir Ejercicio</h2>
+            <p>Comparte un video de entrenamiento con la comunidad</p>
+        </div>
+        
+        <div class="upload-body">
+            <!-- URL Section -->
+            <div class="upload-section">
+                <div class="upload-section-title">🔗 URL del Video</div>
+                <div class="upload-url-input">
+                    <input type="text" class="auth-input" id="uploadUrl" placeholder="https://youtube.com/watch?v=... o twitter.com/...">
+                    <button class="btn btn-primary" onclick="extractVideoInfo()">Extraer</button>
+                </div>
+                <div class="upload-preview" id="uploadPreview">
+                    <img class="upload-preview-thumb" id="uploadThumb" src="">
+                    <div class="upload-preview-title" id="uploadPreviewTitle"></div>
+                    <div class="upload-preview-meta">
+                        <span id="uploadPreviewSource"></span>
+                        <span id="uploadPreviewDuration"></span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Info Section -->
+            <div class="upload-section">
+                <div class="upload-section-title">📝 Información del Ejercicio</div>
+                <div class="upload-field" style="margin-bottom:16px;">
+                    <label>Título del ejercicio *</label>
+                    <input type="text" id="uploadTitulo" placeholder="Ej: Rondo 4x4+3 con transiciones">
+                </div>
+                <div class="upload-grid">
+                    <div class="upload-field">
+                        <label>Entrenador / Canal</label>
+                        <input type="text" id="uploadEntrenador" placeholder="Ej: Pep Guardiola">
+                    </div>
+                    <div class="upload-field">
+                        <label>Equipo / Club</label>
+                        <input type="text" id="uploadEquipo" placeholder="Ej: FC Barcelona">
+                    </div>
+                </div>
+                <div class="upload-field" style="margin-top:16px;">
+                    <label>Descripción (opcional)</label>
+                    <textarea id="uploadDescripcion" placeholder="Describe brevemente el ejercicio..."></textarea>
+                </div>
+            </div>
+            
+            <!-- Categories Section -->
+            <div class="upload-section">
+                <div class="upload-section-title">🏷️ Categorías (selecciona 1-3)</div>
+                <div class="categories-select" id="uploadCategorias">
+                    <!-- Se llenan dinámicamente -->
+                </div>
+            </div>
+            
+            <!-- Details Section -->
+            <div class="upload-section">
+                <div class="upload-section-title">⚙️ Detalles</div>
+                <div class="upload-grid">
+                    <div class="upload-field">
+                        <label>Dificultad *</label>
+                        <select id="uploadDificultad">
+                            <option value="">Seleccionar</option>
+                            <option value="1">1 - Muy fácil</option>
+                            <option value="2">2 - Fácil</option>
+                            <option value="3">3 - Intermedio</option>
+                            <option value="4">4 - Difícil</option>
+                            <option value="5">5 - Muy difícil</option>
+                        </select>
+                    </div>
+                    <div class="upload-field">
+                        <label>Edad recomendada</label>
+                        <select id="uploadEdad">
+                            <option value="">Seleccionar</option>
+                            <option value="Prebenjamín">Prebenjamín (5-7)</option>
+                            <option value="Benjamín">Benjamín (8-9)</option>
+                            <option value="Alevín">Alevín (10-11)</option>
+                            <option value="Infantil">Infantil (12-13)</option>
+                            <option value="Cadete">Cadete (14-15)</option>
+                            <option value="Juvenil">Juvenil (16-18)</option>
+                            <option value="Senior">Senior (19+)</option>
+                            <option value="Profesional">Profesional</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="upload-grid-3" style="margin-top:16px;">
+                    <div class="upload-field">
+                        <label>Nº Jugadores</label>
+                        <input type="text" id="uploadJugadores" placeholder="Ej: 12-16">
+                    </div>
+                    <div class="upload-field">
+                        <label>Nº Porteros</label>
+                        <select id="uploadPorteros">
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3+</option>
+                        </select>
+                    </div>
+                    <div class="upload-field">
+                        <label>Idioma</label>
+                        <select id="uploadIdioma">
+                            <option value="es">🇪🇸 Español</option>
+                            <option value="en">🇬🇧 Inglés</option>
+                            <option value="pt">🇵🇹 Portugués</option>
+                            <option value="de">🇩🇪 Alemán</option>
+                            <option value="fr">🇫🇷 Francés</option>
+                            <option value="it">🇮🇹 Italiano</option>
+                            <option value="other">🌐 Otro</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Pizarra Section -->
+            <div class="upload-section">
+                <div class="upload-section-title">🎨 Imagen de Pizarra Táctica (opcional)</div>
+                <div class="upload-pizarra" id="uploadPizarraBox" onclick="openPizarra()">
+                    <div class="upload-pizarra-icon">🎨</div>
+                    <div class="upload-pizarra-text">Crear imagen con Pizarra Táctica</div>
+                    <div class="upload-pizarra-hint">Los ejercicios con imagen ganan el doble de XP</div>
+                </div>
+                <div class="upload-xp-bonus">
+                    <span>⭐</span>
+                    <span>Ganarás <strong>+50 XP</strong> por este ejercicio (o <strong>+100 XP</strong> con imagen de pizarra)</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="upload-footer">
+            <button class="btn btn-ghost" onclick="closeUploadModal()">Cancelar</button>
+            <button class="btn btn-primary" onclick="submitExercise()">📤 Enviar Ejercicio</button>
+        </div>
+    </div>
+</div>
     <!-- Toast -->
     <div class="toast" id="toast"></div>
 
@@ -2237,11 +2375,7 @@
         }
     }
 
-    function showFavorites() {
-        // TODO: Filter by favorites
-        showToast('Próximamente: Filtrar favoritos', 'success');
-    }
-
+ 
     // ==================== UTILS ====================
     function showToast(msg, type) {
         var toast = document.getElementById('toast');
@@ -2367,6 +2501,203 @@
         }
         showToast('Próximamente: Filtrar favoritos', 'success');
     }
+    // ==================== UPLOAD EXERCISE ====================
+var uploadVideoData = null;
+var selectedCategories = [];
+var AVAILABLE_CATEGORIES = ['Rondos', 'Posesión', 'Finalización', 'Pressing', 'Transiciones', 'Táctica', 'Técnica Individual', 'Porteros', 'Físico', 'Calentamiento', 'Espacios Reducidos', 'Partidos Condicionados', 'Centros', 'Corners', 'Faltas', 'Pase', 'Control', 'Conducción', 'Regate', 'Defensa', 'Ataque', 'Contraataque', 'Otros'];
+
+function showUploadModal() {
+    if (!currentUser) {
+        showAuthModal('register');
+        showToast('Regístrate para subir ejercicios', 'error');
+        return;
+    }
+    
+    if (!userProfile || userProfile.plan !== 'coach') {
+        showUpgradeModal();
+        showToast('Solo los usuarios Coach pueden subir ejercicios', 'error');
+        return;
+    }
+    
+    // Reset form
+    resetUploadForm();
+    populateCategories();
+    document.getElementById('uploadOverlay').classList.add('active');
+}
+
+function closeUploadModal(e) {
+    if (e && e.target !== e.currentTarget) return;
+    document.getElementById('uploadOverlay').classList.remove('active');
+}
+
+function resetUploadForm() {
+    uploadVideoData = null;
+    selectedCategories = [];
+    document.getElementById('uploadUrl').value = '';
+    document.getElementById('uploadTitulo').value = '';
+    document.getElementById('uploadEntrenador').value = '';
+    document.getElementById('uploadEquipo').value = '';
+    document.getElementById('uploadDescripcion').value = '';
+    document.getElementById('uploadDificultad').value = '';
+    document.getElementById('uploadEdad').value = '';
+    document.getElementById('uploadJugadores').value = '';
+    document.getElementById('uploadPorteros').value = '0';
+    document.getElementById('uploadIdioma').value = 'es';
+    document.getElementById('uploadPreview').classList.remove('show');
+    document.getElementById('uploadPizarraBox').classList.remove('has-image');
+}
+
+function populateCategories() {
+    var container = document.getElementById('uploadCategorias');
+    container.innerHTML = AVAILABLE_CATEGORIES.map(function(cat) {
+        return '<div class="category-chip" onclick="toggleCategory(this, \'' + cat + '\')">' + cat + '</div>';
+    }).join('');
+}
+
+function toggleCategory(el, cat) {
+    var idx = selectedCategories.indexOf(cat);
+    if (idx === -1) {
+        if (selectedCategories.length >= 3) {
+            showToast('Máximo 3 categorías', 'error');
+            return;
+        }
+        selectedCategories.push(cat);
+        el.classList.add('selected');
+    } else {
+        selectedCategories.splice(idx, 1);
+        el.classList.remove('selected');
+    }
+}
+
+function extractVideoInfo() {
+    var url = document.getElementById('uploadUrl').value.trim();
+    if (!url) {
+        showToast('Introduce una URL', 'error');
+        return;
+    }
+    
+    var source = null;
+    var videoId = null;
+    
+    // YouTube
+    var ytMatch = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/shorts\/)([^&\?\/]+)/);
+    if (ytMatch) {
+        source = 'youtube';
+        videoId = ytMatch[1];
+    }
+    
+    // Twitter/X
+    if (!source && (url.includes('twitter.com') || url.includes('x.com'))) {
+        source = 'twitter';
+        var tMatch = url.match(/status\/(\d+)/);
+        videoId = tMatch ? tMatch[1] : null;
+    }
+    
+    // Instagram
+    if (!source && url.includes('instagram.com')) {
+        source = 'instagram';
+        var igMatch = url.match(/\/(p|reel)\/([^\/\?]+)/);
+        videoId = igMatch ? igMatch[2] : null;
+    }
+    
+    if (!source) {
+        showToast('URL no válida. Usa YouTube, Twitter o Instagram', 'error');
+        return;
+    }
+    
+    // Get thumbnail and info
+    var thumb = '';
+    if (source === 'youtube') {
+        thumb = 'https://img.youtube.com/vi/' + videoId + '/maxresdefault.jpg';
+    }
+    
+    uploadVideoData = {
+        url: url,
+        source: source,
+        video_id: videoId,
+        thumbnail: thumb
+    };
+    
+    // Show preview
+    document.getElementById('uploadThumb').src = thumb || 'https://via.placeholder.com/640x360/16162a/8b8ba7?text=Video';
+    document.getElementById('uploadPreviewTitle').textContent = 'Video de ' + source.charAt(0).toUpperCase() + source.slice(1);
+    document.getElementById('uploadPreviewSource').textContent = source === 'youtube' ? '📺 YouTube' : source === 'twitter' ? '𝕏 Twitter' : '📷 Instagram';
+    document.getElementById('uploadPreviewDuration').textContent = '';
+    document.getElementById('uploadPreview').classList.add('show');
+    
+    showToast('✅ Video detectado', 'success');
+}
+
+function openPizarra() {
+    // Abrir pizarra táctica en nueva pestaña
+    window.open('https://pizarra.toplidercoach.com', '_blank');
+    showToast('Crea tu imagen en la pizarra y luego vuelve aquí', 'success');
+}
+
+function submitExercise() {
+    // Validations
+    if (!uploadVideoData) {
+        showToast('Primero extrae la información del video', 'error');
+        return;
+    }
+    
+    var titulo = document.getElementById('uploadTitulo').value.trim();
+    if (!titulo) {
+        showToast('El título es obligatorio', 'error');
+        return;
+    }
+    
+    var dificultad = document.getElementById('uploadDificultad').value;
+    if (!dificultad) {
+        showToast('Selecciona la dificultad', 'error');
+        return;
+    }
+    
+    if (selectedCategories.length === 0) {
+        showToast('Selecciona al menos una categoría', 'error');
+        return;
+    }
+    
+    // Build exercise object
+    var exercise = {
+        titulo_ejercicio: titulo,
+        video_url: uploadVideoData.url,
+        video_id: uploadVideoData.video_id,
+        thumbnail_url: uploadVideoData.thumbnail,
+        source: uploadVideoData.source,
+        categorias: selectedCategories,
+        dificultad: parseInt(dificultad),
+        entrenador: document.getElementById('uploadEntrenador').value.trim() || null,
+        equipo: document.getElementById('uploadEquipo').value.trim() || null,
+        descripcion: document.getElementById('uploadDescripcion').value.trim() || null,
+        edad: document.getElementById('uploadEdad').value || null,
+        jugadores: document.getElementById('uploadJugadores').value.trim() || null,
+        num_porteros: parseInt(document.getElementById('uploadPorteros').value) || 0,
+        idioma: document.getElementById('uploadIdioma').value,
+        subido_por: currentUser.id,
+        estado: 'pendiente',
+        aprobado: false,
+        tiene_imagen_pizarra: document.getElementById('uploadPizarraBox').classList.contains('has-image')
+    };
+    
+    // Submit to Supabase
+    db.from('ejercicios').insert(exercise).then(function(result) {
+        if (result.error) {
+            showToast('Error: ' + result.error.message, 'error');
+        } else {
+            closeUploadModal();
+            showToast('🎉 ¡Ejercicio enviado! Pendiente de aprobación', 'success');
+            
+            // Add XP (will be doubled when approved if has pizarra image)
+            var xpGained = exercise.tiene_imagen_pizarra ? 100 : 50;
+            db.rpc('añadir_xp', { 
+                p_usuario_id: currentUser.id, 
+                p_puntos: xpGained, 
+                p_motivo: 'Ejercicio subido' 
+            });
+        }
+    });
+}
     </script>
 </body>
 </html>
