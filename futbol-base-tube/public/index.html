@@ -513,7 +513,8 @@
         /* ==================== GAMIFICACIÓN ==================== */
         
         /* Perfil Modal */
-        .profile-modal { max-width: 800px; width: 95%; max-height: 90vh; overflow-y: auto; }
+        .profile-modal { max-width: 800px; width: 95%; max-height: 90vh; overflow-y: auto; scrollbar-width: none; -ms-overflow-style: none; }
+        .profile-modal::-webkit-scrollbar { display: none; }
         .profile-header { display: flex; gap: 24px; padding-bottom: 24px; border-bottom: 1px solid var(--dark-border); margin-bottom: 24px; }
         .profile-avatar-large { width: 100px; height: 100px; border-radius: 20px; background: var(--gradient-primary); display: flex; align-items: center; justify-content: center; font-size: 42px; font-weight: 700; position: relative; }
         .profile-avatar-level { position: absolute; bottom: -8px; right: -8px; width: 36px; height: 36px; background: var(--dark-card); border: 3px solid var(--dark); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; }
@@ -642,6 +643,142 @@
         @keyframes shine { to { left: 100%; } }
         .evento-text { font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 8px; }
         .evento-badge { background: white; color: #8b5cf6; padding: 4px 12px; border-radius: 20px; font-size: 12px; }
+
+        /* Sección Comunidad/Gamificación Home */
+        .comunidad-section { background: linear-gradient(180deg, var(--dark) 0%, rgba(13, 159, 79, 0.05) 50%, var(--dark) 100%); padding: 60px 24px; }
+        .comunidad-inner { max-width: 1200px; margin: 0 auto; }
+        .comunidad-header { text-align: center; margin-bottom: 40px; }
+        .comunidad-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(245, 197, 24, 0.1); border: 1px solid rgba(245, 197, 24, 0.3); padding: 8px 20px; border-radius: 30px; font-size: 14px; color: var(--accent); margin-bottom: 16px; }
+        .comunidad-title { font-family: 'Bebas Neue', sans-serif; font-size: 42px; margin-bottom: 12px; }
+        .comunidad-title span { color: var(--primary); }
+        .comunidad-subtitle { font-size: 16px; color: var(--text-muted); max-width: 600px; margin: 0 auto; }
+        
+        .comunidad-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; margin-bottom: 32px; }
+        
+        /* Ranking Card */
+        .ranking-card { background: var(--dark-card); border-radius: 20px; padding: 24px; border: 1px solid var(--dark-border); }
+        .ranking-card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+        .ranking-card-title { font-family: 'Bebas Neue', sans-serif; font-size: 20px; display: flex; align-items: center; gap: 8px; }
+        .ranking-card-link { font-size: 13px; color: var(--primary); cursor: pointer; }
+        .ranking-mini-list { display: flex; flex-direction: column; gap: 12px; }
+        .ranking-mini-item { display: flex; align-items: center; gap: 12px; padding: 10px 12px; background: var(--dark); border-radius: 12px; transition: all 0.2s; }
+        .ranking-mini-item:hover { background: rgba(255,255,255,0.05); }
+        .ranking-mini-pos { width: 28px; height: 28px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px; }
+        .ranking-mini-pos.gold { background: linear-gradient(135deg, #ffd700, #ffaa00); color: #000; }
+        .ranking-mini-pos.silver { background: linear-gradient(135deg, #e8e8e8, #c0c0c0); color: #000; }
+        .ranking-mini-pos.bronze { background: linear-gradient(135deg, #cd7f32, #8b4513); color: #fff; }
+        .ranking-mini-pos.normal { background: var(--dark-border); color: var(--text-muted); }
+        .ranking-mini-avatar { width: 36px; height: 36px; border-radius: 10px; background: var(--gradient-primary); display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 14px; }
+        .ranking-mini-info { flex: 1; }
+        .ranking-mini-name { font-weight: 600; font-size: 14px; display: flex; align-items: center; gap: 6px; }
+        .ranking-mini-level { font-size: 11px; color: var(--text-muted); }
+        .ranking-mini-xp { font-family: 'Bebas Neue', sans-serif; font-size: 18px; color: var(--accent); }
+        
+        /* Challenge Card */
+        .challenge-home-card { background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(59, 130, 246, 0.1)); border: 1px solid rgba(139, 92, 246, 0.3); border-radius: 20px; padding: 24px; position: relative; overflow: hidden; }
+        .challenge-home-card::before { content: ''; position: absolute; top: -50%; right: -50%; width: 100%; height: 100%; background: radial-gradient(circle, rgba(139, 92, 246, 0.1) 0%, transparent 70%); }
+        .challenge-home-header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; position: relative; }
+        .challenge-home-icon { font-size: 36px; }
+        .challenge-home-title { font-family: 'Bebas Neue', sans-serif; font-size: 20px; }
+        .challenge-home-desc { font-size: 14px; color: var(--text-muted); margin-bottom: 16px; position: relative; }
+        .challenge-home-reward { display: inline-flex; align-items: center; gap: 6px; background: var(--accent); color: var(--dark); padding: 8px 16px; border-radius: 20px; font-weight: 700; font-size: 14px; margin-bottom: 16px; position: relative; }
+        .challenge-home-progress { height: 8px; background: rgba(255,255,255,0.1); border-radius: 4px; overflow: hidden; position: relative; }
+        .challenge-home-progress-fill { height: 100%; background: linear-gradient(90deg, #8b5cf6, #3b82f6); border-radius: 4px; }
+        .challenge-home-footer { display: flex; justify-content: space-between; margin-top: 8px; font-size: 12px; color: var(--text-muted); position: relative; }
+        
+        /* Badges Preview Card */
+        .badges-home-card { background: var(--dark-card); border-radius: 20px; padding: 24px; border: 1px solid var(--dark-border); }
+        .badges-home-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+        .badges-home-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+        .badge-home-item { background: var(--dark); border-radius: 12px; padding: 16px 8px; text-align: center; cursor: pointer; transition: all 0.2s; }
+        .badge-home-item:hover { background: rgba(255,255,255,0.05); transform: translateY(-2px); }
+        .badge-home-item.rare { background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(59, 130, 246, 0.2)); border: 1px solid rgba(139, 92, 246, 0.3); }
+        .badge-home-icon { font-size: 28px; margin-bottom: 6px; }
+        .badge-home-name { font-size: 10px; color: var(--text-muted); line-height: 1.2; }
+        
+        /* CTA Gamificación */
+        .comunidad-cta { text-align: center; padding: 32px; background: linear-gradient(135deg, rgba(13, 159, 79, 0.1), rgba(245, 197, 24, 0.1)); border-radius: 20px; border: 1px solid rgba(13, 159, 79, 0.2); }
+        .comunidad-cta-title { font-family: 'Bebas Neue', sans-serif; font-size: 28px; margin-bottom: 8px; }
+        .comunidad-cta-text { font-size: 14px; color: var(--text-muted); margin-bottom: 20px; }
+        .comunidad-cta-buttons { display: flex; justify-content: center; gap: 16px; }
+        
+        /* Ligas mini */
+        .ligas-preview { display: flex; justify-content: center; gap: 8px; margin-top: 16px; }
+        .liga-mini { display: flex; align-items: center; gap: 4px; padding: 6px 12px; border-radius: 20px; font-size: 12px; opacity: 0.7; }
+        .liga-mini.active { opacity: 1; box-shadow: 0 0 10px currentColor; }
+        .liga-mini.bronce { background: rgba(205, 127, 50, 0.2); color: #cd7f32; }
+        .liga-mini.plata { background: rgba(192, 192, 192, 0.2); color: #c0c0c0; }
+        .liga-mini.oro { background: rgba(255, 215, 0, 0.2); color: #ffd700; }
+        .liga-mini.diamante { background: rgba(59, 130, 246, 0.2); color: #3b82f6; }
+        .liga-mini.elite { background: rgba(139, 92, 246, 0.2); color: #8b5cf6; }
+
+        @media (max-width: 900px) {
+            .comunidad-grid { grid-template-columns: 1fr; }
+            .badges-home-grid { grid-template-columns: repeat(4, 1fr); }
+        }
+
+        /* ==================== ONBOARDING ==================== */
+        .onboarding-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.9); z-index: 10000; display: none; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s; }
+        .onboarding-overlay.active { display: flex; opacity: 1; }
+        
+        .onboarding-modal { background: var(--dark-card); border-radius: 24px; max-width: 600px; width: 95%; max-height: 90vh; overflow: hidden; position: relative; border: 1px solid var(--dark-border); }
+        
+        .onboarding-progress { display: flex; gap: 6px; padding: 20px 24px 0; }
+        .onboarding-progress-dot { flex: 1; height: 4px; background: var(--dark-border); border-radius: 2px; transition: background 0.3s; }
+        .onboarding-progress-dot.active { background: var(--primary); }
+        .onboarding-progress-dot.completed { background: var(--primary); }
+        
+        .onboarding-slide { display: none; padding: 32px 24px; text-align: center; animation: slideIn 0.4s ease; }
+        .onboarding-slide.active { display: block; }
+        @keyframes slideIn { from { opacity: 0; transform: translateX(20px); } to { opacity: 1; transform: translateX(0); } }
+        
+        .onboarding-icon { font-size: 72px; margin-bottom: 24px; display: block; }
+        .onboarding-title { font-family: 'Bebas Neue', sans-serif; font-size: 32px; margin-bottom: 12px; line-height: 1.1; }
+        .onboarding-title span { color: var(--primary); }
+        .onboarding-text { font-size: 16px; color: var(--text-muted); line-height: 1.6; margin-bottom: 24px; }
+        
+        .onboarding-features { display: flex; flex-direction: column; gap: 12px; text-align: left; margin: 24px 0; }
+        .onboarding-feature { display: flex; align-items: center; gap: 12px; padding: 12px 16px; background: var(--dark); border-radius: 12px; }
+        .onboarding-feature-icon { font-size: 24px; width: 40px; text-align: center; }
+        .onboarding-feature-text { flex: 1; }
+        .onboarding-feature-title { font-weight: 600; font-size: 14px; }
+        .onboarding-feature-desc { font-size: 12px; color: var(--text-muted); }
+        
+        .onboarding-levels { display: flex; justify-content: center; gap: 8px; margin: 20px 0; flex-wrap: wrap; }
+        .onboarding-level { display: flex; flex-direction: column; align-items: center; padding: 12px 16px; background: var(--dark); border-radius: 12px; min-width: 70px; }
+        .onboarding-level-icon { font-size: 24px; margin-bottom: 4px; }
+        .onboarding-level-name { font-size: 10px; color: var(--text-muted); }
+        .onboarding-level.highlighted { background: linear-gradient(135deg, rgba(13, 159, 79, 0.2), rgba(245, 197, 24, 0.2)); border: 1px solid var(--primary); }
+        
+        .onboarding-xp-example { background: var(--dark); border-radius: 16px; padding: 20px; margin: 20px 0; }
+        .onboarding-xp-row { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid var(--dark-border); }
+        .onboarding-xp-row:last-child { border-bottom: none; }
+        .onboarding-xp-action { font-size: 14px; display: flex; align-items: center; gap: 8px; }
+        .onboarding-xp-points { font-family: 'Bebas Neue', sans-serif; font-size: 20px; color: var(--primary); }
+        
+        .onboarding-badges-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 20px 0; }
+        .onboarding-badge { background: var(--dark); border-radius: 12px; padding: 12px 8px; text-align: center; }
+        .onboarding-badge.rare { background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(59, 130, 246, 0.2)); }
+        .onboarding-badge-icon { font-size: 28px; }
+        .onboarding-badge-name { font-size: 10px; color: var(--text-muted); margin-top: 4px; }
+        
+        .onboarding-warning { background: rgba(245, 197, 24, 0.1); border: 1px solid rgba(245, 197, 24, 0.3); border-radius: 12px; padding: 16px; margin: 20px 0; text-align: left; }
+        .onboarding-warning-title { font-weight: 700; color: var(--accent); display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+        .onboarding-warning-text { font-size: 13px; color: var(--text-muted); }
+        
+        .onboarding-footer { display: flex; justify-content: space-between; align-items: center; padding: 20px 24px; border-top: 1px solid var(--dark-border); }
+        .onboarding-skip { background: none; border: none; color: var(--text-muted); font-size: 14px; cursor: pointer; }
+        .onboarding-skip:hover { color: var(--text); }
+        .onboarding-nav { display: flex; gap: 12px; }
+        .onboarding-btn { padding: 12px 24px; border-radius: 12px; font-weight: 600; font-size: 14px; cursor: pointer; border: none; transition: all 0.2s; }
+        .onboarding-btn-back { background: var(--dark); color: var(--text); }
+        .onboarding-btn-next { background: var(--gradient-primary); color: white; }
+        .onboarding-btn-next:hover { transform: translateY(-2px); }
+        .onboarding-btn-start { background: linear-gradient(135deg, #f5c518, #ff9500); color: #000; font-size: 16px; padding: 14px 32px; }
+        
+        /* Help Button flotante */
+        .help-button { position: fixed; bottom: 100px; right: 24px; width: 50px; height: 50px; background: var(--dark-card); border: 1px solid var(--dark-border); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; cursor: pointer; z-index: 100; transition: all 0.3s; box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
+        .help-button:hover { background: var(--primary); border-color: var(--primary); transform: scale(1.1); }
     </style>
 </head>
 <body>
@@ -692,6 +829,92 @@
             </div>
             
             <p class="hero-cta-text">¿Tienes un video de entrenamiento? <a href="#" onclick="showAuthModal('register')">Compártelo con la comunidad →</a></p>
+        </div>
+    </section>
+
+    <!-- Sección Comunidad / Gamificación -->
+    <section class="comunidad-section" id="comunidad">
+        <div class="comunidad-inner">
+            <div class="comunidad-header">
+                <div class="comunidad-badge">🏆 Compite y gana premios reales</div>
+                <h2 class="comunidad-title">Únete a la <span>Comunidad #1</span> de Entrenadores</h2>
+                <p class="comunidad-subtitle">Sube ejercicios, gana XP, sube de nivel y compite por descuentos y premios cada mes</p>
+            </div>
+            
+            <div class="comunidad-grid">
+                <!-- Ranking Mensual -->
+                <div class="ranking-card">
+                    <div class="ranking-card-header">
+                        <div class="ranking-card-title">🏆 Top Entrenadores</div>
+                        <span class="ranking-card-link" onclick="currentUser ? showProfileModal() : showAuthModal('register')">Ver ranking →</span>
+                    </div>
+                    <div class="ranking-mini-list" id="homeRankingList">
+                        <div class="ranking-mini-item">
+                            <div class="ranking-mini-pos gold">1</div>
+                            <div class="ranking-mini-avatar">?</div>
+                            <div class="ranking-mini-info">
+                                <div class="ranking-mini-name">Cargando...</div>
+                                <div class="ranking-mini-level">-</div>
+                            </div>
+                            <div class="ranking-mini-xp">- XP</div>
+                        </div>
+                    </div>
+                    <div class="ligas-preview">
+                        <div class="liga-mini bronce">🥉 Bronce</div>
+                        <div class="liga-mini plata">🥈 Plata</div>
+                        <div class="liga-mini oro">🥇 Oro</div>
+                        <div class="liga-mini diamante">💎 Diamante</div>
+                        <div class="liga-mini elite">👑 Élite</div>
+                    </div>
+                </div>
+                
+                <!-- Challenge de la Semana -->
+                <div class="challenge-home-card">
+                    <div class="challenge-home-header">
+                        <div class="challenge-home-icon" id="homeChallengeIcon">🎯</div>
+                        <div>
+                            <div class="challenge-home-title" id="homeChallengeTitle">Challenge de la Semana</div>
+                        </div>
+                    </div>
+                    <p class="challenge-home-desc" id="homeChallengeDesc">Sube ejercicios y completa el reto semanal para ganar XP extra</p>
+                    <div class="challenge-home-reward" id="homeChallengeReward">🎁 +200 XP Bonus</div>
+                    <div class="challenge-home-progress">
+                        <div class="challenge-home-progress-fill" id="homeChallengeProgress" style="width: 0%"></div>
+                    </div>
+                    <div class="challenge-home-footer">
+                        <span id="homeChallengeCount">0 / 3 completados</span>
+                        <span id="homeChallengeDays">7 días restantes</span>
+                    </div>
+                </div>
+                
+                <!-- Badges Preview -->
+                <div class="badges-home-card">
+                    <div class="badges-home-header">
+                        <div class="ranking-card-title">🏅 Badges</div>
+                        <span class="ranking-card-link" onclick="currentUser ? showProfileModal() : showAuthModal('register')">Ver todos →</span>
+                    </div>
+                    <div class="badges-home-grid" id="homeBadgesGrid">
+                        <div class="badge-home-item"><div class="badge-home-icon">🏆</div><div class="badge-home-name">Primer Ejercicio</div></div>
+                        <div class="badge-home-item"><div class="badge-home-icon">🔥</div><div class="badge-home-name">En Racha</div></div>
+                        <div class="badge-home-item rare"><div class="badge-home-icon">⚡</div><div class="badge-home-name">Imparable</div></div>
+                        <div class="badge-home-item"><div class="badge-home-icon">❤️</div><div class="badge-home-name">Popular</div></div>
+                        <div class="badge-home-item"><div class="badge-home-icon">📚</div><div class="badge-home-name">Bibliotecario</div></div>
+                        <div class="badge-home-item rare"><div class="badge-home-icon">🎨</div><div class="badge-home-name">Artista Táctico</div></div>
+                        <div class="badge-home-item rare"><div class="badge-home-icon">👑</div><div class="badge-home-name">Leyenda</div></div>
+                        <div class="badge-home-item"><div class="badge-home-icon">🌟</div><div class="badge-home-name">Top Mensual</div></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- CTA -->
+            <div class="comunidad-cta">
+                <h3 class="comunidad-cta-title">🚀 ¿Listo para competir?</h3>
+                <p class="comunidad-cta-text">Regístrate gratis, sube tu primer ejercicio y empieza a ganar XP. El Top 3 mensual gana hasta 50% de descuento.</p>
+                <div class="comunidad-cta-buttons">
+                    <button class="btn btn-primary" onclick="showAuthModal('register')">🎮 Empezar a Competir</button>
+                    <button class="btn btn-ghost" onclick="scrollToSection('planes')">Ver Planes</button>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -1330,6 +1553,7 @@
                 checkAuth();
                 loadExercises();
                 loadFilters();
+                loadHomeGamification(); // Cargar ranking, challenges y badges en home
             } else {
                 showConfigPrompt();
             }
@@ -1540,10 +1764,15 @@
                         await db.from('perfiles').insert({ id: data.user.id, nombre: name, plan: 'free', xp: 0, nivel: 1 });
                     }
                     showToast('✅ Registro exitoso. Revisa tu email.', 'success');
+                    // Mostrar onboarding para nuevos usuarios
+                    localStorage.removeItem('onboarding_completed');
+                    setTimeout(function() { showOnboarding(); }, 500);
                 } else {
                     var { data, error } = await db.auth.signInWithPassword({ email: email, password: pass });
                     if (error) throw error;
                     showToast('✅ Bienvenido!', 'success');
+                    // Verificar si debe mostrar onboarding (primer login)
+                    checkShowOnboarding();
                 }
                 closeAuthModal();
                 checkAuth();
@@ -2844,6 +3073,107 @@
             }
         }
 
+        // Cargar gamificación en la home (visible para todos)
+        async function loadHomeGamification() {
+            await loadHomeRanking();
+            await loadHomeChallenge();
+            loadHomeBadges();
+        }
+
+        async function loadHomeRanking() {
+            if (!db) return;
+            
+            try {
+                var { data } = await db.rpc('obtener_ranking_mensual', { p_limite: 5 });
+                
+                if (!data || !data.length) {
+                    document.getElementById('homeRankingList').innerHTML = 
+                        '<div style="text-align:center;padding:20px;color:var(--text-muted);">Sé el primero en el ranking 🚀</div>';
+                    return;
+                }
+                
+                var html = data.map(function(r, i) {
+                    var posClass = i === 0 ? 'gold' : (i === 1 ? 'silver' : (i === 2 ? 'bronze' : 'normal'));
+                    var planBadge = r.plan === 'coach' ? '<span class="plan-badge coach" style="font-size:9px;padding:2px 6px;">COACH</span>' : 
+                                    (r.plan === 'pro' ? '<span class="plan-badge pro" style="font-size:9px;padding:2px 6px;">PRO</span>' : '');
+                    
+                    return '<div class="ranking-mini-item">' +
+                        '<div class="ranking-mini-pos ' + posClass + '">' + (i + 1) + '</div>' +
+                        '<div class="ranking-mini-avatar">' + (r.nombre || 'U')[0].toUpperCase() + '</div>' +
+                        '<div class="ranking-mini-info">' +
+                            '<div class="ranking-mini-name">' + (r.nombre || 'Usuario') + ' ' + planBadge + '</div>' +
+                            '<div class="ranking-mini-level">' + (r.titulo || 'Canterano') + '</div>' +
+                        '</div>' +
+                        '<div class="ranking-mini-xp">' + formatNumber(r.xp_mes) + '</div>' +
+                    '</div>';
+                }).join('');
+                
+                document.getElementById('homeRankingList').innerHTML = html;
+                
+            } catch (e) {
+                console.error('Error cargando ranking home:', e);
+            }
+        }
+
+        async function loadHomeChallenge() {
+            if (!db) return;
+            
+            try {
+                // Obtener semana actual
+                var now = new Date();
+                var startOfYear = new Date(now.getFullYear(), 0, 1);
+                var weekNum = Math.ceil((((now - startOfYear) / 86400000) + startOfYear.getDay() + 1) / 7);
+                var semana = now.getFullYear() + '-W' + String(weekNum).padStart(2, '0');
+                
+                var { data: challenges } = await db.from('challenges')
+                    .select('*')
+                    .eq('semana', semana)
+                    .eq('activo', true)
+                    .limit(1);
+                
+                if (!challenges || !challenges.length) {
+                    document.getElementById('homeChallengeTitle').textContent = 'Próximamente';
+                    document.getElementById('homeChallengeDesc').textContent = 'Los challenges semanales empezarán pronto. ¡Prepárate!';
+                    document.getElementById('homeChallengeReward').textContent = '🎁 Grandes premios';
+                    return;
+                }
+                
+                var c = challenges[0];
+                var daysLeft = 7 - now.getDay();
+                if (daysLeft === 0) daysLeft = 7;
+                
+                document.getElementById('homeChallengeIcon').textContent = c.icono || '🎯';
+                document.getElementById('homeChallengeTitle').textContent = c.titulo;
+                document.getElementById('homeChallengeDesc').textContent = c.descripcion;
+                document.getElementById('homeChallengeReward').textContent = '🎁 +' + c.xp_recompensa + ' XP';
+                document.getElementById('homeChallengeCount').textContent = '0 / ' + c.objetivo_cantidad + ' completados';
+                document.getElementById('homeChallengeDays').textContent = daysLeft + ' días restantes';
+                
+                // Si el usuario está logueado, cargar su progreso
+                if (currentUser) {
+                    var { data: progreso } = await db.from('challenge_progreso')
+                        .select('*')
+                        .eq('usuario_id', currentUser.id)
+                        .eq('challenge_id', c.id)
+                        .single();
+                    
+                    if (progreso) {
+                        var percent = Math.min(100, (progreso.progreso / c.objetivo_cantidad) * 100);
+                        document.getElementById('homeChallengeProgress').style.width = percent + '%';
+                        document.getElementById('homeChallengeCount').textContent = progreso.progreso + ' / ' + c.objetivo_cantidad + (progreso.completado ? ' ✅' : '');
+                    }
+                }
+                
+            } catch (e) {
+                console.error('Error cargando challenge home:', e);
+            }
+        }
+
+        async function loadHomeBadges() {
+            // Los badges ya están estáticos en el HTML, pero podríamos cargarlos dinámicamente
+            // Por ahora dejamos los predefinidos que muestran variedad
+        }
+
         // ==================== HELPERS ====================
         function scrollToSection(id) { document.getElementById(id).scrollIntoView({ behavior: 'smooth' }); }
         function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
@@ -2872,6 +3202,351 @@
         document.getElementById('uploadDificultad')?.addEventListener('change', validateUpload);
         document.getElementById('uploadIdioma')?.addEventListener('change', validateUpload);
         document.getElementById('uploadDescripcion')?.addEventListener('input', validateUpload);
+
+        // ==================== ONBOARDING ====================
+        var currentOnboardingStep = 0;
+        var totalOnboardingSteps = 6;
+
+        function showOnboarding(force) {
+            // Verificar si ya completó el onboarding (a menos que se fuerce)
+            if (!force && localStorage.getItem('onboarding_completed')) return;
+            
+            currentOnboardingStep = 0;
+            updateOnboardingUI();
+            document.getElementById('onboardingOverlay').classList.add('active');
+        }
+
+        function closeOnboarding() {
+            document.getElementById('onboardingOverlay').classList.remove('active');
+            localStorage.setItem('onboarding_completed', 'true');
+        }
+
+        function nextOnboardingStep() {
+            if (currentOnboardingStep < totalOnboardingSteps - 1) {
+                currentOnboardingStep++;
+                updateOnboardingUI();
+            } else {
+                closeOnboarding();
+                showToast('🎉 ¡Bienvenido a Futbol Base TUBE!', 'success');
+            }
+        }
+
+        function prevOnboardingStep() {
+            if (currentOnboardingStep > 0) {
+                currentOnboardingStep--;
+                updateOnboardingUI();
+            }
+        }
+
+        function updateOnboardingUI() {
+            // Actualizar dots de progreso
+            document.querySelectorAll('.onboarding-progress-dot').forEach(function(dot, i) {
+                dot.classList.remove('active', 'completed');
+                if (i === currentOnboardingStep) dot.classList.add('active');
+                if (i < currentOnboardingStep) dot.classList.add('completed');
+            });
+            
+            // Mostrar slide actual
+            document.querySelectorAll('.onboarding-slide').forEach(function(slide, i) {
+                slide.classList.remove('active');
+                if (i === currentOnboardingStep) slide.classList.add('active');
+            });
+            
+            // Mostrar/ocultar botón atrás
+            var backBtn = document.getElementById('onboardingBack');
+            backBtn.style.display = currentOnboardingStep === 0 ? 'none' : 'block';
+            
+            // Cambiar texto del botón siguiente
+            var nextBtn = document.getElementById('onboardingNext');
+            if (currentOnboardingStep === totalOnboardingSteps - 1) {
+                nextBtn.textContent = '🚀 ¡Empezar!';
+                nextBtn.classList.add('onboarding-btn-start');
+            } else {
+                nextBtn.textContent = 'Siguiente →';
+                nextBtn.classList.remove('onboarding-btn-start');
+            }
+        }
+
+        // Mostrar onboarding para nuevos usuarios después del registro
+        function checkShowOnboarding() {
+            // Mostrar si es nuevo usuario o nunca lo ha visto
+            if (!localStorage.getItem('onboarding_completed')) {
+                setTimeout(function() {
+                    showOnboarding();
+                }, 1000);
+            }
+        }
     </script>
+
+    <!-- Onboarding Modal -->
+    <div class="onboarding-overlay" id="onboardingOverlay">
+        <div class="onboarding-modal">
+            <div class="onboarding-progress">
+                <div class="onboarding-progress-dot active"></div>
+                <div class="onboarding-progress-dot"></div>
+                <div class="onboarding-progress-dot"></div>
+                <div class="onboarding-progress-dot"></div>
+                <div class="onboarding-progress-dot"></div>
+                <div class="onboarding-progress-dot"></div>
+            </div>
+            
+            <!-- Slide 1: Bienvenida -->
+            <div class="onboarding-slide active">
+                <span class="onboarding-icon">👋</span>
+                <h2 class="onboarding-title">¡Bienvenido a <span>Futbol Base TUBE</span>!</h2>
+                <p class="onboarding-text">La mayor biblioteca de ejercicios de fútbol del mundo, creada por entrenadores como tú.</p>
+                
+                <div class="onboarding-features">
+                    <div class="onboarding-feature">
+                        <div class="onboarding-feature-icon">📚</div>
+                        <div class="onboarding-feature-text">
+                            <div class="onboarding-feature-title">Miles de ejercicios</div>
+                            <div class="onboarding-feature-desc">Filtrados y organizados por categoría, dificultad, edad...</div>
+                        </div>
+                    </div>
+                    <div class="onboarding-feature">
+                        <div class="onboarding-feature-icon">👥</div>
+                        <div class="onboarding-feature-text">
+                            <div class="onboarding-feature-title">Comunidad activa</div>
+                            <div class="onboarding-feature-desc">Colabora con otros entrenadores de todo el mundo</div>
+                        </div>
+                    </div>
+                    <div class="onboarding-feature">
+                        <div class="onboarding-feature-icon">🏆</div>
+                        <div class="onboarding-feature-text">
+                            <div class="onboarding-feature-title">Gamificación</div>
+                            <div class="onboarding-feature-desc">Gana XP, sube de nivel y consigue premios reales</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 2: Cómo funciona -->
+            <div class="onboarding-slide">
+                <span class="onboarding-icon">🎯</span>
+                <h2 class="onboarding-title">¿Cómo <span>funciona</span>?</h2>
+                <p class="onboarding-text">En 3 simples pasos puedes empezar a mejorar tus entrenamientos:</p>
+                
+                <div class="onboarding-features">
+                    <div class="onboarding-feature">
+                        <div class="onboarding-feature-icon">1️⃣</div>
+                        <div class="onboarding-feature-text">
+                            <div class="onboarding-feature-title">Explora y filtra</div>
+                            <div class="onboarding-feature-desc">Usa +12 filtros para encontrar el ejercicio perfecto</div>
+                        </div>
+                    </div>
+                    <div class="onboarding-feature">
+                        <div class="onboarding-feature-icon">2️⃣</div>
+                        <div class="onboarding-feature-text">
+                            <div class="onboarding-feature-title">Guarda en sesiones</div>
+                            <div class="onboarding-feature-desc">Crea sesiones de entrenamiento con tus ejercicios favoritos</div>
+                        </div>
+                    </div>
+                    <div class="onboarding-feature">
+                        <div class="onboarding-feature-icon">3️⃣</div>
+                        <div class="onboarding-feature-text">
+                            <div class="onboarding-feature-title">Comparte y gana</div>
+                            <div class="onboarding-feature-desc">Sube ejercicios y gana XP para subir de nivel</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 3: Sistema de XP -->
+            <div class="onboarding-slide">
+                <span class="onboarding-icon">⭐</span>
+                <h2 class="onboarding-title">Sistema de <span>XP</span></h2>
+                <p class="onboarding-text">Gana puntos de experiencia participando en la comunidad:</p>
+                
+                <div class="onboarding-xp-example">
+                    <div class="onboarding-xp-row">
+                        <div class="onboarding-xp-action">📤 Subir ejercicio aprobado</div>
+                        <div class="onboarding-xp-points">+50 XP</div>
+                    </div>
+                    <div class="onboarding-xp-row">
+                        <div class="onboarding-xp-action">🎨 Con imagen de pizarra táctica</div>
+                        <div class="onboarding-xp-points">+50 XP</div>
+                    </div>
+                    <div class="onboarding-xp-row">
+                        <div class="onboarding-xp-action">❤️ Recibir un like</div>
+                        <div class="onboarding-xp-points">+5 XP</div>
+                    </div>
+                    <div class="onboarding-xp-row">
+                        <div class="onboarding-xp-action">🔥 Racha diaria</div>
+                        <div class="onboarding-xp-points">+5 XP</div>
+                    </div>
+                    <div class="onboarding-xp-row">
+                        <div class="onboarding-xp-action">🎯 Completar challenge</div>
+                        <div class="onboarding-xp-points">+200 XP</div>
+                    </div>
+                </div>
+                
+                <div class="onboarding-warning">
+                    <div class="onboarding-warning-title">⚠️ ¡Importante!</div>
+                    <div class="onboarding-warning-text">Los XP caducan a los 3 meses. Participa regularmente para mantener tu nivel y no perder tu posición en el ranking.</div>
+                </div>
+            </div>
+            
+            <!-- Slide 4: Niveles -->
+            <div class="onboarding-slide">
+                <span class="onboarding-icon">📈</span>
+                <h2 class="onboarding-title">Sube de <span>Nivel</span></h2>
+                <p class="onboarding-text">Cada nivel desbloquea nuevos beneficios:</p>
+                
+                <div class="onboarding-levels">
+                    <div class="onboarding-level">
+                        <div class="onboarding-level-icon">⚽</div>
+                        <div class="onboarding-level-name">Canterano</div>
+                    </div>
+                    <div class="onboarding-level">
+                        <div class="onboarding-level-icon">🥉</div>
+                        <div class="onboarding-level-name">Juvenil</div>
+                    </div>
+                    <div class="onboarding-level">
+                        <div class="onboarding-level-icon">🥈</div>
+                        <div class="onboarding-level-name">Amateur</div>
+                    </div>
+                    <div class="onboarding-level">
+                        <div class="onboarding-level-icon">🥇</div>
+                        <div class="onboarding-level-name">Semi-Pro</div>
+                    </div>
+                    <div class="onboarding-level highlighted">
+                        <div class="onboarding-level-icon">⭐</div>
+                        <div class="onboarding-level-name">Profesional</div>
+                    </div>
+                    <div class="onboarding-level">
+                        <div class="onboarding-level-icon">💎</div>
+                        <div class="onboarding-level-name">Élite</div>
+                    </div>
+                    <div class="onboarding-level highlighted">
+                        <div class="onboarding-level-icon">👑</div>
+                        <div class="onboarding-level-name">Leyenda</div>
+                    </div>
+                </div>
+                
+                <div class="onboarding-features">
+                    <div class="onboarding-feature">
+                        <div class="onboarding-feature-icon">💬</div>
+                        <div class="onboarding-feature-text">
+                            <div class="onboarding-feature-title">Nivel 3: Comentarios</div>
+                            <div class="onboarding-feature-desc">Comenta en los ejercicios de otros</div>
+                        </div>
+                    </div>
+                    <div class="onboarding-feature">
+                        <div class="onboarding-feature-icon">⭐</div>
+                        <div class="onboarding-feature-text">
+                            <div class="onboarding-feature-title">Nivel 4: Ejercicios Premium</div>
+                            <div class="onboarding-feature-desc">Acceso a ejercicios de élite</div>
+                        </div>
+                    </div>
+                    <div class="onboarding-feature">
+                        <div class="onboarding-feature-icon">👑</div>
+                        <div class="onboarding-feature-text">
+                            <div class="onboarding-feature-title">Nivel 7: 50% Descuento</div>
+                            <div class="onboarding-feature-desc">Descuento permanente en tu suscripción</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 5: Badges y Ranking -->
+            <div class="onboarding-slide">
+                <span class="onboarding-icon">🏅</span>
+                <h2 class="onboarding-title"><span>Badges</span> y Ranking</h2>
+                <p class="onboarding-text">Colecciona badges y compite en el ranking mensual:</p>
+                
+                <div class="onboarding-badges-grid">
+                    <div class="onboarding-badge">
+                        <div class="onboarding-badge-icon">🏆</div>
+                        <div class="onboarding-badge-name">Primer Ejercicio</div>
+                    </div>
+                    <div class="onboarding-badge">
+                        <div class="onboarding-badge-icon">🔥</div>
+                        <div class="onboarding-badge-name">En Racha</div>
+                    </div>
+                    <div class="onboarding-badge rare">
+                        <div class="onboarding-badge-icon">⚡</div>
+                        <div class="onboarding-badge-name">Imparable</div>
+                    </div>
+                    <div class="onboarding-badge rare">
+                        <div class="onboarding-badge-icon">👑</div>
+                        <div class="onboarding-badge-name">Leyenda</div>
+                    </div>
+                </div>
+                
+                <div class="onboarding-features">
+                    <div class="onboarding-feature">
+                        <div class="onboarding-feature-icon">🥇</div>
+                        <div class="onboarding-feature-text">
+                            <div class="onboarding-feature-title">Top 1 Mensual: 50% descuento</div>
+                            <div class="onboarding-feature-desc">El campeón del mes gana 50% en su siguiente pago</div>
+                        </div>
+                    </div>
+                    <div class="onboarding-feature">
+                        <div class="onboarding-feature-icon">🥈</div>
+                        <div class="onboarding-feature-text">
+                            <div class="onboarding-feature-title">Top 3: 25% descuento</div>
+                            <div class="onboarding-feature-desc">El podio también tiene premio</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="ligas-preview" style="margin-top: 20px;">
+                    <div class="liga-mini bronce">🥉 Bronce</div>
+                    <div class="liga-mini plata">🥈 Plata</div>
+                    <div class="liga-mini oro">🥇 Oro</div>
+                    <div class="liga-mini diamante">💎 Diamante</div>
+                    <div class="liga-mini elite">👑 Élite</div>
+                </div>
+            </div>
+            
+            <!-- Slide 6: ¡Empieza! -->
+            <div class="onboarding-slide">
+                <span class="onboarding-icon">🚀</span>
+                <h2 class="onboarding-title">¡Todo <span>listo</span>!</h2>
+                <p class="onboarding-text">Ya conoces cómo funciona. Ahora te toca a ti:</p>
+                
+                <div class="onboarding-features">
+                    <div class="onboarding-feature">
+                        <div class="onboarding-feature-icon">📚</div>
+                        <div class="onboarding-feature-text">
+                            <div class="onboarding-feature-title">Explora la biblioteca</div>
+                            <div class="onboarding-feature-desc">Encuentra ejercicios perfectos para tu equipo</div>
+                        </div>
+                    </div>
+                    <div class="onboarding-feature">
+                        <div class="onboarding-feature-icon">📤</div>
+                        <div class="onboarding-feature-text">
+                            <div class="onboarding-feature-title">Sube tu primer ejercicio</div>
+                            <div class="onboarding-feature-desc">Comparte con la comunidad y gana +50 XP</div>
+                        </div>
+                    </div>
+                    <div class="onboarding-feature">
+                        <div class="onboarding-feature-icon">🎯</div>
+                        <div class="onboarding-feature-text">
+                            <div class="onboarding-feature-title">Completa el challenge</div>
+                            <div class="onboarding-feature-desc">Mira el reto de esta semana y participa</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="onboarding-warning" style="background: rgba(13, 159, 79, 0.1); border-color: rgba(13, 159, 79, 0.3);">
+                    <div class="onboarding-warning-title" style="color: var(--primary);">💡 Consejo</div>
+                    <div class="onboarding-warning-text">Puedes volver a ver este tutorial en cualquier momento haciendo clic en el botón <strong>❓</strong> en la esquina inferior derecha.</div>
+                </div>
+            </div>
+            
+            <div class="onboarding-footer">
+                <button class="onboarding-skip" onclick="closeOnboarding()">Saltar tutorial</button>
+                <div class="onboarding-nav">
+                    <button class="onboarding-btn onboarding-btn-back" id="onboardingBack" onclick="prevOnboardingStep()" style="display:none;">← Atrás</button>
+                    <button class="onboarding-btn onboarding-btn-next" id="onboardingNext" onclick="nextOnboardingStep()">Siguiente →</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Help Button Flotante -->
+    <div class="help-button" onclick="showOnboarding(true)" title="Ver tutorial">❓</div>
 </body>
 </html>
