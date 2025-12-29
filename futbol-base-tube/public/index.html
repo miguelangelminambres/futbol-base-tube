@@ -33,36 +33,42 @@
         .logo-icon { width: 48px; height: 48px; background: var(--gradient-primary); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px; box-shadow: var(--shadow-glow); }
         .logo-text { font-family: 'Bebas Neue', sans-serif; font-size: 24px; color: var(--text); display: flex; align-items: center; gap: 6px; }
         .logo-tube { background: #ff0000; color: white; padding: 2px 8px; border-radius: 4px; font-size: 18px; font-family: 'Arial', sans-serif; font-weight: 900; font-style: italic; letter-spacing: -0.5px; }
-        .nav { display: flex; align-items: center; gap: 8px; }
-        .nav-link { padding: 10px 20px; color: var(--text-muted); text-decoration: none; font-weight: 500; border-radius: 8px; transition: all 0.3s; cursor: pointer; }
+        .nav { display: flex; align-items: center; gap: 4px; }
+        .nav-link { padding: 8px 14px; color: var(--text-muted); text-decoration: none; font-weight: 500; border-radius: 8px; transition: all 0.3s; cursor: pointer; font-size: 14px; }
         .nav-link:hover, .nav-link.active { color: var(--text); background: rgba(255,255,255,0.05); }
         .nav-link.active { color: var(--primary); }
-        .header-actions { display: flex; align-items: center; gap: 16px; }
+        .header-actions { display: flex; align-items: center; gap: 12px; }
 
         /* Selector de Idiomas */
         .lang-selector {
             position: relative;
             display: flex;
             align-items: center;
+            margin-left: 8px;
         }
         .lang-current {
             display: flex;
             align-items: center;
-            gap: 6px;
-            padding: 8px 12px;
+            gap: 8px;
+            padding: 6px 10px;
             background: var(--dark-card);
             border: 1px solid var(--dark-border);
             border-radius: 8px;
             cursor: pointer;
-            font-size: 14px;
+            font-size: 13px;
             transition: all 0.2s;
         }
         .lang-current:hover {
             border-color: var(--primary);
+            background: rgba(13, 159, 79, 0.1);
         }
         .lang-flag {
-            font-size: 18px;
+            font-size: 20px;
             line-height: 1;
+        }
+        .lang-code {
+            font-weight: 600;
+            color: var(--text-muted);
         }
         .lang-dropdown {
             position: absolute;
@@ -1105,7 +1111,7 @@
             <div class="lang-selector">
                 <div class="lang-current" onclick="toggleLangDropdown()">
                     <span class="lang-flag" id="currentLangFlag">🇪🇸</span>
-                    <span id="currentLangCode">ES</span>
+                    <span class="lang-code" id="currentLangCode">ES</span>
                 </div>
                 <div class="lang-dropdown" id="langDropdown">
                     <div class="lang-option active" data-lang="es" onclick="setLanguage('es')">
