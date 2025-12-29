@@ -89,6 +89,43 @@
         .btn-locked { opacity: 0.5; cursor: not-allowed; position: relative; }
         .btn-locked::after { content: '🔒'; margin-left: 8px; }
 
+        /* Botón Pizarra Táctica DESTACADO */
+        .btn-pizarra { 
+            background: linear-gradient(135deg, #f97316 0%, #ea580c 100%); 
+            color: white; 
+            padding: 10px 18px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 13px;
+            cursor: pointer;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            box-shadow: 0 4px 15px rgba(249, 115, 22, 0.4);
+            transition: all 0.3s;
+            animation: pizarra-pulse 2s infinite;
+        }
+        .btn-pizarra:hover { 
+            transform: translateY(-2px) scale(1.02); 
+            box-shadow: 0 6px 25px rgba(249, 115, 22, 0.5);
+        }
+        @keyframes pizarra-pulse {
+            0%, 100% { box-shadow: 0 4px 15px rgba(249, 115, 22, 0.4); }
+            50% { box-shadow: 0 4px 25px rgba(249, 115, 22, 0.6); }
+        }
+        .btn-pizarra-locked {
+            background: linear-gradient(135deg, #374151 0%, #1f2937 100%);
+            color: #9ca3af;
+            box-shadow: none;
+            animation: none;
+        }
+        .btn-pizarra-locked:hover {
+            background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(249, 115, 22, 0.4);
+        }
+
         /* Upgrade Modal */
         .upgrade-modal { max-width: 500px; }
         .upgrade-header { text-align: center; margin-bottom: 24px; }
@@ -1901,6 +1938,11 @@
                     '<span class="racha-badge">🔥 ' + (p.racha_dias || 0) + '</span>' +
                     limitBadge +
                 '</div>' +
+                // BOTÓN PIZARRA DESTACADO
+                (plan === 'coach' 
+                    ? '<button class="btn-pizarra" onclick="abrirPizarraTactica()">🎯 Pizarra Táctica</button>'
+                    : '<button class="btn-pizarra btn-pizarra-locked" onclick="showUpgradeModal(\'pizarra\')" title="Exclusivo Coach">🔒 Pizarra</button>'
+                ) +
                 '<div class="notif-bell" onclick="toggleNotifications()">' +
                     '<span class="notif-bell-icon">🔔</span>' +
                     '<span class="notif-badge" id="notifBadge">0</span>' +
@@ -1919,6 +1961,7 @@
                         '<div class="user-dropdown-item" onclick="showMySessions()">📋 Mis Sesiones</div>' +
                         '<div class="user-dropdown-item" onclick="showUploadModal()">📤 Subir Ejercicio</div>' +
                         (plan === 'coach' ? '<div class="user-dropdown-item" onclick="location.href=\'admin.html\'">⚙️ Admin</div>' : '') +
+                        (plan === 'coach' ? '<div class="user-dropdown-item" onclick="abrirPizarraTactica()">🎯 Pizarra Táctica</div>' : '') +
                         '<div class="user-dropdown-item danger" onclick="logout()">🚪 Cerrar Sesión</div>' +
                     '</div>' +
                 '</div>';
@@ -1930,6 +1973,37 @@
             await db.auth.signOut();
             currentUser = null;
             location.reload();
+        }
+
+        // ========================================
+        // PIZARRA TÁCTICA - Generar token y abrir
+        // ========================================
+        async function abrirPizarraTactica() {
+            try {
+                // Mostrar loading en el botón
+                showToast('Abriendo Pizarra Táctica...', 'success');
+                
+                // Llamar a la función RPC para generar el token
+                const { data: token, error } = await db.rpc('generar_token_pizarra');
+                
+                if (error) {
+                    console.error('Error generando token:', error);
+                    showToast('Error al acceder a la Pizarra', 'error');
+                    return;
+                }
+                
+                if (!token) {
+                    showToast('No tienes acceso a la Pizarra (requiere plan Coach activo)', 'error');
+                    return;
+                }
+                
+                // Redirigir a la pizarra con el token
+                window.open('https://pizarra.toplidercoach.com?token=' + token, '_blank');
+                
+            } catch (err) {
+                console.error('Error:', err);
+                showToast('Error de conexión', 'error');
+            }
         }
 
         function showAuthModal(tab) {
