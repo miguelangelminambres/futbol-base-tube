@@ -126,6 +126,151 @@
             box-shadow: 0 4px 15px rgba(249, 115, 22, 0.4);
         }
 
+        /* SECCIÓN PREMIUM FEATURES */
+        .premium-features {
+            padding: 80px 24px;
+            background: linear-gradient(180deg, var(--dark) 0%, #0a1628 50%, var(--dark) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .premium-features::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(13, 159, 79, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .premium-features-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        .premium-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+        .premium-badge {
+            display: inline-block;
+            background: rgba(245, 197, 24, 0.15);
+            color: var(--accent);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+        .premium-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 48px;
+            margin-bottom: 16px;
+        }
+        .premium-title span {
+            color: var(--primary);
+        }
+        .premium-subtitle {
+            font-size: 18px;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .premium-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        .premium-card {
+            background: var(--dark-card);
+            border: 1px solid var(--dark-border);
+            border-radius: 20px;
+            padding: 32px;
+            position: relative;
+            transition: all 0.3s;
+        }
+        .premium-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--primary);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+        .premium-card-pizarra {
+            background: linear-gradient(135deg, rgba(249, 115, 22, 0.1) 0%, rgba(234, 88, 12, 0.05) 100%);
+            border-color: rgba(249, 115, 22, 0.3);
+        }
+        .premium-card-pizarra:hover {
+            border-color: #f97316;
+            box-shadow: 0 20px 40px rgba(249, 115, 22, 0.2);
+        }
+        .premium-card-badge {
+            position: absolute;
+            top: -12px;
+            right: 20px;
+            background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+            color: white;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+        .premium-card-icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+        }
+        .premium-card-title {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+        .premium-card-desc {
+            font-size: 15px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        .premium-card-features {
+            list-style: none;
+            margin-bottom: 24px;
+        }
+        .premium-card-features li {
+            padding: 8px 0;
+            font-size: 14px;
+            color: var(--text);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .premium-card-features li:last-child {
+            border-bottom: none;
+        }
+        .btn-pizarra-cta {
+            width: 100%;
+            background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+            color: white;
+            padding: 14px 24px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 15px;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(249, 115, 22, 0.3);
+        }
+        .btn-pizarra-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(249, 115, 22, 0.5);
+        }
+        
+        @media (max-width: 900px) {
+            .premium-grid {
+                grid-template-columns: 1fr;
+            }
+            .premium-title {
+                font-size: 36px;
+            }
+        }
+
         /* Upgrade Modal */
         .upgrade-modal { max-width: 500px; }
         .upgrade-header { text-align: center; margin-bottom: 24px; }
@@ -931,6 +1076,62 @@
             </div>
             
             <p class="hero-cta-text">¿Tienes un video de entrenamiento? <a href="#" onclick="showAuthModal('register')">Compártelo con la comunidad →</a></p>
+        </div>
+    </section>
+
+    <!-- SECCIÓN FEATURES PREMIUM - Pizarra + Comunidad -->
+    <section class="premium-features" id="premium-features">
+        <div class="premium-features-inner">
+            <div class="premium-header">
+                <span class="premium-badge">✨ Más que una biblioteca de videos</span>
+                <h2 class="premium-title">Crea, Comparte y <span>Compite</span></h2>
+                <p class="premium-subtitle">No solo consumas contenido. Crea tus propios ejercicios, compártelos con la comunidad y compite por ser el mejor entrenador.</p>
+            </div>
+            
+            <div class="premium-grid">
+                <!-- Pizarra Táctica -->
+                <div class="premium-card premium-card-pizarra">
+                    <div class="premium-card-badge">🔥 EXCLUSIVO COACH</div>
+                    <div class="premium-card-icon">🎯</div>
+                    <h3 class="premium-card-title">Pizarra Táctica Pro</h3>
+                    <p class="premium-card-desc">Diseña tus propios ejercicios con nuestra pizarra profesional. Arrastra jugadores, dibuja movimientos, añade conos y porterías.</p>
+                    <ul class="premium-card-features">
+                        <li>✅ Jugadores personalizables</li>
+                        <li>✅ Flechas y movimientos</li>
+                        <li>✅ Exporta como imagen</li>
+                        <li>✅ Guarda tus tácticas</li>
+                    </ul>
+                    <button class="btn btn-pizarra-cta" onclick="showUpgradeModal('pizarra')">🎯 Quiero la Pizarra</button>
+                </div>
+                
+                <!-- Sube y Comparte -->
+                <div class="premium-card">
+                    <div class="premium-card-icon">📤</div>
+                    <h3 class="premium-card-title">Sube tus Ejercicios</h3>
+                    <p class="premium-card-desc">¿Tienes un ejercicio que funciona? Compártelo con miles de entrenadores y gana reconocimiento.</p>
+                    <ul class="premium-card-features">
+                        <li>⭐ Gana +50 XP por ejercicio</li>
+                        <li>👍 La comunidad vota</li>
+                        <li>🏅 Consigue badges exclusivos</li>
+                        <li>📈 Escala en el ranking</li>
+                    </ul>
+                    <button class="btn btn-primary" onclick="showAuthModal('register')">📤 Subir mi primer ejercicio</button>
+                </div>
+                
+                <!-- Compite y Gana -->
+                <div class="premium-card">
+                    <div class="premium-card-icon">🏆</div>
+                    <h3 class="premium-card-title">Compite y Gana</h3>
+                    <p class="premium-card-desc">Cada mes los mejores entrenadores ganan descuentos reales. ¿Serás tú el #1?</p>
+                    <ul class="premium-card-features">
+                        <li>🥇 Top 1: 50% descuento</li>
+                        <li>🥈 Top 3: 25% descuento</li>
+                        <li>💎 Sube de liga: Bronce → Élite</li>
+                        <li>🔥 Mantén tu racha diaria</li>
+                    </ul>
+                    <button class="btn btn-ghost" onclick="scrollToSection('comunidad')">Ver Ranking Actual</button>
+                </div>
+            </div>
         </div>
     </section>
 
