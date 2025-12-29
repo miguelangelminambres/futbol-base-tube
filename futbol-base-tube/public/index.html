@@ -70,8 +70,62 @@
         .user-stats-header { display: flex; align-items: center; gap: 12px; margin-right: 8px; }
         .xp-badge { background: rgba(245, 197, 24, 0.15); color: var(--accent); padding: 6px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; }
         .racha-badge { background: rgba(239, 68, 68, 0.15); color: #ef4444; padding: 6px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; }
-        .limit-badge { background: rgba(139, 139, 167, 0.15); color: var(--text-muted); padding: 6px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; display: none; }
+        .limit-badge { background: rgba(139, 139, 167, 0.15); color: var(--text-muted); padding: 6px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; }
         .limit-badge.limit-reached { background: rgba(239, 68, 68, 0.15); color: #ef4444; }
+
+        /* Freemium Locks */
+        .filter-locked { position: relative; opacity: 0.5; pointer-events: none; }
+        .filter-locked::after { content: '🔒'; position: absolute; right: 12px; top: 50%; transform: translateY(-50%); font-size: 14px; }
+        .filter-lock-overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(15, 15, 26, 0.8); display: flex; align-items: center; justify-content: center; border-radius: 10px; cursor: pointer; z-index: 5; }
+        .filter-lock-text { font-size: 12px; color: var(--accent); font-weight: 600; }
+        
+        .card-locked { position: relative; }
+        .card-locked .video-card-thumb::after { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(15, 15, 26, 0.85); backdrop-filter: blur(8px); }
+        .card-lock-overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 10; padding: 20px; text-align: center; }
+        .card-lock-icon { font-size: 48px; margin-bottom: 12px; }
+        .card-lock-title { font-weight: 700; font-size: 16px; margin-bottom: 8px; }
+        .card-lock-text { font-size: 13px; color: var(--text-muted); margin-bottom: 16px; }
+        
+        .btn-locked { opacity: 0.5; cursor: not-allowed; position: relative; }
+        .btn-locked::after { content: '🔒'; margin-left: 8px; }
+
+        /* Upgrade Modal */
+        .upgrade-modal { max-width: 500px; }
+        .upgrade-header { text-align: center; margin-bottom: 24px; }
+        .upgrade-icon { font-size: 64px; margin-bottom: 16px; }
+        .upgrade-title { font-family: 'Bebas Neue', sans-serif; font-size: 32px; margin-bottom: 8px; }
+        .upgrade-subtitle { color: var(--text-muted); font-size: 15px; }
+        .upgrade-feature-blocked { background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.3); border-radius: 12px; padding: 16px; margin-bottom: 24px; text-align: center; }
+        .upgrade-feature-blocked-text { color: #ef4444; font-weight: 600; }
+        .upgrade-plans { display: flex; flex-direction: column; gap: 12px; margin-bottom: 24px; }
+        .upgrade-plan { display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; background: var(--dark); border: 2px solid var(--dark-border); border-radius: 12px; cursor: pointer; transition: all 0.2s; }
+        .upgrade-plan:hover { border-color: var(--primary); background: rgba(13, 159, 79, 0.05); }
+        .upgrade-plan.recommended { border-color: var(--accent); background: rgba(245, 197, 24, 0.05); }
+        .upgrade-plan-info { display: flex; align-items: center; gap: 12px; }
+        .upgrade-plan-badge { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 20px; }
+        .upgrade-plan-badge.pro { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .upgrade-plan-badge.coach { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+        .upgrade-plan-name { font-weight: 700; font-size: 16px; }
+        .upgrade-plan-features { font-size: 12px; color: var(--text-muted); }
+        .upgrade-plan-price { text-align: right; }
+        .upgrade-plan-price-value { font-family: 'Bebas Neue', sans-serif; font-size: 28px; color: var(--primary); }
+        .upgrade-plan-price-period { font-size: 12px; color: var(--text-muted); }
+        .upgrade-plan-tag { background: var(--accent); color: var(--dark); font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 4px; margin-left: 8px; }
+        .upgrade-benefits { margin-bottom: 24px; }
+        .upgrade-benefit { display: flex; align-items: center; gap: 10px; padding: 8px 0; font-size: 14px; }
+        .upgrade-benefit-icon { color: var(--primary); }
+        .upgrade-footer { text-align: center; }
+        .upgrade-footer-text { font-size: 12px; color: var(--text-muted); margin-top: 12px; }
+
+        /* XP Lost Alert */
+        .xp-lost-alert { background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(245, 197, 24, 0.1)); border: 1px solid rgba(239, 68, 68, 0.3); border-radius: 16px; padding: 24px; margin-bottom: 20px; text-align: center; }
+        .xp-lost-icon { font-size: 48px; margin-bottom: 12px; }
+        .xp-lost-title { font-size: 18px; font-weight: 700; color: #ef4444; margin-bottom: 8px; }
+        .xp-lost-amount { font-family: 'Bebas Neue', sans-serif; font-size: 36px; color: #ef4444; }
+        .xp-lost-text { color: var(--text-muted); font-size: 14px; margin: 12px 0; }
+        .xp-could-have { background: rgba(13, 159, 79, 0.1); border-radius: 8px; padding: 12px; margin-top: 16px; }
+        .xp-could-have-text { font-size: 13px; color: var(--text-muted); }
+        .xp-could-have-amount { color: var(--primary); font-weight: 700; }
 
         /* Hero */
         .hero { min-height: 90vh; background: var(--gradient-hero); display: flex; align-items: center; justify-content: center; text-align: center; padding: 140px 24px 80px; position: relative; overflow: hidden; }
@@ -375,6 +429,14 @@
         /* XP Bonus */
         .upload-xp-bonus { background: rgba(245, 197, 24, 0.1); padding: 14px 18px; border-radius: 12px; font-size: 14px; color: var(--accent); display: flex; align-items: center; gap: 10px; margin-top: 16px; }
         .upload-xp-bonus strong { color: var(--text); }
+
+        /* Word Count */
+        .upload-word-count { margin-top: 8px; font-size: 12px; color: var(--text-muted); display: flex; align-items: center; gap: 8px; }
+        .upload-word-count.valid { color: var(--primary); }
+        .upload-word-count.valid #wordCountStatus { color: var(--primary); }
+
+        /* Pizarra Preview */
+        .upload-pizarra-preview { max-width: 100%; max-height: 200px; border-radius: 8px; object-fit: contain; }
 
         /* Upload Footer */
         .upload-footer { padding: 20px 24px; border-top: 1px solid var(--dark-border); display: flex; gap: 12px; }
@@ -757,8 +819,9 @@
                 <div class="upload-section" id="uploadDescSection" style="display:none;">
                     <div class="upload-section-title">3️⃣ Tu Aportación</div>
                     <div class="upload-field">
-                        <label>Describe el ejercicio con tus palabras <span class="upload-bonus">(+10 XP extra)</span></label>
-                        <textarea id="uploadDescripcion" placeholder="Ej: Ejercicio de posesión donde se trabaja la salida de balón con presión alta del rival..." rows="3"></textarea>
+                        <label>Describe el ejercicio con tus palabras <span class="upload-bonus">(+10 XP si escribes mínimo 50 palabras)</span></label>
+                        <textarea id="uploadDescripcion" placeholder="Ej: Ejercicio de posesión donde se trabaja la salida de balón con presión alta del rival. El objetivo es mejorar la toma de decisiones bajo presión y la velocidad de circulación del balón..." rows="4" oninput="updateWordCount()"></textarea>
+                        <div class="upload-word-count" id="uploadWordCount"><span id="wordCountNum">0</span>/50 palabras <span id="wordCountStatus">❌</span></div>
                     </div>
                 </div>
                 
@@ -773,23 +836,31 @@
                     <div class="upload-section-title">5️⃣ Detalles Adicionales</div>
                     <div class="upload-grid">
                         <div class="upload-field"><label>Dificultad *</label><select id="uploadDificultad"><option value="">Seleccionar</option><option value="1">1 - Muy fácil</option><option value="2">2 - Fácil</option><option value="3">3 - Intermedio</option><option value="4">4 - Difícil</option><option value="5">5 - Muy difícil</option></select></div>
+                        <div class="upload-field"><label>Idioma del video *</label><select id="uploadIdioma"><option value="">Seleccionar</option><option value="es">🇪🇸 Español</option><option value="en">🇬🇧 Inglés</option><option value="pt">🇵🇹 Portugués</option><option value="it">🇮🇹 Italiano</option><option value="de">🇩🇪 Alemán</option><option value="fr">🇫🇷 Francés</option><option value="nl">🇳🇱 Holandés</option><option value="other">🌐 Otro</option></select></div>
+                    </div>
+                    <div class="upload-grid">
                         <div class="upload-field"><label>Edad recomendada</label><select id="uploadEdad"><option value="">Seleccionar</option><option value="Prebenjamín">Prebenjamín (5-7)</option><option value="Benjamín">Benjamín (8-9)</option><option value="Alevín">Alevín (10-11)</option><option value="Infantil">Infantil (12-13)</option><option value="Cadete">Cadete (14-15)</option><option value="Juvenil">Juvenil (16-18)</option><option value="Senior">Senior (19+)</option><option value="Profesional">Profesional</option></select></div>
+                        <div class="upload-field"><label>Nº Jugadores</label><select id="uploadJugadores"><option value="">-</option><option value="2-4">2-4</option><option value="5-8">5-8</option><option value="9-12">9-12</option><option value="13-16">13-16</option><option value="17-20">17-20</option><option value="20+">20+</option></select></div>
                     </div>
                     <div class="upload-grid-3">
-                        <div class="upload-field"><label>Nº Jugadores</label><select id="uploadJugadores"><option value="">-</option><option value="2-4">2-4</option><option value="5-8">5-8</option><option value="9-12">9-12</option><option value="13-16">13-16</option><option value="17-20">17-20</option><option value="20+">20+</option></select></div>
                         <div class="upload-field"><label>Nº Porteros</label><select id="uploadPorteros"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3+</option></select></div>
                         <div class="upload-field"><label>Dimensiones</label><select id="uploadDimensiones"><option value="">-</option><option value="10x10m">10x10m</option><option value="15x15m">15x15m</option><option value="20x20m">20x20m</option><option value="30x30m">30x30m</option><option value="Medio campo">Medio campo</option><option value="Campo completo">Campo completo</option></select></div>
+                        <div class="upload-field"><label>&nbsp;</label><div></div></div>
                     </div>
                 </div>
                 
                 <!-- Pizarra Táctica -->
                 <div class="upload-section" id="uploadPizarraSection" style="display:none;">
                     <div class="upload-field">
-                        <label>🎨 Imagen de Pizarra Táctica (opcional)</label>
-                        <div class="upload-pizarra" id="uploadPizarraBox" onclick="openPizarra()">
-                            <div class="upload-pizarra-icon">🎨</div>
-                            <div class="upload-pizarra-text">Crear imagen con Pizarra Táctica</div>
-                            <div class="upload-pizarra-hint">+50 XP extra si incluyes imagen</div>
+                        <label>🎨 Imagen de Pizarra Táctica (opcional) <span class="upload-bonus">+50 XP extra</span></label>
+                        <div class="upload-pizarra" id="uploadPizarraBox" onclick="document.getElementById('uploadPizarraInput').click()">
+                            <input type="file" id="uploadPizarraInput" accept="image/*" style="display:none;" onchange="handlePizarraUpload(event)">
+                            <div id="pizarraPlaceholder">
+                                <div class="upload-pizarra-icon">🎨</div>
+                                <div class="upload-pizarra-text">Haz clic para subir imagen de pizarra</div>
+                                <div class="upload-pizarra-hint">JPG, PNG - Máx 5MB</div>
+                            </div>
+                            <img id="pizarraPreview" class="upload-pizarra-preview" style="display:none;">
                         </div>
                     </div>
                     
@@ -803,6 +874,75 @@
             <div class="upload-footer">
                 <button class="btn btn-ghost" onclick="closeUploadModal()">Cancelar</button>
                 <button class="btn btn-primary" id="btnSubmitExercise" onclick="submitExercise()" disabled>📤 Enviar Ejercicio</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Upgrade Modal -->
+    <div class="modal-overlay" id="upgradeOverlay" onclick="closeUpgradeModal(event)">
+        <div class="modal-card upgrade-modal" onclick="event.stopPropagation()">
+            <div class="upgrade-header">
+                <div class="upgrade-icon" id="upgradeIcon">🚀</div>
+                <h2 class="upgrade-title" id="upgradeTitle">Desbloquea Todo el Potencial</h2>
+                <p class="upgrade-subtitle" id="upgradeSubtitle">Accede a todas las funcionalidades premium</p>
+            </div>
+            
+            <div class="upgrade-feature-blocked" id="upgradeFeatureBlocked" style="display:none;">
+                <div class="upgrade-feature-blocked-text" id="upgradeBlockedText">Funcionalidad bloqueada</div>
+            </div>
+            
+            <div class="xp-lost-alert" id="xpLostAlert" style="display:none;">
+                <div class="xp-lost-icon">😢</div>
+                <div class="xp-lost-title">¡Has perdido XP!</div>
+                <div class="xp-lost-amount" id="xpLostAmount">+0 XP</div>
+                <div class="xp-lost-text">Los usuarios Free no acumulan puntos</div>
+                <div class="xp-could-have">
+                    <span class="xp-could-have-text">Si fueras </span>
+                    <span class="xp-could-have-amount" id="xpCouldHave">Coach habrías ganado +100 XP</span>
+                </div>
+            </div>
+            
+            <div class="upgrade-plans">
+                <div class="upgrade-plan" onclick="selectUpgradePlan('pro')">
+                    <div class="upgrade-plan-info">
+                        <div class="upgrade-plan-badge pro">⭐</div>
+                        <div>
+                            <div class="upgrade-plan-name">Pro</div>
+                            <div class="upgrade-plan-features">Ilimitado • Favoritos • Filtros avanzados</div>
+                        </div>
+                    </div>
+                    <div class="upgrade-plan-price">
+                        <div class="upgrade-plan-price-value">2,99€</div>
+                        <div class="upgrade-plan-price-period">/mes</div>
+                    </div>
+                </div>
+                <div class="upgrade-plan recommended" onclick="selectUpgradePlan('coach')">
+                    <div class="upgrade-plan-info">
+                        <div class="upgrade-plan-badge coach">👑</div>
+                        <div>
+                            <div class="upgrade-plan-name">Coach <span class="upgrade-plan-tag">RECOMENDADO</span></div>
+                            <div class="upgrade-plan-features">Todo Pro + Pizarra + XP x2 + Subir ejercicios</div>
+                        </div>
+                    </div>
+                    <div class="upgrade-plan-price">
+                        <div class="upgrade-plan-price-value">4,99€</div>
+                        <div class="upgrade-plan-price-period">/mes</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="upgrade-benefits">
+                <div class="upgrade-benefit"><span class="upgrade-benefit-icon">✅</span> Ejercicios ilimitados al mes</div>
+                <div class="upgrade-benefit"><span class="upgrade-benefit-icon">✅</span> Guardar sesiones ilimitadas</div>
+                <div class="upgrade-benefit"><span class="upgrade-benefit-icon">✅</span> Filtros avanzados (entrenador, equipo...)</div>
+                <div class="upgrade-benefit"><span class="upgrade-benefit-icon">✅</span> Guardar favoritos</div>
+                <div class="upgrade-benefit" id="benefitPizarra" style="display:none;"><span class="upgrade-benefit-icon">✅</span> Acceso a Pizarra Táctica</div>
+                <div class="upgrade-benefit" id="benefitXp" style="display:none;"><span class="upgrade-benefit-icon">✅</span> Ganar XP al subir ejercicios (x2)</div>
+            </div>
+            
+            <div class="upgrade-footer">
+                <button class="btn btn-primary btn-lg" style="width:100%;" onclick="goToCheckout()">🚀 Mejorar mi Plan</button>
+                <p class="upgrade-footer-text">Cancela cuando quieras • Sin compromiso</p>
             </div>
         </div>
     </div>
@@ -822,6 +962,22 @@
         var exercises = [];
         var filters = {};
         var notifications = [];
+
+        // ==================== FREEMIUM STATE ====================
+        var userLimits = {
+            plan: 'free',
+            ejercicios_mes: 10,
+            ejercicios_vistos: 0,
+            sesiones_guardadas: 1,
+            puede_favoritos: false,
+            puede_subir: true,
+            acceso_pizarra: false,
+            filtros_avanzados: false,
+            gana_xp: false,
+            multiplicador_xp: 0
+        };
+        var ADVANCED_FILTERS = ['filterEntrenador', 'filterEquipo', 'filterJugadores', 'filterPorteros', 'filterLikes', 'filterVistas'];
+        var selectedUpgradePlan = 'coach';
 
         // ==================== TEMAS TRABAJADOS ====================
         var TEMAS_TRABAJADOS = [
@@ -885,8 +1041,93 @@
                 currentUser = user;
                 var { data: perfil } = await db.from('perfiles').select('*').eq('id', user.id).single();
                 if (perfil) currentUser.perfil = perfil;
+                await loadUserLimits();
                 updateUIForUser();
                 loadNotifications();
+                applyFreemiumRestrictions();
+            } else {
+                // Usuario no logueado = Free con límites
+                applyFreemiumRestrictions();
+            }
+        }
+
+        async function loadUserLimits() {
+            if (!currentUser) {
+                userLimits = { plan: 'free', ejercicios_mes: 10, ejercicios_vistos: 0, sesiones_guardadas: 1, puede_favoritos: false, puede_subir: true, acceso_pizarra: false, filtros_avanzados: false, gana_xp: false, multiplicador_xp: 0 };
+                return;
+            }
+            try {
+                var { data, error } = await db.rpc('obtener_limites_usuario', { p_usuario_id: currentUser.id });
+                if (data && !error) {
+                    userLimits = data;
+                } else {
+                    // Fallback desde perfil
+                    var p = currentUser.perfil || {};
+                    var plan = p.plan || 'free';
+                    userLimits = {
+                        plan: plan,
+                        ejercicios_mes: plan === 'free' ? 10 : -1,
+                        ejercicios_vistos: p.ejercicios_vistos_mes || 0,
+                        sesiones_guardadas: plan === 'free' ? 1 : -1,
+                        puede_favoritos: plan !== 'free',
+                        puede_subir: true,
+                        acceso_pizarra: plan === 'coach',
+                        filtros_avanzados: plan !== 'free',
+                        gana_xp: plan !== 'free',
+                        multiplicador_xp: plan === 'coach' ? 2 : (plan === 'pro' ? 1 : 0)
+                    };
+                }
+            } catch (e) { console.error('Error cargando límites:', e); }
+        }
+
+        function applyFreemiumRestrictions() {
+            // Bloquear filtros avanzados para usuarios Free
+            ADVANCED_FILTERS.forEach(function(filterId) {
+                var el = document.getElementById(filterId);
+                if (!el) return;
+                var parent = el.parentElement;
+                if (!userLimits.filtros_avanzados) {
+                    parent.classList.add('filter-locked');
+                    el.disabled = true;
+                    el.onclick = function(e) { e.preventDefault(); showUpgradeModal('filtros'); };
+                } else {
+                    parent.classList.remove('filter-locked');
+                    el.disabled = false;
+                    el.onclick = null;
+                }
+            });
+            
+            // Actualizar badge de límite en header
+            updateLimitBadge();
+        }
+
+        function updateLimitBadge() {
+            var badge = document.querySelector('.limit-badge');
+            if (!badge) return;
+            
+            if (userLimits.plan === 'free' && userLimits.ejercicios_mes > 0) {
+                badge.style.display = 'inline-block';
+                badge.textContent = '📺 ' + userLimits.ejercicios_vistos + '/' + userLimits.ejercicios_mes;
+                badge.classList.toggle('limit-reached', userLimits.ejercicios_vistos >= userLimits.ejercicios_mes);
+            } else {
+                badge.style.display = 'none';
+            }
+        }
+
+        function canViewExercise() {
+            if (userLimits.ejercicios_mes === -1) return true; // Ilimitado
+            return userLimits.ejercicios_vistos < userLimits.ejercicios_mes;
+        }
+
+        async function incrementExerciseView() {
+            if (!currentUser || userLimits.ejercicios_mes === -1) return;
+            
+            userLimits.ejercicios_vistos++;
+            updateLimitBadge();
+            
+            // Actualizar en BD
+            if (db) {
+                await db.rpc('incrementar_ejercicios_vistos', { p_usuario_id: currentUser.id });
             }
         }
 
@@ -896,10 +1137,22 @@
             var plan = p.plan || 'free';
             var planBadge = plan === 'coach' ? '<span class="plan-badge coach">COACH</span>' : (plan === 'pro' ? '<span class="plan-badge pro">PRO</span>' : '');
             
+            // Badge de límite para Free
+            var limitBadge = '';
+            if (plan === 'free' && userLimits.ejercicios_mes > 0) {
+                var isNearLimit = userLimits.ejercicios_vistos >= userLimits.ejercicios_mes - 2;
+                var limitClass = userLimits.ejercicios_vistos >= userLimits.ejercicios_mes ? 'limit-reached' : '';
+                limitBadge = '<span class="limit-badge ' + limitClass + '" onclick="showUpgradeModal(\'limite\')" style="cursor:pointer;">📺 ' + userLimits.ejercicios_vistos + '/' + userLimits.ejercicios_mes + '</span>';
+            }
+            
+            // Opción de mejorar plan solo para Free
+            var upgradeOption = plan === 'free' ? '<div class="user-dropdown-item upgrade" onclick="showUpgradeModal()">🚀 Mejorar Plan</div>' : '';
+            
             document.getElementById('headerActions').innerHTML = 
                 '<div class="user-stats-header">' +
                     '<span class="xp-badge">⭐ ' + (p.xp || 0) + ' XP</span>' +
                     '<span class="racha-badge">🔥 ' + (p.racha_dias || 0) + '</span>' +
+                    limitBadge +
                 '</div>' +
                 '<div class="notif-bell" onclick="toggleNotifications()">' +
                     '<span class="notif-bell-icon">🔔</span>' +
@@ -914,6 +1167,7 @@
                     '<span class="user-name">' + (p.nombre || u.email.split('@')[0]) + planBadge + '</span>' +
                     '<div class="user-dropdown" id="userDropdown">' +
                         '<div class="user-dropdown-header"><div class="user-dropdown-level">Nivel ' + (p.nivel || 1) + ' - ' + (p.titulo || 'Novato') + '</div><div class="user-dropdown-xp">' + (p.xp || 0) + ' XP</div></div>' +
+                        upgradeOption +
                         '<div class="user-dropdown-item" onclick="showMySessions()">📋 Mis Sesiones</div>' +
                         '<div class="user-dropdown-item" onclick="showUploadModal()">📤 Subir Ejercicio</div>' +
                         (plan === 'coach' ? '<div class="user-dropdown-item" onclick="location.href=\'admin.html\'">⚙️ Admin</div>' : '') +
@@ -1169,6 +1423,12 @@
             currentExercise = exercises.find(function(e) { return e.id === id; });
             if (!currentExercise) return;
             
+            // Verificar límite de ejercicios para usuarios Free
+            if (!canViewExercise()) {
+                showUpgradeModal('limite');
+                return;
+            }
+            
             var ex = currentExercise;
             document.getElementById('modalTitle').textContent = ex.titulo_ejercicio || ex.titulo_video;
             
@@ -1196,6 +1456,9 @@
             
             document.getElementById('modalDesc').textContent = ex.descripcion || '';
             document.getElementById('modalOverlay').classList.add('active');
+            
+            // Incrementar contador de ejercicios vistos
+            incrementExerciseView();
         }
 
         function closeModal(e) { if (!e || e.target === e.currentTarget) { document.getElementById('modalOverlay').classList.remove('active'); document.getElementById('modalVideo').innerHTML = ''; } }
@@ -1388,6 +1651,7 @@
             selectedFamilia = null;
             selectedTemas = [];
             uploadedImageFile = null;
+            pizarraImageFile = null;
             
             document.getElementById('uploadUrl').value = '';
             document.getElementById('uploadStatus').textContent = '';
@@ -1407,8 +1671,19 @@
             document.getElementById('uploadImagePreview').style.display = 'none';
             document.getElementById('uploadImagePlaceholder').style.display = 'flex';
             
+            // Reset pizarra
+            document.getElementById('pizarraPreview').style.display = 'none';
+            document.getElementById('pizarraPlaceholder').style.display = 'block';
+            document.getElementById('uploadPizarraBox').classList.remove('has-image');
+            
+            // Reset word count
+            document.getElementById('wordCountNum').textContent = '0';
+            document.getElementById('wordCountStatus').textContent = '❌';
+            document.getElementById('uploadWordCount').classList.remove('valid');
+            
             document.getElementById('uploadDescripcion').value = '';
             document.getElementById('uploadDificultad').value = '';
+            document.getElementById('uploadIdioma').value = '';
             document.getElementById('uploadEdad').value = '';
             document.getElementById('uploadJugadores').value = '';
             document.getElementById('uploadPorteros').value = '0';
@@ -1608,23 +1883,69 @@
             validateUpload();
         }
 
+        // Word count for description
+        function updateWordCount() {
+            var text = document.getElementById('uploadDescripcion').value.trim();
+            var words = text ? text.split(/\s+/).filter(function(w) { return w.length > 0; }).length : 0;
+            var countEl = document.getElementById('uploadWordCount');
+            var numEl = document.getElementById('wordCountNum');
+            var statusEl = document.getElementById('wordCountStatus');
+            
+            numEl.textContent = words;
+            if (words >= 50) {
+                countEl.classList.add('valid');
+                statusEl.textContent = '✅';
+            } else {
+                countEl.classList.remove('valid');
+                statusEl.textContent = '❌';
+            }
+            validateUpload();
+        }
+
+        // Pizarra image upload
+        var pizarraImageFile = null;
+        
+        function handlePizarraUpload(e) {
+            var file = e.target.files[0];
+            if (!file) return;
+            if (file.size > 5 * 1024 * 1024) { showToast('Imagen demasiado grande (máx 5MB)', 'error'); return; }
+            
+            pizarraImageFile = file;
+            var reader = new FileReader();
+            reader.onload = function(ev) {
+                document.getElementById('pizarraPreview').src = ev.target.result;
+                document.getElementById('pizarraPreview').style.display = 'block';
+                document.getElementById('pizarraPlaceholder').style.display = 'none';
+                document.getElementById('uploadPizarraBox').classList.add('has-image');
+                validateUpload();
+            };
+            reader.readAsDataURL(file);
+        }
+
         function validateUpload() {
             var hasSource = (uploadSource === 'video' && uploadData.videoId) || (uploadSource === 'imagen' && uploadedImageFile);
             var hasFamilia = selectedFamilia !== null;
             var hasTemas = selectedTemas.length > 0;
             var hasDificultad = document.getElementById('uploadDificultad').value !== '';
+            var hasIdioma = document.getElementById('uploadIdioma').value !== '';
             
-            var valid = hasSource && hasFamilia && hasTemas && hasDificultad;
+            var valid = hasSource && hasFamilia && hasTemas && hasDificultad && hasIdioma;
             document.getElementById('btnSubmitExercise').disabled = !valid;
             
-            // Update XP
+            // Update XP - descripción solo cuenta si tiene 50+ palabras
             var xp = 50;
-            if (document.getElementById('uploadDescripcion').value.trim()) xp += 10;
+            var descText = document.getElementById('uploadDescripcion').value.trim();
+            var wordCount = descText ? descText.split(/\s+/).filter(function(w) { return w.length > 0; }).length : 0;
+            if (wordCount >= 50) xp += 10;
+            if (pizarraImageFile) xp += 50;
             document.getElementById('uploadXpTotal').textContent = '+' + xp + ' XP';
         }
 
         async function submitExercise() {
             if (!currentUser) return;
+            
+            var descText = document.getElementById('uploadDescripcion').value.trim();
+            var wordCount = descText ? descText.split(/\s+/).filter(function(w) { return w.length > 0; }).length : 0;
             
             var data = {
                 source: uploadSource === 'video' ? uploadData.source : 'imagen',
@@ -1632,15 +1953,15 @@
                 video_url: uploadData.videoUrl || null,
                 thumbnail_url: uploadData.thumb || null,
                 titulo_video: uploadData.titulo || '',
-                titulo_ejercicio: uploadData.titulo || document.getElementById('uploadDescripcion').value.substring(0, 100) || 'Ejercicio',
+                titulo_ejercicio: uploadData.titulo || descText.substring(0, 100) || 'Ejercicio',
                 canal: uploadData.canal || '',
                 descripcion: uploadData.descripcion || '',
-                descripcion_usuario: document.getElementById('uploadDescripcion').value,
+                descripcion_usuario: wordCount >= 50 ? descText : null,
                 duracion: uploadData.duracion || null,
                 duracion_segundos: uploadData.duracionSeg || 0,
                 vistas: uploadData.vistas || 0,
                 likes: uploadData.likes || 0,
-                idioma: uploadData.idioma || 'es',
+                idioma: document.getElementById('uploadIdioma').value,
                 familia: selectedFamilia,
                 categorias: selectedTemas,
                 dificultad: parseInt(document.getElementById('uploadDificultad').value),
@@ -1656,12 +1977,20 @@
                 aprobado: false
             };
             
-            // Upload image if needed
+            // Upload thumbnail image if source is imagen
             if (uploadSource === 'imagen' && uploadedImageFile) {
-                var fileName = Date.now() + '_' + uploadedImageFile.name;
+                var fileName = Date.now() + '_thumb_' + uploadedImageFile.name;
                 var { data: fileData, error: fileError } = await db.storage.from('ejercicios').upload(fileName, uploadedImageFile);
                 if (fileError) { showToast('Error subiendo imagen', 'error'); return; }
                 data.thumbnail_url = db.storage.from('ejercicios').getPublicUrl(fileName).data.publicUrl;
+            }
+            
+            // Upload pizarra image if exists
+            if (pizarraImageFile) {
+                var pizarraName = Date.now() + '_pizarra_' + pizarraImageFile.name;
+                var { data: pizData, error: pizError } = await db.storage.from('ejercicios').upload(pizarraName, pizarraImageFile);
+                if (pizError) { showToast('Error subiendo pizarra', 'error'); return; }
+                data.pizarra_url = db.storage.from('ejercicios').getPublicUrl(pizarraName).data.publicUrl;
             }
             
             var { error } = await db.from('ejercicios').insert(data);
@@ -1669,6 +1998,115 @@
             
             showToast('✅ Ejercicio enviado para revisión', 'success');
             closeUploadModal();
+            
+            // Mostrar mensaje de XP perdido si es Free
+            if (userLimits.plan === 'free') {
+                setTimeout(function() {
+                    showXpLostModal(60); // 50 base + 10 descripción
+                }, 500);
+            }
+        }
+
+        // ==================== UPGRADE MODAL ====================
+        function showUpgradeModal(reason, extraData) {
+            var icon = '🚀';
+            var title = 'Desbloquea Todo el Potencial';
+            var subtitle = 'Accede a todas las funcionalidades premium';
+            var blockedText = '';
+            
+            switch(reason) {
+                case 'filtros':
+                    icon = '🔍';
+                    title = 'Filtros Avanzados Bloqueados';
+                    subtitle = 'Los filtros avanzados son exclusivos para usuarios Pro y Coach';
+                    blockedText = '🔒 Necesitas Pro o Coach para usar filtros avanzados';
+                    break;
+                case 'limite':
+                    icon = '📺';
+                    title = 'Has Alcanzado tu Límite Mensual';
+                    subtitle = 'Has visto ' + userLimits.ejercicios_vistos + ' de ' + userLimits.ejercicios_mes + ' ejercicios este mes';
+                    blockedText = '🔒 Hazte Pro para ver ejercicios ilimitados';
+                    break;
+                case 'favoritos':
+                    icon = '❤️';
+                    title = 'Favoritos Bloqueados';
+                    subtitle = 'Guarda tus ejercicios favoritos con Pro o Coach';
+                    blockedText = '🔒 Necesitas Pro o Coach para guardar favoritos';
+                    break;
+                case 'sesiones':
+                    icon = '💾';
+                    title = 'Límite de Sesiones Alcanzado';
+                    subtitle = 'Ya tienes 1 sesión guardada (máximo para Free)';
+                    blockedText = '🔒 Hazte Pro para sesiones ilimitadas';
+                    break;
+                case 'pizarra':
+                    icon = '🎨';
+                    title = 'Pizarra Táctica Exclusiva';
+                    subtitle = 'Crea gráficos profesionales de tus ejercicios';
+                    blockedText = '🔒 La Pizarra Táctica es exclusiva para Coach';
+                    document.getElementById('benefitPizarra').style.display = 'flex';
+                    document.getElementById('benefitXp').style.display = 'flex';
+                    break;
+                case 'xp':
+                    icon = '⭐';
+                    title = 'Gana XP por Tus Contribuciones';
+                    subtitle = 'Los usuarios Free no acumulan puntos';
+                    blockedText = '🔒 Hazte Pro o Coach para ganar XP';
+                    document.getElementById('benefitXp').style.display = 'flex';
+                    break;
+            }
+            
+            document.getElementById('upgradeIcon').textContent = icon;
+            document.getElementById('upgradeTitle').textContent = title;
+            document.getElementById('upgradeSubtitle').textContent = subtitle;
+            
+            if (blockedText) {
+                document.getElementById('upgradeFeatureBlocked').style.display = 'block';
+                document.getElementById('upgradeBlockedText').textContent = blockedText;
+            } else {
+                document.getElementById('upgradeFeatureBlocked').style.display = 'none';
+            }
+            
+            document.getElementById('xpLostAlert').style.display = 'none';
+            document.getElementById('upgradeOverlay').classList.add('active');
+        }
+
+        function showXpLostModal(xpLost) {
+            var xpCoach = xpLost * 2;
+            
+            document.getElementById('upgradeIcon').textContent = '😢';
+            document.getElementById('upgradeTitle').textContent = '¡Ejercicio Aprobado!';
+            document.getElementById('upgradeSubtitle').textContent = 'Pero has perdido puntos por ser Free...';
+            document.getElementById('upgradeFeatureBlocked').style.display = 'none';
+            
+            document.getElementById('xpLostAlert').style.display = 'block';
+            document.getElementById('xpLostAmount').textContent = '+' + xpLost + ' XP perdidos';
+            document.getElementById('xpCouldHave').textContent = 'Coach habrías ganado +' + xpCoach + ' XP';
+            
+            document.getElementById('benefitXp').style.display = 'flex';
+            document.getElementById('upgradeOverlay').classList.add('active');
+        }
+
+        function closeUpgradeModal(e) {
+            if (!e || e.target === e.currentTarget) {
+                document.getElementById('upgradeOverlay').classList.remove('active');
+                document.getElementById('benefitPizarra').style.display = 'none';
+                document.getElementById('benefitXp').style.display = 'none';
+            }
+        }
+
+        function selectUpgradePlan(plan) {
+            selectedUpgradePlan = plan;
+            document.querySelectorAll('.upgrade-plan').forEach(function(el) {
+                el.classList.remove('recommended');
+            });
+            event.currentTarget.classList.add('recommended');
+        }
+
+        function goToCheckout() {
+            // TODO: Integrar con Stripe
+            showToast('🚧 Sistema de pagos en desarrollo', 'error');
+            closeUpgradeModal();
         }
 
         // ==================== HELPERS ====================
@@ -1690,6 +2128,7 @@
 
         // Add change listeners for validation
         document.getElementById('uploadDificultad')?.addEventListener('change', validateUpload);
+        document.getElementById('uploadIdioma')?.addEventListener('change', validateUpload);
         document.getElementById('uploadDescripcion')?.addEventListener('input', validateUpload);
     </script>
 </body>
