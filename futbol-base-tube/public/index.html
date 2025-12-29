@@ -2607,7 +2607,7 @@ var LANG_FLAGS = { 'es': '🇪🇸', 'en': '🇬🇧', 'pt': '🇵🇹', 'it': '
 var LANG_NAMES = { 'es': 'Español', 'en': 'Inglés', 'pt': 'Portugués', 'it': 'Italiano', 'de': 'Alemán', 'fr': 'Francés', 'nl': 'Holandés', 'other': 'Otro' };
 
 // YouTube API Key (pública, solo lectura)
-var YT_API_KEY = 'AIzaSyD-9tSrke72PouQMnMX-a7eZSW0jkFMBWY'; // Reemplazar con tu key
+var YT_API_KEY = localStorage.getItem('yt_key') || '';
 
 function showUploadModal() {
     if (!currentUser) {
