@@ -509,6 +509,139 @@
             .footer { padding: 24px 16px; margin-top: 40px; }
             .toast { bottom: 80px; max-width: calc(100% - 32px); }
         }
+
+        /* ==================== GAMIFICACIÓN ==================== */
+        
+        /* Perfil Modal */
+        .profile-modal { max-width: 800px; width: 95%; max-height: 90vh; overflow-y: auto; }
+        .profile-header { display: flex; gap: 24px; padding-bottom: 24px; border-bottom: 1px solid var(--dark-border); margin-bottom: 24px; }
+        .profile-avatar-large { width: 100px; height: 100px; border-radius: 20px; background: var(--gradient-primary); display: flex; align-items: center; justify-content: center; font-size: 42px; font-weight: 700; position: relative; }
+        .profile-avatar-level { position: absolute; bottom: -8px; right: -8px; width: 36px; height: 36px; background: var(--dark-card); border: 3px solid var(--dark); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; }
+        .profile-info { flex: 1; }
+        .profile-name { font-family: 'Bebas Neue', sans-serif; font-size: 32px; display: flex; align-items: center; gap: 12px; }
+        .profile-title { font-size: 16px; color: var(--text-muted); margin-top: 4px; }
+        .profile-stats-row { display: flex; gap: 24px; margin-top: 16px; }
+        .profile-stat-item { text-align: center; }
+        .profile-stat-value { font-family: 'Bebas Neue', sans-serif; font-size: 28px; color: var(--primary); }
+        .profile-stat-label { font-size: 12px; color: var(--text-muted); }
+        
+        /* XP Progress */
+        .xp-section { margin-bottom: 24px; }
+        .xp-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+        .xp-level-info { display: flex; align-items: center; gap: 12px; }
+        .xp-level-badge { font-size: 32px; }
+        .xp-level-text { font-size: 18px; font-weight: 700; }
+        .xp-level-title { font-size: 14px; color: var(--text-muted); }
+        .xp-next-level { text-align: right; font-size: 13px; color: var(--text-muted); }
+        .xp-next-level strong { color: var(--accent); }
+        .xp-progress-bar { height: 12px; background: var(--dark); border-radius: 6px; overflow: hidden; position: relative; }
+        .xp-progress-fill { height: 100%; background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%); border-radius: 6px; transition: width 0.5s ease; }
+        .xp-progress-text { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 10px; font-weight: 700; text-shadow: 0 1px 2px rgba(0,0,0,0.8); }
+        
+        /* XP por mes (caducidad) */
+        .xp-months { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 16px; }
+        .xp-month-card { background: var(--dark); border-radius: 12px; padding: 16px; text-align: center; }
+        .xp-month-card.expiring { border: 2px solid var(--danger); }
+        .xp-month-name { font-size: 12px; color: var(--text-muted); margin-bottom: 4px; }
+        .xp-month-value { font-family: 'Bebas Neue', sans-serif; font-size: 24px; color: var(--primary); }
+        .xp-month-expiry { font-size: 10px; color: var(--danger); margin-top: 4px; }
+        
+        /* Racha */
+        .racha-section { background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(245, 197, 24, 0.1)); border-radius: 16px; padding: 20px; margin-bottom: 24px; display: flex; align-items: center; gap: 20px; }
+        .racha-icon { font-size: 48px; }
+        .racha-info { flex: 1; }
+        .racha-title { font-size: 14px; color: var(--text-muted); }
+        .racha-value { font-family: 'Bebas Neue', sans-serif; font-size: 36px; color: var(--accent); }
+        .racha-max { font-size: 12px; color: var(--text-muted); }
+        .racha-bonus { background: var(--accent); color: var(--dark); padding: 8px 16px; border-radius: 20px; font-size: 12px; font-weight: 700; }
+        
+        /* Badges Grid */
+        .badges-section { margin-bottom: 24px; }
+        .section-title { font-family: 'Bebas Neue', sans-serif; font-size: 20px; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+        .badges-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(80px, 1fr)); gap: 12px; }
+        .badge-item { background: var(--dark); border-radius: 12px; padding: 16px 12px; text-align: center; cursor: pointer; transition: all 0.2s; position: relative; }
+        .badge-item:hover { background: rgba(255,255,255,0.05); transform: translateY(-2px); }
+        .badge-item.locked { opacity: 0.3; }
+        .badge-item.rare { background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(59, 130, 246, 0.2)); border: 1px solid rgba(139, 92, 246, 0.3); }
+        .badge-icon { font-size: 32px; margin-bottom: 8px; }
+        .badge-name { font-size: 11px; color: var(--text-muted); line-height: 1.3; }
+        .badge-new { position: absolute; top: -4px; right: -4px; width: 12px; height: 12px; background: var(--danger); border-radius: 50%; }
+        
+        /* Ranking */
+        .ranking-section { margin-bottom: 24px; }
+        .ranking-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+        .ranking-tabs { display: flex; gap: 8px; }
+        .ranking-tab { padding: 8px 16px; background: var(--dark); border-radius: 8px; font-size: 13px; cursor: pointer; }
+        .ranking-tab.active { background: var(--primary); color: white; }
+        .ranking-list { background: var(--dark); border-radius: 12px; overflow: hidden; }
+        .ranking-item { display: flex; align-items: center; gap: 16px; padding: 16px; border-bottom: 1px solid var(--dark-border); }
+        .ranking-item:last-child { border-bottom: none; }
+        .ranking-item.me { background: rgba(13, 159, 79, 0.1); }
+        .ranking-position { width: 32px; font-family: 'Bebas Neue', sans-serif; font-size: 20px; text-align: center; }
+        .ranking-position.gold { color: #ffd700; }
+        .ranking-position.silver { color: #c0c0c0; }
+        .ranking-position.bronze { color: #cd7f32; }
+        .ranking-avatar { width: 40px; height: 40px; border-radius: 10px; background: var(--dark-card); display: flex; align-items: center; justify-content: center; font-weight: 600; }
+        .ranking-info { flex: 1; }
+        .ranking-name { font-weight: 600; font-size: 14px; display: flex; align-items: center; gap: 8px; }
+        .ranking-title { font-size: 12px; color: var(--text-muted); }
+        .ranking-xp { font-family: 'Bebas Neue', sans-serif; font-size: 20px; color: var(--accent); }
+        
+        /* Liga Badge */
+        .liga-badge { display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; }
+        .liga-badge.elite { background: rgba(139, 92, 246, 0.2); color: #8b5cf6; }
+        .liga-badge.diamante { background: rgba(59, 130, 246, 0.2); color: #3b82f6; }
+        .liga-badge.oro { background: rgba(255, 215, 0, 0.2); color: #ffd700; }
+        .liga-badge.plata { background: rgba(192, 192, 192, 0.2); color: #c0c0c0; }
+        .liga-badge.bronce { background: rgba(205, 127, 50, 0.2); color: #cd7f32; }
+        
+        /* Challenges */
+        .challenges-section { margin-bottom: 24px; }
+        .challenge-card { background: var(--dark); border-radius: 12px; padding: 16px; margin-bottom: 12px; }
+        .challenge-header { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+        .challenge-icon { font-size: 24px; }
+        .challenge-info { flex: 1; }
+        .challenge-title { font-weight: 600; font-size: 14px; }
+        .challenge-desc { font-size: 12px; color: var(--text-muted); }
+        .challenge-reward { background: var(--accent); color: var(--dark); padding: 4px 10px; border-radius: 12px; font-size: 11px; font-weight: 700; }
+        .challenge-progress { height: 8px; background: var(--dark-card); border-radius: 4px; overflow: hidden; }
+        .challenge-progress-fill { height: 100%; background: var(--primary); transition: width 0.3s; }
+        .challenge-progress-text { display: flex; justify-content: space-between; margin-top: 6px; font-size: 11px; color: var(--text-muted); }
+        .challenge-completed { background: rgba(13, 159, 79, 0.1); border: 1px solid var(--primary); }
+        .challenge-completed .challenge-icon::after { content: '✓'; position: absolute; }
+        
+        /* Beneficios por nivel */
+        .benefits-section { margin-bottom: 24px; }
+        .benefit-item { display: flex; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--dark-border); }
+        .benefit-item:last-child { border-bottom: none; }
+        .benefit-icon { font-size: 20px; width: 32px; text-align: center; }
+        .benefit-text { flex: 1; font-size: 14px; }
+        .benefit-status { font-size: 12px; font-weight: 600; }
+        .benefit-status.unlocked { color: var(--primary); }
+        .benefit-status.locked { color: var(--text-muted); }
+        
+        /* Warning de baja */
+        .cancel-warning { background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.3); border-radius: 12px; padding: 20px; margin-top: 24px; }
+        .cancel-warning-title { color: var(--danger); font-weight: 700; font-size: 16px; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+        .cancel-warning-text { font-size: 14px; color: var(--text-muted); line-height: 1.6; }
+        .cancel-warning-xp { font-family: 'Bebas Neue', sans-serif; font-size: 24px; color: var(--danger); margin: 12px 0; }
+        
+        /* Recompensas */
+        .rewards-section { margin-bottom: 24px; }
+        .reward-card { background: linear-gradient(135deg, rgba(245, 197, 24, 0.1), rgba(13, 159, 79, 0.1)); border: 1px solid rgba(245, 197, 24, 0.3); border-radius: 12px; padding: 16px; margin-bottom: 12px; display: flex; align-items: center; gap: 16px; }
+        .reward-icon { font-size: 32px; }
+        .reward-info { flex: 1; }
+        .reward-title { font-weight: 600; }
+        .reward-desc { font-size: 12px; color: var(--text-muted); }
+        .reward-expiry { font-size: 11px; color: var(--accent); margin-top: 4px; }
+        .reward-btn { background: var(--accent); color: var(--dark); padding: 8px 16px; border-radius: 8px; font-weight: 700; font-size: 13px; cursor: pointer; border: none; }
+
+        /* Evento XP Doble */
+        .evento-banner { background: linear-gradient(90deg, #8b5cf6, #3b82f6, #0d9f4f); padding: 12px 24px; text-align: center; position: relative; overflow: hidden; }
+        .evento-banner::before { content: ''; position: absolute; top: 0; left: -100%; width: 200%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent); animation: shine 2s infinite; }
+        @keyframes shine { to { left: 100%; } }
+        .evento-text { font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 8px; }
+        .evento-badge { background: white; color: #8b5cf6; padding: 4px 12px; border-radius: 20px; font-size: 12px; }
     </style>
 </head>
 <body>
@@ -887,6 +1020,187 @@
         </div>
     </div>
 
+    <!-- Profile/Gamification Modal -->
+    <div class="modal-overlay" id="profileOverlay" onclick="closeProfileModal(event)">
+        <div class="modal-card profile-modal" onclick="event.stopPropagation()">
+            <button class="modal-close" onclick="closeProfileModal()">×</button>
+            
+            <!-- Header -->
+            <div class="profile-header">
+                <div class="profile-avatar-large" id="profileAvatar">
+                    M
+                    <div class="profile-avatar-level" id="profileLevelIcon">⚽</div>
+                </div>
+                <div class="profile-info">
+                    <h2 class="profile-name">
+                        <span id="profileName">Usuario</span>
+                        <span class="plan-badge coach" id="profilePlanBadge" style="display:none;">COACH</span>
+                    </h2>
+                    <div class="profile-title">
+                        <span id="profileLevelTitle">Nivel 1 - Canterano</span>
+                        <span class="liga-badge bronce" id="profileLiga" style="margin-left:12px;">🥉 Bronce</span>
+                    </div>
+                    <div class="profile-stats-row">
+                        <div class="profile-stat-item">
+                            <div class="profile-stat-value" id="profileExercises">0</div>
+                            <div class="profile-stat-label">Ejercicios</div>
+                        </div>
+                        <div class="profile-stat-item">
+                            <div class="profile-stat-value" id="profileLikes">0</div>
+                            <div class="profile-stat-label">Likes</div>
+                        </div>
+                        <div class="profile-stat-item">
+                            <div class="profile-stat-value" id="profileBadges">0</div>
+                            <div class="profile-stat-label">Badges</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- XP Progress -->
+            <div class="xp-section">
+                <div class="xp-header">
+                    <div class="xp-level-info">
+                        <span class="xp-level-badge" id="xpLevelBadge">⚽</span>
+                        <div>
+                            <div class="xp-level-text" id="xpLevelText">Nivel 1</div>
+                            <div class="xp-level-title" id="xpLevelSubtitle">Canterano</div>
+                        </div>
+                    </div>
+                    <div class="xp-next-level" id="xpNextLevel">
+                        <strong>200 XP</strong> para Juvenil
+                    </div>
+                </div>
+                <div class="xp-progress-bar">
+                    <div class="xp-progress-fill" id="xpProgressFill" style="width: 0%"></div>
+                    <div class="xp-progress-text" id="xpProgressText">0 / 200 XP</div>
+                </div>
+                
+                <!-- XP por mes con caducidad -->
+                <div class="xp-months" id="xpMonths">
+                    <div class="xp-month-card">
+                        <div class="xp-month-name">Diciembre</div>
+                        <div class="xp-month-value">0</div>
+                    </div>
+                    <div class="xp-month-card">
+                        <div class="xp-month-name">Noviembre</div>
+                        <div class="xp-month-value">0</div>
+                    </div>
+                    <div class="xp-month-card expiring">
+                        <div class="xp-month-name">Octubre</div>
+                        <div class="xp-month-value">0</div>
+                        <div class="xp-month-expiry">⚠️ Expira pronto</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Racha -->
+            <div class="racha-section">
+                <div class="racha-icon">🔥</div>
+                <div class="racha-info">
+                    <div class="racha-title">Racha actual</div>
+                    <div class="racha-value" id="rachaValue">0 días</div>
+                    <div class="racha-max" id="rachaMax">Récord: 0 días</div>
+                </div>
+                <div class="racha-bonus" id="rachaBonus" style="display:none;">+50 XP Semanal</div>
+            </div>
+            
+            <!-- Challenges Semanales -->
+            <div class="challenges-section">
+                <h3 class="section-title">🎯 Challenges de la Semana</h3>
+                <div id="challengesList">
+                    <div class="challenge-card">
+                        <div class="challenge-header">
+                            <div class="challenge-icon">⚽</div>
+                            <div class="challenge-info">
+                                <div class="challenge-title">Rey del Rondo</div>
+                                <div class="challenge-desc">Sube 3 ejercicios de Rondos</div>
+                            </div>
+                            <div class="challenge-reward">+200 XP</div>
+                        </div>
+                        <div class="challenge-progress">
+                            <div class="challenge-progress-fill" style="width: 33%"></div>
+                        </div>
+                        <div class="challenge-progress-text">
+                            <span>1 / 3</span>
+                            <span>4 días restantes</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Badges -->
+            <div class="badges-section">
+                <h3 class="section-title">🏅 Badges (<span id="badgesCount">0</span>/<span id="badgesTotal">25</span>)</h3>
+                <div class="badges-grid" id="badgesGrid">
+                    <!-- Se llena dinámicamente -->
+                </div>
+            </div>
+            
+            <!-- Ranking -->
+            <div class="ranking-section">
+                <div class="ranking-header">
+                    <h3 class="section-title">🏆 Ranking Mensual</h3>
+                    <div class="ranking-tabs">
+                        <div class="ranking-tab active" onclick="switchRankingTab('mensual')">Mensual</div>
+                        <div class="ranking-tab" onclick="switchRankingTab('semanal')">Semanal</div>
+                    </div>
+                </div>
+                <div class="ranking-list" id="rankingList">
+                    <!-- Se llena dinámicamente -->
+                </div>
+            </div>
+            
+            <!-- Recompensas Pendientes -->
+            <div class="rewards-section" id="rewardsSection" style="display:none;">
+                <h3 class="section-title">🎁 Recompensas Pendientes</h3>
+                <div id="rewardsList">
+                    <!-- Se llena dinámicamente -->
+                </div>
+            </div>
+            
+            <!-- Beneficios por nivel -->
+            <div class="benefits-section">
+                <h3 class="section-title">🎖️ Beneficios por Nivel</h3>
+                <div id="benefitsList">
+                    <div class="benefit-item">
+                        <div class="benefit-icon">💬</div>
+                        <div class="benefit-text">Comentar ejercicios</div>
+                        <div class="benefit-status locked">Nivel 3</div>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">⭐</div>
+                        <div class="benefit-text">Acceso a Ejercicios Premium</div>
+                        <div class="benefit-status locked">Nivel 4</div>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">🗳️</div>
+                        <div class="benefit-text">Votar Ejercicio de la Semana</div>
+                        <div class="benefit-status locked">Nivel 6</div>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">👑</div>
+                        <div class="benefit-text">50% descuento mensual</div>
+                        <div class="benefit-status locked">Nivel 7</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Warning de baja -->
+            <div class="cancel-warning" id="cancelWarning">
+                <div class="cancel-warning-title">⚠️ Importante sobre tu suscripción</div>
+                <div class="cancel-warning-text">
+                    Si cancelas tu suscripción, <strong>perderás todo tu progreso</strong>:
+                </div>
+                <div class="cancel-warning-xp" id="cancelWarningXp">-0 XP perdidos</div>
+                <div class="cancel-warning-text">
+                    Tus badges, nivel y posición en el ranking se resetearán a cero. 
+                    Tendrás que empezar desde el principio.
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Upgrade Modal -->
     <div class="modal-overlay" id="upgradeOverlay" onclick="closeUpgradeModal(event)">
         <div class="modal-card upgrade-modal" onclick="event.stopPropagation()">
@@ -1054,6 +1368,8 @@
                 updateUIForUser();
                 loadNotifications();
                 applyFreemiumRestrictions();
+                // Actualizar racha diaria
+                checkAndUpdateRacha();
             } else {
                 // Usuario no logueado = Free con límites
                 applyFreemiumRestrictions();
@@ -1175,7 +1491,8 @@
                     '<div class="user-avatar">' + (p.nombre || u.email)[0].toUpperCase() + '</div>' +
                     '<span class="user-name">' + (p.nombre || u.email.split('@')[0]) + planBadge + '</span>' +
                     '<div class="user-dropdown" id="userDropdown">' +
-                        '<div class="user-dropdown-header"><div class="user-dropdown-level">Nivel ' + (p.nivel || 1) + ' - ' + (p.titulo || 'Novato') + '</div><div class="user-dropdown-xp">' + (p.xp || 0) + ' XP</div></div>' +
+                        '<div class="user-dropdown-header"><div class="user-dropdown-level">Nivel ' + (p.nivel || 1) + ' - ' + (p.titulo || 'Novato') + '</div><div class="user-dropdown-xp">' + (p.xp_rolling || p.xp || 0) + ' XP</div></div>' +
+                        '<div class="user-dropdown-item" onclick="showProfileModal()">🏆 Mi Perfil / XP</div>' +
                         upgradeOption +
                         '<div class="user-dropdown-item" onclick="showMySessions()">📋 Mis Sesiones</div>' +
                         '<div class="user-dropdown-item" onclick="showUploadModal()">📤 Subir Ejercicio</div>' +
@@ -2124,6 +2441,407 @@
             // TODO: Integrar con Stripe
             showToast('🚧 Sistema de pagos en desarrollo', 'error');
             closeUpgradeModal();
+        }
+
+        // ==================== GAMIFICACIÓN ====================
+        var gamificationData = null;
+        var allBadges = [];
+        var rankingData = [];
+
+        async function showProfileModal() {
+            if (!currentUser) { showAuthModal('login'); return; }
+            document.getElementById('profileOverlay').classList.add('active');
+            await loadGamificationData();
+        }
+
+        function closeProfileModal(e) {
+            if (!e || e.target === e.currentTarget) {
+                document.getElementById('profileOverlay').classList.remove('active');
+            }
+        }
+
+        async function loadGamificationData() {
+            if (!currentUser || !db) return;
+            
+            try {
+                // Cargar datos de gamificación del usuario
+                var { data, error } = await db.rpc('obtener_gamificacion_usuario', { 
+                    p_usuario_id: currentUser.id 
+                });
+                
+                if (error) {
+                    console.error('Error cargando gamificación:', error);
+                    // Usar datos del perfil como fallback
+                    data = buildFallbackGamificationData();
+                }
+                
+                gamificationData = data;
+                renderGamificationUI();
+                
+                // Cargar badges disponibles
+                await loadAllBadges();
+                
+                // Cargar ranking
+                await loadRanking();
+                
+                // Cargar challenges
+                await loadChallenges();
+                
+                // Cargar recompensas pendientes
+                await loadPendingRewards();
+                
+            } catch (e) {
+                console.error('Error en gamificación:', e);
+            }
+        }
+
+        function buildFallbackGamificationData() {
+            var p = currentUser.perfil || {};
+            return {
+                xp_total: p.xp || 0,
+                xp_rolling: p.xp_rolling || p.xp || 0,
+                nivel: p.nivel || 1,
+                titulo: p.titulo || 'Canterano',
+                nivel_info: { xp_minimo: 0, xp_maximo: 199, icono: '⚽', puede_comentar: false, acceso_premium: false },
+                siguiente_nivel: { nivel: 2, titulo: 'Juvenil', xp_necesario: 200, xp_faltante: 200 - (p.xp || 0) },
+                racha: { actual: p.racha_dias || 0, maxima: p.racha_maxima || 0 },
+                estadisticas: { ejercicios_subidos: p.ejercicios_subidos || 0, likes_recibidos: p.likes_recibidos || 0 },
+                badges: [],
+                xp_por_mes: [],
+                ranking: { posicion: null, liga: 'Bronce', liga_icono: '🥉' }
+            };
+        }
+
+        function renderGamificationUI() {
+            var d = gamificationData;
+            var p = currentUser.perfil || {};
+            
+            // Header
+            document.getElementById('profileAvatar').textContent = (p.nombre || currentUser.email)[0].toUpperCase();
+            document.getElementById('profileLevelIcon').textContent = d.nivel_info?.icono || '⚽';
+            document.getElementById('profileName').textContent = p.nombre || currentUser.email.split('@')[0];
+            
+            // Plan badge
+            var planBadge = document.getElementById('profilePlanBadge');
+            if (p.plan === 'coach') {
+                planBadge.textContent = 'COACH';
+                planBadge.className = 'plan-badge coach';
+                planBadge.style.display = 'inline';
+            } else if (p.plan === 'pro') {
+                planBadge.textContent = 'PRO';
+                planBadge.className = 'plan-badge pro';
+                planBadge.style.display = 'inline';
+            } else {
+                planBadge.style.display = 'none';
+            }
+            
+            document.getElementById('profileLevelTitle').textContent = 'Nivel ' + d.nivel + ' - ' + d.titulo;
+            
+            // Liga
+            var liga = d.ranking?.liga || 'Bronce';
+            var ligaEl = document.getElementById('profileLiga');
+            ligaEl.textContent = (d.ranking?.liga_icono || '🥉') + ' ' + liga;
+            ligaEl.className = 'liga-badge ' + liga.toLowerCase();
+            
+            // Stats
+            document.getElementById('profileExercises').textContent = d.estadisticas?.ejercicios_subidos || 0;
+            document.getElementById('profileLikes').textContent = d.estadisticas?.likes_recibidos || 0;
+            document.getElementById('profileBadges').textContent = (d.badges || []).length;
+            
+            // XP Progress
+            document.getElementById('xpLevelBadge').textContent = d.nivel_info?.icono || '⚽';
+            document.getElementById('xpLevelText').textContent = 'Nivel ' + d.nivel;
+            document.getElementById('xpLevelSubtitle').textContent = d.titulo;
+            
+            var xpCurrent = d.xp_rolling || 0;
+            var xpMin = d.nivel_info?.xp_minimo || 0;
+            var xpMax = d.nivel_info?.xp_maximo || d.siguiente_nivel?.xp_necesario || 200;
+            var xpProgress = Math.min(100, ((xpCurrent - xpMin) / (xpMax - xpMin)) * 100);
+            
+            document.getElementById('xpProgressFill').style.width = xpProgress + '%';
+            document.getElementById('xpProgressText').textContent = xpCurrent + ' / ' + xpMax + ' XP';
+            
+            if (d.siguiente_nivel) {
+                document.getElementById('xpNextLevel').innerHTML = '<strong>' + d.siguiente_nivel.xp_faltante + ' XP</strong> para ' + d.siguiente_nivel.titulo;
+            } else {
+                document.getElementById('xpNextLevel').textContent = '¡Nivel máximo alcanzado!';
+            }
+            
+            // XP por mes (caducidad)
+            renderXpMonths(d.xp_por_mes || []);
+            
+            // Racha
+            document.getElementById('rachaValue').textContent = (d.racha?.actual || 0) + ' días';
+            document.getElementById('rachaMax').textContent = 'Récord: ' + (d.racha?.maxima || 0) + ' días';
+            
+            var rachaActual = d.racha?.actual || 0;
+            if (rachaActual >= 7 && rachaActual % 7 < 1) {
+                document.getElementById('rachaBonus').style.display = 'block';
+            } else {
+                document.getElementById('rachaBonus').style.display = 'none';
+            }
+            
+            // Warning de baja
+            document.getElementById('cancelWarningXp').textContent = '-' + (d.xp_total || 0) + ' XP perdidos';
+            
+            // Beneficios
+            renderBenefits(d.nivel);
+        }
+
+        function renderXpMonths(xpPorMes) {
+            var container = document.getElementById('xpMonths');
+            var months = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 
+                          'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+            
+            // Obtener últimos 3 meses
+            var now = new Date();
+            var html = '';
+            
+            for (var i = 0; i < 3; i++) {
+                var d = new Date(now.getFullYear(), now.getMonth() - i, 1);
+                var mesKey = d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0');
+                var mesNombre = months[d.getMonth()];
+                var xpMes = 0;
+                
+                // Buscar XP de este mes
+                if (xpPorMes) {
+                    var found = xpPorMes.find(function(m) { return m.mes === mesKey; });
+                    if (found) xpMes = found.xp;
+                }
+                
+                var expiring = i === 2; // El tercer mes está por expirar
+                
+                html += '<div class="xp-month-card' + (expiring ? ' expiring' : '') + '">' +
+                    '<div class="xp-month-name">' + mesNombre + '</div>' +
+                    '<div class="xp-month-value">' + formatNumber(xpMes) + '</div>' +
+                    (expiring && xpMes > 0 ? '<div class="xp-month-expiry">⚠️ Expira pronto</div>' : '') +
+                '</div>';
+            }
+            
+            container.innerHTML = html;
+        }
+
+        function renderBenefits(currentLevel) {
+            var benefits = [
+                { icon: '💬', text: 'Comentar ejercicios', level: 3 },
+                { icon: '⭐', text: 'Acceso a Ejercicios Premium', level: 4 },
+                { icon: '🏆', text: 'Foro privado de coaches', level: 5 },
+                { icon: '🗳️', text: 'Votar Ejercicio de la Semana', level: 6 },
+                { icon: '🛡️', text: 'Solicitar ser Moderador', level: 6 },
+                { icon: '👑', text: '50% descuento mensual', level: 7 }
+            ];
+            
+            var html = benefits.map(function(b) {
+                var unlocked = currentLevel >= b.level;
+                return '<div class="benefit-item">' +
+                    '<div class="benefit-icon">' + b.icon + '</div>' +
+                    '<div class="benefit-text">' + b.text + '</div>' +
+                    '<div class="benefit-status ' + (unlocked ? 'unlocked' : 'locked') + '">' +
+                        (unlocked ? '✅ Desbloqueado' : 'Nivel ' + b.level) +
+                    '</div>' +
+                '</div>';
+            }).join('');
+            
+            document.getElementById('benefitsList').innerHTML = html;
+        }
+
+        async function loadAllBadges() {
+            if (!db) return;
+            
+            var { data: badges } = await db.from('badges').select('*').order('id');
+            allBadges = badges || [];
+            
+            var userBadges = gamificationData?.badges || [];
+            var userBadgeIds = userBadges.map(function(b) { return b.id; });
+            
+            document.getElementById('badgesCount').textContent = userBadges.length;
+            document.getElementById('badgesTotal').textContent = allBadges.length;
+            
+            var html = allBadges.map(function(badge) {
+                var owned = userBadgeIds.includes(badge.id);
+                var userBadge = userBadges.find(function(b) { return b.id === badge.id; });
+                var isNew = userBadge && !userBadge.notificado;
+                
+                return '<div class="badge-item' + (!owned ? ' locked' : '') + (badge.es_raro ? ' rare' : '') + '" ' +
+                    'onclick="showBadgeDetail(\'' + badge.id + '\')" title="' + badge.descripcion + '">' +
+                    (isNew ? '<div class="badge-new"></div>' : '') +
+                    '<div class="badge-icon">' + badge.icono + '</div>' +
+                    '<div class="badge-name">' + badge.nombre + '</div>' +
+                '</div>';
+            }).join('');
+            
+            document.getElementById('badgesGrid').innerHTML = html;
+        }
+
+        function showBadgeDetail(badgeId) {
+            var badge = allBadges.find(function(b) { return b.id === badgeId; });
+            if (!badge) return;
+            
+            var userBadges = gamificationData?.badges || [];
+            var owned = userBadges.some(function(b) { return b.id === badgeId; });
+            
+            var msg = badge.icono + ' ' + badge.nombre + '\n\n' +
+                badge.descripcion + '\n\n' +
+                (owned ? '✅ Conseguido' : '🔒 Aún no conseguido') +
+                (badge.xp_bonus > 0 ? '\n+' + badge.xp_bonus + ' XP de bonus' : '') +
+                (badge.recompensa_tipo ? '\n🎁 Recompensa: ' + badge.recompensa_valor : '');
+            
+            alert(msg);
+        }
+
+        async function loadRanking() {
+            if (!db) return;
+            
+            var { data } = await db.rpc('obtener_ranking_mensual', { p_limite: 10 });
+            rankingData = data || [];
+            
+            var html = rankingData.map(function(r, i) {
+                var isMe = currentUser && r.usuario_id === currentUser.id;
+                var posClass = i === 0 ? 'gold' : (i === 1 ? 'silver' : (i === 2 ? 'bronze' : ''));
+                
+                return '<div class="ranking-item' + (isMe ? ' me' : '') + '">' +
+                    '<div class="ranking-position ' + posClass + '">' + (i + 1) + '</div>' +
+                    '<div class="ranking-avatar">' + (r.nombre || 'U')[0].toUpperCase() + '</div>' +
+                    '<div class="ranking-info">' +
+                        '<div class="ranking-name">' + (r.nombre || 'Usuario') + 
+                            (r.plan === 'coach' ? ' <span class="plan-badge coach">COACH</span>' : '') +
+                        '</div>' +
+                        '<div class="ranking-title">' + (r.titulo || 'Canterano') + '</div>' +
+                    '</div>' +
+                    '<div class="ranking-xp">' + formatNumber(r.xp_mes) + ' XP</div>' +
+                '</div>';
+            }).join('');
+            
+            if (!html) {
+                html = '<div style="padding:24px;text-align:center;color:var(--text-muted);">No hay datos de ranking aún</div>';
+            }
+            
+            document.getElementById('rankingList').innerHTML = html;
+        }
+
+        function switchRankingTab(tab) {
+            document.querySelectorAll('.ranking-tab').forEach(function(t) {
+                t.classList.remove('active');
+            });
+            event.currentTarget.classList.add('active');
+            // TODO: Implementar ranking semanal
+            if (tab === 'semanal') {
+                showToast('Ranking semanal próximamente', 'error');
+            }
+        }
+
+        async function loadChallenges() {
+            if (!db) return;
+            
+            // Obtener semana actual
+            var now = new Date();
+            var startOfYear = new Date(now.getFullYear(), 0, 1);
+            var weekNum = Math.ceil((((now - startOfYear) / 86400000) + startOfYear.getDay() + 1) / 7);
+            var semana = now.getFullYear() + '-W' + String(weekNum).padStart(2, '0');
+            
+            var { data: challenges } = await db.from('challenges')
+                .select('*')
+                .eq('semana', semana)
+                .eq('activo', true);
+            
+            if (!challenges || !challenges.length) {
+                document.getElementById('challengesList').innerHTML = 
+                    '<div style="padding:16px;text-align:center;color:var(--text-muted);">No hay challenges esta semana</div>';
+                return;
+            }
+            
+            // Obtener progreso del usuario
+            var { data: progreso } = await db.from('challenge_progreso')
+                .select('*')
+                .eq('usuario_id', currentUser.id);
+            
+            var progresoMap = {};
+            if (progreso) {
+                progreso.forEach(function(p) { progresoMap[p.challenge_id] = p; });
+            }
+            
+            var html = challenges.map(function(c) {
+                var p = progresoMap[c.id] || { progreso: 0, completado: false };
+                var percent = Math.min(100, (p.progreso / c.objetivo_cantidad) * 100);
+                var daysLeft = 7 - now.getDay();
+                
+                return '<div class="challenge-card' + (p.completado ? ' challenge-completed' : '') + '">' +
+                    '<div class="challenge-header">' +
+                        '<div class="challenge-icon">' + c.icono + '</div>' +
+                        '<div class="challenge-info">' +
+                            '<div class="challenge-title">' + c.titulo + '</div>' +
+                            '<div class="challenge-desc">' + c.descripcion + '</div>' +
+                        '</div>' +
+                        '<div class="challenge-reward">+' + c.xp_recompensa + ' XP</div>' +
+                    '</div>' +
+                    '<div class="challenge-progress">' +
+                        '<div class="challenge-progress-fill" style="width:' + percent + '%"></div>' +
+                    '</div>' +
+                    '<div class="challenge-progress-text">' +
+                        '<span>' + p.progreso + ' / ' + c.objetivo_cantidad + '</span>' +
+                        '<span>' + (p.completado ? '✅ Completado' : daysLeft + ' días restantes') + '</span>' +
+                    '</div>' +
+                '</div>';
+            }).join('');
+            
+            document.getElementById('challengesList').innerHTML = html;
+        }
+
+        async function loadPendingRewards() {
+            if (!db) return;
+            
+            var { data: rewards } = await db.from('recompensas_pendientes')
+                .select('*')
+                .eq('usuario_id', currentUser.id)
+                .eq('usado', false)
+                .order('created_at', { ascending: false });
+            
+            if (!rewards || !rewards.length) {
+                document.getElementById('rewardsSection').style.display = 'none';
+                return;
+            }
+            
+            document.getElementById('rewardsSection').style.display = 'block';
+            
+            var html = rewards.map(function(r) {
+                var icon = r.tipo === 'descuento' ? '🏷️' : '🎁';
+                var title = r.tipo === 'descuento' ? r.valor + '% de descuento' : 'Mes gratis de ' + r.valor;
+                var expiry = new Date(r.expira_en);
+                var daysLeft = Math.ceil((expiry - new Date()) / 86400000);
+                
+                return '<div class="reward-card">' +
+                    '<div class="reward-icon">' + icon + '</div>' +
+                    '<div class="reward-info">' +
+                        '<div class="reward-title">' + title + '</div>' +
+                        '<div class="reward-desc">' + r.motivo + '</div>' +
+                        '<div class="reward-expiry">Expira en ' + daysLeft + ' días</div>' +
+                    '</div>' +
+                    '<button class="reward-btn" onclick="useReward(\'' + r.id + '\')">Usar</button>' +
+                '</div>';
+            }).join('');
+            
+            document.getElementById('rewardsList').innerHTML = html;
+        }
+
+        async function useReward(rewardId) {
+            showToast('🚧 Sistema de recompensas en desarrollo', 'error');
+        }
+
+        // Actualizar racha al cargar la página
+        async function checkAndUpdateRacha() {
+            if (!currentUser || !db) return;
+            
+            try {
+                var { data, error } = await db.rpc('actualizar_racha', { p_usuario_id: currentUser.id });
+                if (data && data.xp_ganado > 0) {
+                    showToast('🔥 ¡Racha de ' + data.racha + ' días! +' + data.xp_ganado + ' XP', 'success');
+                }
+                if (data && data.badge_obtenido) {
+                    showToast('🎖️ ¡Nuevo badge desbloqueado!', 'success');
+                }
+            } catch (e) {
+                console.error('Error actualizando racha:', e);
+            }
         }
 
         // ==================== HELPERS ====================
