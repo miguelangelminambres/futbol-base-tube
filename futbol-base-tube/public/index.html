@@ -779,6 +779,70 @@
         /* Help Button flotante */
         .help-button { position: fixed; bottom: 100px; right: 24px; width: 50px; height: 50px; background: var(--dark-card); border: 1px solid var(--dark-border); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; cursor: pointer; z-index: 100; transition: all 0.3s; box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
         .help-button:hover { background: var(--primary); border-color: var(--primary); transform: scale(1.1); }
+
+        /* ==================== SECCIÓN CREADORES ==================== */
+        .creadores-section { background: linear-gradient(180deg, var(--dark) 0%, rgba(255, 0, 0, 0.03) 50%, var(--dark) 100%); padding: 80px 24px; }
+        .creadores-inner { max-width: 1100px; margin: 0 auto; }
+        
+        .creadores-header { text-align: center; margin-bottom: 48px; }
+        .creadores-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(255, 0, 0, 0.1); border: 1px solid rgba(255, 0, 0, 0.3); padding: 8px 20px; border-radius: 30px; font-size: 14px; color: #ff4444; margin-bottom: 16px; }
+        .creadores-title { font-family: 'Bebas Neue', sans-serif; font-size: 42px; margin-bottom: 16px; line-height: 1.1; }
+        .creadores-title span { color: #ff0000; }
+        .creadores-subtitle { font-size: 18px; color: var(--text-muted); max-width: 700px; margin: 0 auto; line-height: 1.6; }
+        
+        .creadores-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; margin-bottom: 48px; }
+        
+        .creadores-benefits { display: flex; flex-direction: column; gap: 20px; }
+        .creador-benefit { display: flex; gap: 16px; padding: 20px; background: var(--dark-card); border-radius: 16px; border: 1px solid var(--dark-border); transition: all 0.3s; }
+        .creador-benefit:hover { border-color: var(--primary); transform: translateX(8px); }
+        .creador-benefit-icon { width: 56px; height: 56px; background: linear-gradient(135deg, rgba(255, 0, 0, 0.2), rgba(255, 100, 100, 0.1)); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 28px; flex-shrink: 0; }
+        .creador-benefit-content { flex: 1; }
+        .creador-benefit-title { font-weight: 700; font-size: 16px; margin-bottom: 6px; }
+        .creador-benefit-text { font-size: 14px; color: var(--text-muted); line-height: 1.5; }
+        
+        .creadores-visual { background: var(--dark-card); border-radius: 24px; padding: 32px; border: 1px solid var(--dark-border); }
+        .creadores-flow { display: flex; flex-direction: column; gap: 16px; }
+        .creadores-flow-item { display: flex; align-items: center; gap: 16px; padding: 16px; background: var(--dark); border-radius: 12px; }
+        .creadores-flow-icon { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px; }
+        .creadores-flow-icon.youtube { background: linear-gradient(135deg, #ff0000, #cc0000); }
+        .creadores-flow-icon.tube { background: var(--gradient-primary); }
+        .creadores-flow-icon.users { background: linear-gradient(135deg, #3b82f6, #8b5cf6); }
+        .creadores-flow-text { flex: 1; }
+        .creadores-flow-title { font-weight: 600; font-size: 14px; }
+        .creadores-flow-desc { font-size: 12px; color: var(--text-muted); }
+        .creadores-flow-arrow { font-size: 24px; color: var(--primary); text-align: center; }
+        
+        .creadores-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 24px; padding-top: 24px; border-top: 1px solid var(--dark-border); }
+        .creador-stat { text-align: center; }
+        .creador-stat-value { font-family: 'Bebas Neue', sans-serif; font-size: 28px; color: var(--primary); }
+        .creador-stat-label { font-size: 11px; color: var(--text-muted); }
+        
+        .creadores-comparison { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 48px; }
+        .comparison-card { background: var(--dark-card); border-radius: 20px; padding: 28px; border: 1px solid var(--dark-border); }
+        .comparison-card.highlight { background: linear-gradient(135deg, rgba(13, 159, 79, 0.1), rgba(245, 197, 24, 0.05)); border-color: var(--primary); }
+        .comparison-header { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+        .comparison-icon { font-size: 32px; }
+        .comparison-title { font-family: 'Bebas Neue', sans-serif; font-size: 22px; }
+        .comparison-list { display: flex; flex-direction: column; gap: 12px; }
+        .comparison-item { display: flex; align-items: center; gap: 10px; font-size: 14px; }
+        .comparison-item.yes { color: var(--primary); }
+        .comparison-item.no { color: var(--text-muted); }
+        
+        .creadores-cta { text-align: center; padding: 40px; background: linear-gradient(135deg, rgba(255, 0, 0, 0.1), rgba(13, 159, 79, 0.1)); border-radius: 24px; border: 1px solid rgba(255, 0, 0, 0.2); }
+        .creadores-cta-title { font-family: 'Bebas Neue', sans-serif; font-size: 32px; margin-bottom: 12px; }
+        .creadores-cta-text { font-size: 16px; color: var(--text-muted); margin-bottom: 24px; max-width: 600px; margin-left: auto; margin-right: auto; }
+        .creadores-cta-buttons { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+        .btn-youtube { background: #ff0000; color: white; }
+        .btn-youtube:hover { background: #cc0000; }
+        
+        .creadores-quote { text-align: center; margin-top: 48px; padding: 32px; background: var(--dark-card); border-radius: 20px; border-left: 4px solid var(--primary); }
+        .creadores-quote-text { font-size: 20px; font-style: italic; color: var(--text); margin-bottom: 16px; line-height: 1.5; }
+        .creadores-quote-author { font-size: 14px; color: var(--text-muted); }
+
+        @media (max-width: 900px) {
+            .creadores-grid { grid-template-columns: 1fr; }
+            .creadores-comparison { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 <body>
@@ -791,6 +855,7 @@
             <nav class="nav">
                 <span class="nav-link active" onclick="scrollToSection('hero')">Inicio</span>
                 <span class="nav-link" onclick="scrollToSection('biblioteca')">Biblioteca</span>
+                <span class="nav-link" onclick="scrollToSection('creadores')">Creadores</span>
                 <span class="nav-link" onclick="showMySessions()">Mis Sesiones</span>
                 <span class="nav-link">Planes</span>
             </nav>
@@ -914,6 +979,139 @@
                     <button class="btn btn-primary" onclick="showAuthModal('register')">🎮 Empezar a Competir</button>
                     <button class="btn btn-ghost" onclick="scrollToSection('planes')">Ver Planes</button>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Para Creadores de Contenido -->
+    <section class="creadores-section" id="creadores">
+        <div class="creadores-inner">
+            <div class="creadores-header">
+                <div class="creadores-badge">📺 Para Creadores de YouTube, Twitter e Instagram</div>
+                <h2 class="creadores-title">Democratizamos el <span>Fútbol</span></h2>
+                <p class="creadores-subtitle">No somos tu competencia, somos tu aliado. Te ayudamos a llegar a miles de entrenadores que buscan contenido de calidad como el tuyo.</p>
+            </div>
+            
+            <div class="creadores-grid">
+                <div class="creadores-benefits">
+                    <div class="creador-benefit">
+                        <div class="creador-benefit-icon">👀</div>
+                        <div class="creador-benefit-content">
+                            <div class="creador-benefit-title">Más visibilidad para tu canal</div>
+                            <div class="creador-benefit-text">Tus videos se muestran a una audiencia cualificada: entrenadores de fútbol que buscan exactamente lo que tú creas.</div>
+                        </div>
+                    </div>
+                    <div class="creador-benefit">
+                        <div class="creador-benefit-icon">💰</div>
+                        <div class="creador-benefit-content">
+                            <div class="creador-benefit-title">Tú monetizas, nosotros no</div>
+                            <div class="creador-benefit-text">Cada visita va directa a YouTube/Twitter. Tus anuncios, tus ingresos. No nos quedamos con nada de tus visualizaciones.</div>
+                        </div>
+                    </div>
+                    <div class="creador-benefit">
+                        <div class="creador-benefit-icon">🎯</div>
+                        <div class="creador-benefit-content">
+                            <div class="creador-benefit-title">Audiencia segmentada</div>
+                            <div class="creador-benefit-text">No son views aleatorios. Son entrenadores reales buscando ejercicios por categoría, edad, dificultad... tu público ideal.</div>
+                        </div>
+                    </div>
+                    <div class="creador-benefit">
+                        <div class="creador-benefit-icon">🔗</div>
+                        <div class="creador-benefit-content">
+                            <div class="creador-benefit-title">Enlace directo a tu canal</div>
+                            <div class="creador-benefit-text">Tu nombre, tu canal y tu marca siempre visibles. Generamos suscriptores para ti, no para nosotros.</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="creadores-visual">
+                    <div class="creadores-flow">
+                        <div class="creadores-flow-item">
+                            <div class="creadores-flow-icon youtube">▶</div>
+                            <div class="creadores-flow-text">
+                                <div class="creadores-flow-title">Tu video en YouTube</div>
+                                <div class="creadores-flow-desc">El contenido original permanece en tu canal</div>
+                            </div>
+                        </div>
+                        <div class="creadores-flow-arrow">↓</div>
+                        <div class="creadores-flow-item">
+                            <div class="creadores-flow-icon tube">⚽</div>
+                            <div class="creadores-flow-text">
+                                <div class="creadores-flow-title">Lo organizamos y etiquetamos</div>
+                                <div class="creadores-flow-desc">Categoría, dificultad, edad, entrenador...</div>
+                            </div>
+                        </div>
+                        <div class="creadores-flow-arrow">↓</div>
+                        <div class="creadores-flow-item">
+                            <div class="creadores-flow-icon users">👥</div>
+                            <div class="creadores-flow-text">
+                                <div class="creadores-flow-title">Miles de entrenadores lo descubren</div>
+                                <div class="creadores-flow-desc">Y van a TU canal a ver el video completo</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="creadores-stats">
+                        <div class="creador-stat">
+                            <div class="creador-stat-value">+2K</div>
+                            <div class="creador-stat-label">Entrenadores activos</div>
+                        </div>
+                        <div class="creador-stat">
+                            <div class="creador-stat-value">100%</div>
+                            <div class="creador-stat-label">Tráfico a tu canal</div>
+                        </div>
+                        <div class="creador-stat">
+                            <div class="creador-stat-value">0€</div>
+                            <div class="creador-stat-label">Te cuesta a ti</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Comparativa -->
+            <div class="creadores-comparison">
+                <div class="comparison-card">
+                    <div class="comparison-header">
+                        <div class="comparison-icon">❌</div>
+                        <div class="comparison-title">Lo que NO hacemos</div>
+                    </div>
+                    <div class="comparison-list">
+                        <div class="comparison-item no">❌ NO resubimos tu contenido</div>
+                        <div class="comparison-item no">❌ NO nos quedamos con tus ingresos</div>
+                        <div class="comparison-item no">❌ NO ocultamos tu marca o canal</div>
+                        <div class="comparison-item no">❌ NO competimos contigo por views</div>
+                        <div class="comparison-item no">❌ NO monetizamos con publicidad</div>
+                    </div>
+                </div>
+                <div class="comparison-card highlight">
+                    <div class="comparison-header">
+                        <div class="comparison-icon">✅</div>
+                        <div class="comparison-title">Lo que SÍ hacemos</div>
+                    </div>
+                    <div class="comparison-list">
+                        <div class="comparison-item yes">✅ Organizamos y etiquetamos tu contenido</div>
+                        <div class="comparison-item yes">✅ Te conectamos con tu público ideal</div>
+                        <div class="comparison-item yes">✅ Mostramos tu nombre y canal siempre</div>
+                        <div class="comparison-item yes">✅ Enviamos tráfico cualificado a YouTube</div>
+                        <div class="comparison-item yes">✅ Monetizamos solo herramientas (filtros, pizarra)</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- CTA para creadores -->
+            <div class="creadores-cta">
+                <h3 class="creadores-cta-title">🚀 ¿Tienes un canal de fútbol?</h3>
+                <p class="creadores-cta-text">Sube tus videos a nuestra plataforma y deja que miles de entrenadores descubran tu contenido. Es gratis y tú ganas.</p>
+                <div class="creadores-cta-buttons">
+                    <button class="btn btn-youtube" onclick="showUploadModal()">📤 Subir mis Videos</button>
+                    <button class="btn btn-ghost" onclick="showAuthModal('register')">Crear Cuenta Gratis</button>
+                </div>
+            </div>
+            
+            <!-- Quote -->
+            <div class="creadores-quote">
+                <p class="creadores-quote-text">"El conocimiento del fútbol no debería estar bloqueado detrás de muros de pago. Queremos que cada entrenador de barrio tenga acceso a las mismas ideas que los profesionales."</p>
+                <p class="creadores-quote-author">— La filosofía de Futbol Base TUBE</p>
             </div>
         </div>
     </section>
