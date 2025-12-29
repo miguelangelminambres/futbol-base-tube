@@ -222,8 +222,16 @@
         .modal-content { background: var(--dark-card); border-radius: 24px; max-width: 900px; width: 100%; max-height: 90vh; overflow-y: auto; position: relative; }
         .modal-close { position: absolute; top: 16px; right: 16px; width: 44px; height: 44px; background: rgba(255,255,255,0.1); border: none; border-radius: 50%; color: white; font-size: 24px; cursor: pointer; z-index: 10; }
         .modal-close:hover { background: rgba(255,255,255,0.2); }
-        .modal-video { aspect-ratio: 16/9; background: black; }
+        .modal-video { aspect-ratio: 16/9; background: #0a0a15; border-radius: 12px; overflow: hidden; position: relative; }
         .modal-video iframe { width: 100%; height: 100%; border: none; }
+        .modal-thumb-link { display: block; width: 100%; height: 100%; position: relative; }
+        .modal-thumb-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s, filter 0.3s; }
+        .modal-thumb-link:hover .modal-thumb-img { transform: scale(1.02); filter: brightness(0.8); }
+        .modal-play-btn { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 80px; height: 80px; background: rgba(255, 0, 0, 0.9); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 32px; color: white; transition: transform 0.3s, background 0.3s; }
+        .modal-thumb-link:hover .modal-play-btn { transform: translate(-50%, -50%) scale(1.1); background: #ff0000; }
+        .modal-video-stats { display: flex; align-items: center; gap: 16px; padding: 12px 0; flex-wrap: wrap; }
+        .modal-stat { display: flex; align-items: center; gap: 6px; font-size: 14px; color: var(--text-muted); }
+        .modal-stat:first-child { color: var(--text); font-weight: 600; }
         .modal-body { padding: 24px; }
         .modal-title { font-size: 24px; font-weight: 700; margin-bottom: 16px; }
         .modal-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
@@ -623,6 +631,7 @@
             <button class="modal-close" onclick="closeModal()">×</button>
             <div class="modal-video" id="modalVideo"></div>
             <div class="modal-body">
+                <div id="modalVideoStats"></div>
                 <h2 class="modal-title" id="modalTitle"></h2>
                 <div class="modal-tags" id="modalTags"></div>
                 <div class="modal-info-grid" id="modalInfo"></div>
@@ -1423,7 +1432,14 @@
             currentExercise = exercises.find(function(e) { return e.id === id; });
             if (!currentExercise) return;
             
-            // Verificar límite de ejercicios para usuarios Free
+            // Anónimo → debe registrarse
+            if (!currentUser) {
+                showAuthModal('register');
+                showToast('📝 Regístrate gratis para ver ejercicios', 'error');
+                return;
+            }
+            
+            // Free → verificar límite mensual
             if (!canViewExercise()) {
                 showUpgradeModal('limite');
                 return;
@@ -1432,15 +1448,19 @@
             var ex = currentExercise;
             document.getElementById('modalTitle').textContent = ex.titulo_ejercicio || ex.titulo_video;
             
-            var videoHtml = '';
-            if (ex.source === 'youtube' && ex.video_id) {
-                videoHtml = '<iframe src="https://www.youtube.com/embed/' + ex.video_id + '?autoplay=1" allowfullscreen></iframe>';
-            } else if (ex.source === 'twitter' && ex.tweet_embed_html) {
-                videoHtml = '<div style="padding:20px;background:#15202b;">' + ex.tweet_embed_html + '</div>';
-            } else {
-                videoHtml = '<div style="display:flex;align-items:center;justify-content:center;height:100%;"><a href="' + ex.video_url + '" target="_blank" class="btn btn-primary">▶ Ver Video</a></div>';
-            }
+            var videoHtml = '<a href="' + (ex.video_url || '#') + '" target="_blank" class="modal-thumb-link">' +
+                '<img src="' + (ex.thumbnail_url || '') + '" alt="' + (ex.titulo_ejercicio || '') + '" class="modal-thumb-img">' +
+                '<div class="modal-play-btn">▶</div>' +
+            '</a>';
             document.getElementById('modalVideo').innerHTML = videoHtml;
+            
+            // Info del video (canal, vistas, likes)
+            var videoStats = '<div class="modal-video-stats">';
+            if (ex.canal) videoStats += '<span class="modal-stat">📺 ' + ex.canal + '</span>';
+            if (ex.vistas) videoStats += '<span class="modal-stat">👁️ ' + formatNumber(ex.vistas) + ' vistas</span>';
+            if (ex.likes) videoStats += '<span class="modal-stat">❤️ ' + formatNumber(ex.likes) + '</span>';
+            videoStats += '</div>';
+            document.getElementById('modalVideoStats').innerHTML = videoStats;
             
             var tags = (ex.categorias || []).map(function(c) { return '<span class="modal-tag">' + c + '</span>'; }).join('');
             if (ex.dificultad) tags += '<span class="modal-tag dif">Dificultad ' + ex.dificultad + '</span>';
@@ -1635,10 +1655,7 @@
 
         function showUploadModal() {
             if (!currentUser) { showAuthModal('login'); return; }
-            if (currentUser.perfil && currentUser.perfil.plan !== 'coach' && currentUser.perfil.plan !== 'pro') {
-                showToast('Necesitas plan Pro o Coach para subir ejercicios', 'error');
-                return;
-            }
+            // Todos pueden subir, Free no gana XP (se muestra después)
             resetUploadForm();
             document.getElementById('uploadOverlay').classList.add('active');
         }
@@ -2112,6 +2129,13 @@
         // ==================== HELPERS ====================
         function scrollToSection(id) { document.getElementById(id).scrollIntoView({ behavior: 'smooth' }); }
         function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
+        
+        function formatNumber(num) {
+            if (!num) return '0';
+            if (num >= 1000000) return (num / 1000000).toFixed(1) + 'M';
+            if (num >= 1000) return (num / 1000).toFixed(1) + 'K';
+            return num.toString();
+        }
 
         function showToast(msg, type) {
             var t = document.getElementById('toast');
