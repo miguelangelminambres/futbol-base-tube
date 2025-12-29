@@ -562,6 +562,92 @@
 .upload-footer { padding: 20px 24px; border-top: 1px solid var(--dark-border); display: flex; gap: 12px; }
 .upload-footer .btn { flex: 1; justify-content: center; }
 .upload-footer .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+/* Upload Modal - New Design */
+.upload-modal { max-width: 650px; padding: 0; max-height: 90vh; display: flex; flex-direction: column; }
+.upload-header { padding: 24px; border-bottom: 1px solid var(--dark-border); }
+.upload-header h2 { font-family: 'Bebas Neue', sans-serif; font-size: 28px; margin-bottom: 4px; }
+.upload-header p { color: var(--text-muted); font-size: 14px; }
+.upload-body { padding: 24px; overflow-y: auto; flex: 1; }
+.upload-section { margin-bottom: 28px; }
+.upload-section-title { font-size: 14px; font-weight: 700; color: var(--primary); margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
+.upload-section-title .upload-hint { font-weight: 400; color: var(--text-muted); font-size: 12px; }
+.upload-bonus { color: var(--accent); font-weight: 600; font-size: 12px; }
+
+/* Source Tabs */
+.upload-source-tabs { display: flex; gap: 12px; margin-bottom: 16px; }
+.upload-source-tab { flex: 1; padding: 14px; background: var(--dark); border: 2px solid var(--dark-border); border-radius: 12px; color: var(--text-muted); font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+.upload-source-tab:hover { border-color: var(--text-muted); }
+.upload-source-tab.active { border-color: var(--primary); background: rgba(13, 159, 79, 0.1); color: var(--primary); }
+
+/* URL Input */
+.upload-url-input { display: flex; gap: 12px; }
+.upload-url-input input { flex: 1; }
+.upload-status { margin-top: 10px; font-size: 13px; min-height: 20px; }
+.upload-status.loading { color: var(--accent); }
+.upload-status.success { color: var(--primary); }
+.upload-status.error { color: var(--danger); }
+
+/* Image Upload */
+.upload-image-drop { border: 2px dashed var(--dark-border); border-radius: 12px; padding: 32px; text-align: center; cursor: pointer; transition: all 0.3s; background: var(--dark); }
+.upload-image-drop:hover { border-color: var(--primary); background: rgba(13, 159, 79, 0.05); }
+.upload-image-drop.dragover { border-color: var(--primary); background: rgba(13, 159, 79, 0.1); }
+.upload-image-placeholder { display: flex; flex-direction: column; align-items: center; gap: 8px; color: var(--text-muted); }
+.upload-image-icon { font-size: 40px; }
+.upload-image-hint { font-size: 12px; opacity: 0.7; }
+.upload-image-preview { max-width: 100%; max-height: 200px; border-radius: 8px; object-fit: contain; }
+
+/* Extracted Preview */
+.upload-preview { display: flex; gap: 16px; background: var(--dark); border-radius: 12px; padding: 16px; }
+.upload-preview-thumb { width: 160px; height: 90px; border-radius: 8px; object-fit: cover; background: var(--dark-border); flex-shrink: 0; }
+.upload-preview-info { flex: 1; display: flex; flex-direction: column; justify-content: center; min-width: 0; }
+.upload-preview-title { font-weight: 700; font-size: 13px; margin-bottom: 6px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.upload-preview-channel { font-size: 12px; color: var(--primary); margin-bottom: 8px; }
+.upload-preview-stats { display: flex; flex-wrap: wrap; gap: 10px; font-size: 11px; color: var(--text-muted); }
+
+/* Credit Notice */
+.upload-credit-notice { display: flex; align-items: center; gap: 10px; background: rgba(13, 159, 79, 0.1); border: 1px solid rgba(13, 159, 79, 0.3); border-radius: 10px; padding: 12px 16px; margin-top: 16px; font-size: 12px; color: var(--primary); }
+.upload-credit-notice strong { color: var(--text); }
+
+/* Familia Grid */
+.upload-familia-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+.upload-familia-option { display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 20px 16px; background: var(--dark); border: 2px solid var(--dark-border); border-radius: 14px; cursor: pointer; transition: all 0.2s; text-align: center; }
+.upload-familia-option:hover { border-color: var(--text-muted); transform: translateY(-2px); }
+.upload-familia-option.selected { border-color: var(--primary); background: rgba(13, 159, 79, 0.1); }
+.upload-familia-icon { font-size: 28px; }
+.upload-familia-name { font-size: 13px; font-weight: 600; }
+.upload-familia-extra { margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--dark-border); }
+
+/* Temas Grid */
+.upload-temas-grid { display: flex; flex-wrap: wrap; gap: 8px; }
+.upload-tema-chip { padding: 8px 14px; background: var(--dark); border: 2px solid var(--dark-border); border-radius: 20px; font-size: 12px; cursor: pointer; transition: all 0.2s; white-space: nowrap; }
+.upload-tema-chip:hover { border-color: var(--text-muted); }
+.upload-tema-chip.selected { border-color: var(--primary); background: rgba(13, 159, 79, 0.15); color: var(--primary); }
+
+/* Form Fields */
+.upload-field { margin-bottom: 16px; }
+.upload-field label { display: block; font-size: 13px; font-weight: 600; color: var(--text-muted); margin-bottom: 8px; }
+.upload-field input, .upload-field select, .upload-field textarea { width: 100%; padding: 12px 14px; background: var(--dark); border: 1px solid var(--dark-border); border-radius: 10px; color: var(--text); font-size: 14px; font-family: inherit; }
+.upload-field input:focus, .upload-field select:focus, .upload-field textarea:focus { outline: none; border-color: var(--primary); }
+.upload-field textarea { resize: vertical; min-height: 80px; }
+.upload-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.upload-grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+
+/* Pizarra */
+.upload-pizarra { background: linear-gradient(135deg, rgba(245, 197, 24, 0.1) 0%, rgba(245, 197, 24, 0.05) 100%); border: 2px dashed var(--accent); border-radius: 12px; padding: 24px; text-align: center; cursor: pointer; transition: all 0.3s; }
+.upload-pizarra:hover { background: rgba(245, 197, 24, 0.15); transform: translateY(-2px); }
+.upload-pizarra.has-image { border-style: solid; border-color: var(--primary); }
+.upload-pizarra-icon { font-size: 32px; margin-bottom: 8px; }
+.upload-pizarra-text { font-size: 14px; color: var(--accent); font-weight: 600; }
+.upload-pizarra-hint { font-size: 12px; color: var(--text-muted); margin-top: 4px; }
+
+/* XP Bonus */
+.upload-xp-bonus { background: rgba(245, 197, 24, 0.1); padding: 14px 18px; border-radius: 12px; font-size: 14px; color: var(--accent); display: flex; align-items: center; gap: 10px; margin-top: 16px; }
+.upload-xp-bonus strong { color: var(--text); }
+
+/* Footer */
+.upload-footer { padding: 20px 24px; border-top: 1px solid var(--dark-border); display: flex; gap: 12px; }
+.upload-footer .btn { flex: 1; justify-content: center; }
+.upload-footer .btn:disabled { opacity: 0.5; cursor: not-allowed; }
   /* Responsive */
 @media (max-width: 1024px) { 
     .biblioteca { grid-template-columns: 1fr; } 
@@ -578,6 +664,19 @@
     /* Notifications Mobile */
     .notif-dropdown { width: 280px; right: -60px; }
     .notif-item { padding: 12px 14px; }
+    /* Upload Modal Mobile */
+    .upload-modal { max-width: 100%; max-height: 100vh; border-radius: 0; }
+    .upload-header { padding: 16px; }
+    .upload-header h2 { font-size: 22px; }
+    .upload-body { padding: 16px; }
+    .upload-source-tabs { flex-direction: column; }
+    .upload-preview { flex-direction: column; }
+    .upload-preview-thumb { width: 100%; height: 140px; }
+    .upload-familia-grid { grid-template-columns: 1fr; }
+    .upload-grid { grid-template-columns: 1fr; }
+    .upload-grid-3 { grid-template-columns: 1fr 1fr; }
+    .upload-url-input { flex-direction: column; }
+    .upload-footer { padding: 16px; flex-direction: column; }
     /* Upload Modal Mobile */
     .upload-modal { max-width: 100%; }
     .upload-header { padding: 16px; }
@@ -1152,24 +1251,45 @@
         
         <div class="upload-header">
             <h2>📤 SUBIR EJERCICIO</h2>
-            <p>Comparte un video de entrenamiento con la comunidad</p>
+            <p>Comparte contenido de entrenamiento con la comunidad</p>
         </div>
         
         <div class="upload-body">
-            <!-- URL Section -->
+            
+            <!-- PASO 1: Fuente del contenido -->
             <div class="upload-section">
-                <div class="upload-section-title">🔗 URL del Video</div>
-                <div class="upload-url-input">
-                    <input type="text" class="auth-input" id="uploadUrl" placeholder="https://youtube.com/watch?v=... o twitter.com/...">
-                    <button class="btn btn-primary" onclick="extractVideoInfo()">Extraer</button>
+                <div class="upload-section-title">1️⃣ Fuente del Contenido *</div>
+                <div class="upload-source-tabs">
+                    <button class="upload-source-tab active" onclick="setUploadSource('video')">📺 URL de Video</button>
+                    <button class="upload-source-tab" onclick="setUploadSource('imagen')">🖼️ Subir Imagen</button>
                 </div>
-                <div class="upload-status" id="uploadStatus"></div>
+                
+                <!-- Opción Video -->
+                <div class="upload-source-content" id="uploadSourceVideo">
+                    <div class="upload-url-input">
+                        <input type="text" class="auth-input" id="uploadUrl" placeholder="https://youtube.com/watch?v=... o twitter.com/...">
+                        <button class="btn btn-primary" onclick="extractVideoInfo()">Extraer</button>
+                    </div>
+                    <div class="upload-status" id="uploadStatus"></div>
+                </div>
+                
+                <!-- Opción Imagen -->
+                <div class="upload-source-content" id="uploadSourceImagen" style="display:none;">
+                    <div class="upload-image-drop" id="uploadImageDrop" onclick="document.getElementById('uploadImageInput').click()">
+                        <input type="file" id="uploadImageInput" accept="image/*" style="display:none;" onchange="handleImageUpload(event)">
+                        <div class="upload-image-placeholder" id="uploadImagePlaceholder">
+                            <span class="upload-image-icon">📷</span>
+                            <span>Haz clic o arrastra una imagen</span>
+                            <span class="upload-image-hint">JPG, PNG - Máx 5MB</span>
+                        </div>
+                        <img id="uploadImagePreview" class="upload-image-preview" style="display:none;">
+                    </div>
+                </div>
             </div>
             
-            <!-- Extracted Info (Read Only) -->
+            <!-- Datos extraídos del video (solo si es video) -->
             <div class="upload-section upload-extracted" id="uploadExtracted" style="display:none;">
                 <div class="upload-section-title">📺 Datos del Video (automático)</div>
-                
                 <div class="upload-preview">
                     <img class="upload-preview-thumb" id="uploadThumb" src="">
                     <div class="upload-preview-info">
@@ -1183,27 +1303,174 @@
                         </div>
                     </div>
                 </div>
-                
                 <div class="upload-credit-notice">
                     <span>✅</span>
                     <span>El contenido será atribuido a <strong id="uploadCreditChannel">-</strong> con enlace al video original</span>
                 </div>
             </div>
             
-            <!-- User Classification -->
-            <div class="upload-section upload-classify" id="uploadClassify" style="display:none;">
-                <div class="upload-section-title">🏷️ Tu Clasificación</div>
-                
-                <div class="upload-field">
-                    <label>Título del ejercicio * <span class="upload-hint">(describe qué se entrena)</span></label>
-                    <input type="text" id="uploadTitulo" placeholder="Ej: Rondo 4x4+3 con transiciones de Guardiola">
+            <!-- PASO 2: Familia (obligatorio) -->
+            <div class="upload-section" id="uploadFamiliaSection" style="display:none;">
+                <div class="upload-section-title">2️⃣ Familia del Contenido *</div>
+                <div class="upload-familia-grid">
+                    <div class="upload-familia-option" onclick="selectFamilia('futbol_base')">
+                        <span class="upload-familia-icon">⚽</span>
+                        <span class="upload-familia-name">Fútbol Base</span>
+                    </div>
+                    <div class="upload-familia-option" onclick="selectFamilia('profesional')">
+                        <span class="upload-familia-icon">🏟️</span>
+                        <span class="upload-familia-name">Equipo/Entrenador Profesional</span>
+                    </div>
+                    <div class="upload-familia-option" onclick="selectFamilia('entrevista')">
+                        <span class="upload-familia-icon">🎤</span>
+                        <span class="upload-familia-name">Entrevista</span>
+                    </div>
+                    <div class="upload-familia-option" onclick="selectFamilia('analisis')">
+                        <span class="upload-familia-icon">📊</span>
+                        <span class="upload-familia-name">Análisis Táctico</span>
+                    </div>
                 </div>
                 
-                <div class="upload-field">
-                    <label>Categorías * (selecciona 1-3)</label>
-                    <div class="categories-select" id="uploadCategorias"></div>
+                <!-- Campos extra según familia -->
+                <div class="upload-familia-extra" id="familiaExtraProfesional" style="display:none;">
+                    <div class="upload-grid">
+                        <div class="upload-field">
+                            <label>Entrenador</label>
+                            <select id="uploadEntrenador">
+                                <option value="">Seleccionar...</option>
+                                <option value="Pep Guardiola">Pep Guardiola</option>
+                                <option value="Jürgen Klopp">Jürgen Klopp</option>
+                                <option value="Carlo Ancelotti">Carlo Ancelotti</option>
+                                <option value="Diego Simeone">Diego Simeone</option>
+                                <option value="Xavi Hernández">Xavi Hernández</option>
+                                <option value="Mikel Arteta">Mikel Arteta</option>
+                                <option value="Luis Enrique">Luis Enrique</option>
+                                <option value="Unai Emery">Unai Emery</option>
+                                <option value="Julian Nagelsmann">Julian Nagelsmann</option>
+                                <option value="Thomas Tuchel">Thomas Tuchel</option>
+                                <option value="Hansi Flick">Hansi Flick</option>
+                                <option value="Zinedine Zidane">Zinedine Zidane</option>
+                                <option value="Mauricio Pochettino">Mauricio Pochettino</option>
+                                <option value="Erik ten Hag">Erik ten Hag</option>
+                                <option value="Roberto De Zerbi">Roberto De Zerbi</option>
+                                <option value="Xabi Alonso">Xabi Alonso</option>
+                                <option value="Marcelo Bielsa">Marcelo Bielsa</option>
+                                <option value="Arne Slot">Arne Slot</option>
+                                <option value="Ruben Amorim">Ruben Amorim</option>
+                                <option value="Vincent Kompany">Vincent Kompany</option>
+                                <option value="_otro">Otro...</option>
+                            </select>
+                        </div>
+                        <div class="upload-field">
+                            <label>Equipo</label>
+                            <select id="uploadEquipo">
+                                <option value="">Seleccionar...</option>
+                                <optgroup label="🇪🇸 España">
+                                    <option value="FC Barcelona">FC Barcelona</option>
+                                    <option value="Real Madrid">Real Madrid</option>
+                                    <option value="Atlético Madrid">Atlético Madrid</option>
+                                    <option value="Athletic Bilbao">Athletic Bilbao</option>
+                                    <option value="Real Sociedad">Real Sociedad</option>
+                                    <option value="Sevilla FC">Sevilla FC</option>
+                                    <option value="Valencia CF">Valencia CF</option>
+                                    <option value="Villarreal CF">Villarreal CF</option>
+                                    <option value="Real Betis">Real Betis</option>
+                                </optgroup>
+                                <optgroup label="🏴󠁧󠁢󠁥󠁮󠁧󠁿 Inglaterra">
+                                    <option value="Manchester City">Manchester City</option>
+                                    <option value="Liverpool">Liverpool</option>
+                                    <option value="Arsenal">Arsenal</option>
+                                    <option value="Chelsea">Chelsea</option>
+                                    <option value="Manchester United">Manchester United</option>
+                                    <option value="Tottenham">Tottenham</option>
+                                    <option value="Aston Villa">Aston Villa</option>
+                                    <option value="Brighton">Brighton</option>
+                                    <option value="Newcastle">Newcastle</option>
+                                </optgroup>
+                                <optgroup label="🇩🇪 Alemania">
+                                    <option value="Bayern Munich">Bayern Munich</option>
+                                    <option value="Borussia Dortmund">Borussia Dortmund</option>
+                                    <option value="RB Leipzig">RB Leipzig</option>
+                                    <option value="Bayer Leverkusen">Bayer Leverkusen</option>
+                                </optgroup>
+                                <optgroup label="🇮🇹 Italia">
+                                    <option value="Juventus">Juventus</option>
+                                    <option value="AC Milan">AC Milan</option>
+                                    <option value="Inter Milan">Inter Milan</option>
+                                    <option value="Napoli">Napoli</option>
+                                    <option value="AS Roma">AS Roma</option>
+                                    <option value="Atalanta">Atalanta</option>
+                                </optgroup>
+                                <optgroup label="🇫🇷 Francia">
+                                    <option value="PSG">PSG</option>
+                                    <option value="Olympique Lyon">Olympique Lyon</option>
+                                    <option value="Olympique Marsella">Olympique Marsella</option>
+                                    <option value="AS Monaco">AS Monaco</option>
+                                </optgroup>
+                                <optgroup label="🌍 Selecciones">
+                                    <option value="España">España</option>
+                                    <option value="Alemania">Alemania</option>
+                                    <option value="Francia">Francia</option>
+                                    <option value="Inglaterra">Inglaterra</option>
+                                    <option value="Italia">Italia</option>
+                                    <option value="Argentina">Argentina</option>
+                                    <option value="Brasil">Brasil</option>
+                                    <option value="Portugal">Portugal</option>
+                                </optgroup>
+                                <option value="_otro">Otro...</option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
                 
+                <div class="upload-familia-extra" id="familiaExtraAnalisis" style="display:none;">
+                    <div class="upload-field">
+                        <label>Sistema de Juego</label>
+                        <select id="uploadSistema">
+                            <option value="">Seleccionar sistema...</option>
+                            <optgroup label="4 Defensas">
+                                <option value="4-4-2">4-4-2</option>
+                                <option value="4-4-2 Rombo">4-4-2 Rombo</option>
+                                <option value="4-3-3">4-3-3</option>
+                                <option value="4-2-3-1">4-2-3-1</option>
+                                <option value="4-1-4-1">4-1-4-1</option>
+                                <option value="4-3-1-2">4-3-1-2</option>
+                                <option value="4-1-2-1-2">4-1-2-1-2</option>
+                            </optgroup>
+                            <optgroup label="3 Defensas">
+                                <option value="3-5-2">3-5-2</option>
+                                <option value="3-4-3">3-4-3</option>
+                                <option value="3-4-2-1">3-4-2-1</option>
+                                <option value="3-1-4-2">3-1-4-2</option>
+                            </optgroup>
+                            <optgroup label="5 Defensas">
+                                <option value="5-3-2">5-3-2</option>
+                                <option value="5-4-1">5-4-1</option>
+                                <option value="5-2-3">5-2-3</option>
+                            </optgroup>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- PASO 3: Descripción del usuario -->
+            <div class="upload-section" id="uploadDescSection" style="display:none;">
+                <div class="upload-section-title">3️⃣ Tu Aportación</div>
+                <div class="upload-field">
+                    <label>Describe el ejercicio con tus palabras <span class="upload-bonus">(+10 XP extra)</span></label>
+                    <textarea id="uploadDescripcion" placeholder="Ej: Ejercicio de posesión donde se trabaja la salida de balón con presión alta del rival. Ideal para trabajar la toma de decisiones..." rows="3"></textarea>
+                </div>
+            </div>
+            
+            <!-- PASO 4: Temas trabajados -->
+            <div class="upload-section" id="uploadTemasSection" style="display:none;">
+                <div class="upload-section-title">4️⃣ Temas Trabajados * <span class="upload-hint">(selecciona 1-5)</span></div>
+                <div class="upload-temas-grid" id="uploadTemas"></div>
+            </div>
+            
+            <!-- PASO 5: Detalles adicionales -->
+            <div class="upload-section" id="uploadDetallesSection" style="display:none;">
+                <div class="upload-section-title">5️⃣ Detalles Adicionales</div>
                 <div class="upload-grid">
                     <div class="upload-field">
                         <label>Dificultad *</label>
@@ -1231,11 +1498,18 @@
                         </select>
                     </div>
                 </div>
-                
                 <div class="upload-grid-3">
                     <div class="upload-field">
                         <label>Nº Jugadores</label>
-                        <input type="text" id="uploadJugadores" placeholder="Ej: 12-16">
+                        <select id="uploadJugadores">
+                            <option value="">-</option>
+                            <option value="2-4">2-4</option>
+                            <option value="5-8">5-8</option>
+                            <option value="9-12">9-12</option>
+                            <option value="13-16">13-16</option>
+                            <option value="17-20">17-20</option>
+                            <option value="20+">20+</option>
+                        </select>
                     </div>
                     <div class="upload-field">
                         <label>Nº Porteros</label>
@@ -1259,8 +1533,10 @@
                         </select>
                     </div>
                 </div>
-                
-                <!-- Pizarra Section -->
+            </div>
+            
+            <!-- Pizarra Táctica -->
+            <div class="upload-section" id="uploadPizarraSection" style="display:none;">
                 <div class="upload-field">
                     <label>🎨 Imagen de Pizarra Táctica (opcional)</label>
                     <div class="upload-pizarra" id="uploadPizarraBox" onclick="openPizarra()">
@@ -1270,9 +1546,9 @@
                     </div>
                 </div>
                 
-                <div class="upload-xp-bonus">
+                <div class="upload-xp-bonus" id="uploadXpBonus">
                     <span>⭐</span>
-                    <span>Ganarás <strong>+50 XP</strong> cuando se apruebe (o <strong>+100 XP</strong> con pizarra)</span>
+                    <span>Ganarás <strong id="uploadXpTotal">+50 XP</strong> cuando se apruebe</span>
                 </div>
             </div>
         </div>
