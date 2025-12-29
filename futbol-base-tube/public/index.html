@@ -504,6 +504,64 @@
 .notif-item-time { font-size: 11px; color: var(--text-muted); margin-top: 6px; }
 .notif-empty { padding: 40px 20px; text-align: center; color: var(--text-muted); }
 .notif-empty-icon { font-size: 32px; margin-bottom: 8px; }
+/* Upload Exercise Modal - Improved */
+.upload-modal { max-width: 600px; padding: 0; max-height: 90vh; display: flex; flex-direction: column; }
+.upload-header { padding: 24px; border-bottom: 1px solid var(--dark-border); }
+.upload-header h2 { font-family: 'Bebas Neue', sans-serif; font-size: 28px; margin-bottom: 4px; }
+.upload-header p { color: var(--text-muted); font-size: 14px; }
+.upload-body { padding: 24px; overflow-y: auto; flex: 1; }
+.upload-section { margin-bottom: 24px; }
+.upload-section-title { font-size: 14px; font-weight: 600; color: var(--primary); margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+.upload-url-input { display: flex; gap: 12px; }
+.upload-url-input input { flex: 1; }
+.upload-status { margin-top: 10px; font-size: 13px; min-height: 20px; }
+.upload-status.loading { color: var(--accent); }
+.upload-status.success { color: var(--primary); }
+.upload-status.error { color: var(--danger); }
+
+/* Extracted Preview */
+.upload-preview { display: flex; gap: 16px; background: var(--dark); border-radius: 12px; padding: 16px; }
+.upload-preview-thumb { width: 180px; height: 100px; border-radius: 8px; object-fit: cover; background: var(--dark-border); flex-shrink: 0; }
+.upload-preview-info { flex: 1; display: flex; flex-direction: column; justify-content: center; }
+.upload-preview-title { font-weight: 700; font-size: 14px; margin-bottom: 6px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.upload-preview-channel { font-size: 13px; color: var(--primary); margin-bottom: 8px; }
+.upload-preview-stats { display: flex; flex-wrap: wrap; gap: 12px; font-size: 12px; color: var(--text-muted); }
+.upload-preview-stats span { display: flex; align-items: center; gap: 4px; }
+
+/* Credit Notice */
+.upload-credit-notice { display: flex; align-items: center; gap: 10px; background: rgba(13, 159, 79, 0.1); border: 1px solid rgba(13, 159, 79, 0.3); border-radius: 10px; padding: 12px 16px; margin-top: 16px; font-size: 13px; color: var(--primary); }
+.upload-credit-notice strong { color: var(--text); }
+
+/* Classification Section */
+.upload-field { margin-bottom: 16px; }
+.upload-field label { display: block; font-size: 13px; font-weight: 600; color: var(--text-muted); margin-bottom: 8px; }
+.upload-field .upload-hint { font-weight: 400; opacity: 0.7; }
+.upload-field input, .upload-field select, .upload-field textarea { width: 100%; padding: 12px 14px; background: var(--dark); border: 1px solid var(--dark-border); border-radius: 10px; color: var(--text); font-size: 14px; }
+.upload-field input:focus, .upload-field select:focus { outline: none; border-color: var(--primary); }
+.upload-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.upload-grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+
+/* Categories */
+.categories-select { display: flex; flex-wrap: wrap; gap: 8px; }
+.category-chip { padding: 8px 14px; background: var(--dark); border: 2px solid var(--dark-border); border-radius: 20px; font-size: 12px; cursor: pointer; transition: all 0.2s; }
+.category-chip:hover { border-color: var(--text-muted); }
+.category-chip.selected { border-color: var(--primary); background: rgba(13, 159, 79, 0.15); color: var(--primary); }
+
+/* Pizarra */
+.upload-pizarra { background: linear-gradient(135deg, rgba(245, 197, 24, 0.1) 0%, rgba(245, 197, 24, 0.05) 100%); border: 2px dashed var(--accent); border-radius: 12px; padding: 20px; text-align: center; cursor: pointer; transition: all 0.3s; }
+.upload-pizarra:hover { background: rgba(245, 197, 24, 0.15); }
+.upload-pizarra-icon { font-size: 28px; margin-bottom: 6px; }
+.upload-pizarra-text { font-size: 14px; color: var(--accent); font-weight: 600; }
+.upload-pizarra-hint { font-size: 12px; color: var(--text-muted); margin-top: 4px; }
+.upload-pizarra.has-image { border-style: solid; border-color: var(--primary); }
+
+/* XP Bonus */
+.upload-xp-bonus { background: rgba(245, 197, 24, 0.1); padding: 12px 16px; border-radius: 10px; font-size: 13px; color: var(--accent); display: flex; align-items: center; gap: 8px; margin-top: 8px; }
+
+/* Footer */
+.upload-footer { padding: 20px 24px; border-top: 1px solid var(--dark-border); display: flex; gap: 12px; }
+.upload-footer .btn { flex: 1; justify-content: center; }
+.upload-footer .btn:disabled { opacity: 0.5; cursor: not-allowed; }
   /* Responsive */
 @media (max-width: 1024px) { 
     .biblioteca { grid-template-columns: 1fr; } 
@@ -520,7 +578,17 @@
     /* Notifications Mobile */
     .notif-dropdown { width: 280px; right: -60px; }
     .notif-item { padding: 12px 14px; }
-    
+    /* Upload Modal Mobile */
+    .upload-modal { max-width: 100%; }
+    .upload-header { padding: 16px; }
+    .upload-header h2 { font-size: 22px; }
+    .upload-body { padding: 16px; }
+    .upload-preview { flex-direction: column; }
+    .upload-preview-thumb { width: 100%; height: 140px; }
+    .upload-grid { grid-template-columns: 1fr; }
+    .upload-grid-3 { grid-template-columns: 1fr 1fr; }
+    .upload-url-input { flex-direction: column; }
+    .upload-footer { padding: 16px; flex-direction: column; }
     /* Header Stats */
     .user-stats-header { gap: 6px; margin-right: 4px; }
     .xp-badge, .racha-badge, .limit-badge { padding: 4px 8px; font-size: 10px; }
@@ -1083,7 +1151,7 @@
         <button class="modal-close" onclick="closeUploadModal()">×</button>
         
         <div class="upload-header">
-            <h2>📤 Subir Ejercicio</h2>
+            <h2>📤 SUBIR EJERCICIO</h2>
             <p>Comparte un video de entrenamiento con la comunidad</p>
         </div>
         
@@ -1095,50 +1163,47 @@
                     <input type="text" class="auth-input" id="uploadUrl" placeholder="https://youtube.com/watch?v=... o twitter.com/...">
                     <button class="btn btn-primary" onclick="extractVideoInfo()">Extraer</button>
                 </div>
-                <div class="upload-preview" id="uploadPreview">
+                <div class="upload-status" id="uploadStatus"></div>
+            </div>
+            
+            <!-- Extracted Info (Read Only) -->
+            <div class="upload-section upload-extracted" id="uploadExtracted" style="display:none;">
+                <div class="upload-section-title">📺 Datos del Video (automático)</div>
+                
+                <div class="upload-preview">
                     <img class="upload-preview-thumb" id="uploadThumb" src="">
-                    <div class="upload-preview-title" id="uploadPreviewTitle"></div>
-                    <div class="upload-preview-meta">
-                        <span id="uploadPreviewSource"></span>
-                        <span id="uploadPreviewDuration"></span>
+                    <div class="upload-preview-info">
+                        <div class="upload-preview-title" id="uploadPreviewTitle"></div>
+                        <div class="upload-preview-channel" id="uploadPreviewChannel"></div>
+                        <div class="upload-preview-stats">
+                            <span id="uploadPreviewViews">👁️ 0</span>
+                            <span id="uploadPreviewLikes">👍 0</span>
+                            <span id="uploadPreviewDuration">⏱️ 0:00</span>
+                            <span id="uploadPreviewLang">🌐</span>
+                        </div>
                     </div>
+                </div>
+                
+                <div class="upload-credit-notice">
+                    <span>✅</span>
+                    <span>El contenido será atribuido a <strong id="uploadCreditChannel">-</strong> con enlace al video original</span>
                 </div>
             </div>
             
-            <!-- Info Section -->
-            <div class="upload-section">
-                <div class="upload-section-title">📝 Información del Ejercicio</div>
-                <div class="upload-field" style="margin-bottom:16px;">
-                    <label>Título del ejercicio *</label>
-                    <input type="text" id="uploadTitulo" placeholder="Ej: Rondo 4x4+3 con transiciones">
+            <!-- User Classification -->
+            <div class="upload-section upload-classify" id="uploadClassify" style="display:none;">
+                <div class="upload-section-title">🏷️ Tu Clasificación</div>
+                
+                <div class="upload-field">
+                    <label>Título del ejercicio * <span class="upload-hint">(describe qué se entrena)</span></label>
+                    <input type="text" id="uploadTitulo" placeholder="Ej: Rondo 4x4+3 con transiciones de Guardiola">
                 </div>
-                <div class="upload-grid">
-                    <div class="upload-field">
-                        <label>Entrenador / Canal</label>
-                        <input type="text" id="uploadEntrenador" placeholder="Ej: Pep Guardiola">
-                    </div>
-                    <div class="upload-field">
-                        <label>Equipo / Club</label>
-                        <input type="text" id="uploadEquipo" placeholder="Ej: FC Barcelona">
-                    </div>
+                
+                <div class="upload-field">
+                    <label>Categorías * (selecciona 1-3)</label>
+                    <div class="categories-select" id="uploadCategorias"></div>
                 </div>
-                <div class="upload-field" style="margin-top:16px;">
-                    <label>Descripción (opcional)</label>
-                    <textarea id="uploadDescripcion" placeholder="Describe brevemente el ejercicio..."></textarea>
-                </div>
-            </div>
-            
-            <!-- Categories Section -->
-            <div class="upload-section">
-                <div class="upload-section-title">🏷️ Categorías (selecciona 1-3)</div>
-                <div class="categories-select" id="uploadCategorias">
-                    <!-- Se llenan dinámicamente -->
-                </div>
-            </div>
-            
-            <!-- Details Section -->
-            <div class="upload-section">
-                <div class="upload-section-title">⚙️ Detalles</div>
+                
                 <div class="upload-grid">
                     <div class="upload-field">
                         <label>Dificultad *</label>
@@ -1166,7 +1231,8 @@
                         </select>
                     </div>
                 </div>
-                <div class="upload-grid-3" style="margin-top:16px;">
+                
+                <div class="upload-grid-3">
                     <div class="upload-field">
                         <label>Nº Jugadores</label>
                         <input type="text" id="uploadJugadores" placeholder="Ej: 12-16">
@@ -1181,82 +1247,42 @@
                         </select>
                     </div>
                     <div class="upload-field">
-                        <label>Idioma</label>
-                        <select id="uploadIdioma">
-                            <option value="es">🇪🇸 Español</option>
-                            <option value="en">🇬🇧 Inglés</option>
-                            <option value="pt">🇵🇹 Portugués</option>
-                            <option value="de">🇩🇪 Alemán</option>
-                            <option value="fr">🇫🇷 Francés</option>
-                            <option value="it">🇮🇹 Italiano</option>
-                            <option value="other">🌐 Otro</option>
+                        <label>Dimensiones</label>
+                        <select id="uploadDimensiones">
+                            <option value="">-</option>
+                            <option value="10x10m">10x10m</option>
+                            <option value="15x15m">15x15m</option>
+                            <option value="20x20m">20x20m</option>
+                            <option value="30x30m">30x30m</option>
+                            <option value="Medio campo">Medio campo</option>
+                            <option value="Campo completo">Campo completo</option>
                         </select>
                     </div>
                 </div>
-            </div>
-            
-            <!-- Pizarra Section -->
-            <div class="upload-section">
-                <div class="upload-section-title">🎨 Imagen de Pizarra Táctica (opcional)</div>
-                <div class="upload-pizarra" id="uploadPizarraBox" onclick="openPizarra()">
-                    <div class="upload-pizarra-icon">🎨</div>
-                    <div class="upload-pizarra-text">Crear imagen con Pizarra Táctica</div>
-                    <div class="upload-pizarra-hint">Los ejercicios con imagen ganan el doble de XP</div>
+                
+                <!-- Pizarra Section -->
+                <div class="upload-field">
+                    <label>🎨 Imagen de Pizarra Táctica (opcional)</label>
+                    <div class="upload-pizarra" id="uploadPizarraBox" onclick="openPizarra()">
+                        <div class="upload-pizarra-icon">🎨</div>
+                        <div class="upload-pizarra-text">Crear imagen con Pizarra Táctica</div>
+                        <div class="upload-pizarra-hint">+50 XP extra si incluyes imagen</div>
+                    </div>
                 </div>
+                
                 <div class="upload-xp-bonus">
                     <span>⭐</span>
-                    <span>Ganarás <strong>+50 XP</strong> por este ejercicio (o <strong>+100 XP</strong> con imagen de pizarra)</span>
+                    <span>Ganarás <strong>+50 XP</strong> cuando se apruebe (o <strong>+100 XP</strong> con pizarra)</span>
                 </div>
             </div>
         </div>
         
         <div class="upload-footer">
             <button class="btn btn-ghost" onclick="closeUploadModal()">Cancelar</button>
-            <button class="btn btn-primary" onclick="submitExercise()">📤 Enviar Ejercicio</button>
+            <button class="btn btn-primary" id="btnSubmitExercise" onclick="submitExercise()" disabled>📤 Enviar Ejercicio</button>
         </div>
     </div>
 </div>
-    <!-- Toast -->
-    <div class="toast" id="toast"></div>
-
-    <!-- Upgrade Modal -->
-    <div class="modal-overlay" id="upgradeOverlay" onclick="closeUpgradeModal(event)">
-        <div class="modal-content upgrade-modal" onclick="event.stopPropagation()">
-            <button class="modal-close" onclick="closeUpgradeModal()">×</button>
-            <div class="upgrade-header">
-                <h2>🚀 DESBLOQUEA TODO</h2>
-                <p>Has alcanzado el límite de ejercicios gratis este mes</p>
-            </div>
-            <div class="upgrade-body">
-                <div class="upgrade-plans">
-                    <div class="upgrade-plan" onclick="selectPlan('pro')">
-                        <div class="upgrade-plan-name">PRO</div>
-                        <div class="upgrade-plan-price">3,99€<span>/mes</span></div>
-                        <ul class="upgrade-plan-features">
-                            <li>Ejercicios ilimitados</li>
-                            <li>Sesiones ilimitadas</li>
-                            <li>Guardar favoritos</li>
-                            <li>Sin anuncios</li>
-                        </ul>
-                    </div>
-                    <div class="upgrade-plan recommended" onclick="selectPlan('coach')">
-                        <div class="upgrade-plan-badge">RECOMENDADO</div>
-                        <div class="upgrade-plan-name">COACH</div>
-                        <div class="upgrade-plan-price">6,99€<span>/mes</span></div>
-                        <ul class="upgrade-plan-features">
-                            <li>Todo de PRO</li>
-                            <li>Subir ejercicios</li>
-                            <li>Acceso a Pizarra Táctica</li>
-                            <li>XP x2 en todo</li>
-                            <li>Badge ✅ Verificado</li>
-                        </ul>
-                    </div>
-                </div>
-                <p class="upgrade-footer">Cancela cuando quieras. Sin compromiso.</p>
-            </div>
-        </div>
-    </div>
-
     <!-- Leaderboard Modal -->
     <div class="modal-overlay" id="leaderboardOverlay" onclick="closeLeaderboardModal(event)">
         <div class="modal-content leaderboard-modal" onclick="event.stopPropagation()">
@@ -2573,10 +2599,15 @@
         }
         showToast('Próximamente: Filtrar favoritos', 'success');
     }
-    // ==================== UPLOAD EXERCISE ====================
+ // ==================== UPLOAD EXERCISE ====================
 var uploadVideoData = null;
 var selectedCategories = [];
-var AVAILABLE_CATEGORIES = ['Rondos', 'Posesión', 'Finalización', 'Pressing', 'Transiciones', 'Táctica', 'Técnica Individual', 'Porteros', 'Físico', 'Calentamiento', 'Espacios Reducidos', 'Partidos Condicionados', 'Centros', 'Corners', 'Faltas', 'Pase', 'Control', 'Conducción', 'Regate', 'Defensa', 'Ataque', 'Contraataque', 'Otros'];
+var AVAILABLE_CATEGORIES = ['Rondos', 'Posesión', 'Finalización', 'Pressing', 'Transiciones', 'Táctica', 'Técnica Individual', 'Porteros', 'Físico', 'Calentamiento', 'Espacios Reducidos', 'Partidos Condicionados', 'Centros', 'Corners', 'Faltas', 'Pase', 'Control', 'Conducción', 'Regate', 'Defensa', 'Ataque', 'Contraataque'];
+var LANG_FLAGS = { 'es': '🇪🇸', 'en': '🇬🇧', 'pt': '🇵🇹', 'it': '🇮🇹', 'de': '🇩🇪', 'fr': '🇫🇷', 'nl': '🇳🇱', 'other': '🌐' };
+var LANG_NAMES = { 'es': 'Español', 'en': 'Inglés', 'pt': 'Portugués', 'it': 'Italiano', 'de': 'Alemán', 'fr': 'Francés', 'nl': 'Holandés', 'other': 'Otro' };
+
+// YouTube API Key (pública, solo lectura)
+var YT_API_KEY = 'AIzaSyD-9tSrke72PouQMnMX-a7eZSW0jkFMBWY'; // Reemplazar con tu key
 
 function showUploadModal() {
     if (!currentUser) {
@@ -2591,7 +2622,6 @@ function showUploadModal() {
         return;
     }
     
-    // Reset form
     resetUploadForm();
     populateCategories();
     document.getElementById('uploadOverlay').classList.add('active');
@@ -2607,16 +2637,17 @@ function resetUploadForm() {
     selectedCategories = [];
     document.getElementById('uploadUrl').value = '';
     document.getElementById('uploadTitulo').value = '';
-    document.getElementById('uploadEntrenador').value = '';
-    document.getElementById('uploadEquipo').value = '';
-    document.getElementById('uploadDescripcion').value = '';
     document.getElementById('uploadDificultad').value = '';
     document.getElementById('uploadEdad').value = '';
     document.getElementById('uploadJugadores').value = '';
     document.getElementById('uploadPorteros').value = '0';
-    document.getElementById('uploadIdioma').value = 'es';
-    document.getElementById('uploadPreview').classList.remove('show');
+    document.getElementById('uploadDimensiones').value = '';
+    document.getElementById('uploadStatus').textContent = '';
+    document.getElementById('uploadStatus').className = 'upload-status';
+    document.getElementById('uploadExtracted').style.display = 'none';
+    document.getElementById('uploadClassify').style.display = 'none';
     document.getElementById('uploadPizarraBox').classList.remove('has-image');
+    document.getElementById('btnSubmitExercise').disabled = true;
 }
 
 function populateCategories() {
@@ -2639,12 +2670,19 @@ function toggleCategory(el, cat) {
         selectedCategories.splice(idx, 1);
         el.classList.remove('selected');
     }
+    checkUploadValid();
+}
+
+function setUploadStatus(msg, type) {
+    var el = document.getElementById('uploadStatus');
+    el.textContent = msg;
+    el.className = 'upload-status ' + type;
 }
 
 function extractVideoInfo() {
     var url = document.getElementById('uploadUrl').value.trim();
     if (!url) {
-        showToast('Introduce una URL', 'error');
+        setUploadStatus('❌ Introduce una URL', 'error');
         return;
     }
     
@@ -2672,42 +2710,174 @@ function extractVideoInfo() {
         videoId = igMatch ? igMatch[2] : null;
     }
     
-    if (!source) {
-        showToast('URL no válida. Usa YouTube, Twitter o Instagram', 'error');
+    if (!source || !videoId) {
+        setUploadStatus('❌ URL no válida. Usa YouTube, Twitter o Instagram', 'error');
         return;
     }
     
-    // Get thumbnail and info
-    var thumb = '';
+    setUploadStatus('🔄 Extrayendo datos...', 'loading');
+    
     if (source === 'youtube') {
-        thumb = 'https://img.youtube.com/vi/' + videoId + '/maxresdefault.jpg';
+        extractYouTubeData(url, videoId);
+    } else if (source === 'twitter') {
+        extractTwitterData(url, videoId);
+    } else {
+        extractInstagramData(url, videoId);
     }
-    
-    uploadVideoData = {
-        url: url,
-        source: source,
-        video_id: videoId,
-        thumbnail: thumb
-    };
-    
-    // Show preview
-    document.getElementById('uploadThumb').src = thumb || 'https://via.placeholder.com/640x360/16162a/8b8ba7?text=Video';
-    document.getElementById('uploadPreviewTitle').textContent = 'Video de ' + source.charAt(0).toUpperCase() + source.slice(1);
-    document.getElementById('uploadPreviewSource').textContent = source === 'youtube' ? '📺 YouTube' : source === 'twitter' ? '𝕏 Twitter' : '📷 Instagram';
-    document.getElementById('uploadPreviewDuration').textContent = '';
-    document.getElementById('uploadPreview').classList.add('show');
-    
-    showToast('✅ Video detectado', 'success');
 }
 
+function extractYouTubeData(url, videoId) {
+    var apiUrl = 'https://www.googleapis.com/youtube/v3/videos?part=snippet,contentDetails,statistics&id=' + videoId + '&key=' + YT_API_KEY;
+    
+    fetch(apiUrl)
+        .then(function(res) { return res.json(); })
+        .then(function(data) {
+            if (data.error) {
+                throw new Error(data.error.message);
+            }
+            if (!data.items || !data.items.length) {
+                throw new Error('Video no encontrado');
+            }
+            
+            var v = data.items[0];
+            var snippet = v.snippet;
+            var stats = v.statistics;
+            var content = v.contentDetails;
+            
+            // Parse duration
+            var durMatch = content.duration.match(/PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?/);
+            var h = parseInt(durMatch[1] || 0);
+            var m = parseInt(durMatch[2] || 0);
+            var s = parseInt(durMatch[3] || 0);
+            var duracionStr = h > 0 ? h + ':' + String(m).padStart(2,'0') + ':' + String(s).padStart(2,'0') : m + ':' + String(s).padStart(2,'0');
+            var duracionSeg = h * 3600 + m * 60 + s;
+            
+            // Detect language
+            var langCode = snippet.defaultAudioLanguage || snippet.defaultLanguage || '';
+            var idioma = langCode.substring(0, 2).toLowerCase();
+            if (['es', 'en', 'pt', 'it', 'de', 'fr', 'nl'].indexOf(idioma) === -1) idioma = 'other';
+            
+            uploadVideoData = {
+                url: url,
+                source: 'youtube',
+                video_id: videoId,
+                thumbnail: 'https://img.youtube.com/vi/' + videoId + '/maxresdefault.jpg',
+                titulo_video: snippet.title,
+                canal: snippet.channelTitle,
+                descripcion: (snippet.description || '').substring(0, 500),
+                duracion: duracionStr,
+                duracion_segundos: duracionSeg,
+                vistas: parseInt(stats.viewCount || 0),
+                likes: parseInt(stats.likeCount || 0),
+                idioma: idioma
+            };
+            
+            showExtractedData();
+        })
+        .catch(function(err) {
+            setUploadStatus('❌ ' + err.message, 'error');
+        });
+}
+
+function extractTwitterData(url, tweetId) {
+    fetch('https://publish.twitter.com/oembed?url=' + encodeURIComponent(url))
+        .then(function(res) { 
+            if (!res.ok) throw new Error('No se pudo cargar el tweet');
+            return res.json(); 
+        })
+        .then(function(data) {
+            uploadVideoData = {
+                url: url,
+                source: 'twitter',
+                video_id: tweetId,
+                thumbnail: null,
+                titulo_video: 'Tweet de @' + data.author_name,
+                canal: data.author_name,
+                descripcion: '',
+                duracion: '--',
+                duracion_segundos: 0,
+                vistas: 0,
+                likes: 0,
+                idioma: 'other'
+            };
+            showExtractedData();
+        })
+        .catch(function(err) {
+            setUploadStatus('❌ ' + err.message, 'error');
+        });
+}
+
+function extractInstagramData(url, igId) {
+    fetch('https://api.instagram.com/oembed?url=' + encodeURIComponent(url))
+        .then(function(res) { 
+            if (!res.ok) throw new Error('No se pudo cargar. ¿Es privado?');
+            return res.json(); 
+        })
+        .then(function(data) {
+            uploadVideoData = {
+                url: url,
+                source: 'instagram',
+                video_id: igId,
+                thumbnail: data.thumbnail_url || null,
+                titulo_video: data.title || 'Reel de @' + (data.author_name || 'instagram'),
+                canal: data.author_name || 'Instagram',
+                descripcion: '',
+                duracion: '--',
+                duracion_segundos: 0,
+                vistas: 0,
+                likes: 0,
+                idioma: 'other'
+            };
+            showExtractedData();
+        })
+        .catch(function(err) {
+            setUploadStatus('❌ ' + err.message, 'error');
+        });
+}
+
+function showExtractedData() {
+    var d = uploadVideoData;
+    
+    // Show preview
+    document.getElementById('uploadThumb').src = d.thumbnail || 'https://via.placeholder.com/180x100/16162a/8b8ba7?text=' + d.source;
+    document.getElementById('uploadPreviewTitle').textContent = d.titulo_video;
+    document.getElementById('uploadPreviewChannel').textContent = '📺 ' + d.canal;
+    document.getElementById('uploadPreviewViews').textContent = '👁️ ' + formatNumber(d.vistas);
+    document.getElementById('uploadPreviewLikes').textContent = '👍 ' + formatNumber(d.likes);
+    document.getElementById('uploadPreviewDuration').textContent = '⏱️ ' + d.duracion;
+    document.getElementById('uploadPreviewLang').textContent = (LANG_FLAGS[d.idioma] || '🌐') + ' ' + (LANG_NAMES[d.idioma] || 'Otro');
+    document.getElementById('uploadCreditChannel').textContent = d.canal;
+    
+    // Show sections
+    document.getElementById('uploadExtracted').style.display = 'block';
+    document.getElementById('uploadClassify').style.display = 'block';
+    
+    setUploadStatus('✅ Datos extraídos correctamente', 'success');
+    checkUploadValid();
+}
+
+function checkUploadValid() {
+    var valid = uploadVideoData && 
+                document.getElementById('uploadTitulo').value.trim() &&
+                selectedCategories.length > 0 &&
+                document.getElementById('uploadDificultad').value;
+    document.getElementById('btnSubmitExercise').disabled = !valid;
+}
+
+// Add event listeners for validation
+document.addEventListener('DOMContentLoaded', function() {
+    var titleInput = document.getElementById('uploadTitulo');
+    var difSelect = document.getElementById('uploadDificultad');
+    if (titleInput) titleInput.addEventListener('input', checkUploadValid);
+    if (difSelect) difSelect.addEventListener('change', checkUploadValid);
+});
+
 function openPizarra() {
-    // Abrir pizarra táctica en nueva pestaña
     window.open('https://pizarra.toplidercoach.com', '_blank');
     showToast('Crea tu imagen en la pizarra y luego vuelve aquí', 'success');
 }
 
 function submitExercise() {
-    // Validations
     if (!uploadVideoData) {
         showToast('Primero extrae la información del video', 'error');
         return;
@@ -2730,43 +2900,42 @@ function submitExercise() {
         return;
     }
     
-    // Build exercise object
+    var d = uploadVideoData;
     var exercise = {
+        // Datos automáticos (del video)
+        video_url: d.url,
+        video_id: d.video_id,
+        source: d.source,
+        thumbnail_url: d.thumbnail,
+        titulo_video: d.titulo_video,
+        canal: d.canal,
+        descripcion: d.descripcion,
+        duracion: d.duracion,
+        duracion_segundos: d.duracion_segundos,
+        vistas: d.vistas,
+        likes: d.likes,
+        idioma: d.idioma,
+        // Datos del usuario
         titulo_ejercicio: titulo,
-        video_url: uploadVideoData.url,
-        video_id: uploadVideoData.video_id,
-        thumbnail_url: uploadVideoData.thumbnail,
-        source: uploadVideoData.source,
         categorias: selectedCategories,
         dificultad: parseInt(dificultad),
-        entrenador: document.getElementById('uploadEntrenador').value.trim() || null,
-        equipo: document.getElementById('uploadEquipo').value.trim() || null,
-        descripcion: document.getElementById('uploadDescripcion').value.trim() || null,
         edad: document.getElementById('uploadEdad').value || null,
         jugadores: document.getElementById('uploadJugadores').value.trim() || null,
         num_porteros: parseInt(document.getElementById('uploadPorteros').value) || 0,
-        idioma: document.getElementById('uploadIdioma').value,
+        dimensiones: document.getElementById('uploadDimensiones').value || null,
+        tiene_imagen_pizarra: document.getElementById('uploadPizarraBox').classList.contains('has-image'),
+        // Metadatos
         subido_por: currentUser.id,
         estado: 'pendiente',
-        aprobado: false,
-        tiene_imagen_pizarra: document.getElementById('uploadPizarraBox').classList.contains('has-image')
+        aprobado: false
     };
     
-    // Submit to Supabase
     db.from('ejercicios').insert(exercise).then(function(result) {
         if (result.error) {
             showToast('Error: ' + result.error.message, 'error');
         } else {
             closeUploadModal();
             showToast('🎉 ¡Ejercicio enviado! Pendiente de aprobación', 'success');
-            
-            // Add XP (will be doubled when approved if has pizarra image)
-            var xpGained = exercise.tiene_imagen_pizarra ? 100 : 50;
-            db.rpc('añadir_xp', { 
-                p_usuario_id: currentUser.id, 
-                p_puntos: xpGained, 
-                p_motivo: 'Ejercicio subido' 
-            });
         }
     });
 }
