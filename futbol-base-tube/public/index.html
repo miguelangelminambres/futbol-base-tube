@@ -3439,7 +3439,7 @@
                         upgradeOption +
                         '<div class="user-dropdown-item" onclick="showMySessions()">📋 Mis Sesiones</div>' +
                         '<div class="user-dropdown-item" onclick="showUploadModal()">📤 Subir Ejercicio</div>' +
-                        (plan === 'coach' ? '<div class="user-dropdown-item" onclick="location.href=\'admin.html\'">⚙️ Admin</div>' : '') +
+                        (u.email === 'miguelangelminambres@gmail.com' ? '<div class="user-dropdown-item" onclick="location.href=\'admin.html\'">⚙️ Admin</div>' : '') +
                         (plan === 'coach' ? '<div class="user-dropdown-item" onclick="abrirPizarraTactica()">🎯 Pizarra Táctica</div>' : '') +
                         '<div class="user-dropdown-item danger" onclick="logout()">🚪 Cerrar Sesión</div>' +
                     '</div>' +
@@ -4288,7 +4288,8 @@
                 sistema: document.getElementById('uploadSistema') ? document.getElementById('uploadSistema').value : null,
                 subido_por: currentUser.id,
                 estado: 'pendiente',
-                aprobado: false
+                aprobado: false,
+                sin_gamificacion: currentUser.email === 'miguelangelminambres@gmail.com'
             };
             
             // Upload thumbnail image if source is imagen
