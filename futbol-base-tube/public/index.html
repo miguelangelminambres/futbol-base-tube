@@ -580,6 +580,9 @@
         .view-session-exercise-info { flex: 1; min-width: 0; }
         .view-session-exercise-title { font-weight: 600; font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-bottom: 4px; }
         .view-session-exercise-meta { font-size: 12px; color: var(--text-muted); }
+        .view-session-exercise-arrow { color: var(--text-muted); font-size: 12px; margin-left: auto; transition: all 0.2s; }
+        .view-session-exercise:hover { background: rgba(13, 159, 79, 0.1); border: 1px solid var(--primary); }
+        .view-session-exercise:hover .view-session-exercise-arrow { color: var(--primary); transform: translateX(4px); }
         .view-session-footer { padding: 16px 24px; border-top: 1px solid var(--dark-border); display: flex; gap: 12px; flex-wrap: wrap; }
         .view-session-footer .btn { flex: 1; min-width: 100px; justify-content: center; }
 
@@ -4251,12 +4254,19 @@
             }
             
             list.innerHTML = data.map(function(s) {
-                var thumbs = (s.ejercicios_data || []).slice(0, 4).map(function(e) { return '<img class="my-session-card-thumb" src="' + (e.thumbnail || '') + '">'; }).join('');
+                var numEjercicios = (s.ejercicios || []).length;
+                var duracion = Math.round((s.duracion_total || 0) / 60);
                 return '<div class="my-session-card" onclick="viewSession(\'' + s.id + '\')">' +
-                    '<div class="my-session-card-header"><div class="my-session-card-name">' + s.nombre + '</div><div class="my-session-card-date">' + (s.fecha || '') + '</div></div>' +
-                    '<div class="my-session-card-meta"><span>📋 ' + (s.ejercicios || []).length + ' ejercicios</span><span>⏱️ ' + Math.round((s.duracion_total || 0) / 60) + ' min</span></div>' +
+                    '<div class="my-session-card-header">' +
+                        '<div class="my-session-card-name">' + s.nombre + '</div>' +
+                        '<div class="my-session-card-date">' + (s.fecha || '') + '</div>' +
+                    '</div>' +
+                    '<div class="my-session-card-meta">' +
+                        '<span>📋 ' + numEjercicios + ' ejercicios</span>' +
+                        '<span>⏱️ ' + duracion + ' min</span>' +
+                        (s.categoria_edad ? '<span>👶 ' + s.categoria_edad + '</span>' : '') +
+                    '</div>' +
                     (s.objetivo ? '<div class="my-session-card-objetivo">"' + s.objetivo + '"</div>' : '') +
-                    '<div class="my-session-card-thumbs">' + thumbs + '</div>' +
                 '</div>';
             }).join('');
         }
@@ -4272,16 +4282,32 @@
             document.getElementById('viewSessionObjetivo').textContent = data.objetivo || '';
             
             var exs = (data.ejercicios_data || []).map(function(e, i) {
-                return '<div class="view-session-exercise">' +
+                return '<div class="view-session-exercise" onclick="openExerciseFromSession(\'' + e.id + '\')" style="cursor:pointer;">' +
                     '<div class="view-session-exercise-num">' + (i + 1) + '</div>' +
                     '<img class="view-session-exercise-thumb" src="' + (e.thumbnail || '') + '">' +
                     '<div class="view-session-exercise-info"><div class="view-session-exercise-title">' + e.titulo + '</div><div class="view-session-exercise-meta">' + (e.duracion || '--') + '</div></div>' +
+                    '<div class="view-session-exercise-arrow">▶</div>' +
                 '</div>';
             }).join('');
             document.getElementById('viewSessionExercises').innerHTML = exs;
             
             closeMySessionsModal();
             document.getElementById('viewSessionOverlay').classList.add('active');
+        }
+        
+        async function openExerciseFromSession(exerciseId) {
+            if (!exerciseId) return;
+            
+            // Cerrar modal de sesión
+            closeViewSessionModal();
+            
+            // Buscar y abrir el ejercicio
+            var { data } = await db.from('ejercicios').select('*').eq('id', exerciseId).single();
+            if (data) {
+                openExerciseModal(data);
+            } else {
+                showToast('Ejercicio no encontrado', 'error');
+            }
         }
 
         function closeViewSessionModal(e) { if (!e || e.target === e.currentTarget) document.getElementById('viewSessionOverlay').classList.remove('active'); }
