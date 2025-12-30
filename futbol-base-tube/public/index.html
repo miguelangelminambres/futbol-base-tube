@@ -619,6 +619,19 @@
         .favorito-btn-session:hover { background: var(--primary-dark); transform: scale(1.1); }
         .favorito-btn-remove { background: transparent; color: var(--danger); border: 1px solid var(--danger); width: 32px; height: 32px; border-radius: 8px; cursor: pointer; font-size: 14px; transition: all 0.2s; }
         .favorito-btn-remove:hover { background: var(--danger); color: white; }
+
+        /* Legal Modals */
+        .legal-modal { max-width: 700px; padding: 0; max-height: 85vh; display: flex; flex-direction: column; }
+        .legal-title { font-family: 'Bebas Neue', sans-serif; font-size: 28px; padding: 24px 24px 8px; }
+        .legal-updated { font-size: 12px; color: var(--text-muted); padding: 0 24px 16px; border-bottom: 1px solid var(--dark-border); }
+        .legal-content { padding: 24px; overflow-y: auto; flex: 1; }
+        .legal-content h3 { font-family: 'Bebas Neue', sans-serif; font-size: 18px; color: var(--primary); margin: 24px 0 12px; }
+        .legal-content h3:first-child { margin-top: 0; }
+        .legal-content p { font-size: 14px; color: var(--text-muted); line-height: 1.7; margin-bottom: 12px; }
+        .legal-content ul { margin: 12px 0; padding-left: 24px; }
+        .legal-content li { font-size: 14px; color: var(--text-muted); line-height: 1.7; margin-bottom: 8px; }
+        .legal-content a { color: var(--primary); text-decoration: none; }
+        .legal-content a:hover { text-decoration: underline; }
         .btn.is-favorite { background: rgba(239, 68, 68, 0.1); border-color: var(--danger); color: var(--danger); }
         .exercise-card-favorite { position: absolute; top: 8px; right: 8px; background: rgba(0,0,0,0.6); color: #ef4444; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; }
 
@@ -742,8 +755,34 @@
         .toast.error { border-color: var(--danger); }
 
         /* Footer */
-        .footer { background: var(--dark-card); border-top: 1px solid var(--dark-border); padding: 40px 24px; text-align: center; margin-top: 60px; }
-        .footer-text { color: var(--text-muted); font-size: 14px; }
+        .footer { background: var(--dark-card); border-top: 1px solid var(--dark-border); padding: 60px 24px 30px; margin-top: 60px; }
+        .footer-content { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1.5fr 2fr; gap: 60px; margin-bottom: 40px; }
+        .footer-brand { }
+        .footer-logo { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+        .footer-logo .logo-icon { width: 40px; height: 40px; background: var(--gradient-primary); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 20px; }
+        .footer-logo .logo-text { font-family: 'Bebas Neue', sans-serif; font-size: 20px; }
+        .footer-logo .logo-tube { background: #ff0000; color: white; padding: 2px 6px; border-radius: 4px; font-size: 14px; font-family: 'Arial', sans-serif; font-weight: 900; font-style: italic; }
+        .footer-tagline { color: var(--text-muted); font-size: 14px; line-height: 1.6; margin-bottom: 20px; max-width: 300px; }
+        .footer-social { display: flex; gap: 12px; }
+        .footer-social-link { width: 40px; height: 40px; background: var(--dark); border: 1px solid var(--dark-border); border-radius: 10px; display: flex; align-items: center; justify-content: center; text-decoration: none; font-size: 18px; transition: all 0.3s; }
+        .footer-social-link:hover { border-color: var(--primary); background: rgba(13, 159, 79, 0.1); transform: translateY(-2px); }
+        .footer-links { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+        .footer-column { }
+        .footer-column-title { font-family: 'Bebas Neue', sans-serif; font-size: 18px; margin-bottom: 16px; color: var(--text); }
+        .footer-link { display: block; color: var(--text-muted); text-decoration: none; font-size: 14px; padding: 6px 0; transition: color 0.2s; }
+        .footer-link:hover { color: var(--primary); }
+        .footer-contact-note { font-size: 12px; color: var(--text-muted); opacity: 0.7; margin-top: 8px; }
+        .footer-bottom { border-top: 1px solid var(--dark-border); padding-top: 24px; text-align: center; }
+        .footer-copyright { color: var(--text-muted); font-size: 13px; margin-bottom: 6px; }
+        .footer-made { color: var(--text-muted); font-size: 12px; opacity: 0.7; }
+        @media (max-width: 900px) {
+            .footer-content { grid-template-columns: 1fr; gap: 40px; }
+            .footer-links { grid-template-columns: repeat(2, 1fr); }
+            .footer-tagline { max-width: 100%; }
+        }
+        @media (max-width: 600px) {
+            .footer-links { grid-template-columns: 1fr; gap: 30px; }
+        }
 
         /* Responsive */
         @media (max-width: 1024px) { 
@@ -1666,7 +1705,50 @@
         </main>
     </section>
 
-    <footer class="footer"><p class="footer-text" data-i18n="footer.texto">© 2024 Futbol Base TUBE. Creado por entrenadores, para entrenadores. 🌍</p></footer>
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="footer-logo">
+                    <div class="logo-icon">⚽</div>
+                    <span class="logo-text">FUTBOL BASE <span class="logo-tube">TUBE</span></span>
+                </div>
+                <p class="footer-tagline">La mayor biblioteca de ejercicios de fútbol del mundo. Creado por entrenadores, para entrenadores.</p>
+                <div class="footer-social">
+                    <a href="https://twitter.com/futbolbasetube" target="_blank" class="footer-social-link">𝕏</a>
+                    <a href="https://instagram.com/futbolbasetube" target="_blank" class="footer-social-link">📷</a>
+                    <a href="https://youtube.com/@futbolbasetube" target="_blank" class="footer-social-link">▶️</a>
+                </div>
+            </div>
+            
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h4 class="footer-column-title">Plataforma</h4>
+                    <a href="#" onclick="scrollToSection('biblioteca')" class="footer-link">Biblioteca</a>
+                    <a href="#" onclick="scrollToSection('planes')" class="footer-link">Planes y Precios</a>
+                    <a href="#" onclick="showUploadModal()" class="footer-link">Subir Ejercicio</a>
+                    <a href="#" onclick="scrollToSection('creadores')" class="footer-link">Creadores</a>
+                </div>
+                
+                <div class="footer-column">
+                    <h4 class="footer-column-title">Legal</h4>
+                    <a href="#" onclick="showTermsModal()" class="footer-link">Términos y Condiciones</a>
+                    <a href="#" onclick="showPrivacyModal()" class="footer-link">Política de Privacidad</a>
+                    <a href="#" onclick="showCookiesModal()" class="footer-link">Política de Cookies</a>
+                </div>
+                
+                <div class="footer-column">
+                    <h4 class="footer-column-title">Contacto</h4>
+                    <a href="mailto:info@futbolbasetotal.com" class="footer-link">📧 info@futbolbasetotal.com</a>
+                    <p class="footer-contact-note">Respondemos en menos de 24h</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p class="footer-copyright">© 2024 Futbol Base TUBE. Todos los derechos reservados.</p>
+            <p class="footer-made">Hecho con ❤️ para la comunidad del fútbol base</p>
+        </div>
+    </footer>
 
     <!-- Floating Session Button -->
     <div class="session-fab" id="sessionFab" onclick="toggleSessionDrawer()">
@@ -4186,6 +4268,34 @@
             }
         }
         
+        // ==================== MODALES LEGALES ====================
+        function showTermsModal() {
+            document.getElementById('termsOverlay').classList.add('active');
+        }
+        function closeTermsModal(e) {
+            if (!e || e.target === e.currentTarget) {
+                document.getElementById('termsOverlay').classList.remove('active');
+            }
+        }
+        
+        function showPrivacyModal() {
+            document.getElementById('privacyOverlay').classList.add('active');
+        }
+        function closePrivacyModal(e) {
+            if (!e || e.target === e.currentTarget) {
+                document.getElementById('privacyOverlay').classList.remove('active');
+            }
+        }
+        
+        function showCookiesModal() {
+            document.getElementById('cookiesOverlay').classList.add('active');
+        }
+        function closeCookiesModal(e) {
+            if (!e || e.target === e.currentTarget) {
+                document.getElementById('cookiesOverlay').classList.remove('active');
+            }
+        }
+        
         async function loadFavoritosModal() {
             var container = document.getElementById('favoritosListModal');
             container.innerHTML = '<div class="session-list-loading">Cargando favoritos...</div>';
@@ -5863,6 +5973,166 @@
             }
         }
     </script>
+
+    <!-- Modal Términos y Condiciones -->
+    <div class="modal-overlay" id="termsOverlay" onclick="closeTermsModal(event)">
+        <div class="modal-content legal-modal" onclick="event.stopPropagation()">
+            <button class="modal-close" onclick="closeTermsModal()">×</button>
+            <h2 class="legal-title">📜 Términos y Condiciones</h2>
+            <p class="legal-updated">Última actualización: Diciembre 2024</p>
+            
+            <div class="legal-content">
+                <h3>Identificación del Titular</h3>
+                <p><strong>Razón Social:</strong> Xianmihu LLC</p>
+                <p><strong>EIN:</strong> 61-2088157</p>
+                <p><strong>Dirección:</strong> 7345 W Sand Lake Road, Ste 2010, Orlando, Florida 32819, USA</p>
+                <p><strong>Email:</strong> <a href="mailto:info@futbolbasetotal.com">info@futbolbasetotal.com</a></p>
+                
+                <h3>1. Aceptación de los Términos</h3>
+                <p>Al acceder y utilizar Futbol Base TUBE ("la Plataforma"), operada por Xianmihu LLC, aceptas estar sujeto a estos Términos y Condiciones. Si no estás de acuerdo con alguna parte de estos términos, no podrás acceder al servicio.</p>
+                
+                <h3>2. Descripción del Servicio</h3>
+                <p>Futbol Base TUBE es una plataforma digital que ofrece acceso a una biblioteca de ejercicios de entrenamiento de fútbol, permitiendo a los usuarios visualizar, guardar y organizar contenido de entrenamiento. Ofrecemos planes gratuitos y de pago con diferentes niveles de acceso.</p>
+                
+                <h3>3. Registro y Cuentas</h3>
+                <p>Para acceder a ciertas funciones, debes crear una cuenta proporcionando información precisa y actualizada. Eres responsable de mantener la confidencialidad de tu cuenta y contraseña, y de todas las actividades que ocurran bajo tu cuenta.</p>
+                
+                <h3>4. Planes y Pagos</h3>
+                <p><strong>Plan Free:</strong> Acceso limitado a 10 ejercicios mensuales, 1 favorito y 1 sesión guardada.</p>
+                <p><strong>Plan Pro (2,99€/mes):</strong> Acceso ilimitado a ejercicios, favoritos y sesiones, filtros avanzados.</p>
+                <p><strong>Plan Coach (4,99€/mes):</strong> Todo lo anterior más Pizarra Táctica, subida de ejercicios y XP x2.</p>
+                <p>Los pagos se procesan de forma segura a través de Stripe. Las suscripciones se renuevan automáticamente cada mes hasta que las canceles.</p>
+                
+                <h3>5. Cancelación y Reembolsos</h3>
+                <p>Puedes cancelar tu suscripción en cualquier momento desde tu perfil. Al cancelar, mantendrás el acceso hasta el final del período de facturación actual. No ofrecemos reembolsos por períodos parciales, excepto en casos excepcionales a nuestra discreción.</p>
+                
+                <h3>6. Contenido del Usuario</h3>
+                <p>Al subir contenido a la Plataforma, garantizas que tienes los derechos necesarios para compartirlo y nos concedes una licencia para mostrarlo a otros usuarios. No permitimos contenido que infrinja derechos de autor, sea ofensivo o ilegal.</p>
+                
+                <h3>7. Propiedad Intelectual</h3>
+                <p>Todo el contenido de la Plataforma, incluyendo diseño, logotipos, textos y software, es propiedad de Xianmihu LLC o sus licenciantes. Los videos enlazados pertenecen a sus respectivos creadores en YouTube.</p>
+                
+                <h3>8. Limitación de Responsabilidad</h3>
+                <p>La Plataforma se proporciona "tal cual". No garantizamos que el servicio sea ininterrumpido o libre de errores. No somos responsables de lesiones derivadas de la práctica de ejercicios mostrados en la plataforma.</p>
+                
+                <h3>9. Ley Aplicable</h3>
+                <p>Estos términos se rigen por las leyes del Estado de Florida, Estados Unidos. Para usuarios de la Unión Europea, se aplicarán las disposiciones obligatorias de protección al consumidor de su país de residencia.</p>
+                
+                <h3>10. Modificaciones</h3>
+                <p>Nos reservamos el derecho de modificar estos términos en cualquier momento. Te notificaremos de cambios significativos por email o mediante un aviso en la Plataforma.</p>
+                
+                <h3>11. Contacto</h3>
+                <p>Para cualquier consulta sobre estos términos, contacta con nosotros en: <a href="mailto:info@futbolbasetotal.com">info@futbolbasetotal.com</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Política de Privacidad -->
+    <div class="modal-overlay" id="privacyOverlay" onclick="closePrivacyModal(event)">
+        <div class="modal-content legal-modal" onclick="event.stopPropagation()">
+            <button class="modal-close" onclick="closePrivacyModal()">×</button>
+            <h2 class="legal-title">🔒 Política de Privacidad</h2>
+            <p class="legal-updated">Última actualización: Diciembre 2024</p>
+            
+            <div class="legal-content">
+                <h3>Responsable del Tratamiento</h3>
+                <p><strong>Razón Social:</strong> Xianmihu LLC</p>
+                <p><strong>EIN:</strong> 61-2088157</p>
+                <p><strong>Dirección:</strong> 7345 W Sand Lake Road, Ste 2010, Orlando, Florida 32819, USA</p>
+                <p><strong>Email:</strong> <a href="mailto:info@futbolbasetotal.com">info@futbolbasetotal.com</a></p>
+                
+                <h3>1. Información que Recopilamos</h3>
+                <p><strong>Datos de cuenta:</strong> Email, nombre de usuario, contraseña (encriptada).</p>
+                <p><strong>Datos de uso:</strong> Ejercicios vistos, sesiones creadas, favoritos guardados, progreso XP.</p>
+                <p><strong>Datos de pago:</strong> Procesados de forma segura por Stripe. No almacenamos datos de tarjetas de crédito.</p>
+                
+                <h3>2. Cómo Usamos tu Información</h3>
+                <p>Utilizamos tus datos para:</p>
+                <ul>
+                    <li>Proporcionar y mantener el servicio</li>
+                    <li>Gestionar tu cuenta y suscripción</li>
+                    <li>Personalizar tu experiencia (recomendaciones, progreso)</li>
+                    <li>Enviarte notificaciones sobre tu cuenta</li>
+                    <li>Mejorar nuestros servicios</li>
+                </ul>
+                
+                <h3>3. Almacenamiento y Seguridad</h3>
+                <p>Tus datos se almacenan de forma segura en servidores de Supabase (infraestructura de AWS) con encriptación en tránsito y en reposo. Implementamos medidas de seguridad estándar de la industria para proteger tu información.</p>
+                
+                <h3>4. Compartición de Datos</h3>
+                <p>No vendemos ni compartimos tus datos personales con terceros, excepto:</p>
+                <ul>
+                    <li><strong>Stripe:</strong> Para procesar pagos</li>
+                    <li><strong>Por obligación legal:</strong> Si es requerido por ley</li>
+                </ul>
+                
+                <h3>5. Tus Derechos (RGPD)</h3>
+                <p>Tienes derecho a:</p>
+                <ul>
+                    <li>Acceder a tus datos personales</li>
+                    <li>Rectificar datos incorrectos</li>
+                    <li>Solicitar la eliminación de tus datos</li>
+                    <li>Exportar tus datos (portabilidad)</li>
+                    <li>Oponerte al procesamiento de tus datos</li>
+                </ul>
+                <p>Para ejercer estos derechos, contacta con nosotros en: <a href="mailto:info@futbolbasetotal.com">info@futbolbasetotal.com</a></p>
+                
+                <h3>6. Retención de Datos</h3>
+                <p>Mantenemos tus datos mientras tu cuenta esté activa. Si eliminas tu cuenta, borraremos tus datos personales en un plazo de 30 días, excepto aquellos que debamos conservar por obligaciones legales.</p>
+                
+                <h3>7. Menores de Edad</h3>
+                <p>El servicio no está dirigido a menores de 16 años. No recopilamos intencionadamente datos de menores. Si eres padre/tutor y crees que tu hijo nos ha proporcionado datos, contáctanos.</p>
+                
+                <h3>8. Cambios en esta Política</h3>
+                <p>Podemos actualizar esta política periódicamente. Te notificaremos de cambios significativos por email o mediante un aviso en la Plataforma.</p>
+                
+                <h3>9. Contacto</h3>
+                <p>Para consultas sobre privacidad: <a href="mailto:info@futbolbasetotal.com">info@futbolbasetotal.com</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Política de Cookies -->
+    <div class="modal-overlay" id="cookiesOverlay" onclick="closeCookiesModal(event)">
+        <div class="modal-content legal-modal" onclick="event.stopPropagation()">
+            <button class="modal-close" onclick="closeCookiesModal()">×</button>
+            <h2 class="legal-title">🍪 Política de Cookies</h2>
+            <p class="legal-updated">Última actualización: Diciembre 2024</p>
+            
+            <div class="legal-content">
+                <h3>1. ¿Qué son las Cookies?</h3>
+                <p>Las cookies son pequeños archivos de texto que se almacenan en tu dispositivo cuando visitas nuestra web. Nos ayudan a recordar tus preferencias y mejorar tu experiencia.</p>
+                
+                <h3>2. Cookies que Utilizamos</h3>
+                <p><strong>Cookies esenciales:</strong></p>
+                <ul>
+                    <li><strong>Autenticación:</strong> Para mantener tu sesión iniciada</li>
+                    <li><strong>Preferencias:</strong> Idioma seleccionado, tema</li>
+                </ul>
+                
+                <p><strong>Cookies de funcionalidad:</strong></p>
+                <ul>
+                    <li><strong>localStorage:</strong> Guardamos tu idioma preferido y estado de sesión</li>
+                </ul>
+                
+                <p><strong>Cookies de terceros:</strong></p>
+                <ul>
+                    <li><strong>Supabase:</strong> Para autenticación y gestión de sesiones</li>
+                    <li><strong>Stripe:</strong> Para el procesamiento seguro de pagos</li>
+                    <li><strong>YouTube:</strong> Al visualizar videos embebidos</li>
+                </ul>
+                
+                <h3>3. Gestión de Cookies</h3>
+                <p>Puedes gestionar las cookies desde la configuración de tu navegador. Ten en cuenta que deshabilitar ciertas cookies puede afectar a la funcionalidad de la Plataforma.</p>
+                
+                <h3>4. Más Información</h3>
+                <p>Para más información sobre cookies, visita <a href="https://www.aboutcookies.org" target="_blank">aboutcookies.org</a></p>
+                
+                <h3>5. Contacto</h3>
+                <p>Para consultas: <a href="mailto:info@futbolbasetotal.com">info@futbolbasetotal.com</a></p>
+            </div>
+        </div>
+    </div>
 
     <!-- Onboarding Modal -->
     <div class="onboarding-overlay" id="onboardingOverlay">
