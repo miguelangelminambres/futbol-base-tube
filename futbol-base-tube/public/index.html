@@ -861,6 +861,42 @@
         
         /* Beneficios por nivel */
         .benefits-section { margin-bottom: 24px; }
+
+        /* Sección Mi Suscripción */
+        .subscription-section { margin-bottom: 24px; }
+        .subscription-card { background: var(--dark); border: 1px solid var(--dark-border); border-radius: 16px; padding: 20px; }
+        .subscription-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+        .subscription-plan { display: flex; align-items: center; gap: 12px; }
+        .subscription-plan-icon { font-size: 32px; }
+        .subscription-plan-name { font-family: 'Bebas Neue', sans-serif; font-size: 24px; }
+        .subscription-plan-status { font-size: 12px; color: var(--text-muted); }
+        .subscription-plan-status.active { color: var(--primary); }
+        .subscription-price-value { font-family: 'Bebas Neue', sans-serif; font-size: 28px; color: var(--primary); }
+        .subscription-price-period { font-size: 14px; color: var(--text-muted); }
+        .subscription-details { background: rgba(255,255,255,0.03); border-radius: 12px; padding: 16px; margin-bottom: 16px; }
+        .subscription-detail { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid var(--dark-border); }
+        .subscription-detail:last-child { border-bottom: none; }
+        .subscription-detail-label { color: var(--text-muted); font-size: 14px; }
+        .subscription-detail-value { font-weight: 600; font-size: 14px; }
+        .subscription-actions { display: flex; gap: 12px; }
+        .subscription-actions .btn { flex: 1; }
+        .btn-danger { color: var(--danger); border-color: var(--danger); }
+        .btn-danger:hover { background: var(--danger); color: white; }
+        
+        /* Modal confirmación cancelación */
+        .cancel-confirm-modal { background: rgba(239, 68, 68, 0.05); border: 2px solid var(--danger); border-radius: 16px; padding: 24px; margin-top: 16px; }
+        .cancel-confirm-header { text-align: center; margin-bottom: 20px; }
+        .cancel-confirm-icon { font-size: 48px; display: block; margin-bottom: 12px; }
+        .cancel-confirm-header h3 { font-family: 'Bebas Neue', sans-serif; font-size: 24px; color: var(--danger); }
+        .cancel-confirm-warning { background: rgba(0,0,0,0.2); border-radius: 12px; padding: 16px; margin-bottom: 16px; }
+        .cancel-confirm-warning p { font-size: 14px; margin-bottom: 12px; color: var(--text-muted); }
+        .cancel-losses { list-style: none; }
+        .cancel-losses li { padding: 8px 0; font-size: 14px; color: var(--text); }
+        .cancel-confirm-info { background: rgba(13, 159, 79, 0.1); border-radius: 12px; padding: 16px; margin-bottom: 16px; }
+        .cancel-confirm-info p { font-size: 13px; color: var(--text-muted); margin-bottom: 8px; }
+        .cancel-confirm-info p:last-child { margin-bottom: 0; }
+        .cancel-confirm-actions { display: flex; gap: 12px; }
+        .cancel-confirm-actions .btn { flex: 1; }
         .benefit-item { display: flex; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--dark-border); }
         .benefit-item:last-child { border-bottom: none; }
         .benefit-icon { font-size: 20px; width: 32px; text-align: center; }
@@ -2055,6 +2091,68 @@
                 </div>
             </div>
             
+            <!-- Mi Suscripción -->
+            <div class="subscription-section" id="subscriptionSection">
+                <h3 class="section-title">💳 Mi Suscripción</h3>
+                <div class="subscription-card" id="subscriptionCard">
+                    <div class="subscription-header">
+                        <div class="subscription-plan">
+                            <span class="subscription-plan-icon" id="subPlanIcon">⚽</span>
+                            <div>
+                                <div class="subscription-plan-name" id="subPlanName">Free</div>
+                                <div class="subscription-plan-status" id="subPlanStatus">Sin suscripción activa</div>
+                            </div>
+                        </div>
+                        <div class="subscription-price" id="subPrice" style="display:none;">
+                            <span class="subscription-price-value" id="subPriceValue">0€</span>
+                            <span class="subscription-price-period">/mes</span>
+                        </div>
+                    </div>
+                    
+                    <div class="subscription-details" id="subDetails" style="display:none;">
+                        <div class="subscription-detail">
+                            <span class="subscription-detail-label">📅 Próximo cobro:</span>
+                            <span class="subscription-detail-value" id="subNextBilling">-</span>
+                        </div>
+                        <div class="subscription-detail">
+                            <span class="subscription-detail-label">📆 Miembro desde:</span>
+                            <span class="subscription-detail-value" id="subMemberSince">-</span>
+                        </div>
+                    </div>
+                    
+                    <div class="subscription-actions">
+                        <button class="btn btn-primary" id="subUpgradeBtn" onclick="showUpgradeFromProfile()">⭐ Mejorar Plan</button>
+                        <button class="btn btn-ghost btn-danger" id="subCancelBtn" style="display:none;" onclick="showCancelConfirm()">Cancelar Suscripción</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Confirmación de cancelación -->
+            <div class="cancel-confirm-modal" id="cancelConfirmModal" style="display:none;">
+                <div class="cancel-confirm-header">
+                    <span class="cancel-confirm-icon">😢</span>
+                    <h3>¿Seguro que quieres cancelar?</h3>
+                </div>
+                <div class="cancel-confirm-warning">
+                    <p>Si cancelas perderás:</p>
+                    <ul class="cancel-losses">
+                        <li id="cancelLossXp">❌ <strong id="lossXpAmount">0</strong> XP acumulados</li>
+                        <li id="cancelLossLevel">❌ Tu nivel <strong id="lossLevelName">Canterano</strong></li>
+                        <li id="cancelLossBadges">❌ <strong id="lossBadgesCount">0</strong> badges conseguidos</li>
+                        <li id="cancelLossRanking">❌ Tu posición en el ranking</li>
+                        <li id="cancelLossPizarra" style="display:none;">❌ Acceso a la Pizarra Táctica</li>
+                    </ul>
+                </div>
+                <div class="cancel-confirm-info">
+                    <p>✅ Tu plan seguirá activo hasta el <strong id="cancelActiveUntil">final del periodo</strong></p>
+                    <p>✅ Podrás reactivar en cualquier momento</p>
+                </div>
+                <div class="cancel-confirm-actions">
+                    <button class="btn btn-primary" onclick="hideCancelConfirm()">Mantener mi Plan</button>
+                    <button class="btn btn-ghost btn-danger" onclick="confirmCancelSubscription()">Confirmar Cancelación</button>
+                </div>
+            </div>
+
             <!-- Warning de baja -->
             <div class="cancel-warning" id="cancelWarning">
                 <div class="cancel-warning-title">⚠️ Importante sobre tu suscripción</div>
@@ -4608,11 +4706,160 @@
             if (!currentUser) { showAuthModal('login'); return; }
             document.getElementById('profileOverlay').classList.add('active');
             await loadGamificationData();
+            loadSubscriptionData();
         }
 
         function closeProfileModal(e) {
             if (!e || e.target === e.currentTarget) {
                 document.getElementById('profileOverlay').classList.remove('active');
+                hideCancelConfirm();
+            }
+        }
+
+        // ==================== SUSCRIPCIÓN ====================
+        function loadSubscriptionData() {
+            if (!currentUser) return;
+            
+            var p = currentUser.perfil || {};
+            var plan = p.plan || 'free';
+            var status = p.subscription_status || 'none';
+            var startDate = p.subscription_start;
+            
+            // Iconos y nombres por plan
+            var planIcons = { free: '⚽', pro: '⭐', coach: '👑' };
+            var planNames = { free: 'Free', pro: 'Pro', coach: 'Coach' };
+            var planPrices = { free: '0', pro: '2,99', coach: '4,99' };
+            
+            // Actualizar UI
+            document.getElementById('subPlanIcon').textContent = planIcons[plan] || '⚽';
+            document.getElementById('subPlanName').textContent = planNames[plan] || 'Free';
+            
+            var statusEl = document.getElementById('subPlanStatus');
+            var priceEl = document.getElementById('subPrice');
+            var detailsEl = document.getElementById('subDetails');
+            var upgradeBtn = document.getElementById('subUpgradeBtn');
+            var cancelBtn = document.getElementById('subCancelBtn');
+            
+            if (plan === 'free') {
+                statusEl.textContent = 'Sin suscripción activa';
+                statusEl.classList.remove('active');
+                priceEl.style.display = 'none';
+                detailsEl.style.display = 'none';
+                upgradeBtn.style.display = 'block';
+                upgradeBtn.textContent = '⭐ Hacerse Pro';
+                cancelBtn.style.display = 'none';
+            } else {
+                statusEl.textContent = status === 'active' ? '✅ Suscripción activa' : '⏸️ ' + status;
+                statusEl.classList.add('active');
+                priceEl.style.display = 'block';
+                document.getElementById('subPriceValue').textContent = planPrices[plan] + '€';
+                detailsEl.style.display = 'block';
+                
+                // Calcular próximo cobro (aproximado: +1 mes desde inicio)
+                if (startDate) {
+                    var start = new Date(startDate);
+                    var nextBilling = new Date(start);
+                    nextBilling.setMonth(nextBilling.getMonth() + 1);
+                    // Ajustar al mes actual si ya pasó
+                    while (nextBilling < new Date()) {
+                        nextBilling.setMonth(nextBilling.getMonth() + 1);
+                    }
+                    document.getElementById('subNextBilling').textContent = nextBilling.toLocaleDateString('es-ES');
+                    document.getElementById('subMemberSince').textContent = start.toLocaleDateString('es-ES');
+                } else {
+                    document.getElementById('subNextBilling').textContent = '-';
+                    document.getElementById('subMemberSince').textContent = '-';
+                }
+                
+                if (plan === 'pro') {
+                    upgradeBtn.style.display = 'block';
+                    upgradeBtn.textContent = '👑 Subir a Coach';
+                } else {
+                    upgradeBtn.style.display = 'none';
+                }
+                
+                cancelBtn.style.display = status === 'active' ? 'block' : 'none';
+            }
+            
+            // Preparar datos para confirmación de cancelación
+            updateCancelConfirmData();
+        }
+        
+        function updateCancelConfirmData() {
+            var p = currentUser.perfil || {};
+            var g = gamificationData || {};
+            
+            document.getElementById('lossXpAmount').textContent = (p.xp || g.xp || 0).toLocaleString();
+            document.getElementById('lossLevelName').textContent = getLevelTitle(p.nivel || g.nivel || 1);
+            document.getElementById('lossBadgesCount').textContent = g.badges_count || 0;
+            
+            // Mostrar pérdida de pizarra si es Coach
+            document.getElementById('cancelLossPizarra').style.display = p.plan === 'coach' ? 'block' : 'none';
+            
+            // Fecha hasta la que estará activo
+            if (p.subscription_start) {
+                var start = new Date(p.subscription_start);
+                var endDate = new Date(start);
+                endDate.setMonth(endDate.getMonth() + 1);
+                while (endDate < new Date()) {
+                    endDate.setMonth(endDate.getMonth() + 1);
+                }
+                document.getElementById('cancelActiveUntil').textContent = endDate.toLocaleDateString('es-ES');
+            }
+        }
+        
+        function getLevelTitle(nivel) {
+            var titles = ['', 'Canterano', 'Juvenil', 'Amateur', 'Semi-Pro', 'Profesional', 'Élite', 'Leyenda'];
+            return titles[nivel] || 'Canterano';
+        }
+        
+        function showUpgradeFromProfile() {
+            closeProfileModal();
+            if (currentUser && currentUser.perfil && currentUser.perfil.plan === 'pro') {
+                selectedUpgradePlan = 'coach';
+            }
+            showUpgradeModal('upgrade');
+        }
+        
+        function showCancelConfirm() {
+            document.getElementById('cancelConfirmModal').style.display = 'block';
+            document.getElementById('subscriptionCard').style.display = 'none';
+        }
+        
+        function hideCancelConfirm() {
+            document.getElementById('cancelConfirmModal').style.display = 'none';
+            document.getElementById('subscriptionCard').style.display = 'block';
+        }
+        
+        async function confirmCancelSubscription() {
+            if (!currentUser) return;
+            
+            showToast('Procesando cancelación...', 'success');
+            
+            try {
+                // Actualizar estado en Supabase
+                var { error } = await db.from('perfiles').update({
+                    subscription_status: 'cancelled'
+                }).eq('id', currentUser.id);
+                
+                if (error) throw error;
+                
+                // Actualizar perfil local
+                if (currentUser.perfil) {
+                    currentUser.perfil.subscription_status = 'cancelled';
+                }
+                
+                hideCancelConfirm();
+                loadSubscriptionData();
+                
+                showToast('Suscripción cancelada. Tu plan seguirá activo hasta el final del periodo.', 'success');
+                
+                // Nota: En producción, aquí deberías llamar a Stripe para cancelar la suscripción real
+                // Esto solo actualiza el estado en la base de datos
+                
+            } catch (err) {
+                console.error('Error cancelando:', err);
+                showToast('Error al cancelar. Inténtalo de nuevo.', 'error');
             }
         }
 
