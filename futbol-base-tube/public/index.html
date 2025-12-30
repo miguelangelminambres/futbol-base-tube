@@ -595,6 +595,27 @@
         .my-session-card-date { font-size: 12px; color: var(--text-muted); background: var(--dark-card); padding: 4px 10px; border-radius: 6px; }
         .my-session-card-meta { display: flex; gap: 16px; font-size: 13px; color: var(--text-muted); }
 
+        /* Favoritos */
+        .favoritos-modal { max-width: 550px; padding: 24px; max-height: 80vh; display: flex; flex-direction: column; }
+        .favoritos-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+        .favoritos-counter { background: var(--primary); color: white; padding: 4px 12px; border-radius: 20px; font-size: 13px; font-weight: 600; }
+        .favoritos-hint { font-size: 13px; color: var(--text-muted); margin-bottom: 16px; }
+        .favoritos-list { flex: 1; overflow-y: auto; }
+        .favorito-card { display: flex; align-items: center; gap: 12px; padding: 12px; background: var(--dark); border: 1px solid var(--dark-border); border-radius: 12px; margin-bottom: 10px; transition: all 0.2s; }
+        .favorito-card:hover { border-color: var(--primary); }
+        .favorito-thumb { width: 80px; height: 50px; border-radius: 8px; object-fit: cover; cursor: pointer; transition: transform 0.2s; }
+        .favorito-thumb:hover { transform: scale(1.05); }
+        .favorito-info { flex: 1; min-width: 0; }
+        .favorito-title { font-weight: 600; font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-bottom: 4px; }
+        .favorito-meta { font-size: 12px; color: var(--text-muted); }
+        .favorito-actions { display: flex; gap: 8px; }
+        .favorito-btn-session { background: var(--primary); color: white; border: none; width: 32px; height: 32px; border-radius: 8px; cursor: pointer; font-size: 14px; transition: all 0.2s; }
+        .favorito-btn-session:hover { background: var(--primary-dark); transform: scale(1.1); }
+        .favorito-btn-remove { background: transparent; color: var(--danger); border: 1px solid var(--danger); width: 32px; height: 32px; border-radius: 8px; cursor: pointer; font-size: 14px; transition: all 0.2s; }
+        .favorito-btn-remove:hover { background: var(--danger); color: white; }
+        .btn.is-favorite { background: rgba(239, 68, 68, 0.1); border-color: var(--danger); color: var(--danger); }
+        .exercise-card-favorite { position: absolute; top: 8px; right: 8px; background: rgba(0,0,0,0.6); color: #ef4444; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; }
+
         /* Notifications */
         .notif-bell { position: relative; cursor: pointer; padding: 8px; margin-right: 8px; }
         .notif-badge { position: absolute; top: 2px; right: 2px; min-width: 18px; height: 18px; background: var(--danger); border-radius: 50%; font-size: 11px; font-weight: 700; display: none; align-items: center; justify-content: center; }
@@ -1180,6 +1201,7 @@
                 <span class="nav-link" onclick="scrollToSection('biblioteca')" data-i18n="nav.biblioteca">Biblioteca</span>
                 <span class="nav-link" onclick="scrollToSection('creadores')" data-i18n="nav.creadores">Creadores</span>
                 <span class="nav-link" onclick="showMySessions()" data-i18n="nav.mis_sesiones">Mis Sesiones</span>
+                <span class="nav-link" onclick="showFavorites()" data-i18n="nav.favoritos">❤️ Favoritos</span>
                 <span class="nav-link" onclick="scrollToSection('planes')" data-i18n="nav.planes">Planes</span>
             </nav>
             
@@ -1733,6 +1755,21 @@
             <button class="modal-close" onclick="closeMySessionsModal()">×</button>
             <div class="my-sessions-header"><h2 class="save-modal-title">📋 Mis Sesiones</h2><button class="btn btn-primary btn-sm" onclick="closeMySessionsModal();saveSession();">➕ Nueva</button></div>
             <div class="my-sessions-list" id="mySessionsList"><div class="session-list-loading">Cargando...</div></div>
+        </div>
+    </div>
+
+    <!-- Favoritos Modal -->
+    <div class="modal-overlay" id="favoritosOverlay" onclick="closeFavoritosModal(event)">
+        <div class="modal-content favoritos-modal" onclick="event.stopPropagation()">
+            <button class="modal-close" onclick="closeFavoritosModal()">×</button>
+            <div class="favoritos-header">
+                <h2 class="save-modal-title">❤️ Mis Favoritos</h2>
+                <span class="favoritos-counter" id="favoritosCounter">0/30</span>
+            </div>
+            <p class="favoritos-hint">Tus ejercicios guardados. Haz clic en la imagen para ver el ejercicio.</p>
+            <div class="favoritos-list" id="favoritosListModal">
+                <div class="session-list-loading">Cargando...</div>
+            </div>
         </div>
     </div>
 
@@ -3446,12 +3483,14 @@
             ejercicios_vistos: 0,
             sesiones_guardadas: 1,
             puede_favoritos: false,
+            max_favoritos: 1,
             puede_subir: true,
             acceso_pizarra: false,
             filtros_avanzados: false,
             gana_xp: false,
             multiplicador_xp: 0
         };
+        var userFavorites = []; // IDs de ejercicios favoritos
         var ADVANCED_FILTERS = ['filterEntrenador', 'filterEquipo', 'filterJugadores', 'filterPorteros', 'filterLikes', 'filterVistas'];
         var selectedUpgradePlan = 'coach';
         var pendingPlan = null; // Plan pendiente después de registro
@@ -3524,6 +3563,7 @@
                 var { data: perfil } = await db.from('perfiles').select('*').eq('id', user.id).single();
                 if (perfil) currentUser.perfil = perfil;
                 await loadUserLimits();
+                await loadUserFavorites();
                 updateUIForUser();
                 loadNotifications();
                 applyFreemiumRestrictions();
@@ -3537,7 +3577,7 @@
 
         async function loadUserLimits() {
             if (!currentUser) {
-                userLimits = { plan: 'free', ejercicios_mes: 10, ejercicios_vistos: 0, sesiones_guardadas: 1, puede_favoritos: false, puede_subir: true, acceso_pizarra: false, filtros_avanzados: false, gana_xp: false, multiplicador_xp: 0 };
+                userLimits = { plan: 'free', ejercicios_mes: 10, ejercicios_vistos: 0, sesiones_guardadas: 1, puede_favoritos: false, max_favoritos: 1, puede_subir: true, acceso_pizarra: false, filtros_avanzados: false, gana_xp: false, multiplicador_xp: 0 };
                 return;
             }
             try {
@@ -3553,7 +3593,8 @@
                         ejercicios_mes: plan === 'free' ? 10 : -1,
                         ejercicios_vistos: p.ejercicios_vistos_mes || 0,
                         sesiones_guardadas: plan === 'free' ? 1 : -1,
-                        puede_favoritos: plan !== 'free',
+                        puede_favoritos: true,
+                        max_favoritos: plan === 'free' ? 1 : 30,
                         puede_subir: true,
                         acceso_pizarra: plan === 'coach',
                         filtros_avanzados: plan !== 'free',
@@ -3659,6 +3700,7 @@
                         '<div class="user-dropdown-item" onclick="showProfileModal()">🏆 Mi Perfil / XP</div>' +
                         upgradeOption +
                         '<div class="user-dropdown-item" onclick="showMySessions()">📋 Mis Sesiones</div>' +
+                        '<div class="user-dropdown-item" onclick="showFavorites()">❤️ Mis Favoritos</div>' +
                         '<div class="user-dropdown-item" onclick="showUploadModal()">📤 Subir Ejercicio</div>' +
                         (plan === 'coach' ? '<div class="user-dropdown-item" onclick="location.href=\'admin.html\'">⚙️ Admin</div>' : '') +
                         (plan === 'coach' ? '<div class="user-dropdown-item" onclick="abrirPizarraTactica()">🎯 Pizarra Táctica</div>' : '') +
@@ -3887,10 +3929,12 @@
                 var cats = (ex.categorias || []).slice(0, 2).map(function(c) { return '<span class="ejercicio-tag">' + c + '</span>'; }).join('');
                 var familiaLabel = ex.familia ? FAMILIA_NAMES[ex.familia] || '' : '';
                 var inSession = currentSession.some(function(s) { return s.id === ex.id; });
+                var isFavorite = userFavorites.includes(ex.id);
                 return '<div class="ejercicio-card" onclick="openExercise(\'' + ex.id + '\')">' +
                     '<div class="ejercicio-thumbnail">' +
                         '<img src="' + (ex.thumbnail_url || 'https://via.placeholder.com/320x180/16162a/8b8ba7?text=Video') + '" alt="">' +
                         '<div class="ejercicio-play"></div>' +
+                        (isFavorite ? '<div class="exercise-card-favorite">❤️</div>' : '') +
                         (ex.dificultad ? '<div class="ejercicio-difficulty">Dif ' + ex.dificultad + '</div>' : '') +
                         (familiaLabel ? '<div class="ejercicio-familia">' + familiaLabel + '</div>' : '') +
                         '<div class="ejercicio-lang">' + (LANG_FLAGS[ex.idioma] || '🌐') + '</div>' +
@@ -4024,11 +4068,204 @@
             document.getElementById('modalDesc').textContent = ex.descripcion || '';
             document.getElementById('modalOverlay').classList.add('active');
             
+            // Actualizar estado del botón favorito
+            updateFavoriteButton();
+            
             // Incrementar contador de ejercicios vistos
             incrementExerciseView();
         }
 
         function closeModal(e) { if (!e || e.target === e.currentTarget) { document.getElementById('modalOverlay').classList.remove('active'); document.getElementById('modalVideo').innerHTML = ''; } }
+
+        // ==================== FAVORITOS ====================
+        async function loadUserFavorites() {
+            if (!currentUser) { userFavorites = []; return; }
+            
+            try {
+                var { data, error } = await db.from('favoritos')
+                    .select('ejercicio_id')
+                    .eq('usuario_id', currentUser.id);
+                
+                if (error) throw error;
+                userFavorites = data ? data.map(function(f) { return f.ejercicio_id; }) : [];
+            } catch (err) {
+                console.error('Error cargando favoritos:', err);
+                userFavorites = [];
+            }
+        }
+        
+        async function toggleFavorite() {
+            if (!currentUser) { 
+                showAuthModal('login'); 
+                return; 
+            }
+            if (!currentExercise) return;
+            
+            var exerciseId = currentExercise.id;
+            var isFav = userFavorites.includes(exerciseId);
+            
+            try {
+                if (isFav) {
+                    // Quitar de favoritos
+                    var { error } = await db.from('favoritos')
+                        .delete()
+                        .eq('usuario_id', currentUser.id)
+                        .eq('ejercicio_id', exerciseId);
+                    
+                    if (error) throw error;
+                    
+                    userFavorites = userFavorites.filter(function(id) { return id !== exerciseId; });
+                    showToast('💔 Quitado de favoritos', 'success');
+                } else {
+                    // Verificar límite
+                    var maxFav = userLimits.max_favoritos || 1;
+                    if (userFavorites.length >= maxFav) {
+                        if (userLimits.plan === 'free') {
+                            showUpgradeModal('favoritos');
+                        } else {
+                            showToast('Has alcanzado el límite de ' + maxFav + ' favoritos. Elimina alguno primero.', 'error');
+                        }
+                        return;
+                    }
+                    
+                    // Añadir a favoritos
+                    var { error } = await db.from('favoritos').insert({
+                        usuario_id: currentUser.id,
+                        ejercicio_id: exerciseId
+                    });
+                    
+                    if (error) throw error;
+                    
+                    userFavorites.push(exerciseId);
+                    showToast('❤️ Añadido a favoritos (' + userFavorites.length + '/' + maxFav + ')', 'success');
+                }
+                
+                updateFavoriteButton();
+                renderExercises();
+                
+            } catch (err) {
+                console.error('Error en favoritos:', err);
+                showToast('Error al actualizar favoritos', 'error');
+            }
+        }
+        
+        function updateFavoriteButton() {
+            var btn = document.getElementById('modalFavorite');
+            if (!btn || !currentExercise) return;
+            
+            var isFav = userFavorites.includes(currentExercise.id);
+            btn.innerHTML = isFav ? '💔 Quitar Favorito' : '❤️ Favorito';
+            btn.classList.toggle('is-favorite', isFav);
+        }
+        
+        async function showFavorites() {
+            if (!currentUser) { 
+                showAuthModal('login'); 
+                return; 
+            }
+            
+            document.getElementById('favoritosOverlay').classList.add('active');
+            await loadFavoritosModal();
+        }
+        
+        function closeFavoritosModal(e) {
+            if (!e || e.target === e.currentTarget) {
+                document.getElementById('favoritosOverlay').classList.remove('active');
+            }
+        }
+        
+        async function loadFavoritosModal() {
+            var container = document.getElementById('favoritosListModal');
+            container.innerHTML = '<div class="session-list-loading">Cargando favoritos...</div>';
+            
+            if (userFavorites.length === 0) {
+                container.innerHTML = '<div class="session-list-empty">No tienes ejercicios favoritos</div>';
+                updateFavoritosCounter();
+                return;
+            }
+            
+            try {
+                var { data, error } = await db.from('ejercicios')
+                    .select('*')
+                    .in('id', userFavorites);
+                
+                if (error) throw error;
+                
+                if (!data || data.length === 0) {
+                    container.innerHTML = '<div class="session-list-empty">No se encontraron los ejercicios</div>';
+                    return;
+                }
+                
+                container.innerHTML = data.map(function(e) {
+                    return '<div class="favorito-card">' +
+                        '<img class="favorito-thumb" src="' + (e.thumbnail_url || '') + '" onclick="openExerciseModal(exercises.find(function(ex){return ex.id===\'' + e.id + '\'}) || ' + JSON.stringify(e).replace(/"/g, '&quot;') + ')">' +
+                        '<div class="favorito-info">' +
+                            '<div class="favorito-title">' + (e.titulo_ejercicio || e.titulo_video || 'Sin título') + '</div>' +
+                            '<div class="favorito-meta">' + (e.duracion || '--') + ' • ' + (e.tema_principal || 'Sin tema') + '</div>' +
+                        '</div>' +
+                        '<div class="favorito-actions">' +
+                            '<button class="favorito-btn-session" onclick="addFavToSession(\'' + e.id + '\')" title="Añadir a sesión">➕</button>' +
+                            '<button class="favorito-btn-remove" onclick="removeFavorite(\'' + e.id + '\')" title="Quitar de favoritos">🗑️</button>' +
+                        '</div>' +
+                    '</div>';
+                }).join('');
+                
+                updateFavoritosCounter();
+                
+            } catch (err) {
+                console.error('Error cargando favoritos:', err);
+                container.innerHTML = '<div class="session-list-empty">Error al cargar favoritos</div>';
+            }
+        }
+        
+        function updateFavoritosCounter() {
+            var counter = document.getElementById('favoritosCounter');
+            if (counter) {
+                var max = userLimits.max_favoritos || 1;
+                counter.textContent = userFavorites.length + '/' + max;
+            }
+        }
+        
+        async function removeFavorite(exerciseId) {
+            try {
+                var { error } = await db.from('favoritos')
+                    .delete()
+                    .eq('usuario_id', currentUser.id)
+                    .eq('ejercicio_id', exerciseId);
+                
+                if (error) throw error;
+                
+                userFavorites = userFavorites.filter(function(id) { return id !== exerciseId; });
+                showToast('💔 Quitado de favoritos', 'success');
+                loadFavoritosModal();
+                renderExercises();
+                
+            } catch (err) {
+                console.error('Error quitando favorito:', err);
+                showToast('Error al quitar de favoritos', 'error');
+            }
+        }
+        
+        async function addFavToSession(exerciseId) {
+            // Buscar el ejercicio
+            var { data } = await db.from('ejercicios').select('*').eq('id', exerciseId).single();
+            if (!data) {
+                showToast('Ejercicio no encontrado', 'error');
+                return;
+            }
+            
+            // Guardar como currentExercise temporalmente
+            var tempExercise = currentExercise;
+            currentExercise = data;
+            
+            // Cerrar modal de favoritos y abrir modal de añadir a sesión
+            closeFavoritosModal();
+            document.getElementById('addToSessionOverlay').classList.add('active');
+            loadSessionsForModal();
+            
+            // Restaurar
+            // No restauramos porque queremos que se añada este ejercicio
+        }
 
         // ==================== SESSION ====================
         function toggleInSession(id) {
