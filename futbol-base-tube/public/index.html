@@ -66,6 +66,12 @@
             font-size: 20px;
             line-height: 1;
         }
+        .lang-flag-img {
+            width: 24px;
+            height: 16px;
+            object-fit: cover;
+            border-radius: 2px;
+        }
         .lang-code {
             font-weight: 600;
             color: var(--text-muted);
@@ -1208,32 +1214,32 @@
             <!-- Selector de Idiomas -->
             <div class="lang-selector">
                 <div class="lang-current" onclick="toggleLangDropdown()">
-                    <span class="lang-flag" id="currentLangFlag">🇪🇸</span>
+                    <img class="lang-flag-img" id="currentLangFlag" src="https://flagcdn.com/w40/es.png" alt="ES">
                     <span class="lang-code" id="currentLangCode">ES</span>
                 </div>
                 <div class="lang-dropdown" id="langDropdown">
                     <div class="lang-option active" data-lang="es" onclick="setLanguage('es')">
-                        <span class="lang-flag">🇪🇸</span>
+                        <img class="lang-flag-img" src="https://flagcdn.com/w40/es.png" alt="ES">
                         <span>Español</span>
                     </div>
                     <div class="lang-option" data-lang="en" onclick="setLanguage('en')">
-                        <span class="lang-flag">🇬🇧</span>
+                        <img class="lang-flag-img" src="https://flagcdn.com/w40/gb.png" alt="EN">
                         <span>English</span>
                     </div>
                     <div class="lang-option" data-lang="pt" onclick="setLanguage('pt')">
-                        <span class="lang-flag">🇧🇷</span>
+                        <img class="lang-flag-img" src="https://flagcdn.com/w40/br.png" alt="PT">
                         <span>Português</span>
                     </div>
                     <div class="lang-option" data-lang="fr" onclick="setLanguage('fr')">
-                        <span class="lang-flag">🇫🇷</span>
+                        <img class="lang-flag-img" src="https://flagcdn.com/w40/fr.png" alt="FR">
                         <span>Français</span>
                     </div>
                     <div class="lang-option" data-lang="de" onclick="setLanguage('de')">
-                        <span class="lang-flag">🇩🇪</span>
+                        <img class="lang-flag-img" src="https://flagcdn.com/w40/de.png" alt="DE">
                         <span>Deutsch</span>
                     </div>
                     <div class="lang-option" data-lang="it" onclick="setLanguage('it')">
-                        <span class="lang-flag">🇮🇹</span>
+                        <img class="lang-flag-img" src="https://flagcdn.com/w40/it.png" alt="IT">
                         <span>Italiano</span>
                     </div>
                 </div>
@@ -3417,12 +3423,14 @@
             document.getElementById('langDropdown').classList.toggle('show');
         }
         
+        var langFlagUrls = { es: 'https://flagcdn.com/w40/es.png', en: 'https://flagcdn.com/w40/gb.png', pt: 'https://flagcdn.com/w40/br.png', fr: 'https://flagcdn.com/w40/fr.png', de: 'https://flagcdn.com/w40/de.png', it: 'https://flagcdn.com/w40/it.png' };
+        
         function setLanguage(lang) {
             currentLang = lang;
             localStorage.setItem('fbt_lang', lang);
             
             // Actualizar selector
-            document.getElementById('currentLangFlag').textContent = langFlags[lang];
+            document.getElementById('currentLangFlag').src = langFlagUrls[lang] || langFlagUrls['es'];
             document.getElementById('currentLangCode').textContent = lang.toUpperCase();
             
             // Marcar opción activa
