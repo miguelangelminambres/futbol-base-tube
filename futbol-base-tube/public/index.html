@@ -2073,6 +2073,7 @@
     <!-- Upgrade Modal -->
     <div class="modal-overlay" id="upgradeOverlay" onclick="closeUpgradeModal(event)">
         <div class="modal-card upgrade-modal" onclick="event.stopPropagation()">
+            <button class="modal-close" onclick="closeUpgradeModal()">&times;</button>
             <div class="upgrade-header">
                 <div class="upgrade-icon" id="upgradeIcon">🚀</div>
                 <h2 class="upgrade-title" id="upgradeTitle">Desbloquea Todo el Potencial</h2>
@@ -4544,7 +4545,7 @@
         }
 
         function closeUpgradeModal(e) {
-            if (!e || e.target === e.currentTarget) {
+            if (!e || e.target === e.currentTarget || e.target.classList.contains('modal-close')) {
                 document.getElementById('upgradeOverlay').classList.remove('active');
                 document.getElementById('benefitPizarra').style.display = 'none';
                 document.getElementById('benefitXp').style.display = 'none';
