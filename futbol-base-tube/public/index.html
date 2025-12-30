@@ -4425,11 +4425,30 @@
             event.currentTarget.classList.add('recommended');
         }
 
-        function goToCheckout() {
-            // TODO: Integrar con Stripe
-            showToast('🚧 Sistema de pagos en desarrollo', 'error');
-            closeUpgradeModal();
-        }
+      function goToCheckout() {
+    if (!currentUser) {
+        showToast('Inicia sesión primero', 'error');
+        closeUpgradeModal();
+        showAuthModal('login');
+        return;
+    }
+    
+    var stripeLinks = {
+        pro: 'https://buy.stripe.com/7sY14oec8cJA64G6jZcAo0w',
+        coach: 'https://buy.stripe.com/bJe00kfgcaBs50CgYDcAo0x'
+    };
+    
+    var link = stripeLinks[selectedUpgradePlan];
+    if (!link) {
+        showToast('Selecciona un plan', 'error');
+        return;
+    }
+    
+    var checkoutUrl = link + '?prefilled_email=' + encodeURIComponent(currentUser.email) + '&client_reference_id=' + currentUser.id;
+    
+    showToast('Redirigiendo a pago seguro...', 'success');
+    window.location.href = checkoutUrl;
+}
 
         // ==================== GAMIFICACIÓN ====================
         var gamificationData = null;
