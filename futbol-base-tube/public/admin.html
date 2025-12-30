@@ -59,7 +59,7 @@
         .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 4px 20px rgba(13, 159, 79, 0.4); }
         .btn-primary:disabled { background: var(--dark-border); cursor: not-allowed; transform: none; }
         .btn-youtube { background: #ff0000; color: white; }
-        .btn-twitter { background: #1da1f2; color: white; }
+        .btn-twitter { background: #000000; color: white; }
         .btn-instagram { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); color: white; }
         
         .section-title { font-family: 'Bebas Neue', sans-serif; font-size: 28px; margin-bottom: 24px; }
@@ -68,7 +68,7 @@
         .source-selector { display: flex; gap: 16px; margin-bottom: 24px; }
         .source-btn { flex: 1; padding: 18px; background: var(--dark-card); border: 2px solid var(--dark-border); border-radius: 14px; color: var(--text-muted); font-size: 15px; font-weight: 600; cursor: pointer; transition: all 0.2s; }
         .source-btn.active.youtube { border-color: #ff0000; background: rgba(255, 0, 0, 0.1); color: #ff0000; }
-        .source-btn.active.twitter { border-color: #1da1f2; background: rgba(29, 161, 242, 0.1); color: #1da1f2; }
+        .source-btn.active.twitter { border-color: #000; background: rgba(255, 255, 255, 0.1); color: #fff; }
         .source-btn.active.instagram { border-color: #e1306c; background: rgba(225, 48, 108, 0.1); color: #e1306c; }
         
         .form-card { background: var(--dark-card); border: 1px solid var(--dark-border); border-radius: 16px; padding: 24px; margin-bottom: 24px; }
@@ -105,6 +105,8 @@
         .preview-media img { width: 100%; height: 100%; object-fit: cover; }
         .preview-badge { position: absolute; top: 10px; left: 10px; padding: 5px 10px; border-radius: 6px; font-size: 11px; font-weight: 700; }
         .preview-badge.youtube { background: #ff0000; }
+        .preview-badge.twitter { background: #000; }
+        .preview-badge.instagram { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
         .preview-duration { position: absolute; bottom: 10px; right: 10px; background: rgba(0,0,0,0.85); padding: 4px 8px; border-radius: 4px; font-size: 12px; }
         .preview-lang { position: absolute; top: 10px; right: 10px; background: rgba(0,0,0,0.85); padding: 4px 8px; border-radius: 4px; font-size: 14px; }
         .preview-body { padding: 20px; }
@@ -128,7 +130,7 @@
         .exercise-thumb img { width: 100%; height: 100%; object-fit: cover; }
         .exercise-source { position: absolute; top: 8px; left: 8px; padding: 4px 8px; border-radius: 4px; font-size: 10px; font-weight: 700; }
         .exercise-source.youtube { background: #ff0000; }
-        .exercise-source.twitter { background: #1da1f2; }
+        .exercise-source.twitter { background: #000; }
         .exercise-source.instagram { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
         .exercise-familia { position: absolute; bottom: 8px; left: 8px; padding: 4px 8px; border-radius: 4px; font-size: 10px; font-weight: 700; background: var(--primary); }
         .exercise-lang { position: absolute; top: 8px; right: 8px; background: rgba(0,0,0,0.8); padding: 4px 8px; border-radius: 4px; font-size: 12px; }
@@ -546,7 +548,7 @@
 
     <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
     <script>
-    var db=null,source='youtube',videoId=null,tweetId=null,categories=[],extracted={},supabaseReady=false,pendingExercises=[],rejectingExerciseId=null,selectedRejectReason=null;
+    var db=null,source='youtube',videoId=null,tweetId=null,igId=null,categories=[],extracted={},supabaseReady=false,pendingExercises=[],rejectingExerciseId=null,selectedRejectReason=null;
     var selectedFamilia = null;
     var LANG_FLAGS={'es':'🇪🇸','en':'🇬🇧','pt':'🇵🇹','it':'🇮🇹','de':'🇩🇪','fr':'🇫🇷','other':'🌐'};
     var FAMILIA_NAMES = { 'futbol_base': '⚽ Fútbol Base', 'profesional': '🏟️ Profesional', 'entrevista': '🎤 Entrevista', 'analisis': '📊 Análisis' };
@@ -592,7 +594,30 @@
 
     function loadStats(){if(!db)return;db.from('ejercicios').select('*',{count:'exact',head:true}).then(function(r){document.getElementById('statTotal').textContent=r.count||0;});db.from('ejercicios').select('*',{count:'exact',head:true}).eq('source','youtube').then(function(r){document.getElementById('statYT').textContent=r.count||0;});db.from('ejercicios').select('*',{count:'exact',head:true}).eq('source','twitter').then(function(r){document.getElementById('statTW').textContent=r.count||0;});}
 
-    function setSource(s){source=s;document.getElementById('srcYT').className='source-btn '+(s==='youtube'?'active youtube':'');document.getElementById('srcTW').className='source-btn '+(s==='twitter'?'active twitter':'');document.getElementById('srcIG').className='source-btn '+(s==='instagram'?'active instagram':'');if(s==='youtube'){document.getElementById('inputVideoUrl').placeholder='https://www.youtube.com/watch?v=...';document.getElementById('btnExtract').className='btn btn-youtube';document.getElementById('btnExtract').textContent='▶ Extraer';document.getElementById('urlTitle').textContent='📺 URL del Video';}else if(s==='twitter'){document.getElementById('inputVideoUrl').placeholder='https://twitter.com/usuario/status/...';document.getElementById('btnExtract').className='btn btn-twitter';document.getElementById('btnExtract').textContent='𝕏 Cargar';document.getElementById('urlTitle').textContent='𝕏 URL del Tweet';}else{document.getElementById('inputVideoUrl').placeholder='https://www.instagram.com/reel/...';document.getElementById('btnExtract').className='btn btn-instagram';document.getElementById('btnExtract').textContent='📷 Cargar';document.getElementById('urlTitle').textContent='📷 URL de Instagram';}resetForm();}
+    function setSource(s){
+        source=s;
+        document.getElementById('srcYT').className='source-btn '+(s==='youtube'?'active youtube':'');
+        document.getElementById('srcTW').className='source-btn '+(s==='twitter'?'active twitter':'');
+        document.getElementById('srcIG').className='source-btn '+(s==='instagram'?'active instagram':'');
+        
+        if(s==='youtube'){
+            document.getElementById('inputVideoUrl').placeholder='https://www.youtube.com/watch?v=...';
+            document.getElementById('btnExtract').className='btn btn-youtube';
+            document.getElementById('btnExtract').textContent='▶ Extraer';
+            document.getElementById('urlTitle').textContent='📺 URL del Video';
+        }else if(s==='twitter'){
+            document.getElementById('inputVideoUrl').placeholder='https://x.com/usuario/status/123456...';
+            document.getElementById('btnExtract').className='btn btn-twitter';
+            document.getElementById('btnExtract').textContent='𝕏 Cargar';
+            document.getElementById('urlTitle').textContent='𝕏 URL del Tweet';
+        }else{
+            document.getElementById('inputVideoUrl').placeholder='https://www.instagram.com/reel/ABC123...';
+            document.getElementById('btnExtract').className='btn btn-instagram';
+            document.getElementById('btnExtract').textContent='📷 Cargar';
+            document.getElementById('urlTitle').textContent='📷 URL de Instagram';
+        }
+        resetForm();
+    }
 
     // FAMILIA SELECTION
     function selectFamilia(familia) {
@@ -607,20 +632,216 @@
         checkValid();
     }
 
-    function extractData(){if(source==='youtube')extractYouTube();else if(source==='twitter')extractTwitter();else extractInstagram();}
+    function extractData(){
+        if(source==='youtube') extractYouTube();
+        else if(source==='twitter') extractTwitter();
+        else extractInstagram();
+    }
+    
     function getVideoId(url){var m=url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/|shorts\/)([^&\n?#]+)/);return m?m[1]:null;}
     function getTweetId(url){var m=url.match(/(?:twitter|x)\.com\/\w+\/status\/(\d+)/);return m?m[1]:null;}
+    function getTwitterUser(url){var m=url.match(/(?:twitter|x)\.com\/(\w+)\/status/);return m?m[1]:null;}
     function getInstagramId(url){var m=url.match(/instagram\.com\/(?:p|reel|reels)\/([A-Za-z0-9_-]+)/);return m?m[1]:null;}
     function parseDuration(iso){var m=iso.match(/PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?/);if(!m)return{f:'0:00',s:0};var h=parseInt(m[1]||0),min=parseInt(m[2]||0),sec=parseInt(m[3]||0);return{f:h>0?h+':'+String(min).padStart(2,'0')+':'+String(sec).padStart(2,'0'):min+':'+String(sec).padStart(2,'0'),s:h*3600+min*60+sec};}
     function detectLanguage(code){if(!code)return'es';var c=code.substring(0,2).toLowerCase();return['es','en','pt','it','de','fr'].indexOf(c)!==-1?c:'other';}
 
     function formatNumber(num){if(num>=1000000)return(num/1000000).toFixed(1)+'M';if(num>=1000)return(num/1000).toFixed(1)+'K';return num.toString();}
     function formatDate(dateStr){if(!dateStr)return'';var d=new Date(dateStr);return d.toLocaleDateString('es-ES',{day:'2-digit',month:'short',year:'numeric'});}
-    function extractYouTube(){var url=document.getElementById('inputVideoUrl').value.trim();videoId=getVideoId(url);if(!videoId){setStatus('❌ URL no válida','error');return;}var thumb='https://img.youtube.com/vi/'+videoId+'/maxresdefault.jpg';updatePreviewMedia(thumb);extracted={videoId:videoId,thumb:thumb,videoUrl:url};var apiKey=localStorage.getItem('yt_key');if(!apiKey){setStatus('⚠️ Sin API Key','error');checkValid();return;}setStatus('🔄 Extrayendo...','loading');fetch('https://www.googleapis.com/youtube/v3/videos?part=snippet,contentDetails,statistics&id='+videoId+'&key='+apiKey).then(function(res){return res.json();}).then(function(data){if(data.error)throw new Error(data.error.message);if(!data.items||!data.items.length)throw new Error('Video no encontrado');var v=data.items[0];var dur=parseDuration(v.contentDetails.duration);var lang=detectLanguage(v.snippet.defaultAudioLanguage||v.snippet.defaultLanguage);var vistas=parseInt(v.statistics.viewCount||0);var likes=parseInt(v.statistics.likeCount||0);var fechaPub=v.snippet.publishedAt;extracted={videoId:videoId,videoUrl:url,thumb:thumb,tituloVideo:v.snippet.title,canal:v.snippet.channelTitle,duracion:dur.f,duracionSeg:dur.s,desc:(v.snippet.description||'').substring(0,500),vistas:vistas,likes:likes,fechaPublicacion:fechaPub,idioma:lang};document.getElementById('inputTituloVideo').value=extracted.tituloVideo;document.getElementById('inputTituloVideo').className='form-input filled';document.getElementById('inputCanal').value=extracted.canal;document.getElementById('inputCanal').className='form-input filled';document.getElementById('inputDuracion').value=extracted.duracion;document.getElementById('inputDuracion').className='form-input filled';document.getElementById('inputVistas').value=formatNumber(vistas)+' vistas';document.getElementById('inputVistas').className='form-input filled';document.getElementById('inputLikes').value=formatNumber(likes)+' likes';document.getElementById('inputLikes').className='form-input filled';document.getElementById('inputFechaPublicacion').value=formatDate(fechaPub);document.getElementById('inputFechaPublicacion').className='form-input filled';document.getElementById('inputDesc').value=extracted.desc;document.getElementById('inputIdioma').value=extracted.idioma;if(!document.getElementById('inputTitulo').value){document.getElementById('inputTitulo').value=extracted.tituloVideo;}updatePreviewMedia(thumb,extracted.duracion);document.getElementById('previewMeta').textContent=extracted.canal+' • '+extracted.duracion+' • '+formatNumber(vistas)+' vistas';updatePreview();setStatus('✅ Datos extraídos '+LANG_FLAGS[lang],'success');checkValid();}).catch(function(err){setStatus('❌ '+err.message,'error');checkValid();});}
-    function extractTwitter(){var url=document.getElementById('inputVideoUrl').value.trim();tweetId=getTweetId(url);if(!tweetId){setStatus('❌ URL no válida','error');return;}extracted={tweetId:tweetId,videoUrl:url};setStatus('✅ Tweet listo','success');checkValid();}
-    function extractInstagram(){var url=document.getElementById('inputVideoUrl').value.trim();var igId=getInstagramId(url);if(!igId){setStatus('❌ URL no válida','error');return;}extracted={igId:igId,videoUrl:url};setStatus('✅ Instagram listo','success');checkValid();}
+    
+    function extractYouTube(){
+        var url=document.getElementById('inputVideoUrl').value.trim();
+        videoId=getVideoId(url);
+        if(!videoId){setStatus('❌ URL no válida','error');return;}
+        var thumb='https://img.youtube.com/vi/'+videoId+'/maxresdefault.jpg';
+        updatePreviewMedia(thumb);
+        extracted={videoId:videoId,thumb:thumb,videoUrl:url};
+        var apiKey=localStorage.getItem('yt_key');
+        if(!apiKey){setStatus('⚠️ Sin API Key - Completa datos manualmente','error');checkValid();return;}
+        setStatus('🔄 Extrayendo...','loading');
+        fetch('https://www.googleapis.com/youtube/v3/videos?part=snippet,contentDetails,statistics&id='+videoId+'&key='+apiKey)
+        .then(function(res){return res.json();})
+        .then(function(data){
+            if(data.error)throw new Error(data.error.message);
+            if(!data.items||!data.items.length)throw new Error('Video no encontrado');
+            var v=data.items[0];
+            var dur=parseDuration(v.contentDetails.duration);
+            var lang=detectLanguage(v.snippet.defaultAudioLanguage||v.snippet.defaultLanguage);
+            var vistas=parseInt(v.statistics.viewCount||0);
+            var likes=parseInt(v.statistics.likeCount||0);
+            var fechaPub=v.snippet.publishedAt;
+            extracted={videoId:videoId,videoUrl:url,thumb:thumb,tituloVideo:v.snippet.title,canal:v.snippet.channelTitle,duracion:dur.f,duracionSeg:dur.s,desc:(v.snippet.description||'').substring(0,500),vistas:vistas,likes:likes,fechaPublicacion:fechaPub,idioma:lang};
+            document.getElementById('inputTituloVideo').value=extracted.tituloVideo;
+            document.getElementById('inputTituloVideo').className='form-input filled';
+            document.getElementById('inputCanal').value=extracted.canal;
+            document.getElementById('inputCanal').className='form-input filled';
+            document.getElementById('inputDuracion').value=extracted.duracion;
+            document.getElementById('inputDuracion').className='form-input filled';
+            document.getElementById('inputVistas').value=formatNumber(vistas)+' vistas';
+            document.getElementById('inputVistas').className='form-input filled';
+            document.getElementById('inputLikes').value=formatNumber(likes)+' likes';
+            document.getElementById('inputLikes').className='form-input filled';
+            document.getElementById('inputFechaPublicacion').value=formatDate(fechaPub);
+            document.getElementById('inputFechaPublicacion').className='form-input filled';
+            document.getElementById('inputDesc').value=extracted.desc;
+            document.getElementById('inputIdioma').value=extracted.idioma;
+            if(!document.getElementById('inputTitulo').value){document.getElementById('inputTitulo').value=extracted.tituloVideo;}
+            updatePreviewMedia(thumb,extracted.duracion);
+            document.getElementById('previewMeta').textContent=extracted.canal+' • '+extracted.duracion+' • '+formatNumber(vistas)+' vistas';
+            updatePreview();
+            setStatus('✅ Datos extraídos '+LANG_FLAGS[lang],'success');
+            checkValid();
+        }).catch(function(err){setStatus('❌ '+err.message,'error');checkValid();});
+    }
+    
+    // TWITTER - MEJORADO
+    function extractTwitter(){
+        var url=document.getElementById('inputVideoUrl').value.trim();
+        tweetId=getTweetId(url);
+        var username=getTwitterUser(url);
+        
+        if(!tweetId){
+            setStatus('❌ URL no válida. Usa: https://x.com/usuario/status/123...','error');
+            return;
+        }
+        
+        setStatus('🔄 Cargando tweet...','loading');
+        
+        // Datos básicos que podemos extraer del URL
+        extracted={
+            tweetId: tweetId,
+            videoUrl: url,
+            canal: '@' + (username || 'usuario'),
+            tituloVideo: 'Tweet de @' + (username || 'usuario')
+        };
+        
+        // Intentar oEmbed (puede fallar por CORS)
+        var apiUrl = url.replace('x.com', 'twitter.com');
+        fetch('https://publish.twitter.com/oembed?url=' + encodeURIComponent(apiUrl) + '&omit_script=true')
+        .then(function(res){
+            if(!res.ok) throw new Error('oEmbed no disponible');
+            return res.json();
+        })
+        .then(function(data){
+            extracted.canal = '@' + data.author_name;
+            extracted.tituloVideo = 'Tweet de @' + data.author_name;
+            
+            document.getElementById('inputTituloVideo').value = extracted.tituloVideo;
+            document.getElementById('inputTituloVideo').className = 'form-input filled';
+            document.getElementById('inputCanal').value = extracted.canal;
+            document.getElementById('inputCanal').className = 'form-input filled';
+            
+            // Preview con logo X
+            updatePreviewMediaTwitter();
+            document.getElementById('previewMeta').textContent = extracted.canal + ' • Twitter/X';
+            
+            setStatus('✅ Tweet listo - Completa título y datos','success');
+            checkValid();
+        })
+        .catch(function(err){
+            // Fallback sin oEmbed
+            console.log('oEmbed falló:', err.message);
+            
+            document.getElementById('inputTituloVideo').value = extracted.tituloVideo;
+            document.getElementById('inputCanal').value = extracted.canal;
+            
+            updatePreviewMediaTwitter();
+            document.getElementById('previewMeta').textContent = extracted.canal + ' • Twitter/X';
+            
+            setStatus('✅ Tweet listo - Completa título y datos','success');
+            checkValid();
+        });
+    }
+    
+    // INSTAGRAM - MEJORADO
+    function extractInstagram(){
+        var url=document.getElementById('inputVideoUrl').value.trim();
+        igId=getInstagramId(url);
+        
+        if(!igId){
+            setStatus('❌ URL no válida. Usa: https://instagram.com/reel/ABC123...','error');
+            return;
+        }
+        
+        setStatus('🔄 Cargando Instagram...','loading');
+        
+        // Datos básicos
+        extracted={
+            igId: igId,
+            videoUrl: url,
+            canal: 'Instagram',
+            tituloVideo: 'Post de Instagram'
+        };
+        
+        // Intentar oEmbed
+        fetch('https://api.instagram.com/oembed?url=' + encodeURIComponent(url) + '&omit_script=true')
+        .then(function(res){
+            if(!res.ok) throw new Error('oEmbed no disponible');
+            return res.json();
+        })
+        .then(function(data){
+            extracted.canal = data.author_name || 'Instagram';
+            extracted.tituloVideo = data.title || 'Post de @' + extracted.canal;
+            extracted.thumb = data.thumbnail_url;
+            
+            document.getElementById('inputTituloVideo').value = extracted.tituloVideo;
+            document.getElementById('inputTituloVideo').className = 'form-input filled';
+            document.getElementById('inputCanal').value = '@' + extracted.canal;
+            document.getElementById('inputCanal').className = 'form-input filled';
+            
+            if(extracted.thumb){
+                updatePreviewMediaInstagram(extracted.thumb);
+            } else {
+                updatePreviewMediaInstagram();
+            }
+            document.getElementById('previewMeta').textContent = '@' + extracted.canal + ' • Instagram';
+            
+            setStatus('✅ Instagram listo','success');
+            checkValid();
+        })
+        .catch(function(err){
+            console.log('oEmbed Instagram falló:', err.message);
+            
+            document.getElementById('inputTituloVideo').value = extracted.tituloVideo;
+            document.getElementById('inputCanal').value = extracted.canal;
+            
+            updatePreviewMediaInstagram();
+            document.getElementById('previewMeta').textContent = 'Instagram';
+            
+            setStatus('✅ Instagram listo - Completa datos manualmente','success');
+            checkValid();
+        });
+    }
 
-    function updatePreviewMedia(thumb,dur){var lang=document.getElementById('inputIdioma').value;var html='<img src="'+thumb+'" onerror="this.src=\'https://img.youtube.com/vi/'+videoId+'/hqdefault.jpg\'">';html+='<div class="preview-badge youtube">📺</div>';if(dur)html+='<div class="preview-duration">'+dur+'</div>';html+='<div class="preview-lang">'+(LANG_FLAGS[lang]||'🌐')+'</div>';document.getElementById('previewMedia').innerHTML=html;}
+    function updatePreviewMedia(thumb,dur){
+        var lang=document.getElementById('inputIdioma').value;
+        var html='<img src="'+thumb+'" onerror="this.src=\'https://img.youtube.com/vi/'+videoId+'/hqdefault.jpg\'">';
+        html+='<div class="preview-badge youtube">📺</div>';
+        if(dur)html+='<div class="preview-duration">'+dur+'</div>';
+        html+='<div class="preview-lang">'+(LANG_FLAGS[lang]||'🌐')+'</div>';
+        document.getElementById('previewMedia').innerHTML=html;
+    }
+    
+    function updatePreviewMediaTwitter(){
+        var lang=document.getElementById('inputIdioma').value;
+        var html='<div style="width:100%;height:100%;background:#000;display:flex;align-items:center;justify-content:center;font-size:64px;color:#fff;">𝕏</div>';
+        html+='<div class="preview-badge twitter">𝕏</div>';
+        html+='<div class="preview-lang">'+(LANG_FLAGS[lang]||'🌐')+'</div>';
+        document.getElementById('previewMedia').innerHTML=html;
+    }
+    
+    function updatePreviewMediaInstagram(thumb){
+        var lang=document.getElementById('inputIdioma').value;
+        var html;
+        if(thumb){
+            html='<img src="'+thumb+'">';
+        } else {
+            html='<div style="width:100%;height:100%;background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);display:flex;align-items:center;justify-content:center;font-size:64px;">📷</div>';
+        }
+        html+='<div class="preview-badge instagram">📷</div>';
+        html+='<div class="preview-lang">'+(LANG_FLAGS[lang]||'🌐')+'</div>';
+        document.getElementById('previewMedia').innerHTML=html;
+    }
+    
     function setStatus(msg,type){document.getElementById('urlStatus').textContent=msg;document.getElementById('urlStatus').className='url-status '+type;}
     
     function updatePreview(){
@@ -634,24 +855,101 @@
         categories.forEach(function(c){html+='<span class="preview-tag">'+c+'</span>';});
         if(dif)html+='<span class="preview-tag dif">Dif: '+dif+'</span>';
         document.getElementById('previewTags').innerHTML=html;
-        if(videoId&&extracted.thumb){updatePreviewMedia(extracted.thumb,extracted.duracion);}
+        if(source==='youtube' && videoId && extracted.thumb){
+            updatePreviewMedia(extracted.thumb,extracted.duracion);
+        }
     }
     
     function checkValid(){
-        var hasSource=(source==='youtube'&&videoId)||(source==='twitter'&&tweetId)||(source==='instagram'&&extracted.igId);
+        var hasSource = (source==='youtube' && videoId) || (source==='twitter' && tweetId) || (source==='instagram' && igId);
         var titulo=document.getElementById('inputTitulo').value.trim();
         var dif=document.getElementById('inputDif').value;
         var hasFamilia = selectedFamilia !== null;
-        document.getElementById('btnSave').disabled=!(hasSource&&titulo&&categories.length>0&&dif&&hasFamilia);
+        document.getElementById('btnSave').disabled = !(hasSource && titulo && categories.length>0 && dif && hasFamilia);
     }
     
     function getEntrenador(){var val=document.getElementById('inputEntrenador').value;return val==='_otro'?document.getElementById('inputEntrenadorCustom').value:val;}
     function getEquipo(){var val=document.getElementById('inputEquipo').value;return val==='_otro'?document.getElementById('inputEquipoCustom').value:val;}
 
-    // GUARDAR - SIEMPRE CON sin_gamificacion: true + familia
-    function saveExercise(){if(!db){showToast('❌ No conectado','error');return;}showLoading(true);var videoIdValue=null;if(source==='youtube')videoIdValue=videoId;else if(source==='twitter')videoIdValue=tweetId;else if(source==='instagram')videoIdValue=extracted.igId;var data={source:source,video_id:videoIdValue,video_url:document.getElementById('inputVideoUrl').value,thumbnail_url:extracted.thumb||null,titulo_video:document.getElementById('inputTituloVideo').value,canal:document.getElementById('inputCanal').value,duracion:document.getElementById('inputDuracion').value,duracion_segundos:extracted.duracionSeg||0,descripcion:document.getElementById('inputDesc').value,vistas:extracted.vistas||0,likes:extracted.likes||0,fecha_publicacion:extracted.fechaPublicacion||null,titulo_ejercicio:document.getElementById('inputTitulo').value,familia:selectedFamilia,entrenador:getEntrenador(),equipo:getEquipo(),sistema:document.getElementById('inputSistema')?document.getElementById('inputSistema').value:null,categorias:categories,dificultad:parseInt(document.getElementById('inputDif').value),jugadores:document.getElementById('inputJugadores').value,num_porteros:parseInt(document.getElementById('inputPorteros').value)||0,edad:document.getElementById('inputEdad').value,dimensiones:document.getElementById('inputDimensiones').value,material:document.getElementById('inputMaterial').value,idioma:document.getElementById('inputIdioma').value,estado:'publicado',aprobado:true,sin_gamificacion:true};db.from('ejercicios').insert(data).then(function(result){showLoading(false);if(result.error){showToast('❌ '+result.error.message,'error');return;}showToast('✅ Guardado (sin XP)','success');resetForm();loadStats();});}
+    // GUARDAR
+    function saveExercise(){
+        if(!db){showToast('❌ No conectado','error');return;}
+        showLoading(true);
+        
+        var videoIdValue = null;
+        if(source==='youtube') videoIdValue = videoId;
+        else if(source==='twitter') videoIdValue = tweetId;
+        else if(source==='instagram') videoIdValue = igId;
+        
+        var data = {
+            source: source,
+            video_id: videoIdValue,
+            video_url: document.getElementById('inputVideoUrl').value,
+            thumbnail_url: extracted.thumb || null,
+            titulo_video: document.getElementById('inputTituloVideo').value,
+            canal: document.getElementById('inputCanal').value,
+            duracion: document.getElementById('inputDuracion').value,
+            duracion_segundos: extracted.duracionSeg || 0,
+            descripcion: document.getElementById('inputDesc').value,
+            vistas: extracted.vistas || 0,
+            likes: extracted.likes || 0,
+            fecha_publicacion: extracted.fechaPublicacion || null,
+            titulo_ejercicio: document.getElementById('inputTitulo').value,
+            familia: selectedFamilia,
+            entrenador: getEntrenador(),
+            equipo: getEquipo(),
+            sistema: document.getElementById('inputSistema') ? document.getElementById('inputSistema').value : null,
+            categorias: categories,
+            dificultad: parseInt(document.getElementById('inputDif').value),
+            jugadores: document.getElementById('inputJugadores').value,
+            num_porteros: parseInt(document.getElementById('inputPorteros').value) || 0,
+            edad: document.getElementById('inputEdad').value,
+            dimensiones: document.getElementById('inputDimensiones').value,
+            material: document.getElementById('inputMaterial').value,
+            idioma: document.getElementById('inputIdioma').value,
+            estado: 'publicado',
+            aprobado: true,
+            sin_gamificacion: true
+        };
+        
+        db.from('ejercicios').insert(data).then(function(result){
+            showLoading(false);
+            if(result.error){showToast('❌ '+result.error.message,'error');return;}
+            showToast('✅ Guardado (sin XP)','success');
+            resetForm();
+            loadStats();
+        });
+    }
 
-    function resetForm(){['inputVideoUrl','inputTituloVideo','inputCanal','inputDuracion','inputDesc','inputTitulo','inputEntrenadorCustom','inputEquipoCustom','inputVistas','inputLikes','inputFechaPublicacion'].forEach(function(id){var el=document.getElementById(id);if(el){el.value='';el.className='form-input';}});['inputDif','inputIdioma','inputEntrenador','inputEquipo','inputJugadores','inputPorteros','inputEdad','inputDimensiones','inputMaterial','inputIntensidad','inputSistema'].forEach(function(id){var el=document.getElementById(id);if(el)el.value=id==='inputIdioma'?'es':'';});document.getElementById('customEntrenador').className='custom-input-row';document.getElementById('customEquipo').className='custom-input-row';document.getElementById('familiaExtraProfesional').className='familia-extra';document.getElementById('familiaExtraAnalisis').className='familia-extra';categories=[];videoId=null;tweetId=null;extracted={};selectedFamilia=null;document.querySelectorAll('.category-pill').forEach(function(p){p.classList.remove('active');});document.querySelectorAll('.familia-option').forEach(function(o){o.classList.remove('selected');});document.getElementById('previewMedia').innerHTML='<div style="color:var(--text-muted);text-align:center;"><div style="font-size:40px;margin-bottom:8px;">🎬</div><div style="font-size:13px;">Pega una URL</div></div>';document.getElementById('previewTitle').textContent='Título del ejercicio';document.getElementById('previewTitle').className='preview-title placeholder';document.getElementById('previewMeta').textContent='Canal • Duración';document.getElementById('previewTags').innerHTML='';document.getElementById('urlStatus').textContent='';document.getElementById('btnSave').disabled=true;}
+    function resetForm(){
+        ['inputVideoUrl','inputTituloVideo','inputCanal','inputDuracion','inputDesc','inputTitulo','inputEntrenadorCustom','inputEquipoCustom','inputVistas','inputLikes','inputFechaPublicacion'].forEach(function(id){
+            var el=document.getElementById(id);
+            if(el){el.value='';el.className='form-input';}
+        });
+        ['inputDif','inputIdioma','inputEntrenador','inputEquipo','inputJugadores','inputPorteros','inputEdad','inputDimensiones','inputMaterial','inputIntensidad','inputSistema'].forEach(function(id){
+            var el=document.getElementById(id);
+            if(el)el.value=id==='inputIdioma'?'es':'';
+        });
+        document.getElementById('customEntrenador').className='custom-input-row';
+        document.getElementById('customEquipo').className='custom-input-row';
+        document.getElementById('familiaExtraProfesional').className='familia-extra';
+        document.getElementById('familiaExtraAnalisis').className='familia-extra';
+        categories=[];
+        videoId=null;
+        tweetId=null;
+        igId=null;
+        extracted={};
+        selectedFamilia=null;
+        document.querySelectorAll('.category-pill').forEach(function(p){p.classList.remove('active');});
+        document.querySelectorAll('.familia-option').forEach(function(o){o.classList.remove('selected');});
+        document.getElementById('previewMedia').innerHTML='<div style="color:var(--text-muted);text-align:center;"><div style="font-size:40px;margin-bottom:8px;">🎬</div><div style="font-size:13px;">Pega una URL</div></div>';
+        document.getElementById('previewTitle').textContent='Título del ejercicio';
+        document.getElementById('previewTitle').className='preview-title placeholder';
+        document.getElementById('previewMeta').textContent='Canal • Duración';
+        document.getElementById('previewTags').innerHTML='';
+        document.getElementById('urlStatus').textContent='';
+        document.getElementById('btnSave').disabled=true;
+    }
 
     function loadLibrary(){if(!db)return;var search=document.getElementById('searchInput').value.trim();var filterFam=document.getElementById('filterFamilia').value;var filterSrc=document.getElementById('filterSource').value;var filterLang=document.getElementById('filterIdioma').value;var filterAge=document.getElementById('filterEdad').value;var q=db.from('ejercicios').select('*').order('created_at',{ascending:false}).limit(50);if(search)q=q.ilike('titulo_ejercicio','%'+search+'%');if(filterFam)q=q.eq('familia',filterFam);if(filterSrc)q=q.eq('source',filterSrc);if(filterLang)q=q.eq('idioma',filterLang);if(filterAge)q=q.eq('edad',filterAge);q.then(function(result){if(result.error)return;renderLibrary(result.data||[]);});}
     
