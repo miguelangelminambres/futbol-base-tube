@@ -4120,7 +4120,8 @@
                     id: currentExercise.id,
                     titulo: currentExercise.titulo_ejercicio || currentExercise.titulo_video,
                     thumbnail: currentExercise.thumbnail_url,
-                    duracion: currentExercise.duracion
+                    duracion: currentExercise.duracion,
+                    video_url: currentExercise.video_url
                 });
                 
                 var duracionTotal = (session.duracion_total || 0) + (currentExercise.duracion_segundos || 0);
@@ -4222,7 +4223,7 @@
                 objetivo: document.getElementById('sessionObjetivo').value,
                 notas: document.getElementById('sessionNotas').value,
                 ejercicios: currentSession.map(function(e) { return e.id; }),
-                ejercicios_data: currentSession.map(function(e) { return { id: e.id, titulo: e.titulo_ejercicio || e.titulo_video, thumbnail: e.thumbnail_url, duracion: e.duracion }; }),
+                ejercicios_data: currentSession.map(function(e) { return { id: e.id, titulo: e.titulo_ejercicio || e.titulo_video, thumbnail: e.thumbnail_url, duracion: e.duracion, video_url: e.video_url }; }),
                 duracion_total: currentSession.reduce(function(t, e) { return t + (e.duracion_segundos || 0); }, 0)
             };
             
@@ -4282,7 +4283,8 @@
             document.getElementById('viewSessionObjetivo').textContent = data.objetivo || '';
             
             var exs = (data.ejercicios_data || []).map(function(e, i) {
-                return '<div class="view-session-exercise" onclick="openExerciseFromSession(\'' + e.id + '\')" style="cursor:pointer;">' +
+                var videoUrl = e.video_url || '';
+                return '<div class="view-session-exercise" onclick="openVideoFromSession(\'' + videoUrl + '\', \'' + e.id + '\')" style="cursor:pointer;">' +
                     '<div class="view-session-exercise-num">' + (i + 1) + '</div>' +
                     '<img class="view-session-exercise-thumb" src="' + (e.thumbnail || '') + '">' +
                     '<div class="view-session-exercise-info"><div class="view-session-exercise-title">' + e.titulo + '</div><div class="view-session-exercise-meta">' + (e.duracion || '--') + '</div></div>' +
@@ -4295,19 +4297,23 @@
             document.getElementById('viewSessionOverlay').classList.add('active');
         }
         
-        async function openExerciseFromSession(exerciseId) {
-            if (!exerciseId) return;
-            
-            // Cerrar modal de sesión
-            closeViewSessionModal();
-            
-            // Buscar y abrir el ejercicio
-            var { data } = await db.from('ejercicios').select('*').eq('id', exerciseId).single();
-            if (data) {
-                openExerciseModal(data);
-            } else {
-                showToast('Ejercicio no encontrado', 'error');
+        async function openVideoFromSession(videoUrl, exerciseId) {
+            // Si tiene URL de video, abrir directamente
+            if (videoUrl && videoUrl !== 'undefined' && videoUrl !== '') {
+                window.open(videoUrl, '_blank');
+                return;
             }
+            
+            // Si no tiene URL (sesiones antiguas), buscar en la base de datos
+            if (exerciseId) {
+                var { data } = await db.from('ejercicios').select('video_url').eq('id', exerciseId).single();
+                if (data && data.video_url) {
+                    window.open(data.video_url, '_blank');
+                    return;
+                }
+            }
+            
+            showToast('URL del video no disponible', 'error');
         }
 
         function closeViewSessionModal(e) { if (!e || e.target === e.currentTarget) document.getElementById('viewSessionOverlay').classList.remove('active'); }
