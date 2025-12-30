@@ -4197,9 +4197,10 @@
                 }
                 
                 container.innerHTML = data.map(function(e) {
+                    var videoUrl = e.video_url || '';
                     return '<div class="favorito-card">' +
-                        '<img class="favorito-thumb" src="' + (e.thumbnail_url || '') + '" onclick="openExerciseModal(exercises.find(function(ex){return ex.id===\'' + e.id + '\'}) || ' + JSON.stringify(e).replace(/"/g, '&quot;') + ')">' +
-                        '<div class="favorito-info">' +
+                        '<img class="favorito-thumb" src="' + (e.thumbnail_url || '') + '" onclick="window.open(\'' + videoUrl + '\', \'_blank\')">' +
+                        '<div class="favorito-info" onclick="window.open(\'' + videoUrl + '\', \'_blank\')" style="cursor:pointer;">' +
                             '<div class="favorito-title">' + (e.titulo_ejercicio || e.titulo_video || 'Sin título') + '</div>' +
                             '<div class="favorito-meta">' + (e.duracion || '--') + ' • ' + (e.tema_principal || 'Sin tema') + '</div>' +
                         '</div>' +
