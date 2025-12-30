@@ -1453,84 +1453,7 @@
             </div>
         </div>
     </section>
-<!-- PLANES -->
-    <section class="planes-section" id="planes">
-        <div class="planes-container">
-            <div class="planes-header">
-                <span class="planes-badge">💎 PLANES</span>
-                <h2 class="planes-title">Elige tu <span>plan</span></h2>
-                <p class="planes-subtitle">Desbloquea todo el potencial de la plataforma</p>
-            </div>
-            
-            <div class="planes-grid">
-                <!-- FREE -->
-                <div class="plan-card">
-                    <div class="plan-header">
-                        <div class="plan-icon">⚽</div>
-                        <h3 class="plan-name">Free</h3>
-                        <div class="plan-price">
-                            <span class="plan-price-value">0€</span>
-                            <span class="plan-price-period">/siempre</span>
-                        </div>
-                    </div>
-                    <ul class="plan-features">
-                        <li>✅ 10 ejercicios/mes</li>
-                        <li>✅ Filtros básicos</li>
-                        <li>✅ 1 sesión guardada</li>
-                        <li>❌ Sin favoritos</li>
-                        <li>❌ Sin XP ni ranking</li>
-                        <li>❌ Sin pizarra táctica</li>
-                    </ul>
-                    <button class="btn btn-ghost plan-btn" disabled>Plan actual</button>
-                </div>
-                
-                <!-- PRO -->
-                <div class="plan-card plan-pro">
-                    <div class="plan-header">
-                        <div class="plan-icon">⭐</div>
-                        <h3 class="plan-name">Pro</h3>
-                        <div class="plan-price">
-                            <span class="plan-price-value">2,99€</span>
-                            <span class="plan-price-period">/mes</span>
-                        </div>
-                    </div>
-                    <ul class="plan-features">
-                        <li>✅ Ejercicios ilimitados</li>
-                        <li>✅ Todos los filtros</li>
-                        <li>✅ Sesiones ilimitadas</li>
-                        <li>✅ Favoritos ilimitados</li>
-                        <li>✅ Gana XP y sube ranking</li>
-                        <li>❌ Sin pizarra táctica</li>
-                    </ul>
-                    <button class="btn btn-primary plan-btn" onclick="selectAndCheckout('pro')">🚀 Ser Pro</button>
-                </div>
-                
-                <!-- COACH -->
-                <div class="plan-card plan-coach">
-                    <div class="plan-tag">⭐ RECOMENDADO</div>
-                    <div class="plan-header">
-                        <div class="plan-icon">👑</div>
-                        <h3 class="plan-name">Coach</h3>
-                        <div class="plan-price">
-                            <span class="plan-price-value">4,99€</span>
-                            <span class="plan-price-period">/mes</span>
-                        </div>
-                    </div>
-                    <ul class="plan-features">
-                        <li>✅ Todo lo de Pro</li>
-                        <li>✅ Pizarra táctica interactiva</li>
-                        <li>✅ XP x2 en todo</li>
-                        <li>✅ Sube ejercicios y gana XP</li>
-                        <li>✅ Badge exclusivo Coach</li>
-                        <li>✅ Soporte prioritario</li>
-                    </ul>
-                    <button class="btn btn-accent plan-btn" onclick="selectAndCheckout('coach')">👑 Ser Coach</button>
-                </div>
-            </div>
-            
-            <p class="planes-guarantee">🔒 Pago seguro con Stripe · Cancela cuando quieras · Sin permanencia</p>
-        </div>
-    </section>
+
     <section class="biblioteca" id="biblioteca">
         <aside class="filters-sidebar">
             <div class="filters-header">
@@ -4405,35 +4328,7 @@
                 }, 500);
             }
         }
-/* ==================== PLANES SECTION ==================== */
-        .planes-section { padding: 80px 24px; background: linear-gradient(180deg, var(--dark) 0%, #0a1a0f 100%); }
-        .planes-container { max-width: 1200px; margin: 0 auto; }
-        .planes-header { text-align: center; margin-bottom: 48px; }
-        .planes-badge { display: inline-block; background: rgba(13, 159, 79, 0.15); border: 1px solid var(--primary); color: var(--primary); padding: 8px 20px; border-radius: 50px; font-size: 12px; font-weight: 700; letter-spacing: 2px; margin-bottom: 16px; }
-        .planes-title { font-family: 'Bebas Neue', sans-serif; font-size: 48px; margin-bottom: 8px; }
-        .planes-title span { color: var(--primary); }
-        .planes-subtitle { color: var(--text-muted); font-size: 18px; }
-        .planes-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 32px; }
-        @media (max-width: 900px) { .planes-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto 32px; } }
-        .plan-card { background: var(--dark-card); border: 2px solid var(--dark-border); border-radius: 20px; padding: 32px 24px; position: relative; transition: all 0.3s; }
-        .plan-card:hover { transform: translateY(-4px); border-color: var(--primary); }
-        .plan-pro { border-color: #667eea; }
-        .plan-pro:hover { border-color: #667eea; box-shadow: 0 0 30px rgba(102, 126, 234, 0.2); }
-        .plan-coach { border-color: var(--accent); background: linear-gradient(180deg, rgba(245, 197, 24, 0.05) 0%, var(--dark-card) 100%); }
-        .plan-coach:hover { box-shadow: 0 0 30px rgba(245, 197, 24, 0.2); }
-        .plan-tag { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--accent); color: var(--dark); font-size: 11px; font-weight: 700; padding: 4px 16px; border-radius: 20px; white-space: nowrap; }
-        .plan-header { text-align: center; margin-bottom: 24px; padding-bottom: 24px; border-bottom: 1px solid var(--dark-border); }
-        .plan-icon { font-size: 48px; margin-bottom: 12px; }
-        .plan-name { font-family: 'Bebas Neue', sans-serif; font-size: 32px; margin-bottom: 8px; }
-        .plan-price-value { font-family: 'Bebas Neue', sans-serif; font-size: 48px; color: var(--primary); }
-        .plan-coach .plan-price-value { color: var(--accent); }
-        .plan-price-period { color: var(--text-muted); font-size: 16px; }
-        .plan-features { list-style: none; margin-bottom: 24px; }
-        .plan-features li { padding: 8px 0; color: var(--text-secondary); font-size: 14px; }
-        .plan-btn { width: 100%; padding: 14px; font-size: 16px; font-weight: 700; }
-        .btn-accent { background: var(--accent); color: var(--dark); }
-        .btn-accent:hover { background: #e5b800; }
-        .planes-guarantee { text-align: center; color: var(--text-muted); font-size: 14px; }
+
         // ==================== UPGRADE MODAL ====================
         function showUpgradeModal(reason, extraData) {
             var icon = '🚀';
@@ -4529,10 +4424,7 @@
             });
             event.currentTarget.classList.add('recommended');
         }
-function selectAndCheckout(plan) {
-            selectedUpgradePlan = plan;
-            goToCheckout();
-        }
+
       function goToCheckout() {
     if (!currentUser) {
         showToast('Inicia sesión primero', 'error');
