@@ -84,13 +84,11 @@
         .url-status.error { color: var(--danger); }
         .url-status.loading { color: var(--accent); }
         
-        /* Category Pills */
         .category-pills { display: flex; flex-wrap: wrap; gap: 8px; max-height: 200px; overflow-y: auto; padding: 4px; }
         .category-pill { padding: 8px 14px; background: var(--dark); border: 2px solid var(--dark-border); border-radius: 20px; font-size: 12px; cursor: pointer; transition: all 0.2s; user-select: none; white-space: nowrap; }
         .category-pill:hover { border-color: var(--text-muted); }
         .category-pill.active { background: var(--primary); border-color: var(--primary); color: white; }
         
-        /* Custom input for "Otro" */
         .custom-input-row { display: none; margin-top: 12px; }
         .custom-input-row.show { display: block; }
         
@@ -160,59 +158,56 @@
         
         @media (max-width: 1024px) { .add-layout { grid-template-columns: 1fr; } .preview-card { position: static; } }
         @media (max-width: 768px) { .form-row, .form-row-3, .form-row-4 { grid-template-columns: 1fr; } .url-row { flex-direction: column; } .source-selector { flex-direction: column; } .library-filters { width: 100%; } .search-input { width: 100%; } }
-   /* Pending Section */
-.pending-section { margin-bottom: 40px; }
-.pending-title { font-family: 'Bebas Neue', sans-serif; font-size: 28px; margin-bottom: 20px; display: flex; align-items: center; gap: 12px; }
-.pending-badge { background: #f59e0b; color: var(--dark); padding: 4px 12px; border-radius: 20px; font-size: 14px; font-weight: 600; }
-.pending-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); gap: 20px; }
-.pending-card { background: var(--dark-card); border: 2px solid #f59e0b; border-radius: 16px; overflow: hidden; }
-.pending-card.duplicate { border-color: var(--danger); }
-.pending-card-header { display: flex; gap: 16px; padding: 16px; }
-.pending-card-thumb { width: 140px; height: 80px; border-radius: 8px; object-fit: cover; background: var(--dark); flex-shrink: 0; }
-.pending-card-info { flex: 1; min-width: 0; }
-.pending-card-title { font-weight: 700; font-size: 14px; margin-bottom: 6px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-.pending-card-meta { font-size: 11px; color: var(--text-muted); display: flex; flex-wrap: wrap; gap: 6px; }
-.pending-card-user { display: flex; align-items: center; gap: 8px; margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--dark-border); font-size: 12px; }
-.pending-card-user-avatar { width: 24px; height: 24px; background: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 600; }
-.pending-card-body { padding: 0 16px 16px; }
-.pending-card-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
-.pending-card-tag { padding: 3px 8px; background: rgba(139, 92, 246, 0.15); color: #a78bfa; border-radius: 10px; font-size: 10px; }
-.pending-card-url { font-size: 11px; color: var(--text-muted); word-break: break-all; margin-bottom: 12px; padding: 8px; background: var(--dark); border-radius: 8px; }
-.pending-card-duplicate { background: rgba(239, 68, 68, 0.1); border: 1px solid var(--danger); border-radius: 8px; padding: 10px; margin-bottom: 12px; font-size: 11px; color: var(--danger); }
-.pending-card-reenvio { background: rgba(245, 158, 11, 0.1); border: 1px solid #f59e0b; border-radius: 8px; padding: 8px; margin-bottom: 12px; font-size: 11px; color: #f59e0b; }
-.pending-card-actions { display: flex; gap: 8px; }
-.pending-card-actions .btn { flex: 1; justify-content: center; font-size: 12px; padding: 10px 14px; }
-.btn-approve { background: rgba(34, 197, 94, 0.15); color: var(--success); border: none; border-radius: 10px; cursor: pointer; }
-.btn-approve:hover { background: var(--success); color: white; }
-.btn-reject { background: rgba(239, 68, 68, 0.15); color: var(--danger); border: none; border-radius: 10px; cursor: pointer; }
-.btn-reject:hover { background: var(--danger); color: white; }
 
-/* Reject Modal */
-.modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.8); z-index: 2000; display: none; align-items: center; justify-content: center; }
-.modal-overlay.show { display: flex; }
-.modal-content { background: var(--dark-card); border-radius: 16px; padding: 24px; max-width: 450px; width: 90%; max-height: 80vh; overflow-y: auto; }
-.modal-close { position: absolute; top: 16px; right: 16px; background: none; border: none; color: var(--text-muted); font-size: 24px; cursor: pointer; }
-.reject-title { font-family: 'Bebas Neue', sans-serif; font-size: 24px; margin-bottom: 16px; color: var(--danger); }
-.reject-reasons { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
-.reject-reason { padding: 12px 16px; background: var(--dark); border: 2px solid var(--dark-border); border-radius: 10px; cursor: pointer; font-size: 13px; transition: all 0.2s; }
-.reject-reason:hover { border-color: var(--danger); background: rgba(239, 68, 68, 0.05); }
-.reject-reason.selected { border-color: var(--danger); background: rgba(239, 68, 68, 0.1); }
-.reject-custom textarea { width: 100%; padding: 12px; background: var(--dark); border: 1px solid var(--dark-border); border-radius: 10px; color: var(--text); font-size: 13px; min-height: 80px; resize: vertical; margin-top: 12px; }
+        .pending-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); gap: 20px; }
+        .pending-card { background: var(--dark-card); border: 2px solid #f59e0b; border-radius: 16px; overflow: hidden; }
+        .pending-card.duplicate { border-color: var(--danger); }
+        .pending-card.admin-upload { border-color: var(--primary); }
+        .pending-card-header { display: flex; gap: 16px; padding: 16px; }
+        .pending-card-thumb { width: 140px; height: 80px; border-radius: 8px; object-fit: cover; background: var(--dark); flex-shrink: 0; }
+        .pending-card-info { flex: 1; min-width: 0; }
+        .pending-card-title { font-weight: 700; font-size: 14px; margin-bottom: 6px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+        .pending-card-meta { font-size: 11px; color: var(--text-muted); display: flex; flex-wrap: wrap; gap: 6px; }
+        .pending-card-body { padding: 0 16px 16px; }
+        .pending-card-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+        .pending-card-tag { padding: 3px 8px; background: rgba(139, 92, 246, 0.15); color: #a78bfa; border-radius: 10px; font-size: 10px; }
+        .pending-card-url { font-size: 11px; color: var(--text-muted); word-break: break-all; margin-bottom: 12px; padding: 8px; background: var(--dark); border-radius: 8px; }
+        .pending-card-duplicate { background: rgba(239, 68, 68, 0.1); border: 1px solid var(--danger); border-radius: 8px; padding: 10px; margin-bottom: 12px; font-size: 11px; color: var(--danger); }
+        .pending-card-reenvio { background: rgba(245, 158, 11, 0.1); border: 1px solid #f59e0b; border-radius: 8px; padding: 8px; margin-bottom: 12px; font-size: 11px; color: #f59e0b; }
+        .pending-card-admin { background: rgba(13, 159, 79, 0.1); border: 1px solid var(--primary); border-radius: 8px; padding: 8px; margin-bottom: 12px; font-size: 11px; color: var(--primary); font-weight: 600; }
+        .pending-card-actions { display: flex; gap: 8px; }
+        .pending-card-actions .btn { flex: 1; justify-content: center; font-size: 12px; padding: 10px 14px; }
+        .btn-approve { background: rgba(34, 197, 94, 0.15); color: var(--success); border: none; border-radius: 10px; cursor: pointer; }
+        .btn-approve:hover { background: var(--success); color: white; }
+        .btn-reject { background: rgba(239, 68, 68, 0.15); color: var(--danger); border: none; border-radius: 10px; cursor: pointer; }
+        .btn-reject:hover { background: var(--danger); color: white; }
 
-/* Stats Cards */
-.stats-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 12px; margin-bottom: 24px; }
-.stat-card { background: var(--dark-card); border: 1px solid var(--dark-border); border-radius: 12px; padding: 16px; text-align: center; }
-.stat-card.warning { border-color: #f59e0b; }
-.stat-card-value { font-family: 'Bebas Neue', sans-serif; font-size: 32px; color: var(--primary); }
-.stat-card.warning .stat-card-value { color: #f59e0b; }
-.stat-card-label { font-size: 11px; color: var(--text-muted); text-transform: uppercase; }
+        .modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.8); z-index: 2000; display: none; align-items: center; justify-content: center; }
+        .modal-overlay.show { display: flex; }
+        .modal-content { background: var(--dark-card); border-radius: 16px; padding: 24px; max-width: 450px; width: 90%; max-height: 80vh; overflow-y: auto; }
+        .modal-close { position: absolute; top: 16px; right: 16px; background: none; border: none; color: var(--text-muted); font-size: 24px; cursor: pointer; }
+        .reject-title { font-family: 'Bebas Neue', sans-serif; font-size: 24px; margin-bottom: 16px; color: var(--danger); }
+        .reject-reasons { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
+        .reject-reason { padding: 12px 16px; background: var(--dark); border: 2px solid var(--dark-border); border-radius: 10px; cursor: pointer; font-size: 13px; transition: all 0.2s; }
+        .reject-reason:hover { border-color: var(--danger); background: rgba(239, 68, 68, 0.05); }
+        .reject-reason.selected { border-color: var(--danger); background: rgba(239, 68, 68, 0.1); }
+        .reject-custom textarea { width: 100%; padding: 12px; background: var(--dark); border: 1px solid var(--dark-border); border-radius: 10px; color: var(--text); font-size: 13px; min-height: 80px; resize: vertical; margin-top: 12px; }
 
-@media (max-width: 768px) {
-    .pending-grid { grid-template-columns: 1fr; }
-    .pending-card-header { flex-direction: column; }
-    .pending-card-thumb { width: 100%; height: 120px; }
-}
-        </style>
+        .stats-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 12px; margin-bottom: 24px; }
+        .stat-card { background: var(--dark-card); border: 1px solid var(--dark-border); border-radius: 12px; padding: 16px; text-align: center; }
+        .stat-card.warning { border-color: #f59e0b; }
+        .stat-card-value { font-family: 'Bebas Neue', sans-serif; font-size: 32px; color: var(--primary); }
+        .stat-card.warning .stat-card-value { color: #f59e0b; }
+        .stat-card-label { font-size: 11px; color: var(--text-muted); text-transform: uppercase; }
+        
+        .pending-badge { background: #f59e0b; color: var(--dark); padding: 4px 12px; border-radius: 20px; font-size: 14px; font-weight: 600; }
+
+        @media (max-width: 768px) {
+            .pending-grid { grid-template-columns: 1fr; }
+            .pending-card-header { flex-direction: column; }
+            .pending-card-thumb { width: 100%; height: 120px; }
+        }
+    </style>
 </head>
 <body>
     <div class="loading-overlay" id="loading"><div class="spinner"></div></div>
@@ -359,54 +354,12 @@
                             <label class="form-label">Equipo</label>
                             <select id="inputEquipo" class="form-select">
                                 <option value="">Sin especificar</option>
-                                <optgroup label="🇪🇸 España">
-                                    <option value="FC Barcelona">FC Barcelona</option>
-                                    <option value="Real Madrid">Real Madrid</option>
-                                    <option value="Atlético Madrid">Atlético Madrid</option>
-                                    <option value="Athletic Bilbao">Athletic Bilbao</option>
-                                    <option value="Real Sociedad">Real Sociedad</option>
-                                    <option value="Sevilla FC">Sevilla FC</option>
-                                    <option value="Valencia CF">Valencia CF</option>
-                                    <option value="Villarreal CF">Villarreal CF</option>
-                                </optgroup>
-                                <optgroup label="🏴󠁧󠁢󠁥󠁮󠁧󠁿 Inglaterra">
-                                    <option value="Manchester City">Manchester City</option>
-                                    <option value="Liverpool">Liverpool</option>
-                                    <option value="Arsenal">Arsenal</option>
-                                    <option value="Chelsea">Chelsea</option>
-                                    <option value="Manchester United">Manchester United</option>
-                                    <option value="Tottenham">Tottenham</option>
-                                    <option value="Aston Villa">Aston Villa</option>
-                                    <option value="Brighton">Brighton</option>
-                                </optgroup>
-                                <optgroup label="🇩🇪 Alemania">
-                                    <option value="Bayern Munich">Bayern Munich</option>
-                                    <option value="Borussia Dortmund">Borussia Dortmund</option>
-                                    <option value="RB Leipzig">RB Leipzig</option>
-                                    <option value="Bayer Leverkusen">Bayer Leverkusen</option>
-                                </optgroup>
-                                <optgroup label="🇮🇹 Italia">
-                                    <option value="Juventus">Juventus</option>
-                                    <option value="AC Milan">AC Milan</option>
-                                    <option value="Inter Milan">Inter Milan</option>
-                                    <option value="Napoli">Napoli</option>
-                                    <option value="AS Roma">AS Roma</option>
-                                </optgroup>
-                                <optgroup label="🇫🇷 Francia">
-                                    <option value="PSG">PSG</option>
-                                    <option value="Olympique Lyon">Olympique Lyon</option>
-                                    <option value="Olympique Marsella">Olympique Marsella</option>
-                                    <option value="AS Monaco">AS Monaco</option>
-                                </optgroup>
-                                <optgroup label="🌍 Selecciones">
-                                    <option value="España">España</option>
-                                    <option value="Alemania">Alemania</option>
-                                    <option value="Francia">Francia</option>
-                                    <option value="Inglaterra">Inglaterra</option>
-                                    <option value="Italia">Italia</option>
-                                    <option value="Argentina">Argentina</option>
-                                    <option value="Brasil">Brasil</option>
-                                </optgroup>
+                                <optgroup label="🇪🇸 España"><option value="FC Barcelona">FC Barcelona</option><option value="Real Madrid">Real Madrid</option><option value="Atlético Madrid">Atlético Madrid</option><option value="Athletic Bilbao">Athletic Bilbao</option><option value="Real Sociedad">Real Sociedad</option><option value="Sevilla FC">Sevilla FC</option><option value="Valencia CF">Valencia CF</option><option value="Villarreal CF">Villarreal CF</option></optgroup>
+                                <optgroup label="🏴󠁧󠁢󠁥󠁮󠁧󠁿 Inglaterra"><option value="Manchester City">Manchester City</option><option value="Liverpool">Liverpool</option><option value="Arsenal">Arsenal</option><option value="Chelsea">Chelsea</option><option value="Manchester United">Manchester United</option><option value="Tottenham">Tottenham</option></optgroup>
+                                <optgroup label="🇩🇪 Alemania"><option value="Bayern Munich">Bayern Munich</option><option value="Borussia Dortmund">Borussia Dortmund</option><option value="RB Leipzig">RB Leipzig</option><option value="Bayer Leverkusen">Bayer Leverkusen</option></optgroup>
+                                <optgroup label="🇮🇹 Italia"><option value="Juventus">Juventus</option><option value="AC Milan">AC Milan</option><option value="Inter Milan">Inter Milan</option><option value="Napoli">Napoli</option><option value="AS Roma">AS Roma</option></optgroup>
+                                <optgroup label="🇫🇷 Francia"><option value="PSG">PSG</option><option value="Olympique Lyon">Olympique Lyon</option><option value="Olympique Marsella">Olympique Marsella</option></optgroup>
+                                <optgroup label="🌍 Selecciones"><option value="España">España</option><option value="Alemania">Alemania</option><option value="Francia">Francia</option><option value="Inglaterra">Inglaterra</option><option value="Argentina">Argentina</option><option value="Brasil">Brasil</option></optgroup>
                                 <option value="_otro">➕ Otro...</option>
                             </select>
                             <div class="custom-input-row" id="customEquipo">
@@ -445,108 +398,25 @@
                     </div>
                     
                     <div class="form-row-4">
-                        <div class="form-group">
-                            <label class="form-label">Dificultad *</label>
-                            <select id="inputDif" class="form-select">
-                                <option value="">Seleccionar</option>
-                                <option value="1">1 - Muy fácil</option>
-                                <option value="2">2 - Fácil</option>
-                                <option value="3">3 - Media</option>
-                                <option value="4">4 - Difícil</option>
-                                <option value="5">5 - Muy difícil</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Nº Jugadores</label>
-                            <select id="inputJugadores" class="form-select">
-                                <option value="">-</option>
-                                <option value="2-4">2-4</option>
-                                <option value="5-8">5-8</option>
-                                <option value="9-12">9-12</option>
-                                <option value="13-16">13-16</option>
-                                <option value="17-20">17-20</option>
-                                <option value="20+">20+</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Nº Porteros</label>
-                            <select id="inputPorteros" class="form-select">
-                                <option value="">-</option>
-                                <option value="0">0</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3+">3+</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Edad</label>
-                            <select id="inputEdad" class="form-select">
-                                <option value="">-</option>
-                                <option value="Prebenjamín">Prebenjamín (5-7)</option>
-                                <option value="Benjamín">Benjamín (8-9)</option>
-                                <option value="Alevín">Alevín (10-11)</option>
-                                <option value="Infantil">Infantil (12-13)</option>
-                                <option value="Cadete">Cadete (14-15)</option>
-                                <option value="Juvenil">Juvenil (16-18)</option>
-                                <option value="Senior">Senior (19+)</option>
-                                <option value="Profesional">Profesional</option>
-                            </select>
-                        </div>
+                        <div class="form-group"><label class="form-label">Dificultad *</label><select id="inputDif" class="form-select"><option value="">Seleccionar</option><option value="1">1 - Muy fácil</option><option value="2">2 - Fácil</option><option value="3">3 - Media</option><option value="4">4 - Difícil</option><option value="5">5 - Muy difícil</option></select></div>
+                        <div class="form-group"><label class="form-label">Nº Jugadores</label><select id="inputJugadores" class="form-select"><option value="">-</option><option value="2-4">2-4</option><option value="5-8">5-8</option><option value="9-12">9-12</option><option value="13-16">13-16</option><option value="17-20">17-20</option><option value="20+">20+</option></select></div>
+                        <div class="form-group"><label class="form-label">Nº Porteros</label><select id="inputPorteros" class="form-select"><option value="">-</option><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3+">3+</option></select></div>
+                        <div class="form-group"><label class="form-label">Edad</label><select id="inputEdad" class="form-select"><option value="">-</option><option value="Prebenjamín">Prebenjamín</option><option value="Benjamín">Benjamín</option><option value="Alevín">Alevín</option><option value="Infantil">Infantil</option><option value="Cadete">Cadete</option><option value="Juvenil">Juvenil</option><option value="Senior">Senior</option><option value="Profesional">Profesional</option></select></div>
                     </div>
                     
                     <div class="form-row-3">
-                        <div class="form-group">
-                            <label class="form-label">Dimensiones</label>
-                            <select id="inputDimensiones" class="form-select">
-                                <option value="">-</option>
-                                <option value="10x10m">10x10m</option>
-                                <option value="15x15m">15x15m</option>
-                                <option value="20x20m">20x20m</option>
-                                <option value="25x25m">25x25m</option>
-                                <option value="30x30m">30x30m</option>
-                                <option value="40x20m">40x20m</option>
-                                <option value="40x30m">40x30m</option>
-                                <option value="Medio campo">Medio campo</option>
-                                <option value="Campo completo">Campo completo</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Material</label>
-                            <select id="inputMaterial" class="form-select">
-                                <option value="">-</option>
-                                <option value="Conos">Conos</option>
-                                <option value="Conos, petos">Conos, petos</option>
-                                <option value="Conos, petos, porterías">Conos, petos, porterías</option>
-                                <option value="Picas">Picas</option>
-                                <option value="Escaleras">Escaleras</option>
-                                <option value="Balones">Solo balones</option>
-                                <option value="Porterías pequeñas">Porterías pequeñas</option>
-                                <option value="Varios">Varios</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Intensidad</label>
-                            <select id="inputIntensidad" class="form-select">
-                                <option value="">-</option>
-                                <option value="Baja">🟢 Baja</option>
-                                <option value="Media">🟡 Media</option>
-                                <option value="Alta">🔴 Alta</option>
-                            </select>
-                        </div>
+                        <div class="form-group"><label class="form-label">Dimensiones</label><select id="inputDimensiones" class="form-select"><option value="">-</option><option value="10x10m">10x10m</option><option value="15x15m">15x15m</option><option value="20x20m">20x20m</option><option value="30x30m">30x30m</option><option value="40x20m">40x20m</option><option value="Medio campo">Medio campo</option><option value="Campo completo">Campo completo</option></select></div>
+                        <div class="form-group"><label class="form-label">Material</label><select id="inputMaterial" class="form-select"><option value="">-</option><option value="Conos">Conos</option><option value="Conos, petos">Conos, petos</option><option value="Conos, petos, porterías">Conos, petos, porterías</option><option value="Picas">Picas</option><option value="Balones">Solo balones</option><option value="Varios">Varios</option></select></div>
+                        <div class="form-group"><label class="form-label">Intensidad</label><select id="inputIntensidad" class="form-select"><option value="">-</option><option value="Baja">🟢 Baja</option><option value="Media">🟡 Media</option><option value="Alta">🔴 Alta</option></select></div>
                     </div>
                     
-                    <button class="btn btn-primary" style="width: 100%; margin-top: 12px;" id="btnSave" disabled>💾 Guardar en Base de Datos</button>
+                    <button class="btn btn-primary" style="width: 100%; margin-top: 12px;" id="btnSave" disabled>💾 Guardar (sin XP - Admin)</button>
                 </div>
             </div>
             <div>
                 <div class="preview-card">
                     <div class="preview-header">👁️ Vista Previa</div>
-                    <div class="preview-media" id="previewMedia">
-                        <div style="color: var(--text-muted); text-align: center;">
-                            <div style="font-size: 40px; margin-bottom: 8px;">🎬</div>
-                            <div style="font-size: 13px;">Pega una URL</div>
-                        </div>
-                    </div>
+                    <div class="preview-media" id="previewMedia"><div style="color: var(--text-muted); text-align: center;"><div style="font-size: 40px; margin-bottom: 8px;">🎬</div><div style="font-size: 13px;">Pega una URL</div></div></div>
                     <div class="preview-body">
                         <div class="preview-title placeholder" id="previewTitle">Título del ejercicio</div>
                         <div class="preview-meta" id="previewMeta">Canal • Duración</div>
@@ -563,889 +433,137 @@
             <h1 class="section-title">📚 BIBLIOTECA</h1>
             <div class="library-filters">
                 <input type="text" class="search-input" id="searchInput" placeholder="🔍 Buscar ejercicios...">
-                <select class="filter-select" id="filterSource">
-                    <option value="">📺 Todas</option>
-                    <option value="youtube">📺 YouTube</option>
-                    <option value="twitter">𝕏 Twitter</option>
-                    <option value="instagram">📷 Instagram</option>
-                </select>
-                <select class="filter-select" id="filterIdioma">
-                    <option value="">🌍 Idioma</option>
-                    <option value="es">🇪🇸 Español</option>
-                    <option value="en">🇬🇧 Inglés</option>
-                    <option value="pt">🇵🇹 Portugués</option>
-                    <option value="it">🇮🇹 Italiano</option>
-                </select>
-                <select class="filter-select" id="filterEdad">
-                    <option value="">👶 Edad</option>
-                    <option value="Prebenjamín">Prebenjamín</option>
-                    <option value="Benjamín">Benjamín</option>
-                    <option value="Alevín">Alevín</option>
-                    <option value="Infantil">Infantil</option>
-                    <option value="Cadete">Cadete</option>
-                    <option value="Juvenil">Juvenil</option>
-                    <option value="Senior">Senior</option>
-                    <option value="Profesional">Profesional</option>
-                </select>
+                <select class="filter-select" id="filterSource"><option value="">📺 Todas</option><option value="youtube">📺 YouTube</option><option value="twitter">𝕏 Twitter</option><option value="instagram">📷 Instagram</option></select>
+                <select class="filter-select" id="filterIdioma"><option value="">🌍 Idioma</option><option value="es">🇪🇸 Español</option><option value="en">🇬🇧 Inglés</option><option value="pt">🇵🇹 Portugués</option></select>
+                <select class="filter-select" id="filterEdad"><option value="">👶 Edad</option><option value="Prebenjamín">Prebenjamín</option><option value="Benjamín">Benjamín</option><option value="Alevín">Alevín</option><option value="Infantil">Infantil</option><option value="Cadete">Cadete</option><option value="Juvenil">Juvenil</option><option value="Senior">Senior</option><option value="Profesional">Profesional</option></select>
             </div>
         </div>
-        <div class="library-grid" id="libraryGrid">
-            <div class="empty-state">
-                <div class="empty-icon">📭</div>
-                <div class="empty-title">No hay ejercicios</div>
-                <p>Conecta Supabase y añade tu primer ejercicio</p>
-            </div>
-        </div>
+        <div class="library-grid" id="libraryGrid"><div class="empty-state"><div class="empty-icon">📭</div><div class="empty-title">No hay ejercicios</div><p>Conecta Supabase</p></div></div>
     </div>
-<!-- PENDING -->
-<div class="panel" id="panelPending">
-    <div class="stats-cards">
-        <div class="stat-card warning">
-            <div class="stat-card-value" id="statPending">0</div>
-            <div class="stat-card-label">Pendientes</div>
-        </div>
-        <div class="stat-card">
-            <div class="stat-card-value" id="statApproved">0</div>
-            <div class="stat-card-label">Aprobados hoy</div>
-        </div>
-        <div class="stat-card">
-            <div class="stat-card-value" id="statRejected">0</div>
-            <div class="stat-card-label">Rechazados hoy</div>
-        </div>
-    </div>
-    
-    <h1 class="section-title">📋 EJERCICIOS PENDIENTES</h1>
-    <div class="pending-grid" id="pendingGrid">
-        <div class="empty-state">
-            <div class="empty-icon">✅</div>
-            <div class="empty-title">No hay ejercicios pendientes</div>
-            <p>Todos los ejercicios han sido revisados</p>
-        </div>
-    </div>
-</div>
 
-<!-- Reject Modal -->
-<div class="modal-overlay" id="rejectOverlay">
-    <div class="modal-content" style="position:relative;">
-        <button class="modal-close" onclick="closeRejectModal()">×</button>
-        <h2 class="reject-title">❌ Rechazar Ejercicio</h2>
-        <p style="color: var(--text-muted); margin-bottom: 16px; font-size: 13px;">Selecciona el motivo del rechazo:</p>
-        
-        <div class="reject-reasons" id="rejectReasons">
-            <div class="reject-reason" onclick="selectRejectReason(this, 'mal_etiquetado')">
-                🏷️ <strong>Mal etiquetado</strong> - Las categorías o datos no son correctos
-            </div>
-            <div class="reject-reason" onclick="selectRejectReason(this, 'duplicado')">
-                📋 <strong>Duplicado</strong> - Este ejercicio ya existe en la biblioteca
-            </div>
-            <div class="reject-reason" onclick="selectRejectReason(this, 'calidad')">
-                📉 <strong>Calidad insuficiente</strong> - El video no cumple los estándares
-            </div>
-            <div class="reject-reason" onclick="selectRejectReason(this, 'pizarra_incorrecta')">
-                🎨 <strong>Pizarra incorrecta</strong> - Usa una pizarra que no es de TopLiderCoach
-            </div>
-            <div class="reject-reason" onclick="selectRejectReason(this, 'otro')">
-                ❓ <strong>Otro motivo</strong>
-            </div>
+    <!-- PENDING -->
+    <div class="panel" id="panelPending">
+        <div class="stats-cards">
+            <div class="stat-card warning"><div class="stat-card-value" id="statPending">0</div><div class="stat-card-label">Pendientes</div></div>
+            <div class="stat-card"><div class="stat-card-value" id="statApproved">0</div><div class="stat-card-label">Aprobados hoy</div></div>
+            <div class="stat-card"><div class="stat-card-value" id="statRejected">0</div><div class="stat-card-label">Rechazados hoy</div></div>
         </div>
-        
-        <div id="rejectCustom" style="display:none;">
-            <textarea id="rejectCustomText" placeholder="Explica el motivo del rechazo..."></textarea>
-        </div>
-        
-        <div style="display: flex; gap: 12px; margin-top: 20px;">
-            <button class="btn" style="flex:1; background:var(--dark-border); color:var(--text);" onclick="closeRejectModal()">Cancelar</button>
-            <button class="btn" style="flex:1; background:var(--danger); color:white;" onclick="confirmReject()">❌ Rechazar</button>
+        <h1 class="section-title">📋 EJERCICIOS PENDIENTES</h1>
+        <div class="pending-grid" id="pendingGrid"><div class="empty-state"><div class="empty-icon">✅</div><div class="empty-title">No hay ejercicios pendientes</div></div></div>
+    </div>
+
+    <!-- Reject Modal -->
+    <div class="modal-overlay" id="rejectOverlay">
+        <div class="modal-content" style="position:relative;">
+            <button class="modal-close" onclick="closeRejectModal()">×</button>
+            <h2 class="reject-title">❌ Rechazar Ejercicio</h2>
+            <div class="reject-reasons" id="rejectReasons">
+                <div class="reject-reason" onclick="selectRejectReason(this, 'mal_etiquetado')">🏷️ <strong>Mal etiquetado</strong></div>
+                <div class="reject-reason" onclick="selectRejectReason(this, 'duplicado')">📋 <strong>Duplicado</strong></div>
+                <div class="reject-reason" onclick="selectRejectReason(this, 'calidad')">📉 <strong>Calidad insuficiente</strong></div>
+                <div class="reject-reason" onclick="selectRejectReason(this, 'pizarra_incorrecta')">🎨 <strong>Pizarra incorrecta</strong></div>
+                <div class="reject-reason" onclick="selectRejectReason(this, 'otro')">❓ <strong>Otro motivo</strong></div>
+            </div>
+            <div id="rejectCustom" style="display:none;"><textarea id="rejectCustomText" placeholder="Explica el motivo..."></textarea></div>
+            <div style="display: flex; gap: 12px; margin-top: 20px;">
+                <button class="btn" style="flex:1; background:var(--dark-border); color:var(--text);" onclick="closeRejectModal()">Cancelar</button>
+                <button class="btn" style="flex:1; background:var(--danger); color:white;" onclick="confirmReject()">❌ Rechazar</button>
+            </div>
         </div>
     </div>
-</div>
+
     <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
-    
     <script>
-    var db = null;
-    var source = 'youtube';
-    var videoId = null;
-    var tweetId = null;
-    var categories = [];
-    var extracted = {};
-    var supabaseReady = false;
+    var db=null,source='youtube',videoId=null,tweetId=null,categories=[],extracted={},supabaseReady=false,pendingExercises=[],rejectingExerciseId=null,selectedRejectReason=null;
+    var LANG_FLAGS={'es':'🇪🇸','en':'🇬🇧','pt':'🇵🇹','it':'🇮🇹','de':'🇩🇪','fr':'🇫🇷','nl':'🇳🇱','other':'🌐'};
+    var REJECT_REASONS={'mal_etiquetado':'🏷️ Las categorías o datos no son correctos.','duplicado':'📋 Este ejercicio ya existe.','calidad':'📉 El video no cumple los estándares.','pizarra_incorrecta':'🎨 Usa la Pizarra de TopLiderCoach.','otro':''};
 
-    var LANG_FLAGS = { 'es': '🇪🇸', 'en': '🇬🇧', 'pt': '🇵🇹', 'it': '🇮🇹', 'de': '🇩🇪', 'fr': '🇫🇷', 'nl': '🇳🇱', 'other': '🌐' };
+    function checkSupabase(){if(typeof supabase!=='undefined'&&supabase.createClient){supabaseReady=true;document.getElementById('loadStatus').textContent='✅ Librería cargada';document.getElementById('loadStatus').style.color='#22c55e';init();}else{setTimeout(checkSupabase,500);}}
+    setTimeout(checkSupabase,100);
 
-    function checkSupabase() {
-        if (typeof supabase !== 'undefined' && supabase.createClient) {
-            supabaseReady = true;
-            document.getElementById('loadStatus').textContent = '✅ Librería cargada';
-            document.getElementById('loadStatus').style.color = '#22c55e';
-            init();
-        } else {
-            setTimeout(checkSupabase, 500);
-        }
-    }
-    setTimeout(checkSupabase, 100);
-
-    function init() {
-        document.getElementById('inputUrl').value = localStorage.getItem('sb_url') || '';
-        document.getElementById('inputKey').value = localStorage.getItem('sb_key') || '';
-        document.getElementById('inputYT').value = localStorage.getItem('yt_key') || '';
-        
-        document.getElementById('tabConfig').onclick = function() { showTab('Config'); };
-        document.getElementById('tabAdd').onclick = function() { showTab('Add'); };
-        document.getElementById('tabLibrary').onclick = function() { showTab('Library'); };
-        
-        document.getElementById('btnSaveConfig').onclick = saveConfig;
-        document.getElementById('srcYT').onclick = function() { setSource('youtube'); };
-        document.getElementById('srcTW').onclick = function() { setSource('twitter'); };
-        document.getElementById('srcIG').onclick = function() { setSource('instagram'); };
-        document.getElementById('btnExtract').onclick = extractData;
-        document.getElementById('btnSave').onclick = saveExercise;
-        
-        document.getElementById('inputTitulo').oninput = function() { updatePreview(); checkValid(); };
-        document.getElementById('inputDif').onchange = function() { updatePreview(); checkValid(); };
-        document.getElementById('inputIdioma').onchange = updatePreview;
-        
-        document.getElementById('inputEntrenador').onchange = function() {
-            document.getElementById('customEntrenador').className = this.value === '_otro' ? 'custom-input-row show' : 'custom-input-row';
-        };
-        document.getElementById('inputEquipo').onchange = function() {
-            document.getElementById('customEquipo').className = this.value === '_otro' ? 'custom-input-row show' : 'custom-input-row';
-        };
-        
-        document.querySelectorAll('.category-pill').forEach(function(pill) {
-            pill.onclick = function() {
-                var cat = this.getAttribute('data-cat');
-                var idx = categories.indexOf(cat);
-                if (idx === -1) {
-                    categories.push(cat);
-                    this.classList.add('active');
-                } else {
-                    categories.splice(idx, 1);
-                    this.classList.remove('active');
-                }
-                updatePreview();
-                checkValid();
-            };
-        });
-        
-        document.getElementById('searchInput').oninput = loadLibrary;
-        document.getElementById('filterSource').onchange = loadLibrary;
-        document.getElementById('filterIdioma').onchange = loadLibrary;
-        document.getElementById('filterEdad').onchange = loadLibrary;
-        
-        var url = localStorage.getItem('sb_url');
-        var key = localStorage.getItem('sb_key');
-        if (url && key) { connectDB(url, key); }
+    function init(){
+        document.getElementById('inputUrl').value=localStorage.getItem('sb_url')||'';
+        document.getElementById('inputKey').value=localStorage.getItem('sb_key')||'';
+        document.getElementById('inputYT').value=localStorage.getItem('yt_key')||'';
+        document.getElementById('tabConfig').onclick=function(){showTab('Config');};
+        document.getElementById('tabAdd').onclick=function(){showTab('Add');};
+        document.getElementById('tabLibrary').onclick=function(){showTab('Library');};
+        document.getElementById('tabPending').onclick=function(){showTab('Pending');};
+        document.getElementById('btnSaveConfig').onclick=saveConfig;
+        document.getElementById('srcYT').onclick=function(){setSource('youtube');};
+        document.getElementById('srcTW').onclick=function(){setSource('twitter');};
+        document.getElementById('srcIG').onclick=function(){setSource('instagram');};
+        document.getElementById('btnExtract').onclick=extractData;
+        document.getElementById('btnSave').onclick=saveExercise;
+        document.getElementById('inputTitulo').oninput=function(){updatePreview();checkValid();};
+        document.getElementById('inputDif').onchange=function(){updatePreview();checkValid();};
+        document.getElementById('inputIdioma').onchange=updatePreview;
+        document.getElementById('inputEntrenador').onchange=function(){document.getElementById('customEntrenador').className=this.value==='_otro'?'custom-input-row show':'custom-input-row';};
+        document.getElementById('inputEquipo').onchange=function(){document.getElementById('customEquipo').className=this.value==='_otro'?'custom-input-row show':'custom-input-row';};
+        document.querySelectorAll('.category-pill').forEach(function(pill){pill.onclick=function(){var cat=this.getAttribute('data-cat');var idx=categories.indexOf(cat);if(idx===-1){categories.push(cat);this.classList.add('active');}else{categories.splice(idx,1);this.classList.remove('active');}updatePreview();checkValid();};});
+        document.getElementById('searchInput').oninput=loadLibrary;
+        document.getElementById('filterSource').onchange=loadLibrary;
+        document.getElementById('filterIdioma').onchange=loadLibrary;
+        document.getElementById('filterEdad').onchange=loadLibrary;
+        var url=localStorage.getItem('sb_url'),key=localStorage.getItem('sb_key');
+        if(url&&key){connectDB(url,key);}
     }
 
-    function showTab(name) {
-        ['Config', 'Add', 'Library'].forEach(function(t) {
-            document.getElementById('tab' + t).className = 'tab';
-            document.getElementById('panel' + t).className = 'panel';
-        });
-        document.getElementById('tab' + name).className = 'tab active';
-        document.getElementById('panel' + name).className = 'panel active';
-        if (name === 'Library' && db) { loadLibrary(); }
-    }
+    function showTab(name){['Config','Add','Library','Pending'].forEach(function(t){var tab=document.getElementById('tab'+t);var panel=document.getElementById('panel'+t);if(tab)tab.className='tab';if(panel)panel.className='panel';});document.getElementById('tab'+name).className='tab active';document.getElementById('panel'+name).className='panel active';if(name==='Library'&&db){loadLibrary();}if(name==='Pending'&&db){loadPending();}}
 
-    function saveConfig() {
-        var url = document.getElementById('inputUrl').value.trim();
-        var key = document.getElementById('inputKey').value.trim();
-        if (!url || !key) { showToast('Introduce URL y Key de Supabase', 'error'); return; }
-        localStorage.setItem('sb_url', url);
-        localStorage.setItem('sb_key', key);
-        localStorage.setItem('yt_key', document.getElementById('inputYT').value.trim());
-        connectDB(url, key);
-    }
+    function saveConfig(){var url=document.getElementById('inputUrl').value.trim();var key=document.getElementById('inputKey').value.trim();if(!url||!key){showToast('Introduce URL y Key','error');return;}localStorage.setItem('sb_url',url);localStorage.setItem('sb_key',key);localStorage.setItem('yt_key',document.getElementById('inputYT').value.trim());connectDB(url,key);}
 
-    function connectDB(url, key) {
-        if (!supabaseReady) { showToast('Esperando Supabase...', 'error'); return; }
-        showLoading(true);
-        try {
-            db = supabase.createClient(url, key);
-            db.from('ejercicios').select('id').limit(1).then(function(result) {
-                showLoading(false);
-                if (result.error) {
-                    document.getElementById('statusDot').className = 'status-dot';
-                    document.getElementById('statusText').textContent = 'Error';
-                    showToast('Error: ' + result.error.message, 'error');
-                    return;
-                }
-                document.getElementById('statusDot').className = 'status-dot connected';
-                document.getElementById('statusText').textContent = 'Conectado';
-                document.getElementById('statsBar').className = 'stats-bar show';
-                loadStats();
-                showToast('✅ Conectado', 'success');
-                showTab('Add');
-            });
-        } catch (err) { showLoading(false); showToast('Error: ' + err.message, 'error'); }
-    }
+    function connectDB(url,key){if(!supabaseReady){showToast('Esperando Supabase...','error');return;}showLoading(true);try{db=supabase.createClient(url,key);db.from('ejercicios').select('id').limit(1).then(function(result){showLoading(false);if(result.error){document.getElementById('statusDot').className='status-dot';document.getElementById('statusText').textContent='Error';showToast('Error: '+result.error.message,'error');return;}document.getElementById('statusDot').className='status-dot connected';document.getElementById('statusText').textContent='Conectado';document.getElementById('statsBar').className='stats-bar show';loadStats();loadPending();showToast('✅ Conectado','success');showTab('Add');});}catch(err){showLoading(false);showToast('Error: '+err.message,'error');}}
 
-    function loadStats() {
-        if (!db) return;
-        db.from('ejercicios').select('*', { count: 'exact', head: true }).then(function(r) { document.getElementById('statTotal').textContent = r.count || 0; });
-        db.from('ejercicios').select('*', { count: 'exact', head: true }).eq('source', 'youtube').then(function(r) { document.getElementById('statYT').textContent = r.count || 0; });
-        db.from('ejercicios').select('*', { count: 'exact', head: true }).eq('source', 'twitter').then(function(r) { document.getElementById('statTW').textContent = r.count || 0; });
-        db.from('ejercicios').select('*', { count: 'exact', head: true }).eq('source', 'instagram').then(function(r) { document.getElementById('statIG').textContent = r.count || 0; });
-    }
+    function loadStats(){if(!db)return;db.from('ejercicios').select('*',{count:'exact',head:true}).then(function(r){document.getElementById('statTotal').textContent=r.count||0;});db.from('ejercicios').select('*',{count:'exact',head:true}).eq('source','youtube').then(function(r){document.getElementById('statYT').textContent=r.count||0;});db.from('ejercicios').select('*',{count:'exact',head:true}).eq('source','twitter').then(function(r){document.getElementById('statTW').textContent=r.count||0;});db.from('ejercicios').select('*',{count:'exact',head:true}).eq('source','instagram').then(function(r){document.getElementById('statIG').textContent=r.count||0;});}
 
-    function setSource(s) {
-        source = s;
-        document.getElementById('srcYT').className = 'source-btn ' + (s === 'youtube' ? 'active youtube' : '');
-        document.getElementById('srcTW').className = 'source-btn ' + (s === 'twitter' ? 'active twitter' : '');
-        document.getElementById('srcIG').className = 'source-btn ' + (s === 'instagram' ? 'active instagram' : '');
-        if (s === 'youtube') {
-            document.getElementById('inputVideoUrl').placeholder = 'https://www.youtube.com/watch?v=...';
-            document.getElementById('btnExtract').className = 'btn btn-youtube';
-            document.getElementById('btnExtract').textContent = '▶ Extraer';
-            document.getElementById('urlTitle').textContent = '📺 URL del Video';
-        } else if (s === 'twitter') {
-            document.getElementById('inputVideoUrl').placeholder = 'https://twitter.com/usuario/status/...';
-            document.getElementById('btnExtract').className = 'btn btn-twitter';
-            document.getElementById('btnExtract').textContent = '𝕏 Cargar';
-            document.getElementById('urlTitle').textContent = '𝕏 URL del Tweet';
-        } else {
-            document.getElementById('inputVideoUrl').placeholder = 'https://www.instagram.com/reel/... o /p/...';
-            document.getElementById('btnExtract').className = 'btn btn-instagram';
-            document.getElementById('btnExtract').textContent = '📷 Cargar';
-            document.getElementById('urlTitle').textContent = '📷 URL de Instagram';
-        }
-        resetForm();
-    }
+    function setSource(s){source=s;document.getElementById('srcYT').className='source-btn '+(s==='youtube'?'active youtube':'');document.getElementById('srcTW').className='source-btn '+(s==='twitter'?'active twitter':'');document.getElementById('srcIG').className='source-btn '+(s==='instagram'?'active instagram':'');if(s==='youtube'){document.getElementById('inputVideoUrl').placeholder='https://www.youtube.com/watch?v=...';document.getElementById('btnExtract').className='btn btn-youtube';document.getElementById('btnExtract').textContent='▶ Extraer';document.getElementById('urlTitle').textContent='📺 URL del Video';}else if(s==='twitter'){document.getElementById('inputVideoUrl').placeholder='https://twitter.com/usuario/status/...';document.getElementById('btnExtract').className='btn btn-twitter';document.getElementById('btnExtract').textContent='𝕏 Cargar';document.getElementById('urlTitle').textContent='𝕏 URL del Tweet';}else{document.getElementById('inputVideoUrl').placeholder='https://www.instagram.com/reel/...';document.getElementById('btnExtract').className='btn btn-instagram';document.getElementById('btnExtract').textContent='📷 Cargar';document.getElementById('urlTitle').textContent='📷 URL de Instagram';}resetForm();}
 
-    function extractData() { 
-        if (source === 'youtube') extractYouTube();
-        else if (source === 'twitter') extractTwitter();
-        else extractInstagram();
-    }
+    function extractData(){if(source==='youtube')extractYouTube();else if(source==='twitter')extractTwitter();else extractInstagram();}
+    function getVideoId(url){var m=url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/|shorts\/)([^&\n?#]+)/);return m?m[1]:null;}
+    function getTweetId(url){var m=url.match(/(?:twitter|x)\.com\/\w+\/status\/(\d+)/);return m?m[1]:null;}
+    function getInstagramId(url){var m=url.match(/instagram\.com\/(?:p|reel|reels)\/([A-Za-z0-9_-]+)/);return m?m[1]:null;}
+    function parseDuration(iso){var m=iso.match(/PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?/);if(!m)return{f:'0:00',s:0};var h=parseInt(m[1]||0),min=parseInt(m[2]||0),sec=parseInt(m[3]||0);return{f:h>0?h+':'+String(min).padStart(2,'0')+':'+String(sec).padStart(2,'0'):min+':'+String(sec).padStart(2,'0'),s:h*3600+min*60+sec};}
+    function detectLanguage(code){if(!code)return'es';var c=code.substring(0,2).toLowerCase();return['es','en','pt','it','de','fr','nl'].indexOf(c)!==-1?c:'other';}
 
-    function getVideoId(url) {
-        var m = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/|shorts\/)([^&\n?#]+)/);
-        return m ? m[1] : null;
-    }
+    function extractYouTube(){var url=document.getElementById('inputVideoUrl').value.trim();videoId=getVideoId(url);if(!videoId){setStatus('❌ URL no válida','error');return;}var thumb='https://img.youtube.com/vi/'+videoId+'/maxresdefault.jpg';updatePreviewMedia(thumb);extracted={videoId:videoId,thumb:thumb,videoUrl:url};var apiKey=localStorage.getItem('yt_key');if(!apiKey){setStatus('⚠️ Sin API Key','error');checkValid();return;}setStatus('🔄 Extrayendo...','loading');fetch('https://www.googleapis.com/youtube/v3/videos?part=snippet,contentDetails,statistics&id='+videoId+'&key='+apiKey).then(function(res){return res.json();}).then(function(data){if(data.error)throw new Error(data.error.message);if(!data.items||!data.items.length)throw new Error('Video no encontrado');var v=data.items[0];var dur=parseDuration(v.contentDetails.duration);var lang=detectLanguage(v.snippet.defaultAudioLanguage||v.snippet.defaultLanguage);extracted={videoId:videoId,videoUrl:url,thumb:thumb,tituloVideo:v.snippet.title,canal:v.snippet.channelTitle,duracion:dur.f,duracionSeg:dur.s,desc:(v.snippet.description||'').substring(0,500),vistas:parseInt(v.statistics.viewCount||0),likes:parseInt(v.statistics.likeCount||0),idioma:lang};document.getElementById('inputTituloVideo').value=extracted.tituloVideo;document.getElementById('inputTituloVideo').className='form-input filled';document.getElementById('inputCanal').value=extracted.canal;document.getElementById('inputCanal').className='form-input filled';document.getElementById('inputDuracion').value=extracted.duracion;document.getElementById('inputDuracion').className='form-input filled';document.getElementById('inputDesc').value=extracted.desc;document.getElementById('inputIdioma').value=extracted.idioma;if(!document.getElementById('inputTitulo').value){document.getElementById('inputTitulo').value=extracted.tituloVideo;}updatePreviewMedia(thumb,extracted.duracion);document.getElementById('previewMeta').textContent=extracted.canal+' • '+extracted.duracion;updatePreview();setStatus('✅ Datos extraídos '+LANG_FLAGS[lang],'success');checkValid();}).catch(function(err){setStatus('❌ '+err.message,'error');checkValid();});}
 
-    function getTweetId(url) {
-        var m = url.match(/(?:twitter|x)\.com\/\w+\/status\/(\d+)/);
-        return m ? m[1] : null;
-    }
+    function extractTwitter(){var url=document.getElementById('inputVideoUrl').value.trim();tweetId=getTweetId(url);if(!tweetId){setStatus('❌ URL no válida','error');return;}extracted={tweetId:tweetId,videoUrl:url};setStatus('✅ Tweet listo','success');checkValid();}
+    function extractInstagram(){var url=document.getElementById('inputVideoUrl').value.trim();var igId=getInstagramId(url);if(!igId){setStatus('❌ URL no válida','error');return;}extracted={igId:igId,videoUrl:url};setStatus('✅ Instagram listo','success');checkValid();}
 
-    function parseDuration(iso) {
-        var m = iso.match(/PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?/);
-        if (!m) return { f: '0:00', s: 0 };
-        var h = parseInt(m[1] || 0), min = parseInt(m[2] || 0), sec = parseInt(m[3] || 0);
-        return { f: h > 0 ? h + ':' + String(min).padStart(2,'0') + ':' + String(sec).padStart(2,'0') : min + ':' + String(sec).padStart(2,'0'), s: h*3600 + min*60 + sec };
-    }
+    function updatePreviewMedia(thumb,dur){var lang=document.getElementById('inputIdioma').value;var html='<img src="'+thumb+'" onerror="this.src=\'https://img.youtube.com/vi/'+videoId+'/hqdefault.jpg\'">';html+='<div class="preview-badge youtube">📺</div>';if(dur)html+='<div class="preview-duration">'+dur+'</div>';html+='<div class="preview-lang">'+(LANG_FLAGS[lang]||'🌐')+'</div>';document.getElementById('previewMedia').innerHTML=html;}
+    function setStatus(msg,type){document.getElementById('urlStatus').textContent=msg;document.getElementById('urlStatus').className='url-status '+type;}
+    function updatePreview(){var titulo=document.getElementById('inputTitulo').value||'Título del ejercicio';var dif=document.getElementById('inputDif').value;var lang=document.getElementById('inputIdioma').value;document.getElementById('previewTitle').textContent=titulo;document.getElementById('previewTitle').className=document.getElementById('inputTitulo').value?'preview-title':'preview-title placeholder';var html='';categories.forEach(function(c){html+='<span class="preview-tag">'+c+'</span>';});if(dif)html+='<span class="preview-tag dif">Dif: '+dif+'</span>';if(lang)html+='<span class="preview-tag lang">'+LANG_FLAGS[lang]+'</span>';document.getElementById('previewTags').innerHTML=html;if(videoId&&extracted.thumb){updatePreviewMedia(extracted.thumb,extracted.duracion);}}
+    function checkValid(){var hasSource=(source==='youtube'&&videoId)||(source==='twitter'&&tweetId)||(source==='instagram'&&extracted.igId);var titulo=document.getElementById('inputTitulo').value.trim();var dif=document.getElementById('inputDif').value;document.getElementById('btnSave').disabled=!(hasSource&&titulo&&categories.length>0&&dif);}
+    function getEntrenador(){var val=document.getElementById('inputEntrenador').value;return val==='_otro'?document.getElementById('inputEntrenadorCustom').value:val;}
+    function getEquipo(){var val=document.getElementById('inputEquipo').value;return val==='_otro'?document.getElementById('inputEquipoCustom').value:val;}
 
-    function detectLanguage(code) {
-        if (!code) return 'es';
-        var c = code.substring(0, 2).toLowerCase();
-        return ['es', 'en', 'pt', 'it', 'de', 'fr', 'nl'].indexOf(c) !== -1 ? c : 'other';
-    }
+    // GUARDAR - SIEMPRE CON sin_gamificacion: true
+    function saveExercise(){if(!db){showToast('❌ No conectado','error');return;}showLoading(true);var videoIdValue=null;if(source==='youtube')videoIdValue=videoId;else if(source==='twitter')videoIdValue=tweetId;else if(source==='instagram')videoIdValue=extracted.igId;var data={source:source,video_id:videoIdValue,video_url:document.getElementById('inputVideoUrl').value,thumbnail_url:extracted.thumb||null,titulo_video:document.getElementById('inputTituloVideo').value,canal:document.getElementById('inputCanal').value,duracion:document.getElementById('inputDuracion').value,duracion_segundos:extracted.duracionSeg||0,descripcion:document.getElementById('inputDesc').value,vistas:extracted.vistas||0,likes:extracted.likes||0,titulo_ejercicio:document.getElementById('inputTitulo').value,entrenador:getEntrenador(),equipo:getEquipo(),categorias:categories,dificultad:parseInt(document.getElementById('inputDif').value),jugadores:document.getElementById('inputJugadores').value,num_porteros:parseInt(document.getElementById('inputPorteros').value)||0,edad:document.getElementById('inputEdad').value,dimensiones:document.getElementById('inputDimensiones').value,material:document.getElementById('inputMaterial').value,idioma:document.getElementById('inputIdioma').value,estado:'publicado',aprobado:true,sin_gamificacion:true};db.from('ejercicios').insert(data).then(function(result){showLoading(false);if(result.error){showToast('❌ '+result.error.message,'error');return;}showToast('✅ Guardado (sin XP)','success');resetForm();loadStats();});}
 
-    function extractYouTube() {
-        var url = document.getElementById('inputVideoUrl').value.trim();
-        videoId = getVideoId(url);
-        if (!videoId) { setStatus('❌ URL no válida', 'error'); return; }
-        
-        var thumb = 'https://img.youtube.com/vi/' + videoId + '/maxresdefault.jpg';
-        updatePreviewMedia(thumb);
-        
-        var apiKey = localStorage.getItem('yt_key');
-        if (!apiKey) {
-            setStatus('⚠️ Sin API Key', 'error');
-            extracted = { videoId: videoId, thumb: thumb };
-            checkValid();
-            return;
-        }
-        
-        setStatus('🔄 Extrayendo...', 'loading');
-        
-        fetch('https://www.googleapis.com/youtube/v3/videos?part=snippet,contentDetails,statistics&id=' + videoId + '&key=' + apiKey)
-            .then(function(res) { return res.json(); })
-            .then(function(data) {
-                if (data.error) throw new Error(data.error.message);
-                if (!data.items || !data.items.length) throw new Error('Video no encontrado');
-                
-                var v = data.items[0];
-                var dur = parseDuration(v.contentDetails.duration);
-                var lang = detectLanguage(v.snippet.defaultAudioLanguage || v.snippet.defaultLanguage);
-                
-                extracted = {
-                    videoId: videoId, videoUrl: url, thumb: thumb,
-                    tituloVideo: v.snippet.title, canal: v.snippet.channelTitle,
-                    duracion: dur.f, duracionSeg: dur.s,
-                    desc: (v.snippet.description || '').substring(0, 500),
-                    vistas: parseInt(v.statistics.viewCount || 0),
-                    likes: parseInt(v.statistics.likeCount || 0),
-                    idioma: lang
-                };
-                
-                document.getElementById('inputTituloVideo').value = extracted.tituloVideo;
-                document.getElementById('inputTituloVideo').className = 'form-input filled';
-                document.getElementById('inputCanal').value = extracted.canal;
-                document.getElementById('inputCanal').className = 'form-input filled';
-                document.getElementById('inputDuracion').value = extracted.duracion;
-                document.getElementById('inputDuracion').className = 'form-input filled';
-                document.getElementById('inputDesc').value = extracted.desc;
-                document.getElementById('inputIdioma').value = extracted.idioma;
-                
-                if (!document.getElementById('inputTitulo').value) {
-                    document.getElementById('inputTitulo').value = extracted.tituloVideo;
-                }
-                
-                updatePreviewMedia(thumb, extracted.duracion);
-                document.getElementById('previewMeta').textContent = extracted.canal + ' • ' + extracted.duracion;
-                updatePreview();
-                
-                setStatus('✅ Datos extraídos ' + LANG_FLAGS[lang], 'success');
-                checkValid();
-            })
-            .catch(function(err) { setStatus('❌ ' + err.message, 'error'); checkValid(); });
-    }
+    function resetForm(){['inputVideoUrl','inputTituloVideo','inputCanal','inputDuracion','inputDesc','inputTitulo','inputEntrenadorCustom','inputEquipoCustom'].forEach(function(id){document.getElementById(id).value='';document.getElementById(id).className='form-input';});['inputDif','inputIdioma','inputEntrenador','inputEquipo','inputJugadores','inputPorteros','inputEdad','inputDimensiones','inputMaterial','inputIntensidad'].forEach(function(id){var el=document.getElementById(id);if(el)el.value=id==='inputIdioma'?'es':'';});document.getElementById('customEntrenador').className='custom-input-row';document.getElementById('customEquipo').className='custom-input-row';categories=[];videoId=null;tweetId=null;extracted={};document.querySelectorAll('.category-pill').forEach(function(p){p.classList.remove('active');});document.getElementById('previewMedia').innerHTML='<div style="color:var(--text-muted);text-align:center;"><div style="font-size:40px;margin-bottom:8px;">🎬</div><div style="font-size:13px;">Pega una URL</div></div>';document.getElementById('previewTitle').textContent='Título del ejercicio';document.getElementById('previewTitle').className='preview-title placeholder';document.getElementById('previewMeta').textContent='Canal • Duración';document.getElementById('previewTags').innerHTML='';document.getElementById('urlStatus').textContent='';document.getElementById('btnSave').disabled=true;}
 
-    function extractTwitter() {
-        var url = document.getElementById('inputVideoUrl').value.trim();
-        tweetId = getTweetId(url);
-        if (!tweetId) { setStatus('❌ URL no válida', 'error'); return; }
-        
-        setStatus('🔄 Cargando...', 'loading');
-        
-        fetch('https://publish.twitter.com/oembed?url=' + encodeURIComponent(url) + '&omit_script=true')
-            .then(function(res) { if (!res.ok) throw new Error('No se pudo cargar'); return res.json(); })
-            .then(function(data) {
-                extracted = { tweetId: tweetId, videoUrl: url, canal: data.author_name, embedHtml: data.html };
-                document.getElementById('inputTituloVideo').value = 'Tweet de ' + data.author_name;
-                document.getElementById('inputCanal').value = data.author_name;
-                document.getElementById('previewMeta').textContent = '@' + data.author_name;
-                document.getElementById('previewMedia').innerHTML = '<div class="preview-badge twitter">𝕏</div><div style="padding:8px;width:100%;background:#15202b;font-size:11px;">' + data.html + '</div>';
-                setStatus('✅ Tweet cargado', 'success');
-                checkValid();
-            })
-            .catch(function(err) { setStatus('❌ ' + err.message, 'error'); checkValid(); });
-    }
+    function loadLibrary(){if(!db)return;var search=document.getElementById('searchInput').value.trim();var filterSrc=document.getElementById('filterSource').value;var filterLang=document.getElementById('filterIdioma').value;var filterAge=document.getElementById('filterEdad').value;var q=db.from('ejercicios').select('*').order('created_at',{ascending:false}).limit(50);if(search)q=q.ilike('titulo_ejercicio','%'+search+'%');if(filterSrc)q=q.eq('source',filterSrc);if(filterLang)q=q.eq('idioma',filterLang);if(filterAge)q=q.eq('edad',filterAge);q.then(function(result){if(result.error)return;renderLibrary(result.data||[]);});}
+    function renderLibrary(items){var grid=document.getElementById('libraryGrid');if(!items.length){grid.innerHTML='<div class="empty-state"><div class="empty-icon">📭</div><div class="empty-title">No hay ejercicios</div></div>';return;}var sourceIcons={youtube:'📺',twitter:'𝕏',instagram:'📷'};var html='';items.forEach(function(ex){var cats=ex.categorias||[];var tagsHtml='';cats.slice(0,3).forEach(function(c){tagsHtml+='<span class="exercise-tag">'+c+'</span>';});if(ex.dificultad)tagsHtml+='<span class="exercise-tag" style="background:rgba(245,197,24,0.2);color:var(--accent);">Dif: '+ex.dificultad+'</span>';var icon=sourceIcons[ex.source]||'📺';html+='<div class="exercise-card"><div class="exercise-thumb">'+(ex.thumbnail_url?'<img src="'+ex.thumbnail_url+'">':'<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:32px;background:var(--dark);">'+icon+'</div>')+'<div class="exercise-source '+ex.source+'">'+icon+'</div><div class="exercise-lang">'+(LANG_FLAGS[ex.idioma]||'🌐')+'</div></div><div class="exercise-body"><div class="exercise-title">'+ex.titulo_ejercicio+'</div><div class="exercise-meta">'+(ex.entrenador||ex.canal||'-')+' • '+(ex.duracion||'--')+'</div><div class="exercise-tags">'+tagsHtml+'</div><div class="exercise-actions"><button class="btn-view" onclick="window.open(\''+ex.video_url+'\')">▶ Ver</button><button class="btn-delete" onclick="deleteEx(\''+ex.id+'\')">🗑️</button></div></div></div>';});grid.innerHTML=html;}
+    function deleteEx(id){if(!confirm('¿Eliminar?'))return;showLoading(true);db.from('ejercicios').delete().eq('id',id).then(function(r){showLoading(false);if(r.error){showToast('❌ '+r.error.message,'error');return;}showToast('✅ Eliminado','success');loadStats();loadLibrary();});}
 
-    function getInstagramId(url) {
-        var m = url.match(/instagram\.com\/(?:p|reel|reels)\/([A-Za-z0-9_-]+)/);
-        return m ? m[1] : null;
-    }
+    // PENDING
+    function loadPending(){if(!db)return;db.from('ejercicios').select('*').eq('estado','pendiente').order('created_at',{ascending:true}).then(function(result){if(result.error)return;pendingExercises=result.data||[];renderPending();updatePendingBadge();checkDuplicates();loadTodayStats();});}
+    function updatePendingBadge(){var badge=document.getElementById('pendingCount');var count=pendingExercises.length;badge.textContent=count;badge.style.display=count>0?'inline':'none';document.getElementById('statPending').textContent=count;}
+    function renderPending(){var grid=document.getElementById('pendingGrid');if(!pendingExercises.length){grid.innerHTML='<div class="empty-state"><div class="empty-icon">✅</div><div class="empty-title">No hay ejercicios pendientes</div></div>';return;}var html='';pendingExercises.forEach(function(ex){var cats=ex.categorias||[];var tagsHtml=cats.slice(0,3).map(function(c){return'<span class="pending-card-tag">'+c+'</span>';}).join('');if(ex.dificultad)tagsHtml+='<span class="pending-card-tag" style="background:rgba(245,197,24,0.2);color:#f59e0b;">Dif: '+ex.dificultad+'</span>';var isDuplicate=ex._isDuplicate;var reenvio=ex.veces_enviado>1;var isAdminUpload=ex.sin_gamificacion===true;var cardClass='pending-card';if(isDuplicate)cardClass+=' duplicate';if(isAdminUpload)cardClass+=' admin-upload';var approveText=isAdminUpload?'✅ Aprobar':'✅ Aprobar (+XP)';html+='<div class="'+cardClass+'" id="pending-'+ex.id+'"><div class="pending-card-header"><img class="pending-card-thumb" src="'+(ex.thumbnail_url||'https://via.placeholder.com/140x80/16162a/8b8ba7?text=Video')+'"><div class="pending-card-info"><div class="pending-card-title">'+ex.titulo_ejercicio+'</div><div class="pending-card-meta"><span>📺 '+(ex.source||'youtube')+'</span><span>⏱️ '+(ex.duracion||'--')+'</span></div></div></div><div class="pending-card-body"><div class="pending-card-tags">'+tagsHtml+'</div><div class="pending-card-url">'+ex.video_url+'</div>'+(isDuplicate?'<div class="pending-card-duplicate">⚠️ POSIBLE DUPLICADO</div>':'')+(reenvio?'<div class="pending-card-reenvio">🔄 Reenvío #'+ex.veces_enviado+'</div>':'')+(isAdminUpload?'<div class="pending-card-admin">👑 ADMIN - Sin XP</div>':'')+'<div class="pending-card-actions"><button class="btn btn-approve" onclick="approveExercise(\''+ex.id+'\', '+isAdminUpload+')">'+approveText+'</button><button class="btn btn-reject" onclick="openRejectModal(\''+ex.id+'\')">❌ Rechazar</button><button class="btn btn-view" style="flex:0.5;" onclick="window.open(\''+ex.video_url+'\')">▶</button></div></div></div>';});grid.innerHTML=html;}
+    function checkDuplicates(){if(!pendingExercises.length)return;var urls=pendingExercises.map(function(ex){return ex.video_url;});db.from('ejercicios').select('video_url').eq('estado','publicado').in('video_url',urls).then(function(result){if(result.error||!result.data)return;var existingUrls=result.data.map(function(e){return e.video_url;});pendingExercises.forEach(function(ex){if(existingUrls.indexOf(ex.video_url)!==-1){ex._isDuplicate=true;}});renderPending();});}
+    function loadTodayStats(){if(!db)return;var today=new Date().toISOString().split('T')[0];db.from('ejercicios').select('*',{count:'exact',head:true}).eq('estado','publicado').gte('updated_at',today).then(function(r){document.getElementById('statApproved').textContent=r.count||0;});db.from('ejercicios').select('*',{count:'exact',head:true}).eq('estado','rechazado').gte('rechazado_en',today).then(function(r){document.getElementById('statRejected').textContent=r.count||0;});}
 
-    function extractInstagram() {
-        var url = document.getElementById('inputVideoUrl').value.trim();
-        var igId = getInstagramId(url);
-        if (!igId) { setStatus('❌ URL no válida. Usa /reel/ o /p/', 'error'); return; }
-        
-        setStatus('🔄 Cargando...', 'loading');
-        
-        fetch('https://api.instagram.com/oembed?url=' + encodeURIComponent(url) + '&omit_script=true')
-            .then(function(res) { 
-                if (!res.ok) throw new Error('No se pudo cargar. El post puede ser privado.'); 
-                return res.json(); 
-            })
-            .then(function(data) {
-                extracted = { 
-                    igId: igId, 
-                    videoUrl: url, 
-                    canal: data.author_name || 'Instagram', 
-                    embedHtml: data.html,
-                    thumb: data.thumbnail_url || null
-                };
-                document.getElementById('inputTituloVideo').value = data.title || 'Post de ' + (data.author_name || 'Instagram');
-                document.getElementById('inputCanal').value = data.author_name || '';
-                document.getElementById('previewMeta').textContent = '@' + (data.author_name || 'instagram');
-                
-                var previewHtml = '<div class="preview-badge instagram">📷</div>';
-                if (data.thumbnail_url) {
-                    previewHtml += '<img src="' + data.thumbnail_url + '" style="width:100%;height:100%;object-fit:cover;">';
-                } else {
-                    previewHtml += '<div style="padding:12px;width:100%;background:linear-gradient(45deg,#405de6,#5851db,#833ab4,#c13584,#e1306c);display:flex;align-items:center;justify-content:center;font-size:11px;color:white;">📷 Instagram Reel/Post</div>';
-                }
-                document.getElementById('previewMedia').innerHTML = previewHtml;
-                
-                setStatus('✅ Instagram cargado', 'success');
-                checkValid();
-            })
-            .catch(function(err) { 
-                setStatus('❌ ' + err.message, 'error'); 
-                // Aún así permitir guardar manualmente
-                extracted = { igId: igId, videoUrl: url, canal: '', embedHtml: '' };
-                checkValid(); 
-            });
-    }
+    // APROBAR - CON O SIN XP
+    function approveExercise(id,sinGamificacion){var msg=sinGamificacion?'¿Aprobar? (Sin XP - del admin)':'¿Aprobar? El usuario recibirá XP.';if(!confirm(msg))return;showLoading(true);if(sinGamificacion){db.from('ejercicios').update({estado:'publicado',aprobado:true,updated_at:new Date().toISOString()}).eq('id',id).then(function(result){showLoading(false);if(result.error){showToast('❌ '+result.error.message,'error');return;}showToast('✅ Aprobado (sin XP)','success');pendingExercises=pendingExercises.filter(function(ex){return ex.id!==id;});renderPending();updatePendingBadge();loadStats();loadTodayStats();});}else{db.rpc('aprobar_ejercicio',{p_ejercicio_id:id,p_admin_id:null}).then(function(result){showLoading(false);if(result.error){showToast('❌ '+result.error.message,'error');return;}showToast('✅ Aprobado (+XP)','success');pendingExercises=pendingExercises.filter(function(ex){return ex.id!==id;});renderPending();updatePendingBadge();loadStats();loadTodayStats();});}}
 
-    function updatePreviewMedia(thumb, dur) {
-        var lang = document.getElementById('inputIdioma').value;
-        var html = '<img src="' + thumb + '" onerror="this.src=\'https://img.youtube.com/vi/' + videoId + '/hqdefault.jpg\'">';
-        html += '<div class="preview-badge youtube">📺</div>';
-        if (dur) html += '<div class="preview-duration">' + dur + '</div>';
-        html += '<div class="preview-lang">' + (LANG_FLAGS[lang] || '🌐') + '</div>';
-        document.getElementById('previewMedia').innerHTML = html;
-    }
+    function openRejectModal(id){rejectingExerciseId=id;selectedRejectReason=null;document.querySelectorAll('.reject-reason').forEach(function(r){r.classList.remove('selected');});document.getElementById('rejectCustom').style.display='none';document.getElementById('rejectCustomText').value='';document.getElementById('rejectOverlay').classList.add('show');}
+    function closeRejectModal(){document.getElementById('rejectOverlay').classList.remove('show');rejectingExerciseId=null;}
+    function selectRejectReason(el,reason){document.querySelectorAll('.reject-reason').forEach(function(r){r.classList.remove('selected');});el.classList.add('selected');selectedRejectReason=reason;document.getElementById('rejectCustom').style.display=reason==='otro'?'block':'none';}
+    function confirmReject(){if(!selectedRejectReason){showToast('Selecciona un motivo','error');return;}var motivo=REJECT_REASONS[selectedRejectReason];if(selectedRejectReason==='otro'){motivo=document.getElementById('rejectCustomText').value.trim();if(!motivo){showToast('Escribe el motivo','error');return;}}var idToReject=rejectingExerciseId;showLoading(true);db.from('ejercicios').update({estado:'rechazado',motivo_rechazo:motivo,rechazado_en:new Date().toISOString()}).eq('id',idToReject).then(function(result){showLoading(false);if(result.error){showToast('❌ '+result.error.message,'error');return;}closeRejectModal();showToast('❌ Rechazado','success');pendingExercises=pendingExercises.filter(function(ex){return ex.id!==idToReject;});renderPending();updatePendingBadge();loadTodayStats();});}
 
-    function setStatus(msg, type) {
-        document.getElementById('urlStatus').textContent = msg;
-        document.getElementById('urlStatus').className = 'url-status ' + type;
-    }
-
-    function updatePreview() {
-        var titulo = document.getElementById('inputTitulo').value || 'Título del ejercicio';
-        var dif = document.getElementById('inputDif').value;
-        var lang = document.getElementById('inputIdioma').value;
-        
-        document.getElementById('previewTitle').textContent = titulo;
-        document.getElementById('previewTitle').className = document.getElementById('inputTitulo').value ? 'preview-title' : 'preview-title placeholder';
-        
-        var html = '';
-        categories.forEach(function(c) { html += '<span class="preview-tag">' + c + '</span>'; });
-        if (dif) html += '<span class="preview-tag dif">Dif: ' + dif + '</span>';
-        if (lang) html += '<span class="preview-tag lang">' + LANG_FLAGS[lang] + '</span>';
-        document.getElementById('previewTags').innerHTML = html;
-        
-        if (videoId && extracted.thumb) { updatePreviewMedia(extracted.thumb, extracted.duracion); }
-    }
-
-    function checkValid() {
-        var hasSource = (source === 'youtube' && videoId) || (source === 'twitter' && tweetId) || (source === 'instagram' && extracted.igId);
-        var titulo = document.getElementById('inputTitulo').value.trim();
-        var dif = document.getElementById('inputDif').value;
-        document.getElementById('btnSave').disabled = !(hasSource && titulo && categories.length > 0 && dif);
-    }
-
-    function getEntrenador() {
-        var val = document.getElementById('inputEntrenador').value;
-        return val === '_otro' ? document.getElementById('inputEntrenadorCustom').value : val;
-    }
-
-    function getEquipo() {
-        var val = document.getElementById('inputEquipo').value;
-        return val === '_otro' ? document.getElementById('inputEquipoCustom').value : val;
-    }
-
-    function saveExercise() {
-        if (!db) { showToast('❌ No conectado', 'error'); return; }
-        showLoading(true);
-        
-        var videoIdValue = null;
-        if (source === 'youtube') videoIdValue = videoId;
-        else if (source === 'twitter') videoIdValue = tweetId;
-        else if (source === 'instagram') videoIdValue = extracted.igId;
-        
-        var data = {
-            source: source,
-            video_id: videoIdValue,
-            video_url: document.getElementById('inputVideoUrl').value,
-            thumbnail_url: extracted.thumb || null,
-            titulo_video: document.getElementById('inputTituloVideo').value,
-            canal: document.getElementById('inputCanal').value,
-            duracion: document.getElementById('inputDuracion').value,
-            duracion_segundos: extracted.duracionSeg || 0,
-            descripcion: document.getElementById('inputDesc').value,
-            vistas: extracted.vistas || 0,
-            likes: extracted.likes || 0,
-            titulo_ejercicio: document.getElementById('inputTitulo').value,
-            entrenador: getEntrenador(),
-            equipo: getEquipo(),
-            categorias: categories,
-            dificultad: parseInt(document.getElementById('inputDif').value),
-            jugadores: document.getElementById('inputJugadores').value,
-            num_porteros: parseInt(document.getElementById('inputPorteros').value) || 0,
-            edad: document.getElementById('inputEdad').value,
-            dimensiones: document.getElementById('inputDimensiones').value,
-            material: document.getElementById('inputMaterial').value,
-            idioma: document.getElementById('inputIdioma').value,
-            estado: 'publicado',
-            tweet_embed_html: extracted.embedHtml || null
-        };
-        
-        db.from('ejercicios').insert(data).then(function(result) {
-            showLoading(false);
-            if (result.error) { showToast('❌ ' + result.error.message, 'error'); return; }
-            showToast('✅ Ejercicio guardado', 'success');
-            resetForm();
-            loadStats();
-        });
-    }
-
-    function resetForm() {
-        ['inputVideoUrl', 'inputTituloVideo', 'inputCanal', 'inputDuracion', 'inputDesc', 'inputTitulo', 'inputEntrenadorCustom', 'inputEquipoCustom'].forEach(function(id) {
-            document.getElementById(id).value = '';
-            document.getElementById(id).className = 'form-input';
-        });
-        
-        ['inputDif', 'inputIdioma', 'inputEntrenador', 'inputEquipo', 'inputJugadores', 'inputPorteros', 'inputEdad', 'inputDimensiones', 'inputMaterial', 'inputIntensidad'].forEach(function(id) {
-            var el = document.getElementById(id);
-            if (el) el.value = id === 'inputIdioma' ? 'es' : '';
-        });
-        
-        document.getElementById('customEntrenador').className = 'custom-input-row';
-        document.getElementById('customEquipo').className = 'custom-input-row';
-        
-        categories = [];
-        videoId = null;
-        tweetId = null;
-        extracted = {};
-        
-        document.querySelectorAll('.category-pill').forEach(function(p) { p.classList.remove('active'); });
-        
-        document.getElementById('previewMedia').innerHTML = '<div style="color:var(--text-muted);text-align:center;"><div style="font-size:40px;margin-bottom:8px;">🎬</div><div style="font-size:13px;">Pega una URL</div></div>';
-        document.getElementById('previewTitle').textContent = 'Título del ejercicio';
-        document.getElementById('previewTitle').className = 'preview-title placeholder';
-        document.getElementById('previewMeta').textContent = 'Canal • Duración';
-        document.getElementById('previewTags').innerHTML = '';
-        document.getElementById('urlStatus').textContent = '';
-        document.getElementById('btnSave').disabled = true;
-    }
-
-    function loadLibrary() {
-        if (!db) return;
-        var search = document.getElementById('searchInput').value.trim();
-        var filterSrc = document.getElementById('filterSource').value;
-        var filterLang = document.getElementById('filterIdioma').value;
-        var filterAge = document.getElementById('filterEdad').value;
-        
-        var q = db.from('ejercicios').select('*').order('created_at', { ascending: false }).limit(50);
-        if (search) q = q.ilike('titulo_ejercicio', '%' + search + '%');
-        if (filterSrc) q = q.eq('source', filterSrc);
-        if (filterLang) q = q.eq('idioma', filterLang);
-        if (filterAge) q = q.eq('edad', filterAge);
-        
-        q.then(function(result) {
-            if (result.error) return;
-            renderLibrary(result.data || []);
-        });
-    }
-
-    function renderLibrary(items) {
-        var grid = document.getElementById('libraryGrid');
-        if (!items.length) {
-            grid.innerHTML = '<div class="empty-state"><div class="empty-icon">📭</div><div class="empty-title">No hay ejercicios</div></div>';
-            return;
-        }
-        
-        var sourceIcons = { youtube: '📺', twitter: '𝕏', instagram: '📷' };
-        
-        var html = '';
-        items.forEach(function(ex) {
-            var cats = ex.categorias || [];
-            var tagsHtml = '';
-            cats.slice(0, 3).forEach(function(c) { tagsHtml += '<span class="exercise-tag">' + c + '</span>'; });
-            if (ex.dificultad) tagsHtml += '<span class="exercise-tag" style="background:rgba(245,197,24,0.2);color:var(--accent);">Dif: ' + ex.dificultad + '</span>';
-            
-            var icon = sourceIcons[ex.source] || '📺';
-            
-            html += '<div class="exercise-card">' +
-                '<div class="exercise-thumb">' +
-                (ex.thumbnail_url ? '<img src="' + ex.thumbnail_url + '">' : '<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:32px;background:var(--dark);">' + icon + '</div>') +
-                '<div class="exercise-source ' + ex.source + '">' + icon + '</div>' +
-                '<div class="exercise-lang">' + (LANG_FLAGS[ex.idioma] || '🌐') + '</div>' +
-                '</div><div class="exercise-body">' +
-                '<div class="exercise-title">' + ex.titulo_ejercicio + '</div>' +
-                '<div class="exercise-meta">' + (ex.entrenador || ex.canal || '-') + ' • ' + (ex.duracion || '--') + (ex.edad ? ' • ' + ex.edad : '') + '</div>' +
-                '<div class="exercise-tags">' + tagsHtml + '</div>' +
-                '<div class="exercise-actions">' +
-                '<button class="btn-view" onclick="window.open(\'' + ex.video_url + '\')">▶ Ver</button>' +
-                '<button class="btn-delete" onclick="deleteEx(\'' + ex.id + '\')">🗑️</button>' +
-                '</div></div></div>';
-        });
-        grid.innerHTML = html;
-    }
-
-    function deleteEx(id) {
-        if (!confirm('¿Eliminar?')) return;
-        showLoading(true);
-        db.from('ejercicios').delete().eq('id', id).then(function(r) {
-            showLoading(false);
-            if (r.error) { showToast('❌ ' + r.error.message, 'error'); return; }
-            showToast('✅ Eliminado', 'success');
-            loadStats(); loadLibrary();
-        });
-    }
-
-    function showLoading(show) { document.getElementById('loading').className = show ? 'loading-overlay show' : 'loading-overlay'; }
-    function showToast(msg, type) {
-        var t = document.getElementById('toast');
-        t.textContent = msg;
-        t.className = 'toast ' + type + ' show';
-        setTimeout(function() { t.className = 'toast'; }, 3000);
-    }
-    // ==================== PENDING EXERCISES ====================
-var pendingExercises = [];
-var rejectingExerciseId = null;
-var selectedRejectReason = null;
-
-var REJECT_REASONS = {
-    'mal_etiquetado': '🏷️ Las categorías o datos no son correctos. Por favor, revisa el etiquetado y vuelve a enviar.',
-    'duplicado': '📋 Este ejercicio ya existe en nuestra biblioteca.',
-    'calidad': '📉 El video no cumple nuestros estándares de calidad. Asegúrate de que sea claro y útil para entrenadores.',
-    'pizarra_incorrecta': '🎨 La imagen de pizarra debe ser creada con la Pizarra Táctica de TopLiderCoach.',
-    'otro': ''
-};
-
-document.getElementById('tabPending').onclick = function() { showTab('Pending'); };
-function loadTodayStats() {
-    if (!db) return;
-    
-    var today = new Date().toISOString().split('T')[0];
-    
-    // Aprobados hoy
-    db.from('ejercicios')
-        .select('*', { count: 'exact', head: true })
-        .eq('estado', 'publicado')
-        .gte('updated_at', today)
-        .then(function(r) {
-            document.getElementById('statApproved').textContent = r.count || 0;
-        });
-    
-    // Rechazados hoy
-    db.from('ejercicios')
-        .select('*', { count: 'exact', head: true })
-        .eq('estado', 'rechazado')
-        .gte('rechazado_en', today)
-        .then(function(r) {
-            document.getElementById('statRejected').textContent = r.count || 0;
-        });
-}
-function loadPending() {
-    if (!db) {
-        console.log('No hay conexión DB');
-        return;
-    }
-    
-    console.log('Cargando pendientes...');
-    
-    db.from('ejercicios')
-        .select('*')
-        .eq('estado', 'pendiente')
-        .order('created_at', { ascending: true })
-        .then(function(result) {
-            console.log('Resultado:', result);
-            
-            if (result.error) {
-                console.error('Error:', result.error);
-                return;
-            }
-            
-            console.log('Ejercicios pendientes:', result.data);
-            
-            pendingExercises = result.data || [];
-            renderPending();
-            updatePendingBadge();
-            checkDuplicates();
-            loadTodayStats();
-        });
-}
-
-function updatePendingBadge() {
-    var badge = document.getElementById('pendingCount');
-    var count = pendingExercises.length;
-    badge.textContent = count;
-    badge.style.display = count > 0 ? 'inline' : 'none';
-    document.getElementById('statPending').textContent = count;
-}
-
-function renderPending() {
-    var grid = document.getElementById('pendingGrid');
-    
-    if (!pendingExercises.length) {
-        grid.innerHTML = '<div class="empty-state"><div class="empty-icon">✅</div><div class="empty-title">No hay ejercicios pendientes</div><p>Todos los ejercicios han sido revisados</p></div>';
-        return;
-    }
-    
-    var html = '';
-    pendingExercises.forEach(function(ex) {
-        var userName = 'Coach';
-        var userInitial = userName.charAt(0).toUpperCase();
-        var cats = ex.categorias || [];
-        var tagsHtml = cats.slice(0, 3).map(function(c) { return '<span class="pending-card-tag">' + c + '</span>'; }).join('');
-        if (ex.dificultad) tagsHtml += '<span class="pending-card-tag" style="background:rgba(245,197,24,0.2);color:#f59e0b;">Dif: ' + ex.dificultad + '</span>';
-        
-        var isDuplicate = ex._isDuplicate;
-        var reenvio = ex.veces_enviado > 1;
-        
-        html += '<div class="pending-card' + (isDuplicate ? ' duplicate' : '') + '" id="pending-' + ex.id + '">' +
-            '<div class="pending-card-header">' +
-                '<img class="pending-card-thumb" src="' + (ex.thumbnail_url || 'https://via.placeholder.com/140x80/16162a/8b8ba7?text=Video') + '" onerror="this.src=\'https://via.placeholder.com/140x80/16162a/8b8ba7?text=Video\'">' +
-                '<div class="pending-card-info">' +
-                    '<div class="pending-card-title">' + ex.titulo_ejercicio + '</div>' +
-                    '<div class="pending-card-meta">' +
-                        '<span>📺 ' + (ex.source || 'youtube') + '</span>' +
-                        '<span>⏱️ ' + (ex.duracion || '--') + '</span>' +
-                        (ex.tiene_imagen_pizarra ? '<span>🎨 Pizarra</span>' : '') +
-                    '</div>' +
-                    '<div class="pending-card-user">' +
-                        '<div class="pending-card-user-avatar">' + userInitial + '</div>' +
-                        '<span>' + userName + '</span>' +
-                    '</div>' +
-                '</div>' +
-            '</div>' +
-            '<div class="pending-card-body">' +
-                '<div class="pending-card-tags">' + tagsHtml + '</div>' +
-                '<div class="pending-card-url">' + ex.video_url + '</div>' +
-                (isDuplicate ? '<div class="pending-card-duplicate">⚠️ POSIBLE DUPLICADO - Esta URL ya existe en la biblioteca</div>' : '') +
-                (reenvio ? '<div class="pending-card-reenvio">🔄 Reenvío #' + ex.veces_enviado + ' - Fue rechazado anteriormente</div>' : '') +
-                '<div class="pending-card-actions">' +
-                    '<button class="btn btn-approve" onclick="approveExercise(\'' + ex.id + '\')">✅ Aprobar</button>' +
-                    '<button class="btn btn-reject" onclick="openRejectModal(\'' + ex.id + '\')">❌ Rechazar</button>' +
-                    '<button class="btn btn-view" style="flex:0.5;" onclick="window.open(\'' + ex.video_url + '\', \'_blank\')">▶</button>' +
-                '</div>' +
-            '</div>' +
-        '</div>';
-    });
-    grid.innerHTML = html;
-}
-
-function checkDuplicates() {
-    if (!pendingExercises.length) return;
-    
-    var urls = pendingExercises.map(function(ex) { return ex.video_url; });
-    
-    db.from('ejercicios')
-        .select('video_url')
-        .eq('estado', 'publicado')
-        .in('video_url', urls)
-        .then(function(result) {
-            if (result.error || !result.data) return;
-            
-            var existingUrls = result.data.map(function(e) { return e.video_url; });
-            
-            pendingExercises.forEach(function(ex) {
-                if (existingUrls.indexOf(ex.video_url) !== -1) {
-                    ex._isDuplicate = true;
-                    var card = document.getElementById('pending-' + ex.id);
-                    if (card) card.classList.add('duplicate');
-                }
-            });
-            
-            renderPending();
-        });
-}
-
-function approveExercise(id) {
-    if (!confirm('¿Aprobar este ejercicio? El usuario recibirá XP.')) return;
-    
-    showLoading(true);
-    
-    db.rpc('aprobar_ejercicio', { 
-        p_ejercicio_id: id, 
-        p_admin_id: null 
-    }).then(function(result) {
-        showLoading(false);
-        if (result.error) {
-            showToast('❌ ' + result.error.message, 'error');
-            return;
-        }
-        showToast('✅ Ejercicio aprobado', 'success');
-        pendingExercises = pendingExercises.filter(function(ex) { return ex.id !== id; });
-        renderPending();
-        updatePendingBadge();
-        loadStats();
-        loadTodayStats();
-    });
-}
-
-function openRejectModal(id) {
-    rejectingExerciseId = id;
-    selectedRejectReason = null;
-    document.querySelectorAll('.reject-reason').forEach(function(r) { r.classList.remove('selected'); });
-    document.getElementById('rejectCustom').style.display = 'none';
-    document.getElementById('rejectCustomText').value = '';
-    document.getElementById('rejectOverlay').classList.add('show');
-}
-
-function closeRejectModal() {
-    document.getElementById('rejectOverlay').classList.remove('show');
-    rejectingExerciseId = null;
-}
-
-function selectRejectReason(el, reason) {
-    document.querySelectorAll('.reject-reason').forEach(function(r) { r.classList.remove('selected'); });
-    el.classList.add('selected');
-    selectedRejectReason = reason;
-    document.getElementById('rejectCustom').style.display = reason === 'otro' ? 'block' : 'none';
-}
-
-function confirmReject() {
-    if (!selectedRejectReason) {
-        showToast('Selecciona un motivo', 'error');
-        return;
-    }
-    
-    var motivo = REJECT_REASONS[selectedRejectReason];
-    if (selectedRejectReason === 'otro') {
-        motivo = document.getElementById('rejectCustomText').value.trim();
-        if (!motivo) {
-            showToast('Escribe el motivo', 'error');
-            return;
-        }
-    }
-    
-    
-    
-    var idToReject = rejectingExerciseId;
-    
-    showLoading(true);
-    
-    db.from('ejercicios').update({
-        estado: 'rechazado',
-        motivo_rechazo: motivo,
-        rechazado_en: new Date().toISOString()
-    }).eq('id', idToReject).then(function(result) {
-        showLoading(false);
-        if (result.error) {
-            showToast('❌ ' + result.error.message, 'error');
-            return;
-        }
-        closeRejectModal();
-        showToast('❌ Ejercicio rechazado', 'success');
-        
-        // Eliminar de la lista
-        pendingExercises = pendingExercises.filter(function(ex) { 
-            return ex.id !== idToReject; 
-        });
-        renderPending();
-        updatePendingBadge();
-        loadTodayStats();
-    });
-}
-
-// Update showTab to include Pending
-var originalShowTab = showTab;
-showTab = function(name) {
-    ['Config', 'Add', 'Library', 'Pending'].forEach(function(t) {
-        var tab = document.getElementById('tab' + t);
-        var panel = document.getElementById('panel' + t);
-        if (tab) tab.className = 'tab';
-        if (panel) panel.className = 'panel';
-    });
-    document.getElementById('tab' + name).className = 'tab active';
-    document.getElementById('panel' + name).className = 'panel active';
-    if (name === 'Library' && db) { loadLibrary(); }
-    if (name === 'Pending' && db) { loadPending(); }
-};
-
-// Load pending on connect
-var originalConnectDB = connectDB;
-connectDB = function(url, key) {
-    if (!supabaseReady) { showToast('Esperando Supabase...', 'error'); return; }
-    showLoading(true);
-    try {
-        db = supabase.createClient(url, key);
-        db.from('ejercicios').select('id').limit(1).then(function(result) {
-            showLoading(false);
-            if (result.error) {
-                document.getElementById('statusDot').className = 'status-dot';
-                document.getElementById('statusText').textContent = 'Error';
-                showToast('Error: ' + result.error.message, 'error');
-                return;
-            }
-            document.getElementById('statusDot').className = 'status-dot connected';
-            document.getElementById('statusText').textContent = 'Conectado';
-            document.getElementById('statsBar').className = 'stats-bar show';
-            loadStats();
-            loadPending();
-            showToast('✅ Conectado', 'success');
-            showTab('Add');
-        });
-    } catch (err) { showLoading(false); showToast('Error: ' + err.message, 'error'); }
-};
+    function showLoading(show){document.getElementById('loading').className=show?'loading-overlay show':'loading-overlay';}
+    function showToast(msg,type){var t=document.getElementById('toast');t.textContent=msg;t.className='toast '+type+' show';setTimeout(function(){t.className='toast';},3000);}
     </script>
 </body>
 </html>
