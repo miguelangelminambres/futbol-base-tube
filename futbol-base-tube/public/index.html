@@ -3346,6 +3346,7 @@
         };
         var ADVANCED_FILTERS = ['filterEntrenador', 'filterEquipo', 'filterJugadores', 'filterPorteros', 'filterLikes', 'filterVistas'];
         var selectedUpgradePlan = 'coach';
+        var pendingPlan = null; // Plan pendiente después de registro
 
         // ==================== TEMAS TRABAJADOS ====================
         var TEMAS_TRABAJADOS = [
@@ -3625,19 +3626,43 @@
                     if (error) throw error;
                     if (data.user) {
                         await db.from('perfiles').insert({ id: data.user.id, nombre: name, plan: 'free', xp: 0, nivel: 1 });
+                        currentUser = data.user;
+                        currentUser.email = email;
                     }
-                    showToast('✅ Registro exitoso. Revisa tu email.', 'success');
-                    // Mostrar onboarding para nuevos usuarios
-                    localStorage.removeItem('onboarding_completed');
-                    setTimeout(function() { showOnboarding(); }, 500);
+                    showToast('✅ Registro exitoso', 'success');
+                    closeAuthModal();
+                    
+                    // Si hay plan pendiente, ir a Stripe
+                    if (pendingPlan) {
+                        selectedUpgradePlan = pendingPlan;
+                        pendingPlan = null;
+                        setTimeout(function() {
+                            goToCheckout();
+                        }, 500);
+                    } else {
+                        // Mostrar onboarding para nuevos usuarios
+                        localStorage.removeItem('onboarding_completed');
+                        setTimeout(function() { showOnboarding(); }, 500);
+                    }
                 } else {
                     var { data, error } = await db.auth.signInWithPassword({ email: email, password: pass });
                     if (error) throw error;
                     showToast('✅ Bienvenido!', 'success');
-                    // Verificar si debe mostrar onboarding (primer login)
-                    checkShowOnboarding();
+                    closeAuthModal();
+                    
+                    // Si hay plan pendiente, ir a Stripe
+                    if (pendingPlan) {
+                        currentUser = data.user;
+                        selectedUpgradePlan = pendingPlan;
+                        pendingPlan = null;
+                        setTimeout(function() {
+                            goToCheckout();
+                        }, 500);
+                    } else {
+                        // Verificar si debe mostrar onboarding (primer login)
+                        checkShowOnboarding();
+                    }
                 }
-                closeAuthModal();
                 checkAuth();
             } catch (err) {
                 document.getElementById('authError').textContent = err.message;
@@ -4536,6 +4561,15 @@
 
         function selectAndCheckout(plan) {
             selectedUpgradePlan = plan;
+            
+            if (!currentUser) {
+                // Guardar plan pendiente y mostrar registro
+                pendingPlan = plan;
+                showToast('Regístrate para continuar con ' + plan.toUpperCase(), 'success');
+                showAuthModal('register');
+                return;
+            }
+            
             goToCheckout();
         }
 
