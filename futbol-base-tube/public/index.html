@@ -33,76 +33,11 @@
         .logo-icon { width: 48px; height: 48px; background: var(--gradient-primary); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px; box-shadow: var(--shadow-glow); }
         .logo-text { font-family: 'Bebas Neue', sans-serif; font-size: 24px; color: var(--text); display: flex; align-items: center; gap: 6px; }
         .logo-tube { background: #ff0000; color: white; padding: 2px 8px; border-radius: 4px; font-size: 18px; font-family: 'Arial', sans-serif; font-weight: 900; font-style: italic; letter-spacing: -0.5px; }
-        .nav { display: flex; align-items: center; gap: 4px; }
-        .nav-link { padding: 8px 14px; color: var(--text-muted); text-decoration: none; font-weight: 500; border-radius: 8px; transition: all 0.3s; cursor: pointer; font-size: 14px; }
+        .nav { display: flex; align-items: center; gap: 8px; }
+        .nav-link { padding: 10px 20px; color: var(--text-muted); text-decoration: none; font-weight: 500; border-radius: 8px; transition: all 0.3s; cursor: pointer; }
         .nav-link:hover, .nav-link.active { color: var(--text); background: rgba(255,255,255,0.05); }
         .nav-link.active { color: var(--primary); }
-        .header-actions { display: flex; align-items: center; gap: 12px; }
-
-        /* Selector de Idiomas */
-        .lang-selector {
-            position: relative;
-            display: flex;
-            align-items: center;
-            margin-left: 8px;
-        }
-        .lang-current {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 6px 10px;
-            background: var(--dark-card);
-            border: 1px solid var(--dark-border);
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 13px;
-            transition: all 0.2s;
-        }
-        .lang-current:hover {
-            border-color: var(--primary);
-            background: rgba(13, 159, 79, 0.1);
-        }
-        .lang-flag {
-            font-size: 20px;
-            line-height: 1;
-        }
-        .lang-code {
-            font-weight: 600;
-            color: var(--text-muted);
-        }
-        .lang-dropdown {
-            position: absolute;
-            top: calc(100% + 8px);
-            right: 0;
-            background: var(--dark-card);
-            border: 1px solid var(--dark-border);
-            border-radius: 12px;
-            padding: 8px;
-            min-width: 160px;
-            display: none;
-            z-index: 1000;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
-        }
-        .lang-dropdown.show {
-            display: block;
-        }
-        .lang-option {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 10px 12px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 14px;
-            transition: background 0.2s;
-        }
-        .lang-option:hover {
-            background: rgba(255,255,255,0.05);
-        }
-        .lang-option.active {
-            background: rgba(13, 159, 79, 0.15);
-            color: var(--primary);
-        }
+        .header-actions { display: flex; align-items: center; gap: 16px; }
         
         .btn { padding: 12px 24px; border-radius: 10px; font-weight: 600; font-size: 14px; cursor: pointer; transition: all 0.3s; border: none; display: inline-flex; align-items: center; gap: 8px; text-decoration: none; }
         .btn-ghost { background: transparent; color: var(--text); border: 2px solid var(--dark-border); }
@@ -153,188 +88,6 @@
         
         .btn-locked { opacity: 0.5; cursor: not-allowed; position: relative; }
         .btn-locked::after { content: '🔒'; margin-left: 8px; }
-
-        /* Botón Pizarra Táctica DESTACADO */
-        .btn-pizarra { 
-            background: linear-gradient(135deg, #f97316 0%, #ea580c 100%); 
-            color: white; 
-            padding: 10px 18px;
-            border-radius: 10px;
-            font-weight: 700;
-            font-size: 13px;
-            cursor: pointer;
-            border: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            box-shadow: 0 4px 15px rgba(249, 115, 22, 0.4);
-            transition: all 0.3s;
-            animation: pizarra-pulse 2s infinite;
-        }
-        .btn-pizarra:hover { 
-            transform: translateY(-2px) scale(1.02); 
-            box-shadow: 0 6px 25px rgba(249, 115, 22, 0.5);
-        }
-        @keyframes pizarra-pulse {
-            0%, 100% { box-shadow: 0 4px 15px rgba(249, 115, 22, 0.4); }
-            50% { box-shadow: 0 4px 25px rgba(249, 115, 22, 0.6); }
-        }
-        .btn-pizarra-locked {
-            background: linear-gradient(135deg, #374151 0%, #1f2937 100%);
-            color: #9ca3af;
-            box-shadow: none;
-            animation: none;
-        }
-        .btn-pizarra-locked:hover {
-            background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
-            color: white;
-            box-shadow: 0 4px 15px rgba(249, 115, 22, 0.4);
-        }
-
-        /* SECCIÓN PREMIUM FEATURES */
-        .premium-features {
-            padding: 80px 24px;
-            background: linear-gradient(180deg, var(--dark) 0%, #0a1628 50%, var(--dark) 100%);
-            position: relative;
-            overflow: hidden;
-        }
-        .premium-features::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(13, 159, 79, 0.1) 0%, transparent 70%);
-            pointer-events: none;
-        }
-        .premium-features-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
-        }
-        .premium-header {
-            text-align: center;
-            margin-bottom: 48px;
-        }
-        .premium-badge {
-            display: inline-block;
-            background: rgba(245, 197, 24, 0.15);
-            color: var(--accent);
-            padding: 8px 20px;
-            border-radius: 50px;
-            font-size: 14px;
-            font-weight: 600;
-            margin-bottom: 16px;
-        }
-        .premium-title {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 48px;
-            margin-bottom: 16px;
-        }
-        .premium-title span {
-            color: var(--primary);
-        }
-        .premium-subtitle {
-            font-size: 18px;
-            color: var(--text-muted);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        .premium-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-        }
-        .premium-card {
-            background: var(--dark-card);
-            border: 1px solid var(--dark-border);
-            border-radius: 20px;
-            padding: 32px;
-            position: relative;
-            transition: all 0.3s;
-        }
-        .premium-card:hover {
-            transform: translateY(-8px);
-            border-color: var(--primary);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-        }
-        .premium-card-pizarra {
-            background: linear-gradient(135deg, rgba(249, 115, 22, 0.1) 0%, rgba(234, 88, 12, 0.05) 100%);
-            border-color: rgba(249, 115, 22, 0.3);
-        }
-        .premium-card-pizarra:hover {
-            border-color: #f97316;
-            box-shadow: 0 20px 40px rgba(249, 115, 22, 0.2);
-        }
-        .premium-card-badge {
-            position: absolute;
-            top: -12px;
-            right: 20px;
-            background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
-            color: white;
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 11px;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-        }
-        .premium-card-icon {
-            font-size: 48px;
-            margin-bottom: 16px;
-        }
-        .premium-card-title {
-            font-size: 22px;
-            font-weight: 700;
-            margin-bottom: 12px;
-        }
-        .premium-card-desc {
-            font-size: 15px;
-            color: var(--text-muted);
-            margin-bottom: 20px;
-            line-height: 1.6;
-        }
-        .premium-card-features {
-            list-style: none;
-            margin-bottom: 24px;
-        }
-        .premium-card-features li {
-            padding: 8px 0;
-            font-size: 14px;
-            color: var(--text);
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-        }
-        .premium-card-features li:last-child {
-            border-bottom: none;
-        }
-        .btn-pizarra-cta {
-            width: 100%;
-            background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
-            color: white;
-            padding: 14px 24px;
-            border-radius: 10px;
-            font-weight: 700;
-            font-size: 15px;
-            cursor: pointer;
-            border: none;
-            transition: all 0.3s;
-            box-shadow: 0 4px 15px rgba(249, 115, 22, 0.3);
-        }
-        .btn-pizarra-cta:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 25px rgba(249, 115, 22, 0.5);
-        }
-        
-        @media (max-width: 900px) {
-            .premium-grid {
-                grid-template-columns: 1fr;
-            }
-            .premium-title {
-                font-size: 36px;
-            }
-        }
 
         /* Upgrade Modal */
         .upgrade-modal { max-width: 500px; }
@@ -437,6 +190,7 @@
         .ejercicio-card:hover .ejercicio-thumbnail img { transform: scale(1.05); }
         .ejercicio-duration { position: absolute; bottom: 12px; right: 12px; background: rgba(0,0,0,0.85); padding: 4px 10px; border-radius: 6px; font-size: 13px; font-weight: 600; }
         .ejercicio-difficulty { position: absolute; top: 12px; left: 12px; background: var(--accent); color: var(--dark); padding: 4px 10px; border-radius: 6px; font-size: 12px; font-weight: 700; }
+        .ejercicio-familia { position: absolute; bottom: 12px; left: 12px; background: var(--primary); color: white; padding: 4px 10px; border-radius: 6px; font-size: 11px; font-weight: 700; }
         .ejercicio-lang { position: absolute; top: 12px; right: 12px; background: rgba(0,0,0,0.85); padding: 4px 8px; border-radius: 6px; font-size: 14px; }
         .ejercicio-play { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0); width: 60px; height: 60px; background: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); box-shadow: 0 4px 20px rgba(13, 159, 79, 0.5); }
         .ejercicio-play::after { content: ''; border-left: 16px solid white; border-top: 10px solid transparent; border-bottom: 10px solid transparent; margin-left: 4px; }
@@ -1100,137 +854,47 @@
                 <div class="logo-text">FUTBOL BASE <span class="logo-tube">TUBE</span></div>
             </div>
             <nav class="nav">
-                <span class="nav-link active" onclick="scrollToSection('hero')" data-i18n="nav.inicio">Inicio</span>
-                <span class="nav-link" onclick="scrollToSection('biblioteca')" data-i18n="nav.biblioteca">Biblioteca</span>
-                <span class="nav-link" onclick="scrollToSection('creadores')" data-i18n="nav.creadores">Creadores</span>
-                <span class="nav-link" onclick="showMySessions()" data-i18n="nav.mis_sesiones">Mis Sesiones</span>
-                <span class="nav-link" data-i18n="nav.planes">Planes</span>
+                <span class="nav-link active" onclick="scrollToSection('hero')">Inicio</span>
+                <span class="nav-link" onclick="scrollToSection('biblioteca')">Biblioteca</span>
+                <span class="nav-link" onclick="scrollToSection('creadores')">Creadores</span>
+                <span class="nav-link" onclick="showMySessions()">Mis Sesiones</span>
+                <span class="nav-link">Planes</span>
             </nav>
-            
-            <!-- Selector de Idiomas -->
-            <div class="lang-selector">
-                <div class="lang-current" onclick="toggleLangDropdown()">
-                    <span class="lang-flag" id="currentLangFlag">🇪🇸</span>
-                    <span class="lang-code" id="currentLangCode">ES</span>
-                </div>
-                <div class="lang-dropdown" id="langDropdown">
-                    <div class="lang-option active" data-lang="es" onclick="setLanguage('es')">
-                        <span class="lang-flag">🇪🇸</span>
-                        <span>Español</span>
-                    </div>
-                    <div class="lang-option" data-lang="en" onclick="setLanguage('en')">
-                        <span class="lang-flag">🇬🇧</span>
-                        <span>English</span>
-                    </div>
-                    <div class="lang-option" data-lang="pt" onclick="setLanguage('pt')">
-                        <span class="lang-flag">🇧🇷</span>
-                        <span>Português</span>
-                    </div>
-                    <div class="lang-option" data-lang="fr" onclick="setLanguage('fr')">
-                        <span class="lang-flag">🇫🇷</span>
-                        <span>Français</span>
-                    </div>
-                    <div class="lang-option" data-lang="de" onclick="setLanguage('de')">
-                        <span class="lang-flag">🇩🇪</span>
-                        <span>Deutsch</span>
-                    </div>
-                    <div class="lang-option" data-lang="it" onclick="setLanguage('it')">
-                        <span class="lang-flag">🇮🇹</span>
-                        <span>Italiano</span>
-                    </div>
-                </div>
-            </div>
             <div class="header-actions" id="headerActions">
-                <button class="btn btn-ghost" onclick="showAuthModal('login')" data-i18n="nav.entrar">Entrar</button>
-                <button class="btn btn-primary" onclick="showAuthModal('register')" data-i18n="nav.registrarse">🚀 Registrarse</button>
+                <button class="btn btn-ghost" onclick="showAuthModal('login')">Entrar</button>
+                <button class="btn btn-primary" onclick="showAuthModal('register')">🚀 Registrarse</button>
             </div>
         </div>
     </header>
 
     <section class="hero" id="hero">
         <div class="hero-content">
-            <div class="hero-badge" data-i18n="hero.badge">🌍 La comunidad #1 de entrenadores de fútbol</div>
+            <div class="hero-badge">🌍 La comunidad #1 de entrenadores de fútbol</div>
             <h1 class="hero-title-main">
                 FUTBOL BASE <span class="tube-logo"><span class="tube-text">TUBE</span></span>
             </h1>
-            <p class="hero-tagline" data-i18n="hero.tagline">LA MAYOR BIBLIOTECA DE EJERCICIOS DE FÚTBOL DEL PLANETA</p>
-            <p class="hero-desc" data-i18n="hero.desc">Miles de videos de entrenamiento <strong>filtrados, organizados y etiquetados</strong> por una comunidad de entrenadores como tú. Encuentra el ejercicio perfecto en segundos, no en horas.</p>
+            <p class="hero-tagline">LA MAYOR BIBLIOTECA DE EJERCICIOS DE FÚTBOL DEL PLANETA</p>
+            <p class="hero-desc">Miles de videos de entrenamiento <strong>filtrados, organizados y etiquetados</strong> por una comunidad de entrenadores como tú. Encuentra el ejercicio perfecto en segundos, no en horas.</p>
             
             <div class="hero-features">
-                <div class="hero-feature"><span class="hero-feature-icon">🔍</span><span data-i18n="hero.feature1">+12 filtros avanzados</span></div>
-                <div class="hero-feature"><span class="hero-feature-icon">👥</span><span data-i18n="hero.feature2">Creado por entrenadores reales</span></div>
-                <div class="hero-feature"><span class="hero-feature-icon">🆓</span><span data-i18n="hero.feature3">100% contenido gratuito</span></div>
+                <div class="hero-feature"><span class="hero-feature-icon">🔍</span><span>+12 filtros avanzados</span></div>
+                <div class="hero-feature"><span class="hero-feature-icon">👥</span><span>Creado por entrenadores reales</span></div>
+                <div class="hero-feature"><span class="hero-feature-icon">🆓</span><span>100% contenido gratuito</span></div>
             </div>
             
             <div class="hero-buttons">
-                <button class="btn btn-primary btn-lg" onclick="scrollToSection('biblioteca')" data-i18n="hero.btn_explorar">🎬 Explorar Ejercicios</button>
-                <button class="btn btn-ghost btn-lg" id="btnUploadHero" onclick="showUploadModal()" data-i18n="hero.btn_subir">📤 Subir Ejercicio</button>
+                <button class="btn btn-primary btn-lg" onclick="scrollToSection('biblioteca')">🎬 Explorar Ejercicios</button>
+                <button class="btn btn-ghost btn-lg" id="btnUploadHero" onclick="showUploadModal()">📤 Subir Ejercicio</button>
             </div>
             
             <div class="hero-stats">
-                <div class="hero-stat"><div class="hero-stat-value" id="heroTotal">0</div><div class="hero-stat-label" data-i18n="hero.stat_ejercicios">Ejercicios</div></div>
-                <div class="hero-stat"><div class="hero-stat-value" id="heroEntrenadores">0</div><div class="hero-stat-label" data-i18n="hero.stat_entrenadores">Entrenadores</div></div>
-                <div class="hero-stat"><div class="hero-stat-value" id="heroCategorias">0</div><div class="hero-stat-label" data-i18n="hero.stat_categorias">Categorías</div></div>
-                <div class="hero-stat"><div class="hero-stat-value" id="heroUsuarios">+2K</div><div class="hero-stat-label" data-i18n="hero.stat_usuarios">Usuarios</div></div>
+                <div class="hero-stat"><div class="hero-stat-value" id="heroTotal">0</div><div class="hero-stat-label">Ejercicios</div></div>
+                <div class="hero-stat"><div class="hero-stat-value" id="heroEntrenadores">0</div><div class="hero-stat-label">Entrenadores</div></div>
+                <div class="hero-stat"><div class="hero-stat-value" id="heroCategorias">0</div><div class="hero-stat-label">Categorías</div></div>
+                <div class="hero-stat"><div class="hero-stat-value" id="heroUsuarios">+2K</div><div class="hero-stat-label">Usuarios</div></div>
             </div>
             
-            <p class="hero-cta-text"><span data-i18n="hero.cta">¿Tienes un video de entrenamiento?</span> <a href="#" onclick="showAuthModal('register')" data-i18n="hero.cta_link">Compártelo con la comunidad →</a></p>
-        </div>
-    </section>
-
-    <!-- SECCIÓN FEATURES PREMIUM - Pizarra + Comunidad -->
-    <section class="premium-features" id="premium-features">
-        <div class="premium-features-inner">
-            <div class="premium-header">
-                <span class="premium-badge" data-i18n="premium.badge">✨ Más que una biblioteca de videos</span>
-                <h2 class="premium-title" data-i18n="premium.title">Crea, Comparte y <span>Compite</span></h2>
-                <p class="premium-subtitle" data-i18n="premium.subtitle">No solo consumas contenido. Crea tus propios ejercicios, compártelos con la comunidad y compite por ser el mejor entrenador.</p>
-            </div>
-            
-            <div class="premium-grid">
-                <!-- Pizarra Táctica -->
-                <div class="premium-card premium-card-pizarra">
-                    <div class="premium-card-badge" data-i18n="premium.pizarra.badge">🔥 EXCLUSIVO COACH</div>
-                    <div class="premium-card-icon">🎯</div>
-                    <h3 class="premium-card-title" data-i18n="premium.pizarra.title">Pizarra Táctica Pro</h3>
-                    <p class="premium-card-desc" data-i18n="premium.pizarra.desc">Diseña tus propios ejercicios con nuestra pizarra profesional. Arrastra jugadores, dibuja movimientos, añade conos y porterías.</p>
-                    <ul class="premium-card-features">
-                        <li data-i18n="premium.pizarra.f1">✅ Jugadores personalizables</li>
-                        <li data-i18n="premium.pizarra.f2">✅ Flechas y movimientos</li>
-                        <li data-i18n="premium.pizarra.f3">✅ Exporta como imagen</li>
-                        <li data-i18n="premium.pizarra.f4">✅ Guarda tus tácticas</li>
-                    </ul>
-                    <button class="btn btn-pizarra-cta" onclick="showUpgradeModal('pizarra')" data-i18n="premium.pizarra.btn">🎯 Quiero la Pizarra</button>
-                </div>
-                
-                <!-- Sube y Comparte -->
-                <div class="premium-card">
-                    <div class="premium-card-icon">📤</div>
-                    <h3 class="premium-card-title" data-i18n="premium.subir.title">Sube tus Ejercicios</h3>
-                    <p class="premium-card-desc" data-i18n="premium.subir.desc">¿Tienes un ejercicio que funciona? Compártelo con miles de entrenadores y gana reconocimiento.</p>
-                    <ul class="premium-card-features">
-                        <li data-i18n="premium.subir.f1">⭐ Gana +50 XP por ejercicio</li>
-                        <li data-i18n="premium.subir.f2">👍 La comunidad vota</li>
-                        <li data-i18n="premium.subir.f3">🏅 Consigue badges exclusivos</li>
-                        <li data-i18n="premium.subir.f4">📈 Escala en el ranking</li>
-                    </ul>
-                    <button class="btn btn-primary" onclick="showAuthModal('register')" data-i18n="premium.subir.btn">📤 Subir mi primer ejercicio</button>
-                </div>
-                
-                <!-- Compite y Gana -->
-                <div class="premium-card">
-                    <div class="premium-card-icon">🏆</div>
-                    <h3 class="premium-card-title" data-i18n="premium.compite.title">Compite y Gana</h3>
-                    <p class="premium-card-desc" data-i18n="premium.compite.desc">Cada mes los mejores entrenadores ganan descuentos reales. ¿Serás tú el #1?</p>
-                    <ul class="premium-card-features">
-                        <li data-i18n="premium.compite.f1">🥇 Top 1: 50% descuento</li>
-                        <li data-i18n="premium.compite.f2">🥈 Top 3: 25% descuento</li>
-                        <li data-i18n="premium.compite.f3">💎 Sube de liga: Bronce → Élite</li>
-                        <li data-i18n="premium.compite.f4">🔥 Mantén tu racha diaria</li>
-                    </ul>
-                    <button class="btn btn-ghost" onclick="scrollToSection('comunidad')" data-i18n="premium.compite.btn">Ver Ranking Actual</button>
-                </div>
-            </div>
+            <p class="hero-cta-text">¿Tienes un video de entrenamiento? <a href="#" onclick="showAuthModal('register')">Compártelo con la comunidad →</a></p>
         </div>
     </section>
 
@@ -1238,24 +902,24 @@
     <section class="comunidad-section" id="comunidad">
         <div class="comunidad-inner">
             <div class="comunidad-header">
-                <div class="comunidad-badge" data-i18n="comunidad.badge">🏆 Compite y gana premios reales</div>
-                <h2 class="comunidad-title" data-i18n="comunidad.title">Únete a la <span>Comunidad #1</span> de Entrenadores</h2>
-                <p class="comunidad-subtitle" data-i18n="comunidad.subtitle">Sube ejercicios, gana XP, sube de nivel y compite por descuentos y premios cada mes</p>
+                <div class="comunidad-badge">🏆 Compite y gana premios reales</div>
+                <h2 class="comunidad-title">Únete a la <span>Comunidad #1</span> de Entrenadores</h2>
+                <p class="comunidad-subtitle">Sube ejercicios, gana XP, sube de nivel y compite por descuentos y premios cada mes</p>
             </div>
             
             <div class="comunidad-grid">
                 <!-- Ranking Mensual -->
                 <div class="ranking-card">
                     <div class="ranking-card-header">
-                        <div class="ranking-card-title" data-i18n="comunidad.ranking_title">🏆 Top Entrenadores</div>
-                        <span class="ranking-card-link" onclick="currentUser ? showProfileModal() : showAuthModal('register')" data-i18n="comunidad.ranking_link">Ver ranking →</span>
+                        <div class="ranking-card-title">🏆 Top Entrenadores</div>
+                        <span class="ranking-card-link" onclick="currentUser ? showProfileModal() : showAuthModal('register')">Ver ranking →</span>
                     </div>
                     <div class="ranking-mini-list" id="homeRankingList">
                         <div class="ranking-mini-item">
                             <div class="ranking-mini-pos gold">1</div>
                             <div class="ranking-mini-avatar">?</div>
                             <div class="ranking-mini-info">
-                                <div class="ranking-mini-name" data-i18n="general.loading">Cargando...</div>
+                                <div class="ranking-mini-name">Cargando...</div>
                                 <div class="ranking-mini-level">-</div>
                             </div>
                             <div class="ranking-mini-xp">- XP</div>
@@ -1275,45 +939,45 @@
                     <div class="challenge-home-header">
                         <div class="challenge-home-icon" id="homeChallengeIcon">🎯</div>
                         <div>
-                            <div class="challenge-home-title" id="homeChallengeTitle" data-i18n="comunidad.challenge_title">Challenge de la Semana</div>
+                            <div class="challenge-home-title" id="homeChallengeTitle">Challenge de la Semana</div>
                         </div>
                     </div>
-                    <p class="challenge-home-desc" id="homeChallengeDesc" data-i18n="comunidad.challenge_desc">Sube ejercicios y completa el reto semanal para ganar XP extra</p>
+                    <p class="challenge-home-desc" id="homeChallengeDesc">Sube ejercicios y completa el reto semanal para ganar XP extra</p>
                     <div class="challenge-home-reward" id="homeChallengeReward">🎁 +200 XP Bonus</div>
                     <div class="challenge-home-progress">
                         <div class="challenge-home-progress-fill" id="homeChallengeProgress" style="width: 0%"></div>
                     </div>
                     <div class="challenge-home-footer">
-                        <span id="homeChallengeCount">0 / 3 <span data-i18n="comunidad.completados">completados</span></span>
-                        <span id="homeChallengeDays">7 <span data-i18n="comunidad.dias_restantes">días restantes</span></span>
+                        <span id="homeChallengeCount">0 / 3 completados</span>
+                        <span id="homeChallengeDays">7 días restantes</span>
                     </div>
                 </div>
                 
                 <!-- Badges Preview -->
                 <div class="badges-home-card">
                     <div class="badges-home-header">
-                        <div class="ranking-card-title" data-i18n="comunidad.badges_title">🏅 Badges</div>
-                        <span class="ranking-card-link" onclick="currentUser ? showProfileModal() : showAuthModal('register')" data-i18n="comunidad.badges_link">Ver todos →</span>
+                        <div class="ranking-card-title">🏅 Badges</div>
+                        <span class="ranking-card-link" onclick="currentUser ? showProfileModal() : showAuthModal('register')">Ver todos →</span>
                     </div>
                     <div class="badges-home-grid" id="homeBadgesGrid">
-                        <div class="badge-home-item"><div class="badge-home-icon">🏆</div><div class="badge-home-name" data-i18n="badge.primer_ejercicio">Primer Ejercicio</div></div>
-                        <div class="badge-home-item"><div class="badge-home-icon">🔥</div><div class="badge-home-name" data-i18n="badge.en_racha">En Racha</div></div>
-                        <div class="badge-home-item rare"><div class="badge-home-icon">⚡</div><div class="badge-home-name" data-i18n="badge.imparable">Imparable</div></div>
-                        <div class="badge-home-item"><div class="badge-home-icon">❤️</div><div class="badge-home-name" data-i18n="badge.popular">Popular</div></div>
-                        <div class="badge-home-item"><div class="badge-home-icon">📚</div><div class="badge-home-name" data-i18n="badge.bibliotecario">Bibliotecario</div></div>
-                        <div class="badge-home-item rare"><div class="badge-home-icon">🎨</div><div class="badge-home-name" data-i18n="badge.artista">Artista Táctico</div></div>
-                        <div class="badge-home-item rare"><div class="badge-home-icon">👑</div><div class="badge-home-name" data-i18n="badge.leyenda">Leyenda</div></div>
-                        <div class="badge-home-item"><div class="badge-home-icon">🌟</div><div class="badge-home-name" data-i18n="badge.top_mensual">Top Mensual</div></div>
+                        <div class="badge-home-item"><div class="badge-home-icon">🏆</div><div class="badge-home-name">Primer Ejercicio</div></div>
+                        <div class="badge-home-item"><div class="badge-home-icon">🔥</div><div class="badge-home-name">En Racha</div></div>
+                        <div class="badge-home-item rare"><div class="badge-home-icon">⚡</div><div class="badge-home-name">Imparable</div></div>
+                        <div class="badge-home-item"><div class="badge-home-icon">❤️</div><div class="badge-home-name">Popular</div></div>
+                        <div class="badge-home-item"><div class="badge-home-icon">📚</div><div class="badge-home-name">Bibliotecario</div></div>
+                        <div class="badge-home-item rare"><div class="badge-home-icon">🎨</div><div class="badge-home-name">Artista Táctico</div></div>
+                        <div class="badge-home-item rare"><div class="badge-home-icon">👑</div><div class="badge-home-name">Leyenda</div></div>
+                        <div class="badge-home-item"><div class="badge-home-icon">🌟</div><div class="badge-home-name">Top Mensual</div></div>
                     </div>
                 </div>
             </div>
             
             <!-- CTA -->
             <div class="comunidad-cta">
-                <h3 class="comunidad-cta-title" data-i18n="comunidad.cta_title">🚀 ¿Listo para competir?</h3>
-                <p class="comunidad-cta-text" data-i18n="comunidad.cta_text">Regístrate gratis, sube tu primer ejercicio y empieza a ganar XP. El Top 3 mensual gana hasta 50% de descuento.</p>
+                <h3 class="comunidad-cta-title">🚀 ¿Listo para competir?</h3>
+                <p class="comunidad-cta-text">Regístrate gratis, sube tu primer ejercicio y empieza a ganar XP. El Top 3 mensual gana hasta 50% de descuento.</p>
                 <div class="comunidad-cta-buttons">
-                    <button class="btn btn-primary" onclick="showAuthModal('register')" data-i18n="comunidad.cta_btn">🎮 Empezar a Competir</button>
+                    <button class="btn btn-primary" onclick="showAuthModal('register')">🎮 Empezar a Competir</button>
                     <button class="btn btn-ghost" onclick="scrollToSection('planes')">Ver Planes</button>
                 </div>
             </div>
@@ -1324,9 +988,9 @@
     <section class="creadores-section" id="creadores">
         <div class="creadores-inner">
             <div class="creadores-header">
-                <div class="creadores-badge" data-i18n="creadores.badge">📺 Para Creadores de YouTube, Twitter e Instagram</div>
-                <h2 class="creadores-title" data-i18n="creadores.title">Democratizamos el <span>Fútbol</span></h2>
-                <p class="creadores-subtitle" data-i18n="creadores.subtitle">No somos tu competencia, somos tu aliado. Te ayudamos a llegar a miles de entrenadores que buscan contenido de calidad como el tuyo.</p>
+                <div class="creadores-badge">📺 Para Creadores de YouTube, Twitter e Instagram</div>
+                <h2 class="creadores-title">Democratizamos el <span>Fútbol</span></h2>
+                <p class="creadores-subtitle">No somos tu competencia, somos tu aliado. Te ayudamos a llegar a miles de entrenadores que buscan contenido de calidad como el tuyo.</p>
             </div>
             
             <div class="creadores-grid">
@@ -1334,29 +998,29 @@
                     <div class="creador-benefit">
                         <div class="creador-benefit-icon">👀</div>
                         <div class="creador-benefit-content">
-                            <div class="creador-benefit-title" data-i18n="creadores.b1_title">Más visibilidad para tu canal</div>
-                            <div class="creador-benefit-text" data-i18n="creadores.b1_text">Tus videos se muestran a una audiencia cualificada: entrenadores de fútbol que buscan exactamente lo que tú creas.</div>
+                            <div class="creador-benefit-title">Más visibilidad para tu canal</div>
+                            <div class="creador-benefit-text">Tus videos se muestran a una audiencia cualificada: entrenadores de fútbol que buscan exactamente lo que tú creas.</div>
                         </div>
                     </div>
                     <div class="creador-benefit">
                         <div class="creador-benefit-icon">💰</div>
                         <div class="creador-benefit-content">
-                            <div class="creador-benefit-title" data-i18n="creadores.b2_title">Tú monetizas, nosotros no</div>
-                            <div class="creador-benefit-text" data-i18n="creadores.b2_text">Cada visita va directa a YouTube/Twitter. Tus anuncios, tus ingresos. No nos quedamos con nada de tus visualizaciones.</div>
+                            <div class="creador-benefit-title">Tú monetizas, nosotros no</div>
+                            <div class="creador-benefit-text">Cada visita va directa a YouTube/Twitter. Tus anuncios, tus ingresos. No nos quedamos con nada de tus visualizaciones.</div>
                         </div>
                     </div>
                     <div class="creador-benefit">
                         <div class="creador-benefit-icon">🎯</div>
                         <div class="creador-benefit-content">
-                            <div class="creador-benefit-title" data-i18n="creadores.b3_title">Audiencia segmentada</div>
-                            <div class="creador-benefit-text" data-i18n="creadores.b3_text">No son views aleatorios. Son entrenadores reales buscando ejercicios por categoría, edad, dificultad... tu público ideal.</div>
+                            <div class="creador-benefit-title">Audiencia segmentada</div>
+                            <div class="creador-benefit-text">No son views aleatorios. Son entrenadores reales buscando ejercicios por categoría, edad, dificultad... tu público ideal.</div>
                         </div>
                     </div>
                     <div class="creador-benefit">
                         <div class="creador-benefit-icon">🔗</div>
                         <div class="creador-benefit-content">
-                            <div class="creador-benefit-title" data-i18n="creadores.b4_title">Enlace directo a tu canal</div>
-                            <div class="creador-benefit-text" data-i18n="creadores.b4_text">Tu nombre, tu canal y tu marca siempre visibles. Generamos suscriptores para ti, no para nosotros.</div>
+                            <div class="creador-benefit-title">Enlace directo a tu canal</div>
+                            <div class="creador-benefit-text">Tu nombre, tu canal y tu marca siempre visibles. Generamos suscriptores para ti, no para nosotros.</div>
                         </div>
                     </div>
                 </div>
@@ -1366,24 +1030,24 @@
                         <div class="creadores-flow-item">
                             <div class="creadores-flow-icon youtube">▶</div>
                             <div class="creadores-flow-text">
-                                <div class="creadores-flow-title" data-i18n="creadores.flow1_title">Tu video en YouTube</div>
-                                <div class="creadores-flow-desc" data-i18n="creadores.flow1_desc">El contenido original permanece en tu canal</div>
+                                <div class="creadores-flow-title">Tu video en YouTube</div>
+                                <div class="creadores-flow-desc">El contenido original permanece en tu canal</div>
                             </div>
                         </div>
                         <div class="creadores-flow-arrow">↓</div>
                         <div class="creadores-flow-item">
                             <div class="creadores-flow-icon tube">⚽</div>
                             <div class="creadores-flow-text">
-                                <div class="creadores-flow-title" data-i18n="creadores.flow2_title">Lo organizamos y etiquetamos</div>
-                                <div class="creadores-flow-desc" data-i18n="creadores.flow2_desc">Categoría, dificultad, edad, entrenador...</div>
+                                <div class="creadores-flow-title">Lo organizamos y etiquetamos</div>
+                                <div class="creadores-flow-desc">Categoría, dificultad, edad, entrenador...</div>
                             </div>
                         </div>
                         <div class="creadores-flow-arrow">↓</div>
                         <div class="creadores-flow-item">
                             <div class="creadores-flow-icon users">👥</div>
                             <div class="creadores-flow-text">
-                                <div class="creadores-flow-title" data-i18n="creadores.flow3_title">Miles de entrenadores lo descubren</div>
-                                <div class="creadores-flow-desc" data-i18n="creadores.flow3_desc">Y van a TU canal a ver el video completo</div>
+                                <div class="creadores-flow-title">Miles de entrenadores lo descubren</div>
+                                <div class="creadores-flow-desc">Y van a TU canal a ver el video completo</div>
                             </div>
                         </div>
                     </div>
@@ -1391,15 +1055,15 @@
                     <div class="creadores-stats">
                         <div class="creador-stat">
                             <div class="creador-stat-value">+2K</div>
-                            <div class="creador-stat-label" data-i18n="creadores.stat1">Entrenadores activos</div>
+                            <div class="creador-stat-label">Entrenadores activos</div>
                         </div>
                         <div class="creador-stat">
                             <div class="creador-stat-value">100%</div>
-                            <div class="creador-stat-label" data-i18n="creadores.stat2">Tráfico a tu canal</div>
+                            <div class="creador-stat-label">Tráfico a tu canal</div>
                         </div>
                         <div class="creador-stat">
                             <div class="creador-stat-value">0€</div>
-                            <div class="creador-stat-label" data-i18n="creadores.stat3">Te cuesta a ti</div>
+                            <div class="creador-stat-label">Te cuesta a ti</div>
                         </div>
                     </div>
                 </div>
@@ -1410,45 +1074,45 @@
                 <div class="comparison-card">
                     <div class="comparison-header">
                         <div class="comparison-icon">❌</div>
-                        <div class="comparison-title" data-i18n="creadores.no_title">Lo que NO hacemos</div>
+                        <div class="comparison-title">Lo que NO hacemos</div>
                     </div>
                     <div class="comparison-list">
-                        <div class="comparison-item no" data-i18n="creadores.no1">❌ NO resubimos tu contenido</div>
-                        <div class="comparison-item no" data-i18n="creadores.no2">❌ NO nos quedamos con tus ingresos</div>
-                        <div class="comparison-item no" data-i18n="creadores.no3">❌ NO ocultamos tu marca o canal</div>
-                        <div class="comparison-item no" data-i18n="creadores.no4">❌ NO competimos contigo por views</div>
-                        <div class="comparison-item no" data-i18n="creadores.no5">❌ NO monetizamos con publicidad</div>
+                        <div class="comparison-item no">❌ NO resubimos tu contenido</div>
+                        <div class="comparison-item no">❌ NO nos quedamos con tus ingresos</div>
+                        <div class="comparison-item no">❌ NO ocultamos tu marca o canal</div>
+                        <div class="comparison-item no">❌ NO competimos contigo por views</div>
+                        <div class="comparison-item no">❌ NO monetizamos con publicidad</div>
                     </div>
                 </div>
                 <div class="comparison-card highlight">
                     <div class="comparison-header">
                         <div class="comparison-icon">✅</div>
-                        <div class="comparison-title" data-i18n="creadores.si_title">Lo que SÍ hacemos</div>
+                        <div class="comparison-title">Lo que SÍ hacemos</div>
                     </div>
                     <div class="comparison-list">
-                        <div class="comparison-item yes" data-i18n="creadores.si1">✅ Organizamos y etiquetamos tu contenido</div>
-                        <div class="comparison-item yes" data-i18n="creadores.si2">✅ Te conectamos con tu público ideal</div>
-                        <div class="comparison-item yes" data-i18n="creadores.si3">✅ Mostramos tu nombre y canal siempre</div>
-                        <div class="comparison-item yes" data-i18n="creadores.si4">✅ Enviamos tráfico cualificado a YouTube</div>
-                        <div class="comparison-item yes" data-i18n="creadores.si5">✅ Monetizamos solo herramientas (filtros, pizarra)</div>
+                        <div class="comparison-item yes">✅ Organizamos y etiquetamos tu contenido</div>
+                        <div class="comparison-item yes">✅ Te conectamos con tu público ideal</div>
+                        <div class="comparison-item yes">✅ Mostramos tu nombre y canal siempre</div>
+                        <div class="comparison-item yes">✅ Enviamos tráfico cualificado a YouTube</div>
+                        <div class="comparison-item yes">✅ Monetizamos solo herramientas (filtros, pizarra)</div>
                     </div>
                 </div>
             </div>
             
             <!-- CTA para creadores -->
             <div class="creadores-cta">
-                <h3 class="creadores-cta-title" data-i18n="creadores.cta_title">🚀 ¿Tienes un canal de fútbol?</h3>
-                <p class="creadores-cta-text" data-i18n="creadores.cta_text">Sube tus videos a nuestra plataforma y deja que miles de entrenadores descubran tu contenido. Es gratis y tú ganas.</p>
+                <h3 class="creadores-cta-title">🚀 ¿Tienes un canal de fútbol?</h3>
+                <p class="creadores-cta-text">Sube tus videos a nuestra plataforma y deja que miles de entrenadores descubran tu contenido. Es gratis y tú ganas.</p>
                 <div class="creadores-cta-buttons">
-                    <button class="btn btn-youtube" onclick="showUploadModal()" data-i18n="creadores.cta_btn1">📤 Subir mis Videos</button>
-                    <button class="btn btn-ghost" onclick="showAuthModal('register')" data-i18n="creadores.cta_btn2">Crear Cuenta Gratis</button>
+                    <button class="btn btn-youtube" onclick="showUploadModal()">📤 Subir mis Videos</button>
+                    <button class="btn btn-ghost" onclick="showAuthModal('register')">Crear Cuenta Gratis</button>
                 </div>
             </div>
             
             <!-- Quote -->
             <div class="creadores-quote">
-                <p class="creadores-quote-text" data-i18n="creadores.quote">"El conocimiento del fútbol no debería estar bloqueado detrás de muros de pago. Queremos que cada entrenador de barrio tenga acceso a las mismas ideas que los profesionales."</p>
-                <p class="creadores-quote-author" data-i18n="creadores.quote_author">— La filosofía de Futbol Base TUBE</p>
+                <p class="creadores-quote-text">"El conocimiento del fútbol no debería estar bloqueado detrás de muros de pago. Queremos que cada entrenador de barrio tenga acceso a las mismas ideas que los profesionales."</p>
+                <p class="creadores-quote-author">— La filosofía de Futbol Base TUBE</p>
             </div>
         </div>
     </section>
@@ -1456,33 +1120,34 @@
     <section class="biblioteca" id="biblioteca">
         <aside class="filters-sidebar">
             <div class="filters-header">
-                <div class="filters-title">🎯 <span data-i18n="biblioteca.filtros">Filtros</span> <span class="filters-badge" id="filtersBadge"></span></div>
-                <span class="filters-clear" onclick="clearFilters()" data-i18n="biblioteca.limpiar">Limpiar</span>
+                <div class="filters-title">🎯 Filtros <span class="filters-badge" id="filtersBadge"></span></div>
+                <span class="filters-clear" onclick="clearFilters()">Limpiar</span>
             </div>
-            <div class="filter-group"><label class="filter-label" data-i18n="biblioteca.categoria">Categoría</label><select class="filter-select" id="filterCategoria"><option value="" data-i18n="biblioteca.todas">Todas</option></select></div>
-            <div class="filter-group"><label class="filter-label" data-i18n="biblioteca.dificultad">Dificultad</label><div class="difficulty-pills" id="filterDificultad"><div class="difficulty-pill" data-value="1">1</div><div class="difficulty-pill" data-value="2">2</div><div class="difficulty-pill" data-value="3">3</div><div class="difficulty-pill" data-value="4">4</div><div class="difficulty-pill" data-value="5">5</div></div></div>
-            <div class="filter-group"><label class="filter-label" data-i18n="biblioteca.entrenador">Entrenador</label><select class="filter-select" id="filterEntrenador"><option value="" data-i18n="biblioteca.todos">Todos</option></select></div>
-            <div class="filter-group"><label class="filter-label" data-i18n="biblioteca.equipo">Equipo</label><select class="filter-select" id="filterEquipo"><option value="" data-i18n="biblioteca.todos">Todos</option></select></div>
-            <div class="filter-group"><label class="filter-label" data-i18n="biblioteca.idioma">Idioma</label><select class="filter-select" id="filterIdioma"><option value="" data-i18n="biblioteca.todos">Todos</option></select></div>
-            <div class="filter-group"><label class="filter-label" data-i18n="biblioteca.edad">Edad</label><select class="filter-select" id="filterEdad"><option value="" data-i18n="biblioteca.todas">Todas</option></select></div>
-            <div class="filter-group"><label class="filter-label" data-i18n="biblioteca.duracion">Duración</label><select class="filter-select" id="filterDuracion"><option value="" data-i18n="biblioteca.todas">Todas</option><option value="0-300">0-5 min</option><option value="300-600">5-10 min</option><option value="600-900">10-15 min</option><option value="900-1800">15-30 min</option><option value="1800-99999">30+ min</option></select></div>
-            <div class="filter-group"><label class="filter-label" data-i18n="biblioteca.jugadores">Nº Jugadores</label><select class="filter-select" id="filterJugadores"><option value="" data-i18n="biblioteca.todos">Todos</option></select></div>
-            <div class="filter-group"><label class="filter-label" data-i18n="biblioteca.porteros">Nº Porteros</label><select class="filter-select" id="filterPorteros"><option value="" data-i18n="biblioteca.todos">Todos</option><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3+">3+</option></select></div>
-            <div class="filter-group"><label class="filter-label" data-i18n="biblioteca.likes">Popularidad (Likes)</label><select class="filter-select" id="filterLikes"><option value="" data-i18n="biblioteca.todos">Todos</option><option value="0-100">0-100</option><option value="100-500">100-500</option><option value="500-1000">500-1K</option><option value="1000-10000">1K-10K</option><option value="10000-99999999">10K+</option></select></div>
-            <div class="filter-group"><label class="filter-label" data-i18n="biblioteca.vistas">Vistas</label><select class="filter-select" id="filterVistas"><option value="" data-i18n="biblioteca.todas">Todas</option><option value="0-1000">0-1K</option><option value="1000-10000">1K-10K</option><option value="10000-100000">10K-100K</option><option value="100000-1000000">100K-1M</option><option value="1000000-99999999">1M+</option></select></div>
-            <div class="filter-group"><label class="filter-label" data-i18n="biblioteca.fuente">Fuente</label><select class="filter-select" id="filterFuente"><option value="" data-i18n="biblioteca.todas">Todas</option><option value="youtube">📺 YouTube</option><option value="twitter">𝕏 Twitter</option><option value="instagram">📷 Instagram</option></select></div>
+            <div class="filter-group"><label class="filter-label">📂 Familia</label><select class="filter-select" id="filterFamilia"><option value="">Todas</option><option value="futbol_base">⚽ Fútbol Base</option><option value="profesional">🏟️ Profesional</option><option value="entrevista">🎤 Entrevista</option><option value="analisis">📊 Análisis Táctico</option></select></div>
+            <div class="filter-group"><label class="filter-label">Categoría</label><select class="filter-select" id="filterCategoria"><option value="">Todas</option></select></div>
+            <div class="filter-group"><label class="filter-label">Dificultad</label><div class="difficulty-pills" id="filterDificultad"><div class="difficulty-pill" data-value="1">1</div><div class="difficulty-pill" data-value="2">2</div><div class="difficulty-pill" data-value="3">3</div><div class="difficulty-pill" data-value="4">4</div><div class="difficulty-pill" data-value="5">5</div></div></div>
+            <div class="filter-group"><label class="filter-label">Entrenador</label><select class="filter-select" id="filterEntrenador"><option value="">Todos</option></select></div>
+            <div class="filter-group"><label class="filter-label">Equipo</label><select class="filter-select" id="filterEquipo"><option value="">Todos</option></select></div>
+            <div class="filter-group"><label class="filter-label">Idioma</label><select class="filter-select" id="filterIdioma"><option value="">Todos</option></select></div>
+            <div class="filter-group"><label class="filter-label">Edad</label><select class="filter-select" id="filterEdad"><option value="">Todas</option></select></div>
+            <div class="filter-group"><label class="filter-label">Duración</label><select class="filter-select" id="filterDuracion"><option value="">Todas</option><option value="0-300">0-5 min</option><option value="300-600">5-10 min</option><option value="600-900">10-15 min</option><option value="900-1800">15-30 min</option><option value="1800-99999">30+ min</option></select></div>
+            <div class="filter-group"><label class="filter-label">Nº Jugadores</label><select class="filter-select" id="filterJugadores"><option value="">Todos</option></select></div>
+            <div class="filter-group"><label class="filter-label">Nº Porteros</label><select class="filter-select" id="filterPorteros"><option value="">Todos</option><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3+">3+</option></select></div>
+            <div class="filter-group"><label class="filter-label">Popularidad (Likes)</label><select class="filter-select" id="filterLikes"><option value="">Todos</option><option value="0-100">0-100</option><option value="100-500">100-500</option><option value="500-1000">500-1K</option><option value="1000-10000">1K-10K</option><option value="10000-99999999">10K+</option></select></div>
+            <div class="filter-group"><label class="filter-label">Vistas</label><select class="filter-select" id="filterVistas"><option value="">Todas</option><option value="0-1000">0-1K</option><option value="1000-10000">1K-10K</option><option value="10000-100000">10K-100K</option><option value="100000-1000000">100K-1M</option><option value="1000000-99999999">1M+</option></select></div>
+            <div class="filter-group"><label class="filter-label">Fuente</label><select class="filter-select" id="filterFuente"><option value="">Todas</option><option value="youtube">📺 YouTube</option><option value="twitter">𝕏 Twitter</option><option value="instagram">📷 Instagram</option></select></div>
         </aside>
 
         <main class="biblioteca-main">
             <div class="biblioteca-header">
-                <div><h1 class="biblioteca-title" data-i18n="biblioteca.titulo">BIBLIOTECA DE EJERCICIOS</h1><p class="biblioteca-count"><span data-i18n="biblioteca.mostrando">Mostrando</span> <span id="exerciseCount">0</span> <span data-i18n="biblioteca.ejercicios">ejercicios</span></p></div>
-                <div class="biblioteca-search"><span>🔍</span><input type="text" id="searchInput" data-i18n="biblioteca.buscar" placeholder="Buscar ejercicios..."></div>
+                <div><h1 class="biblioteca-title">BIBLIOTECA DE EJERCICIOS</h1><p class="biblioteca-count">Mostrando <span id="exerciseCount">0</span> ejercicios</p></div>
+                <div class="biblioteca-search"><span>🔍</span><input type="text" id="searchInput" placeholder="Buscar ejercicios..."></div>
             </div>
-            <div class="ejercicios-grid" id="exerciseGrid"><div class="state-container"><div class="loading-spinner"></div><p data-i18n="biblioteca.cargando">Cargando ejercicios...</p></div></div>
+            <div class="ejercicios-grid" id="exerciseGrid"><div class="state-container"><div class="loading-spinner"></div><p>Cargando ejercicios...</p></div></div>
         </main>
     </section>
 
-    <footer class="footer"><p class="footer-text" data-i18n="footer.texto">© 2024 Futbol Base TUBE. Creado por entrenadores, para entrenadores. 🌍</p></footer>
+    <footer class="footer"><p class="footer-text">© 2024 Futbol Base TUBE. Creado por entrenadores, para entrenadores. 🌍</p></footer>
 
     <!-- Floating Session Button -->
     <div class="session-fab" id="sessionFab" onclick="toggleSessionDrawer()">
@@ -1503,15 +1168,15 @@
     <div class="modal-overlay" id="authOverlay" onclick="closeAuthModal(event)">
         <div class="modal-content auth-modal" onclick="event.stopPropagation()">
             <button class="modal-close" onclick="closeAuthModal()">×</button>
-            <h2 class="auth-title" id="authTitle" data-i18n="auth.bienvenido">BIENVENIDO</h2>
-            <p class="auth-subtitle" id="authSubtitle" data-i18n="auth.subtitle">Accede a tu cuenta para guardar sesiones</p>
-            <div class="auth-tabs"><div class="auth-tab active" id="tabLogin" onclick="switchAuthTab('login')" data-i18n="auth.entrar">Entrar</div><div class="auth-tab" id="tabRegister" onclick="switchAuthTab('register')" data-i18n="auth.registrarse">Registrarse</div></div>
+            <h2 class="auth-title" id="authTitle">BIENVENIDO</h2>
+            <p class="auth-subtitle" id="authSubtitle">Accede a tu cuenta para guardar sesiones</p>
+            <div class="auth-tabs"><div class="auth-tab active" id="tabLogin" onclick="switchAuthTab('login')">Entrar</div><div class="auth-tab" id="tabRegister" onclick="switchAuthTab('register')">Registrarse</div></div>
             <div class="auth-error" id="authError"></div>
             <form class="auth-form" id="authForm" onsubmit="handleAuth(event)">
-                <input type="text" class="auth-input" id="authName" data-i18n="auth.nombre" placeholder="Tu nombre" style="display:none;">
-                <input type="email" class="auth-input" id="authEmail" data-i18n="auth.email" placeholder="Email" required>
-                <input type="password" class="auth-input" id="authPassword" data-i18n="auth.password" placeholder="Contraseña" required>
-                <button type="submit" class="btn btn-primary" style="width:100%;" id="authSubmit" data-i18n="auth.entrar">Entrar</button>
+                <input type="text" class="auth-input" id="authName" placeholder="Tu nombre" style="display:none;">
+                <input type="email" class="auth-input" id="authEmail" placeholder="Email" required>
+                <input type="password" class="auth-input" id="authPassword" placeholder="Contraseña" required>
+                <button type="submit" class="btn btn-primary" style="width:100%;" id="authSubmit">Entrar</button>
             </form>
         </div>
     </div>
@@ -2032,1182 +1697,6 @@
 
     <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
     <script>
-        // ==================== SISTEMA DE IDIOMAS ====================
-        var currentLang = localStorage.getItem('fbt_lang') || 'es';
-        
-        var translations = {
-            es: {
-                // Navegación
-                'nav.inicio': 'Inicio',
-                'nav.biblioteca': 'Biblioteca',
-                'nav.creadores': 'Creadores',
-                'nav.mis_sesiones': 'Mis Sesiones',
-                'nav.planes': 'Planes',
-                'nav.entrar': 'Entrar',
-                'nav.registrarse': '🚀 Registrarse',
-                
-                // Hero
-                'hero.badge': '🌍 La comunidad #1 de entrenadores de fútbol',
-                'hero.tagline': 'LA MAYOR BIBLIOTECA DE EJERCICIOS DE FÚTBOL DEL PLANETA',
-                'hero.desc': 'Miles de videos de entrenamiento <strong>filtrados, organizados y etiquetados</strong> por una comunidad de entrenadores como tú. Encuentra el ejercicio perfecto en segundos, no en horas.',
-                'hero.feature1': '+12 filtros avanzados',
-                'hero.feature2': 'Creado por entrenadores reales',
-                'hero.feature3': '100% contenido gratuito',
-                'hero.btn_explorar': '🎬 Explorar Ejercicios',
-                'hero.btn_subir': '📤 Subir Ejercicio',
-                'hero.stat_ejercicios': 'Ejercicios',
-                'hero.stat_entrenadores': 'Entrenadores',
-                'hero.stat_categorias': 'Categorías',
-                'hero.stat_usuarios': 'Usuarios',
-                'hero.cta': '¿Tienes un video de entrenamiento?',
-                'hero.cta_link': 'Compártelo con la comunidad →',
-                
-                // Premium Section
-                'premium.badge': '✨ Más que una biblioteca de videos',
-                'premium.title': 'Crea, Comparte y <span>Compite</span>',
-                'premium.subtitle': 'No solo consumas contenido. Crea tus propios ejercicios, compártelos con la comunidad y compite por ser el mejor entrenador.',
-                'premium.pizarra.badge': '🔥 EXCLUSIVO COACH',
-                'premium.pizarra.title': 'Pizarra Táctica Pro',
-                'premium.pizarra.desc': 'Diseña tus propios ejercicios con nuestra pizarra profesional. Arrastra jugadores, dibuja movimientos, añade conos y porterías.',
-                'premium.pizarra.f1': '✅ Jugadores personalizables',
-                'premium.pizarra.f2': '✅ Flechas y movimientos',
-                'premium.pizarra.f3': '✅ Exporta como imagen',
-                'premium.pizarra.f4': '✅ Guarda tus tácticas',
-                'premium.pizarra.btn': '🎯 Quiero la Pizarra',
-                'premium.subir.title': 'Sube tus Ejercicios',
-                'premium.subir.desc': '¿Tienes un ejercicio que funciona? Compártelo con miles de entrenadores y gana reconocimiento.',
-                'premium.subir.f1': '⭐ Gana +50 XP por ejercicio',
-                'premium.subir.f2': '👍 La comunidad vota',
-                'premium.subir.f3': '🏅 Consigue badges exclusivos',
-                'premium.subir.f4': '📈 Escala en el ranking',
-                'premium.subir.btn': '📤 Subir mi primer ejercicio',
-                'premium.compite.title': 'Compite y Gana',
-                'premium.compite.desc': 'Cada mes los mejores entrenadores ganan descuentos reales. ¿Serás tú el #1?',
-                'premium.compite.f1': '🥇 Top 1: 50% descuento',
-                'premium.compite.f2': '🥈 Top 3: 25% descuento',
-                'premium.compite.f3': '💎 Sube de liga: Bronce → Élite',
-                'premium.compite.f4': '🔥 Mantén tu racha diaria',
-                'premium.compite.btn': 'Ver Ranking Actual',
-                
-                // Comunidad
-                'comunidad.badge': '🏆 Compite y gana premios reales',
-                'comunidad.title': 'Únete a la <span>Comunidad #1</span> de Entrenadores',
-                'comunidad.subtitle': 'Sube ejercicios, gana XP, sube de nivel y compite por descuentos y premios cada mes',
-                'comunidad.ranking_title': '🏆 Top Entrenadores',
-                'comunidad.ranking_link': 'Ver ranking →',
-                'comunidad.challenge_title': 'Challenge de la Semana',
-                'comunidad.challenge_desc': 'Sube ejercicios y completa el reto semanal para ganar XP extra',
-                'comunidad.badges_title': '🏅 Badges',
-                'comunidad.badges_link': 'Ver todos →',
-                'comunidad.cta_title': '🚀 ¿Listo para competir?',
-                'comunidad.cta_text': 'Regístrate gratis, sube tu primer ejercicio y empieza a ganar XP. El Top 3 mensual gana hasta 50% de descuento.',
-                'comunidad.cta_btn': '🎮 Empezar a Competir',
-                'comunidad.dias_restantes': 'días restantes',
-                'comunidad.completados': 'completados',
-                
-                // Badges
-                'badge.primer_ejercicio': 'Primer Ejercicio',
-                'badge.en_racha': 'En Racha',
-                'badge.imparable': 'Imparable',
-                'badge.popular': 'Popular',
-                'badge.bibliotecario': 'Bibliotecario',
-                'badge.artista': 'Artista Táctico',
-                'badge.leyenda': 'Leyenda',
-                'badge.top_mensual': 'Top Mensual',
-                
-                // Biblioteca
-                'biblioteca.title': 'Explora la <span>Biblioteca</span>',
-                'biblioteca.titulo': 'BIBLIOTECA DE EJERCICIOS',
-                'biblioteca.buscar': 'Buscar ejercicios...',
-                'biblioteca.filtros': 'Filtros',
-                'biblioteca.limpiar': 'Limpiar',
-                'biblioteca.categoria': 'Categoría',
-                'biblioteca.todas': 'Todas',
-                'biblioteca.edad': 'Edad',
-                'biblioteca.dificultad': 'Dificultad',
-                'biblioteca.entrenador': 'Entrenador',
-                'biblioteca.equipo': 'Equipo',
-                'biblioteca.idioma': 'Idioma',
-                'biblioteca.duracion': 'Duración',
-                'biblioteca.jugadores': 'Nº Jugadores',
-                'biblioteca.porteros': 'Nº Porteros',
-                'biblioteca.likes': 'Popularidad (Likes)',
-                'biblioteca.vistas': 'Vistas',
-                'biblioteca.fuente': 'Fuente',
-                'biblioteca.todos': 'Todos',
-                'biblioteca.ordenar': 'Ordenar por',
-                'biblioteca.recientes': 'Más recientes',
-                'biblioteca.populares': 'Más populares',
-                'biblioteca.valorados': 'Mejor valorados',
-                'biblioteca.no_resultados': 'No se encontraron ejercicios',
-                'biblioteca.cargando': 'Cargando ejercicios...',
-                'biblioteca.mostrando': 'Mostrando',
-                'biblioteca.ejercicios': 'ejercicios',
-                
-                // Auth
-                'auth.bienvenido': 'BIENVENIDO',
-                'auth.unete': 'ÚNETE',
-                'auth.subtitle': 'Accede a tu cuenta para guardar sesiones',
-                'auth.entrar': 'Entrar',
-                'auth.registrarse': 'Registrarse',
-                'auth.nombre': 'Tu nombre',
-                'auth.email': 'Email',
-                'auth.password': 'Contraseña',
-                'auth.olvidaste': '¿Olvidaste tu contraseña?',
-                'auth.o_continua': 'o continúa con',
-                'auth.ya_tienes': '¿Ya tienes cuenta?',
-                'auth.no_tienes': '¿No tienes cuenta?',
-                
-                // Footer
-                'footer.texto': '© 2024 Futbol Base TUBE. Creado por entrenadores, para entrenadores. 🌍',
-                
-                // Creadores
-                'creadores.badge': '📺 Para Creadores de YouTube, Twitter e Instagram',
-                'creadores.title': 'Democratizamos el <span>Fútbol</span>',
-                'creadores.subtitle': 'No somos tu competencia, somos tu aliado. Te ayudamos a llegar a miles de entrenadores que buscan contenido de calidad como el tuyo.',
-                'creadores.b1_title': 'Más visibilidad para tu canal',
-                'creadores.b1_text': 'Tus videos se muestran a una audiencia cualificada: entrenadores de fútbol que buscan exactamente lo que tú creas.',
-                'creadores.b2_title': 'Tú monetizas, nosotros no',
-                'creadores.b2_text': 'Cada visita va directa a YouTube/Twitter. Tus anuncios, tus ingresos. No nos quedamos con nada de tus visualizaciones.',
-                'creadores.b3_title': 'Audiencia segmentada',
-                'creadores.b3_text': 'No son views aleatorios. Son entrenadores reales buscando ejercicios por categoría, edad, dificultad... tu público ideal.',
-                'creadores.b4_title': 'Enlace directo a tu canal',
-                'creadores.b4_text': 'Tu nombre, tu canal y tu marca siempre visibles. Generamos suscriptores para ti, no para nosotros.',
-                'creadores.flow1_title': 'Tu video en YouTube',
-                'creadores.flow1_desc': 'El contenido original permanece en tu canal',
-                'creadores.flow2_title': 'Lo organizamos y etiquetamos',
-                'creadores.flow2_desc': 'Categoría, dificultad, edad, entrenador...',
-                'creadores.flow3_title': 'Miles de entrenadores lo descubren',
-                'creadores.flow3_desc': 'Y van a TU canal a ver el video completo',
-                'creadores.stat1': 'Entrenadores activos',
-                'creadores.stat2': 'Tráfico a tu canal',
-                'creadores.stat3': 'Te cuesta a ti',
-                'creadores.no_title': 'Lo que NO hacemos',
-                'creadores.no1': '❌ NO resubimos tu contenido',
-                'creadores.no2': '❌ NO nos quedamos con tus ingresos',
-                'creadores.no3': '❌ NO ocultamos tu marca o canal',
-                'creadores.no4': '❌ NO competimos contigo por views',
-                'creadores.no5': '❌ NO monetizamos con publicidad',
-                'creadores.si_title': 'Lo que SÍ hacemos',
-                'creadores.si1': '✅ Organizamos y etiquetamos tu contenido',
-                'creadores.si2': '✅ Te conectamos con tu público ideal',
-                'creadores.si3': '✅ Mostramos tu nombre y canal siempre',
-                'creadores.si4': '✅ Enviamos tráfico cualificado a YouTube',
-                'creadores.si5': '✅ Monetizamos solo herramientas (filtros, pizarra)',
-                'creadores.cta_title': '🚀 ¿Tienes un canal de fútbol?',
-                'creadores.cta_text': 'Sube tus videos a nuestra plataforma y deja que miles de entrenadores descubran tu contenido. Es gratis y tú ganas.',
-                'creadores.cta_btn1': '📤 Subir mis Videos',
-                'creadores.cta_btn2': 'Crear Cuenta Gratis',
-                'creadores.quote': '"El conocimiento del fútbol no debería estar bloqueado detrás de muros de pago. Queremos que cada entrenador de barrio tenga acceso a las mismas ideas que los profesionales."',
-                'creadores.quote_author': '— La filosofía de Futbol Base TUBE',
-                
-                // Upgrade
-                'upgrade.title': 'Mejora tu Plan',
-                'upgrade.subtitle': 'Desbloquea todas las funciones',
-                'upgrade.pro': 'Pro',
-                'upgrade.coach': 'Coach',
-                'upgrade.recomendado': 'RECOMENDADO',
-                'upgrade.mensual': '/mes',
-                'upgrade.beneficios': 'Beneficios incluidos:',
-                'upgrade.btn_upgrade': 'Mejorar Ahora',
-                
-                // General
-                'general.loading': 'Cargando...',
-                'general.error': 'Error',
-                'general.exito': 'Éxito',
-                'general.cancelar': 'Cancelar',
-                'general.guardar': 'Guardar',
-                'general.cerrar': 'Cerrar',
-                'general.ver_mas': 'Ver más',
-                'general.ver_menos': 'Ver menos'
-            },
-            
-            en: {
-                // Navigation
-                'nav.inicio': 'Home',
-                'nav.biblioteca': 'Library',
-                'nav.creadores': 'Creators',
-                'nav.mis_sesiones': 'My Sessions',
-                'nav.planes': 'Plans',
-                'nav.entrar': 'Login',
-                'nav.registrarse': '🚀 Sign Up',
-                
-                // Hero
-                'hero.badge': '🌍 The #1 community for football coaches',
-                'hero.tagline': 'THE LARGEST FOOTBALL TRAINING LIBRARY ON THE PLANET',
-                'hero.desc': 'Thousands of training videos <strong>filtered, organized and tagged</strong> by a community of coaches like you. Find the perfect drill in seconds, not hours.',
-                'hero.feature1': '+12 advanced filters',
-                'hero.feature2': 'Created by real coaches',
-                'hero.feature3': '100% free content',
-                'hero.btn_explorar': '🎬 Explore Drills',
-                'hero.btn_subir': '📤 Upload Drill',
-                'hero.stat_ejercicios': 'Drills',
-                'hero.stat_entrenadores': 'Coaches',
-                'hero.stat_categorias': 'Categories',
-                'hero.stat_usuarios': 'Users',
-                'hero.cta': 'Have a training video?',
-                'hero.cta_link': 'Share it with the community →',
-                
-                // Premium Section
-                'premium.badge': '✨ More than a video library',
-                'premium.title': 'Create, Share and <span>Compete</span>',
-                'premium.subtitle': "Don't just consume content. Create your own drills, share them with the community and compete to be the best coach.",
-                'premium.pizarra.badge': '🔥 COACH EXCLUSIVE',
-                'premium.pizarra.title': 'Pro Tactical Board',
-                'premium.pizarra.desc': 'Design your own drills with our professional board. Drag players, draw movements, add cones and goals.',
-                'premium.pizarra.f1': '✅ Customizable players',
-                'premium.pizarra.f2': '✅ Arrows and movements',
-                'premium.pizarra.f3': '✅ Export as image',
-                'premium.pizarra.f4': '✅ Save your tactics',
-                'premium.pizarra.btn': '🎯 I want the Board',
-                'premium.subir.title': 'Upload your Drills',
-                'premium.subir.desc': 'Have a drill that works? Share it with thousands of coaches and gain recognition.',
-                'premium.subir.f1': '⭐ Earn +50 XP per drill',
-                'premium.subir.f2': '👍 Community votes',
-                'premium.subir.f3': '🏅 Get exclusive badges',
-                'premium.subir.f4': '📈 Climb the rankings',
-                'premium.subir.btn': '📤 Upload my first drill',
-                'premium.compite.title': 'Compete and Win',
-                'premium.compite.desc': 'Every month the best coaches win real discounts. Will you be #1?',
-                'premium.compite.f1': '🥇 Top 1: 50% discount',
-                'premium.compite.f2': '🥈 Top 3: 25% discount',
-                'premium.compite.f3': '💎 Climb leagues: Bronze → Elite',
-                'premium.compite.f4': '🔥 Keep your daily streak',
-                'premium.compite.btn': 'See Current Ranking',
-                
-                // Community
-                'comunidad.badge': '🏆 Compete and win real prizes',
-                'comunidad.title': 'Join the <span>#1 Community</span> of Coaches',
-                'comunidad.subtitle': 'Upload drills, earn XP, level up and compete for discounts and prizes every month',
-                'comunidad.ranking_title': '🏆 Top Coaches',
-                'comunidad.ranking_link': 'See ranking →',
-                'comunidad.challenge_title': 'Weekly Challenge',
-                'comunidad.challenge_desc': 'Upload drills and complete the weekly challenge to earn extra XP',
-                'comunidad.badges_title': '🏅 Badges',
-                'comunidad.badges_link': 'See all →',
-                'comunidad.cta_title': '🚀 Ready to compete?',
-                'comunidad.cta_text': 'Sign up for free, upload your first drill and start earning XP. Top 3 monthly wins up to 50% discount.',
-                'comunidad.cta_btn': '🎮 Start Competing',
-                'comunidad.dias_restantes': 'days left',
-                'comunidad.completados': 'completed',
-                
-                // Badges
-                'badge.primer_ejercicio': 'First Drill',
-                'badge.en_racha': 'On Fire',
-                'badge.imparable': 'Unstoppable',
-                'badge.popular': 'Popular',
-                'badge.bibliotecario': 'Librarian',
-                'badge.artista': 'Tactical Artist',
-                'badge.leyenda': 'Legend',
-                'badge.top_mensual': 'Monthly Top',
-                
-                // Library
-                'biblioteca.title': 'Explore the <span>Library</span>',
-                'biblioteca.titulo': 'DRILL LIBRARY',
-                'biblioteca.buscar': 'Search drills...',
-                'biblioteca.filtros': 'Filters',
-                'biblioteca.limpiar': 'Clear',
-                'biblioteca.categoria': 'Category',
-                'biblioteca.todas': 'All',
-                'biblioteca.edad': 'Age',
-                'biblioteca.dificultad': 'Difficulty',
-                'biblioteca.entrenador': 'Coach',
-                'biblioteca.equipo': 'Team',
-                'biblioteca.idioma': 'Language',
-                'biblioteca.duracion': 'Duration',
-                'biblioteca.jugadores': 'Nº Players',
-                'biblioteca.porteros': 'Nº Goalkeepers',
-                'biblioteca.likes': 'Popularity (Likes)',
-                'biblioteca.vistas': 'Views',
-                'biblioteca.fuente': 'Source',
-                'biblioteca.todos': 'All',
-                'biblioteca.ordenar': 'Sort by',
-                'biblioteca.recientes': 'Most recent',
-                'biblioteca.populares': 'Most popular',
-                'biblioteca.valorados': 'Best rated',
-                'biblioteca.no_resultados': 'No drills found',
-                'biblioteca.cargando': 'Loading drills...',
-                'biblioteca.mostrando': 'Showing',
-                'biblioteca.ejercicios': 'drills',
-                
-                // Auth
-                'auth.bienvenido': 'WELCOME',
-                'auth.unete': 'JOIN US',
-                'auth.subtitle': 'Sign in to save your sessions',
-                'auth.entrar': 'Login',
-                'auth.registrarse': 'Sign Up',
-                'auth.nombre': 'Your name',
-                'auth.email': 'Email',
-                'auth.password': 'Password',
-                'auth.olvidaste': 'Forgot your password?',
-                'auth.o_continua': 'or continue with',
-                'auth.ya_tienes': 'Already have an account?',
-                'auth.no_tienes': "Don't have an account?",
-                
-                // Footer
-                'footer.texto': '© 2024 Futbol Base TUBE. Created by coaches, for coaches. 🌍',
-                
-                // Creators
-                'creadores.badge': '📺 For YouTube, Twitter & Instagram Creators',
-                'creadores.title': 'We Democratize <span>Football</span>',
-                'creadores.subtitle': "We're not your competition, we're your ally. We help you reach thousands of coaches looking for quality content like yours.",
-                'creadores.b1_title': 'More visibility for your channel',
-                'creadores.b1_text': 'Your videos are shown to a qualified audience: football coaches looking for exactly what you create.',
-                'creadores.b2_title': 'You monetize, we don\'t',
-                'creadores.b2_text': 'Every visit goes directly to YouTube/Twitter. Your ads, your revenue. We don\'t take anything from your views.',
-                'creadores.b3_title': 'Targeted audience',
-                'creadores.b3_text': 'Not random views. Real coaches searching for drills by category, age, difficulty... your ideal audience.',
-                'creadores.b4_title': 'Direct link to your channel',
-                'creadores.b4_text': 'Your name, your channel and your brand always visible. We generate subscribers for you, not for us.',
-                'creadores.flow1_title': 'Your video on YouTube',
-                'creadores.flow1_desc': 'Original content stays on your channel',
-                'creadores.flow2_title': 'We organize and tag it',
-                'creadores.flow2_desc': 'Category, difficulty, age, coach...',
-                'creadores.flow3_title': 'Thousands of coaches discover it',
-                'creadores.flow3_desc': 'And go to YOUR channel to watch the full video',
-                'creadores.stat1': 'Active coaches',
-                'creadores.stat2': 'Traffic to your channel',
-                'creadores.stat3': 'Cost to you',
-                'creadores.no_title': 'What we DON\'T do',
-                'creadores.no1': '❌ We DON\'T re-upload your content',
-                'creadores.no2': '❌ We DON\'T take your revenue',
-                'creadores.no3': '❌ We DON\'T hide your brand or channel',
-                'creadores.no4': '❌ We DON\'T compete with you for views',
-                'creadores.no5': '❌ We DON\'T monetize with ads',
-                'creadores.si_title': 'What we DO',
-                'creadores.si1': '✅ We organize and tag your content',
-                'creadores.si2': '✅ We connect you with your ideal audience',
-                'creadores.si3': '✅ We always show your name and channel',
-                'creadores.si4': '✅ We send qualified traffic to YouTube',
-                'creadores.si5': '✅ We only monetize tools (filters, tactical board)',
-                'creadores.cta_title': '🚀 Do you have a football channel?',
-                'creadores.cta_text': 'Upload your videos to our platform and let thousands of coaches discover your content. It\'s free and you win.',
-                'creadores.cta_btn1': '📤 Upload my Videos',
-                'creadores.cta_btn2': 'Create Free Account',
-                'creadores.quote': '"Football knowledge shouldn\'t be locked behind paywalls. We want every neighborhood coach to have access to the same ideas as the professionals."',
-                'creadores.quote_author': '— The Futbol Base TUBE philosophy',
-                
-                // Upgrade
-                'upgrade.title': 'Upgrade your Plan',
-                'upgrade.subtitle': 'Unlock all features',
-                'upgrade.pro': 'Pro',
-                'upgrade.coach': 'Coach',
-                'upgrade.recomendado': 'RECOMMENDED',
-                'upgrade.mensual': '/month',
-                'upgrade.beneficios': 'Benefits included:',
-                'upgrade.btn_upgrade': 'Upgrade Now',
-                
-                // General
-                'general.loading': 'Loading...',
-                'general.error': 'Error',
-                'general.exito': 'Success',
-                'general.cancelar': 'Cancel',
-                'general.guardar': 'Save',
-                'general.cerrar': 'Close',
-                'general.ver_mas': 'See more',
-                'general.ver_menos': 'See less'
-            },
-            
-            pt: {
-                // Navegação
-                'nav.inicio': 'Início',
-                'nav.biblioteca': 'Biblioteca',
-                'nav.creadores': 'Criadores',
-                'nav.mis_sesiones': 'Minhas Sessões',
-                'nav.planes': 'Planos',
-                'nav.entrar': 'Entrar',
-                'nav.registrarse': '🚀 Cadastrar',
-                
-                // Hero
-                'hero.badge': '🌍 A comunidade #1 de treinadores de futebol',
-                'hero.tagline': 'A MAIOR BIBLIOTECA DE EXERCÍCIOS DE FUTEBOL DO PLANETA',
-                'hero.desc': 'Milhares de vídeos de treino <strong>filtrados, organizados e etiquetados</strong> por uma comunidade de treinadores como você. Encontre o exercício perfeito em segundos, não em horas.',
-                'hero.feature1': '+12 filtros avançados',
-                'hero.feature2': 'Criado por treinadores reais',
-                'hero.feature3': '100% conteúdo gratuito',
-                'hero.btn_explorar': '🎬 Explorar Exercícios',
-                'hero.btn_subir': '📤 Enviar Exercício',
-                'hero.stat_ejercicios': 'Exercícios',
-                'hero.stat_entrenadores': 'Treinadores',
-                'hero.stat_categorias': 'Categorias',
-                'hero.stat_usuarios': 'Usuários',
-                'hero.cta': 'Tem um vídeo de treino?',
-                'hero.cta_link': 'Compartilhe com a comunidade →',
-                
-                // Premium Section
-                'premium.badge': '✨ Mais que uma biblioteca de vídeos',
-                'premium.title': 'Crie, Compartilhe e <span>Compita</span>',
-                'premium.subtitle': 'Não apenas consuma conteúdo. Crie seus próprios exercícios, compartilhe com a comunidade e compita para ser o melhor treinador.',
-                'premium.pizarra.badge': '🔥 EXCLUSIVO COACH',
-                'premium.pizarra.title': 'Prancheta Tática Pro',
-                'premium.pizarra.desc': 'Projete seus próprios exercícios com nossa prancheta profissional. Arraste jogadores, desenhe movimentos, adicione cones e gols.',
-                'premium.pizarra.f1': '✅ Jogadores personalizáveis',
-                'premium.pizarra.f2': '✅ Setas e movimentos',
-                'premium.pizarra.f3': '✅ Exporte como imagem',
-                'premium.pizarra.f4': '✅ Salve suas táticas',
-                'premium.pizarra.btn': '🎯 Quero a Prancheta',
-                'premium.subir.title': 'Envie seus Exercícios',
-                'premium.subir.desc': 'Tem um exercício que funciona? Compartilhe com milhares de treinadores e ganhe reconhecimento.',
-                'premium.subir.f1': '⭐ Ganhe +50 XP por exercício',
-                'premium.subir.f2': '👍 A comunidade vota',
-                'premium.subir.f3': '🏅 Conquiste badges exclusivos',
-                'premium.subir.f4': '📈 Suba no ranking',
-                'premium.subir.btn': '📤 Enviar meu primeiro exercício',
-                'premium.compite.title': 'Compita e Ganhe',
-                'premium.compite.desc': 'Todo mês os melhores treinadores ganham descontos reais. Você será o #1?',
-                'premium.compite.f1': '🥇 Top 1: 50% desconto',
-                'premium.compite.f2': '🥈 Top 3: 25% desconto',
-                'premium.compite.f3': '💎 Suba de liga: Bronze → Elite',
-                'premium.compite.f4': '🔥 Mantenha sua sequência diária',
-                'premium.compite.btn': 'Ver Ranking Atual',
-                
-                // Comunidade
-                'comunidad.badge': '🏆 Compita e ganhe prêmios reais',
-                'comunidad.title': 'Junte-se à <span>Comunidade #1</span> de Treinadores',
-                'comunidad.subtitle': 'Envie exercícios, ganhe XP, suba de nível e compita por descontos e prêmios todo mês',
-                'comunidad.ranking_title': '🏆 Top Treinadores',
-                'comunidad.ranking_link': 'Ver ranking →',
-                'comunidad.challenge_title': 'Desafio da Semana',
-                'comunidad.challenge_desc': 'Envie exercícios e complete o desafio semanal para ganhar XP extra',
-                'comunidad.badges_title': '🏅 Badges',
-                'comunidad.badges_link': 'Ver todos →',
-                'comunidad.cta_title': '🚀 Pronto para competir?',
-                'comunidad.cta_text': 'Cadastre-se grátis, envie seu primeiro exercício e comece a ganhar XP. O Top 3 mensal ganha até 50% de desconto.',
-                'comunidad.cta_btn': '🎮 Começar a Competir',
-                'comunidad.dias_restantes': 'dias restantes',
-                'comunidad.completados': 'completados',
-                
-                // Badges
-                'badge.primer_ejercicio': 'Primeiro Exercício',
-                'badge.en_racha': 'Em Sequência',
-                'badge.imparable': 'Imparável',
-                'badge.popular': 'Popular',
-                'badge.bibliotecario': 'Bibliotecário',
-                'badge.artista': 'Artista Tático',
-                'badge.leyenda': 'Lenda',
-                'badge.top_mensual': 'Top Mensal',
-                
-                // Biblioteca
-                'biblioteca.title': 'Explore a <span>Biblioteca</span>',
-                'biblioteca.titulo': 'BIBLIOTECA DE EXERCÍCIOS',
-                'biblioteca.buscar': 'Buscar exercícios...',
-                'biblioteca.filtros': 'Filtros',
-                'biblioteca.limpiar': 'Limpar',
-                'biblioteca.categoria': 'Categoria',
-                'biblioteca.todas': 'Todas',
-                'biblioteca.edad': 'Idade',
-                'biblioteca.dificultad': 'Dificuldade',
-                'biblioteca.entrenador': 'Treinador',
-                'biblioteca.equipo': 'Time',
-                'biblioteca.idioma': 'Idioma',
-                'biblioteca.duracion': 'Duração',
-                'biblioteca.jugadores': 'Nº Jogadores',
-                'biblioteca.porteros': 'Nº Goleiros',
-                'biblioteca.likes': 'Popularidade (Likes)',
-                'biblioteca.vistas': 'Visualizações',
-                'biblioteca.fuente': 'Fonte',
-                'biblioteca.todos': 'Todos',
-                'biblioteca.ordenar': 'Ordenar por',
-                'biblioteca.recientes': 'Mais recentes',
-                'biblioteca.populares': 'Mais populares',
-                'biblioteca.valorados': 'Melhor avaliados',
-                'biblioteca.no_resultados': 'Nenhum exercício encontrado',
-                'biblioteca.cargando': 'Carregando exercícios...',
-                'biblioteca.mostrando': 'Mostrando',
-                'biblioteca.ejercicios': 'exercícios',
-                
-                // Auth
-                'auth.bienvenido': 'BEM-VINDO',
-                'auth.unete': 'JUNTE-SE',
-                'auth.subtitle': 'Acesse sua conta para salvar sessões',
-                'auth.entrar': 'Entrar',
-                'auth.registrarse': 'Cadastrar',
-                'auth.nombre': 'Seu nome',
-                'auth.email': 'Email',
-                'auth.password': 'Senha',
-                'auth.olvidaste': 'Esqueceu sua senha?',
-                'auth.o_continua': 'ou continue com',
-                'auth.ya_tienes': 'Já tem uma conta?',
-                'auth.no_tienes': 'Não tem uma conta?',
-                
-                // Footer
-                'footer.texto': '© 2024 Futbol Base TUBE. Criado por treinadores, para treinadores. 🌍',
-                
-                // Criadores
-                'creadores.badge': '📺 Para Criadores do YouTube, Twitter e Instagram',
-                'creadores.title': 'Democratizamos o <span>Futebol</span>',
-                'creadores.subtitle': 'Não somos sua concorrência, somos seu aliado. Ajudamos você a alcançar milhares de treinadores que buscam conteúdo de qualidade como o seu.',
-                'creadores.b1_title': 'Mais visibilidade para seu canal',
-                'creadores.b1_text': 'Seus vídeos são mostrados para uma audiência qualificada: treinadores de futebol que buscam exatamente o que você cria.',
-                'creadores.b2_title': 'Você monetiza, nós não',
-                'creadores.b2_text': 'Cada visita vai direto para o YouTube/Twitter. Seus anúncios, sua receita. Não ficamos com nada das suas visualizações.',
-                'creadores.b3_title': 'Audiência segmentada',
-                'creadores.b3_text': 'Não são views aleatórios. São treinadores reais buscando exercícios por categoria, idade, dificuldade... seu público ideal.',
-                'creadores.b4_title': 'Link direto para seu canal',
-                'creadores.b4_text': 'Seu nome, seu canal e sua marca sempre visíveis. Geramos inscritos para você, não para nós.',
-                'creadores.flow1_title': 'Seu vídeo no YouTube',
-                'creadores.flow1_desc': 'O conteúdo original permanece no seu canal',
-                'creadores.flow2_title': 'Organizamos e etiquetamos',
-                'creadores.flow2_desc': 'Categoria, dificuldade, idade, treinador...',
-                'creadores.flow3_title': 'Milhares de treinadores descobrem',
-                'creadores.flow3_desc': 'E vão ao SEU canal ver o vídeo completo',
-                'creadores.stat1': 'Treinadores ativos',
-                'creadores.stat2': 'Tráfego para seu canal',
-                'creadores.stat3': 'Custo para você',
-                'creadores.no_title': 'O que NÃO fazemos',
-                'creadores.no1': '❌ NÃO repostamos seu conteúdo',
-                'creadores.no2': '❌ NÃO ficamos com sua receita',
-                'creadores.no3': '❌ NÃO escondemos sua marca ou canal',
-                'creadores.no4': '❌ NÃO competimos com você por views',
-                'creadores.no5': '❌ NÃO monetizamos com publicidade',
-                'creadores.si_title': 'O que SIM fazemos',
-                'creadores.si1': '✅ Organizamos e etiquetamos seu conteúdo',
-                'creadores.si2': '✅ Conectamos você ao seu público ideal',
-                'creadores.si3': '✅ Mostramos seu nome e canal sempre',
-                'creadores.si4': '✅ Enviamos tráfego qualificado ao YouTube',
-                'creadores.si5': '✅ Monetizamos apenas ferramentas (filtros, prancheta)',
-                'creadores.cta_title': '🚀 Tem um canal de futebol?',
-                'creadores.cta_text': 'Envie seus vídeos para nossa plataforma e deixe milhares de treinadores descobrirem seu conteúdo. É grátis e você ganha.',
-                'creadores.cta_btn1': '📤 Enviar meus Vídeos',
-                'creadores.cta_btn2': 'Criar Conta Grátis',
-                'creadores.quote': '"O conhecimento do futebol não deveria estar bloqueado atrás de muros de pagamento. Queremos que cada treinador de bairro tenha acesso às mesmas ideias que os profissionais."',
-                'creadores.quote_author': '— A filosofia do Futbol Base TUBE',
-                
-                // Upgrade
-                'upgrade.title': 'Melhore seu Plano',
-                'upgrade.subtitle': 'Desbloqueie todas as funções',
-                'upgrade.pro': 'Pro',
-                'upgrade.coach': 'Coach',
-                'upgrade.recomendado': 'RECOMENDADO',
-                'upgrade.mensual': '/mês',
-                'upgrade.beneficios': 'Benefícios incluídos:',
-                'upgrade.btn_upgrade': 'Melhorar Agora',
-                
-                // General
-                'general.loading': 'Carregando...',
-                'general.error': 'Erro',
-                'general.exito': 'Sucesso',
-                'general.cancelar': 'Cancelar',
-                'general.guardar': 'Salvar',
-                'general.cerrar': 'Fechar',
-                'general.ver_mas': 'Ver mais',
-                'general.ver_menos': 'Ver menos'
-            },
-            
-            fr: {
-                // Navigation
-                'nav.inicio': 'Accueil',
-                'nav.biblioteca': 'Bibliothèque',
-                'nav.creadores': 'Créateurs',
-                'nav.mis_sesiones': 'Mes Sessions',
-                'nav.planes': 'Abonnements',
-                'nav.entrar': 'Connexion',
-                'nav.registrarse': "🚀 S'inscrire",
-                
-                // Hero
-                'hero.badge': '🌍 La communauté #1 des entraîneurs de football',
-                'hero.tagline': 'LA PLUS GRANDE BIBLIOTHÈQUE D\'EXERCICES DE FOOTBALL AU MONDE',
-                'hero.desc': 'Des milliers de vidéos d\'entraînement <strong>filtrées, organisées et étiquetées</strong> par une communauté d\'entraîneurs comme vous. Trouvez l\'exercice parfait en secondes, pas en heures.',
-                'hero.feature1': '+12 filtres avancés',
-                'hero.feature2': 'Créé par de vrais entraîneurs',
-                'hero.feature3': '100% contenu gratuit',
-                'hero.btn_explorar': '🎬 Explorer les Exercices',
-                'hero.btn_subir': '📤 Partager un Exercice',
-                'hero.stat_ejercicios': 'Exercices',
-                'hero.stat_entrenadores': 'Entraîneurs',
-                'hero.stat_categorias': 'Catégories',
-                'hero.stat_usuarios': 'Utilisateurs',
-                'hero.cta': 'Vous avez une vidéo d\'entraînement?',
-                'hero.cta_link': 'Partagez-la avec la communauté →',
-                
-                // Premium Section
-                'premium.badge': '✨ Plus qu\'une bibliothèque vidéo',
-                'premium.title': 'Créez, Partagez et <span>Compétez</span>',
-                'premium.subtitle': 'Ne vous contentez pas de consommer du contenu. Créez vos propres exercices, partagez-les et concourez pour être le meilleur entraîneur.',
-                'premium.pizarra.badge': '🔥 EXCLUSIF COACH',
-                'premium.pizarra.title': 'Tableau Tactique Pro',
-                'premium.pizarra.desc': 'Concevez vos propres exercices avec notre tableau professionnel. Déplacez les joueurs, dessinez les mouvements, ajoutez cônes et buts.',
-                'premium.pizarra.f1': '✅ Joueurs personnalisables',
-                'premium.pizarra.f2': '✅ Flèches et mouvements',
-                'premium.pizarra.f3': '✅ Exportez en image',
-                'premium.pizarra.f4': '✅ Sauvegardez vos tactiques',
-                'premium.pizarra.btn': '🎯 Je veux le Tableau',
-                'premium.subir.title': 'Partagez vos Exercices',
-                'premium.subir.desc': 'Vous avez un exercice qui fonctionne? Partagez-le avec des milliers d\'entraîneurs et gagnez en reconnaissance.',
-                'premium.subir.f1': '⭐ Gagnez +50 XP par exercice',
-                'premium.subir.f2': '👍 La communauté vote',
-                'premium.subir.f3': '🏅 Obtenez des badges exclusifs',
-                'premium.subir.f4': '📈 Montez dans le classement',
-                'premium.subir.btn': '📤 Partager mon premier exercice',
-                'premium.compite.title': 'Compétez et Gagnez',
-                'premium.compite.desc': 'Chaque mois les meilleurs entraîneurs gagnent des réductions réelles. Serez-vous #1?',
-                'premium.compite.f1': '🥇 Top 1: 50% de réduction',
-                'premium.compite.f2': '🥈 Top 3: 25% de réduction',
-                'premium.compite.f3': '💎 Montez de ligue: Bronze → Élite',
-                'premium.compite.f4': '🔥 Gardez votre série quotidienne',
-                'premium.compite.btn': 'Voir Classement Actuel',
-                
-                // Communauté
-                'comunidad.badge': '🏆 Compétez et gagnez de vrais prix',
-                'comunidad.title': 'Rejoignez la <span>Communauté #1</span> des Entraîneurs',
-                'comunidad.subtitle': 'Partagez des exercices, gagnez des XP, montez de niveau et compétez pour des réductions chaque mois',
-                'comunidad.ranking_title': '🏆 Top Entraîneurs',
-                'comunidad.ranking_link': 'Voir classement →',
-                'comunidad.challenge_title': 'Défi de la Semaine',
-                'comunidad.challenge_desc': 'Partagez des exercices et complétez le défi hebdomadaire pour gagner des XP bonus',
-                'comunidad.badges_title': '🏅 Badges',
-                'comunidad.badges_link': 'Voir tous →',
-                'comunidad.cta_title': '🚀 Prêt à compéter?',
-                'comunidad.cta_text': 'Inscrivez-vous gratuitement, partagez votre premier exercice et commencez à gagner des XP. Le Top 3 mensuel gagne jusqu\'à 50% de réduction.',
-                'comunidad.cta_btn': '🎮 Commencer à Compéter',
-                'comunidad.dias_restantes': 'jours restants',
-                'comunidad.completados': 'complétés',
-                
-                // Badges
-                'badge.primer_ejercicio': 'Premier Exercice',
-                'badge.en_racha': 'En Série',
-                'badge.imparable': 'Inarrêtable',
-                'badge.popular': 'Populaire',
-                'badge.bibliotecario': 'Bibliothécaire',
-                'badge.artista': 'Artiste Tactique',
-                'badge.leyenda': 'Légende',
-                'badge.top_mensual': 'Top Mensuel',
-                
-                // Bibliothèque
-                'biblioteca.title': 'Explorez la <span>Bibliothèque</span>',
-                'biblioteca.titulo': 'BIBLIOTHÈQUE D\'EXERCICES',
-                'biblioteca.buscar': 'Rechercher exercices...',
-                'biblioteca.filtros': 'Filtres',
-                'biblioteca.limpiar': 'Effacer',
-                'biblioteca.categoria': 'Catégorie',
-                'biblioteca.todas': 'Toutes',
-                'biblioteca.edad': 'Âge',
-                'biblioteca.dificultad': 'Difficulté',
-                'biblioteca.entrenador': 'Entraîneur',
-                'biblioteca.equipo': 'Équipe',
-                'biblioteca.idioma': 'Langue',
-                'biblioteca.duracion': 'Durée',
-                'biblioteca.jugadores': 'Nº Joueurs',
-                'biblioteca.porteros': 'Nº Gardiens',
-                'biblioteca.likes': 'Popularité (Likes)',
-                'biblioteca.vistas': 'Vues',
-                'biblioteca.fuente': 'Source',
-                'biblioteca.todos': 'Tous',
-                'biblioteca.ordenar': 'Trier par',
-                'biblioteca.recientes': 'Plus récents',
-                'biblioteca.populares': 'Plus populaires',
-                'biblioteca.valorados': 'Mieux notés',
-                'biblioteca.no_resultados': 'Aucun exercice trouvé',
-                'biblioteca.cargando': 'Chargement des exercices...',
-                'biblioteca.mostrando': 'Affichage de',
-                'biblioteca.ejercicios': 'exercices',
-                
-                // Auth
-                'auth.bienvenido': 'BIENVENUE',
-                'auth.unete': 'REJOIGNEZ-NOUS',
-                'auth.subtitle': 'Connectez-vous pour sauvegarder vos sessions',
-                'auth.entrar': 'Connexion',
-                'auth.registrarse': "S'inscrire",
-                'auth.nombre': 'Votre nom',
-                'auth.email': 'Email',
-                'auth.password': 'Mot de passe',
-                'auth.olvidaste': 'Mot de passe oublié?',
-                'auth.o_continua': 'ou continuez avec',
-                'auth.ya_tienes': 'Vous avez déjà un compte?',
-                'auth.no_tienes': "Vous n'avez pas de compte?",
-                
-                // Footer
-                'footer.texto': '© 2024 Futbol Base TUBE. Créé par des entraîneurs, pour des entraîneurs. 🌍',
-                
-                // Créateurs
-                'creadores.badge': '📺 Pour Créateurs YouTube, Twitter et Instagram',
-                'creadores.title': 'Nous Démocratisons le <span>Football</span>',
-                'creadores.subtitle': 'Nous ne sommes pas votre concurrent, nous sommes votre allié. Nous vous aidons à atteindre des milliers d\'entraîneurs qui recherchent du contenu de qualité comme le vôtre.',
-                'creadores.b1_title': 'Plus de visibilité pour votre chaîne',
-                'creadores.b1_text': 'Vos vidéos sont montrées à une audience qualifiée: des entraîneurs de football qui cherchent exactement ce que vous créez.',
-                'creadores.b2_title': 'Vous monétisez, pas nous',
-                'creadores.b2_text': 'Chaque visite va directement sur YouTube/Twitter. Vos publicités, vos revenus. Nous ne prenons rien de vos vues.',
-                'creadores.b3_title': 'Audience ciblée',
-                'creadores.b3_text': 'Pas de vues aléatoires. De vrais entraîneurs cherchant des exercices par catégorie, âge, difficulté... votre public idéal.',
-                'creadores.b4_title': 'Lien direct vers votre chaîne',
-                'creadores.b4_text': 'Votre nom, votre chaîne et votre marque toujours visibles. Nous générons des abonnés pour vous, pas pour nous.',
-                'creadores.flow1_title': 'Votre vidéo sur YouTube',
-                'creadores.flow1_desc': 'Le contenu original reste sur votre chaîne',
-                'creadores.flow2_title': 'Nous organisons et étiquetons',
-                'creadores.flow2_desc': 'Catégorie, difficulté, âge, entraîneur...',
-                'creadores.flow3_title': 'Des milliers d\'entraîneurs le découvrent',
-                'creadores.flow3_desc': 'Et vont sur VOTRE chaîne voir la vidéo complète',
-                'creadores.stat1': 'Entraîneurs actifs',
-                'creadores.stat2': 'Trafic vers votre chaîne',
-                'creadores.stat3': 'Coût pour vous',
-                'creadores.no_title': 'Ce que nous NE faisons PAS',
-                'creadores.no1': '❌ Nous NE republions PAS votre contenu',
-                'creadores.no2': '❌ Nous NE gardons PAS vos revenus',
-                'creadores.no3': '❌ Nous NE cachons PAS votre marque ou chaîne',
-                'creadores.no4': '❌ Nous NE concurrençons PAS pour les vues',
-                'creadores.no5': '❌ Nous NE monétisons PAS avec de la publicité',
-                'creadores.si_title': 'Ce que nous faisons',
-                'creadores.si1': '✅ Nous organisons et étiquetons votre contenu',
-                'creadores.si2': '✅ Nous vous connectons à votre public idéal',
-                'creadores.si3': '✅ Nous montrons toujours votre nom et chaîne',
-                'creadores.si4': '✅ Nous envoyons du trafic qualifié vers YouTube',
-                'creadores.si5': '✅ Nous monétisons uniquement les outils (filtres, tableau)',
-                'creadores.cta_title': '🚀 Vous avez une chaîne de football?',
-                'creadores.cta_text': 'Téléchargez vos vidéos sur notre plateforme et laissez des milliers d\'entraîneurs découvrir votre contenu. C\'est gratuit et vous gagnez.',
-                'creadores.cta_btn1': '📤 Télécharger mes Vidéos',
-                'creadores.cta_btn2': 'Créer un Compte Gratuit',
-                'creadores.quote': '"La connaissance du football ne devrait pas être bloquée derrière des murs de paiement. Nous voulons que chaque entraîneur de quartier ait accès aux mêmes idées que les professionnels."',
-                'creadores.quote_author': '— La philosophie de Futbol Base TUBE',
-                
-                // Upgrade
-                'upgrade.title': 'Améliorez votre Plan',
-                'upgrade.subtitle': 'Débloquez toutes les fonctions',
-                'upgrade.pro': 'Pro',
-                'upgrade.coach': 'Coach',
-                'upgrade.recomendado': 'RECOMMANDÉ',
-                'upgrade.mensual': '/mois',
-                'upgrade.beneficios': 'Avantages inclus:',
-                'upgrade.btn_upgrade': 'Améliorer Maintenant',
-                
-                // General
-                'general.loading': 'Chargement...',
-                'general.error': 'Erreur',
-                'general.exito': 'Succès',
-                'general.cancelar': 'Annuler',
-                'general.guardar': 'Enregistrer',
-                'general.cerrar': 'Fermer',
-                'general.ver_mas': 'Voir plus',
-                'general.ver_menos': 'Voir moins'
-            },
-            
-            de: {
-                // Navigation
-                'nav.inicio': 'Start',
-                'nav.biblioteca': 'Bibliothek',
-                'nav.creadores': 'Ersteller',
-                'nav.mis_sesiones': 'Meine Sessions',
-                'nav.planes': 'Abos',
-                'nav.entrar': 'Anmelden',
-                'nav.registrarse': '🚀 Registrieren',
-                
-                // Hero
-                'hero.badge': '🌍 Die #1 Community für Fußballtrainer',
-                'hero.tagline': 'DIE GRÖSSTE FUSSBALL-ÜBUNGSBIBLIOTHEK DER WELT',
-                'hero.desc': 'Tausende Trainingsvideos <strong>gefiltert, organisiert und getaggt</strong> von einer Trainer-Community wie du. Finde die perfekte Übung in Sekunden, nicht Stunden.',
-                'hero.feature1': '+12 erweiterte Filter',
-                'hero.feature2': 'Von echten Trainern erstellt',
-                'hero.feature3': '100% kostenloser Inhalt',
-                'hero.btn_explorar': '🎬 Übungen erkunden',
-                'hero.btn_subir': '📤 Übung hochladen',
-                'hero.stat_ejercicios': 'Übungen',
-                'hero.stat_entrenadores': 'Trainer',
-                'hero.stat_categorias': 'Kategorien',
-                'hero.stat_usuarios': 'Benutzer',
-                'hero.cta': 'Hast du ein Trainingsvideo?',
-                'hero.cta_link': 'Teile es mit der Community →',
-                
-                // Premium Section
-                'premium.badge': '✨ Mehr als eine Videobibliothek',
-                'premium.title': 'Erstelle, Teile und <span>Kämpfe</span>',
-                'premium.subtitle': 'Konsumiere nicht nur Inhalte. Erstelle deine eigenen Übungen, teile sie mit der Community und kämpfe darum, der beste Trainer zu sein.',
-                'premium.pizarra.badge': '🔥 COACH EXKLUSIV',
-                'premium.pizarra.title': 'Pro Taktiktafel',
-                'premium.pizarra.desc': 'Entwirf deine eigenen Übungen mit unserer professionellen Tafel. Ziehe Spieler, zeichne Bewegungen, füge Hütchen und Tore hinzu.',
-                'premium.pizarra.f1': '✅ Anpassbare Spieler',
-                'premium.pizarra.f2': '✅ Pfeile und Bewegungen',
-                'premium.pizarra.f3': '✅ Als Bild exportieren',
-                'premium.pizarra.f4': '✅ Speichere deine Taktiken',
-                'premium.pizarra.btn': '🎯 Ich will die Tafel',
-                'premium.subir.title': 'Lade deine Übungen hoch',
-                'premium.subir.desc': 'Hast du eine Übung die funktioniert? Teile sie mit tausenden Trainern und gewinne Anerkennung.',
-                'premium.subir.f1': '⭐ Verdiene +50 XP pro Übung',
-                'premium.subir.f2': '👍 Die Community stimmt ab',
-                'premium.subir.f3': '🏅 Erhalte exklusive Badges',
-                'premium.subir.f4': '📈 Steige im Ranking',
-                'premium.subir.btn': '📤 Meine erste Übung hochladen',
-                'premium.compite.title': 'Kämpfe und Gewinne',
-                'premium.compite.desc': 'Jeden Monat gewinnen die besten Trainer echte Rabatte. Wirst du #1?',
-                'premium.compite.f1': '🥇 Top 1: 50% Rabatt',
-                'premium.compite.f2': '🥈 Top 3: 25% Rabatt',
-                'premium.compite.f3': '💎 Steige auf: Bronze → Elite',
-                'premium.compite.f4': '🔥 Halte deine tägliche Serie',
-                'premium.compite.btn': 'Aktuelles Ranking ansehen',
-                
-                // Community
-                'comunidad.badge': '🏆 Kämpfe und gewinne echte Preise',
-                'comunidad.title': 'Tritt der <span>#1 Community</span> der Trainer bei',
-                'comunidad.subtitle': 'Lade Übungen hoch, verdiene XP, steige auf und kämpfe jeden Monat um Rabatte und Preise',
-                'comunidad.ranking_title': '🏆 Top Trainer',
-                'comunidad.ranking_link': 'Ranking ansehen →',
-                'comunidad.challenge_title': 'Wöchentliche Challenge',
-                'comunidad.challenge_desc': 'Lade Übungen hoch und schließe die wöchentliche Challenge ab um Bonus-XP zu erhalten',
-                'comunidad.badges_title': '🏅 Badges',
-                'comunidad.badges_link': 'Alle ansehen →',
-                'comunidad.cta_title': '🚀 Bereit zu kämpfen?',
-                'comunidad.cta_text': 'Registriere dich kostenlos, lade deine erste Übung hoch und fang an XP zu verdienen. Die Top 3 monatlich gewinnen bis zu 50% Rabatt.',
-                'comunidad.cta_btn': '🎮 Jetzt Kämpfen',
-                'comunidad.dias_restantes': 'Tage übrig',
-                'comunidad.completados': 'abgeschlossen',
-                
-                // Badges
-                'badge.primer_ejercicio': 'Erste Übung',
-                'badge.en_racha': 'In Serie',
-                'badge.imparable': 'Unaufhaltsam',
-                'badge.popular': 'Beliebt',
-                'badge.bibliotecario': 'Bibliothekar',
-                'badge.artista': 'Taktik-Künstler',
-                'badge.leyenda': 'Legende',
-                'badge.top_mensual': 'Monatliche Top',
-                
-                // Bibliothek
-                'biblioteca.title': 'Erkunde die <span>Bibliothek</span>',
-                'biblioteca.titulo': 'ÜBUNGSBIBLIOTHEK',
-                'biblioteca.buscar': 'Übungen suchen...',
-                'biblioteca.filtros': 'Filter',
-                'biblioteca.limpiar': 'Löschen',
-                'biblioteca.categoria': 'Kategorie',
-                'biblioteca.todas': 'Alle',
-                'biblioteca.edad': 'Alter',
-                'biblioteca.dificultad': 'Schwierigkeit',
-                'biblioteca.entrenador': 'Trainer',
-                'biblioteca.equipo': 'Team',
-                'biblioteca.idioma': 'Sprache',
-                'biblioteca.duracion': 'Dauer',
-                'biblioteca.jugadores': 'Anz. Spieler',
-                'biblioteca.porteros': 'Anz. Torhüter',
-                'biblioteca.likes': 'Beliebtheit (Likes)',
-                'biblioteca.vistas': 'Aufrufe',
-                'biblioteca.fuente': 'Quelle',
-                'biblioteca.todos': 'Alle',
-                'biblioteca.ordenar': 'Sortieren nach',
-                'biblioteca.recientes': 'Neueste',
-                'biblioteca.populares': 'Beliebteste',
-                'biblioteca.valorados': 'Bestbewertet',
-                'biblioteca.no_resultados': 'Keine Übungen gefunden',
-                'biblioteca.cargando': 'Übungen laden...',
-                'biblioteca.mostrando': 'Zeige',
-                'biblioteca.ejercicios': 'Übungen',
-                
-                // Auth
-                'auth.bienvenido': 'WILLKOMMEN',
-                'auth.unete': 'MACH MIT',
-                'auth.subtitle': 'Melde dich an um Sessions zu speichern',
-                'auth.entrar': 'Anmelden',
-                'auth.registrarse': 'Registrieren',
-                'auth.nombre': 'Dein Name',
-                'auth.email': 'Email',
-                'auth.password': 'Passwort',
-                'auth.olvidaste': 'Passwort vergessen?',
-                'auth.o_continua': 'oder weiter mit',
-                'auth.ya_tienes': 'Hast du schon ein Konto?',
-                'auth.no_tienes': 'Noch kein Konto?',
-                
-                // Footer
-                'footer.texto': '© 2024 Futbol Base TUBE. Von Trainern, für Trainer erstellt. 🌍',
-                
-                // Ersteller
-                'creadores.badge': '📺 Für YouTube, Twitter & Instagram Creator',
-                'creadores.title': 'Wir Demokratisieren den <span>Fußball</span>',
-                'creadores.subtitle': 'Wir sind nicht deine Konkurrenz, wir sind dein Verbündeter. Wir helfen dir, tausende Trainer zu erreichen, die nach Qualitätsinhalten wie deinen suchen.',
-                'creadores.b1_title': 'Mehr Sichtbarkeit für deinen Kanal',
-                'creadores.b1_text': 'Deine Videos werden einem qualifizierten Publikum gezeigt: Fußballtrainer, die genau das suchen, was du erstellst.',
-                'creadores.b2_title': 'Du monetarisierst, wir nicht',
-                'creadores.b2_text': 'Jeder Besuch geht direkt zu YouTube/Twitter. Deine Werbung, deine Einnahmen. Wir nehmen nichts von deinen Aufrufen.',
-                'creadores.b3_title': 'Zielgerichtetes Publikum',
-                'creadores.b3_text': 'Keine zufälligen Views. Echte Trainer, die nach Übungen nach Kategorie, Alter, Schwierigkeit suchen... dein ideales Publikum.',
-                'creadores.b4_title': 'Direktlink zu deinem Kanal',
-                'creadores.b4_text': 'Dein Name, dein Kanal und deine Marke immer sichtbar. Wir generieren Abonnenten für dich, nicht für uns.',
-                'creadores.flow1_title': 'Dein Video auf YouTube',
-                'creadores.flow1_desc': 'Der Originalinhalt bleibt auf deinem Kanal',
-                'creadores.flow2_title': 'Wir organisieren und taggen es',
-                'creadores.flow2_desc': 'Kategorie, Schwierigkeit, Alter, Trainer...',
-                'creadores.flow3_title': 'Tausende Trainer entdecken es',
-                'creadores.flow3_desc': 'Und gehen zu DEINEM Kanal um das komplette Video zu sehen',
-                'creadores.stat1': 'Aktive Trainer',
-                'creadores.stat2': 'Traffic zu deinem Kanal',
-                'creadores.stat3': 'Kosten für dich',
-                'creadores.no_title': 'Was wir NICHT machen',
-                'creadores.no1': '❌ Wir laden deinen Inhalt NICHT erneut hoch',
-                'creadores.no2': '❌ Wir behalten NICHT deine Einnahmen',
-                'creadores.no3': '❌ Wir verstecken NICHT deine Marke oder Kanal',
-                'creadores.no4': '❌ Wir konkurrieren NICHT um Views',
-                'creadores.no5': '❌ Wir monetarisieren NICHT mit Werbung',
-                'creadores.si_title': 'Was wir machen',
-                'creadores.si1': '✅ Wir organisieren und taggen deinen Inhalt',
-                'creadores.si2': '✅ Wir verbinden dich mit deinem idealen Publikum',
-                'creadores.si3': '✅ Wir zeigen immer deinen Namen und Kanal',
-                'creadores.si4': '✅ Wir senden qualifizierten Traffic zu YouTube',
-                'creadores.si5': '✅ Wir monetarisieren nur Tools (Filter, Taktiktafel)',
-                'creadores.cta_title': '🚀 Hast du einen Fußball-Kanal?',
-                'creadores.cta_text': 'Lade deine Videos auf unsere Plattform hoch und lass tausende Trainer deinen Inhalt entdecken. Es ist kostenlos und du gewinnst.',
-                'creadores.cta_btn1': '📤 Meine Videos hochladen',
-                'creadores.cta_btn2': 'Kostenloses Konto erstellen',
-                'creadores.quote': '"Fußballwissen sollte nicht hinter Bezahlschranken gesperrt sein. Wir wollen, dass jeder Stadtteil-Trainer Zugang zu denselben Ideen hat wie die Profis."',
-                'creadores.quote_author': '— Die Futbol Base TUBE Philosophie',
-                
-                // Upgrade
-                'upgrade.title': 'Plan verbessern',
-                'upgrade.subtitle': 'Alle Funktionen freischalten',
-                'upgrade.pro': 'Pro',
-                'upgrade.coach': 'Coach',
-                'upgrade.recomendado': 'EMPFOHLEN',
-                'upgrade.mensual': '/Monat',
-                'upgrade.beneficios': 'Enthaltene Vorteile:',
-                'upgrade.btn_upgrade': 'Jetzt Verbessern',
-                
-                // General
-                'general.loading': 'Laden...',
-                'general.error': 'Fehler',
-                'general.exito': 'Erfolg',
-                'general.cancelar': 'Abbrechen',
-                'general.guardar': 'Speichern',
-                'general.cerrar': 'Schließen',
-                'general.ver_mas': 'Mehr anzeigen',
-                'general.ver_menos': 'Weniger anzeigen'
-            },
-            
-            it: {
-                // Navigazione
-                'nav.inicio': 'Home',
-                'nav.biblioteca': 'Libreria',
-                'nav.creadores': 'Creatori',
-                'nav.mis_sesiones': 'Le Mie Sessioni',
-                'nav.planes': 'Piani',
-                'nav.entrar': 'Accedi',
-                'nav.registrarse': '🚀 Registrati',
-                
-                // Hero
-                'hero.badge': '🌍 La community #1 per allenatori di calcio',
-                'hero.tagline': 'LA PIÙ GRANDE LIBRERIA DI ESERCIZI DI CALCIO DEL MONDO',
-                'hero.desc': 'Migliaia di video di allenamento <strong>filtrati, organizzati ed etichettati</strong> da una community di allenatori come te. Trova l\'esercizio perfetto in secondi, non in ore.',
-                'hero.feature1': '+12 filtri avanzati',
-                'hero.feature2': 'Creato da veri allenatori',
-                'hero.feature3': '100% contenuto gratuito',
-                'hero.btn_explorar': '🎬 Esplora Esercizi',
-                'hero.btn_subir': '📤 Carica Esercizio',
-                'hero.stat_ejercicios': 'Esercizi',
-                'hero.stat_entrenadores': 'Allenatori',
-                'hero.stat_categorias': 'Categorie',
-                'hero.stat_usuarios': 'Utenti',
-                'hero.cta': 'Hai un video di allenamento?',
-                'hero.cta_link': 'Condividilo con la community →',
-                
-                // Premium Section
-                'premium.badge': '✨ Più di una libreria video',
-                'premium.title': 'Crea, Condividi e <span>Competi</span>',
-                'premium.subtitle': 'Non limitarti a consumare contenuti. Crea i tuoi esercizi, condividili con la community e competi per essere il miglior allenatore.',
-                'premium.pizarra.badge': '🔥 ESCLUSIVO COACH',
-                'premium.pizarra.title': 'Lavagna Tattica Pro',
-                'premium.pizarra.desc': 'Progetta i tuoi esercizi con la nostra lavagna professionale. Trascina giocatori, disegna movimenti, aggiungi coni e porte.',
-                'premium.pizarra.f1': '✅ Giocatori personalizzabili',
-                'premium.pizarra.f2': '✅ Frecce e movimenti',
-                'premium.pizarra.f3': '✅ Esporta come immagine',
-                'premium.pizarra.f4': '✅ Salva le tue tattiche',
-                'premium.pizarra.btn': '🎯 Voglio la Lavagna',
-                'premium.subir.title': 'Carica i tuoi Esercizi',
-                'premium.subir.desc': 'Hai un esercizio che funziona? Condividilo con migliaia di allenatori e ottieni riconoscimento.',
-                'premium.subir.f1': '⭐ Guadagna +50 XP per esercizio',
-                'premium.subir.f2': '👍 La community vota',
-                'premium.subir.f3': '🏅 Ottieni badge esclusivi',
-                'premium.subir.f4': '📈 Scala la classifica',
-                'premium.subir.btn': '📤 Carica il mio primo esercizio',
-                'premium.compite.title': 'Competi e Vinci',
-                'premium.compite.desc': 'Ogni mese i migliori allenatori vincono sconti reali. Sarai tu il #1?',
-                'premium.compite.f1': '🥇 Top 1: 50% sconto',
-                'premium.compite.f2': '🥈 Top 3: 25% sconto',
-                'premium.compite.f3': '💎 Sali di lega: Bronzo → Elite',
-                'premium.compite.f4': '🔥 Mantieni la tua serie giornaliera',
-                'premium.compite.btn': 'Vedi Classifica Attuale',
-                
-                // Community
-                'comunidad.badge': '🏆 Competi e vinci premi reali',
-                'comunidad.title': 'Unisciti alla <span>Community #1</span> degli Allenatori',
-                'comunidad.subtitle': 'Carica esercizi, guadagna XP, sali di livello e competi per sconti e premi ogni mese',
-                'comunidad.ranking_title': '🏆 Top Allenatori',
-                'comunidad.ranking_link': 'Vedi classifica →',
-                'comunidad.challenge_title': 'Sfida della Settimana',
-                'comunidad.challenge_desc': 'Carica esercizi e completa la sfida settimanale per guadagnare XP extra',
-                'comunidad.badges_title': '🏅 Badge',
-                'comunidad.badges_link': 'Vedi tutti →',
-                'comunidad.cta_title': '🚀 Pronto a competere?',
-                'comunidad.cta_text': 'Registrati gratis, carica il tuo primo esercizio e inizia a guadagnare XP. I Top 3 mensili vincono fino al 50% di sconto.',
-                'comunidad.cta_btn': '🎮 Inizia a Competere',
-                'comunidad.dias_restantes': 'giorni rimasti',
-                'comunidad.completados': 'completati',
-                
-                // Badges
-                'badge.primer_ejercicio': 'Primo Esercizio',
-                'badge.en_racha': 'In Serie',
-                'badge.imparable': 'Inarrestabile',
-                'badge.popular': 'Popolare',
-                'badge.bibliotecario': 'Bibliotecario',
-                'badge.artista': 'Artista Tattico',
-                'badge.leyenda': 'Leggenda',
-                'badge.top_mensual': 'Top Mensile',
-                
-                // Libreria
-                'biblioteca.title': 'Esplora la <span>Libreria</span>',
-                'biblioteca.titulo': 'LIBRERIA DI ESERCIZI',
-                'biblioteca.buscar': 'Cerca esercizi...',
-                'biblioteca.filtros': 'Filtri',
-                'biblioteca.limpiar': 'Pulisci',
-                'biblioteca.categoria': 'Categoria',
-                'biblioteca.todas': 'Tutte',
-                'biblioteca.edad': 'Età',
-                'biblioteca.dificultad': 'Difficoltà',
-                'biblioteca.entrenador': 'Allenatore',
-                'biblioteca.equipo': 'Squadra',
-                'biblioteca.idioma': 'Lingua',
-                'biblioteca.duracion': 'Durata',
-                'biblioteca.jugadores': 'Nº Giocatori',
-                'biblioteca.porteros': 'Nº Portieri',
-                'biblioteca.likes': 'Popolarità (Like)',
-                'biblioteca.vistas': 'Visualizzazioni',
-                'biblioteca.fuente': 'Fonte',
-                'biblioteca.todos': 'Tutti',
-                'biblioteca.ordenar': 'Ordina per',
-                'biblioteca.recientes': 'Più recenti',
-                'biblioteca.populares': 'Più popolari',
-                'biblioteca.valorados': 'Meglio valutati',
-                'biblioteca.no_resultados': 'Nessun esercizio trovato',
-                'biblioteca.cargando': 'Caricamento esercizi...',
-                'biblioteca.mostrando': 'Mostrando',
-                'biblioteca.ejercicios': 'esercizi',
-                
-                // Auth
-                'auth.bienvenido': 'BENVENUTO',
-                'auth.unete': 'UNISCITI',
-                'auth.subtitle': 'Accedi per salvare le tue sessioni',
-                'auth.entrar': 'Accedi',
-                'auth.registrarse': 'Registrati',
-                'auth.nombre': 'Il tuo nome',
-                'auth.email': 'Email',
-                'auth.password': 'Password',
-                'auth.olvidaste': 'Password dimenticata?',
-                'auth.o_continua': 'o continua con',
-                'auth.ya_tienes': 'Hai già un account?',
-                'auth.no_tienes': 'Non hai un account?',
-                
-                // Footer
-                'footer.texto': '© 2024 Futbol Base TUBE. Creato da allenatori, per allenatori. 🌍',
-                
-                // Creatori
-                'creadores.badge': '📺 Per Creatori YouTube, Twitter e Instagram',
-                'creadores.title': 'Democratizziamo il <span>Calcio</span>',
-                'creadores.subtitle': 'Non siamo la tua concorrenza, siamo il tuo alleato. Ti aiutiamo a raggiungere migliaia di allenatori che cercano contenuti di qualità come i tuoi.',
-                'creadores.b1_title': 'Più visibilità per il tuo canale',
-                'creadores.b1_text': 'I tuoi video vengono mostrati a un pubblico qualificato: allenatori di calcio che cercano esattamente ciò che crei.',
-                'creadores.b2_title': 'Tu monetizzi, noi no',
-                'creadores.b2_text': 'Ogni visita va direttamente su YouTube/Twitter. I tuoi annunci, i tuoi guadagni. Non prendiamo nulla dalle tue visualizzazioni.',
-                'creadores.b3_title': 'Pubblico mirato',
-                'creadores.b3_text': 'Non sono views casuali. Sono allenatori veri che cercano esercizi per categoria, età, difficoltà... il tuo pubblico ideale.',
-                'creadores.b4_title': 'Link diretto al tuo canale',
-                'creadores.b4_text': 'Il tuo nome, il tuo canale e il tuo marchio sempre visibili. Generiamo iscritti per te, non per noi.',
-                'creadores.flow1_title': 'Il tuo video su YouTube',
-                'creadores.flow1_desc': 'Il contenuto originale rimane sul tuo canale',
-                'creadores.flow2_title': 'Lo organizziamo e etichettiamo',
-                'creadores.flow2_desc': 'Categoria, difficoltà, età, allenatore...',
-                'creadores.flow3_title': 'Migliaia di allenatori lo scoprono',
-                'creadores.flow3_desc': 'E vanno sul TUO canale a vedere il video completo',
-                'creadores.stat1': 'Allenatori attivi',
-                'creadores.stat2': 'Traffico al tuo canale',
-                'creadores.stat3': 'Costa a te',
-                'creadores.no_title': 'Cosa NON facciamo',
-                'creadores.no1': '❌ NON ricarichiamo il tuo contenuto',
-                'creadores.no2': '❌ NON prendiamo i tuoi guadagni',
-                'creadores.no3': '❌ NON nascondiamo il tuo marchio o canale',
-                'creadores.no4': '❌ NON competiamo con te per le views',
-                'creadores.no5': '❌ NON monetizziamo con pubblicità',
-                'creadores.si_title': 'Cosa facciamo',
-                'creadores.si1': '✅ Organizziamo e etichettiamo il tuo contenuto',
-                'creadores.si2': '✅ Ti connettiamo al tuo pubblico ideale',
-                'creadores.si3': '✅ Mostriamo sempre il tuo nome e canale',
-                'creadores.si4': '✅ Inviamo traffico qualificato a YouTube',
-                'creadores.si5': '✅ Monetizziamo solo strumenti (filtri, lavagna)',
-                'creadores.cta_title': '🚀 Hai un canale di calcio?',
-                'creadores.cta_text': 'Carica i tuoi video sulla nostra piattaforma e lascia che migliaia di allenatori scoprano il tuo contenuto. È gratis e tu guadagni.',
-                'creadores.cta_btn1': '📤 Caricare i miei Video',
-                'creadores.cta_btn2': 'Creare Account Gratis',
-                'creadores.quote': '"La conoscenza del calcio non dovrebbe essere bloccata dietro muri a pagamento. Vogliamo che ogni allenatore di quartiere abbia accesso alle stesse idee dei professionisti."',
-                'creadores.quote_author': '— La filosofia di Futbol Base TUBE',
-                
-                // Upgrade
-                'upgrade.title': 'Migliora il tuo Piano',
-                'upgrade.subtitle': 'Sblocca tutte le funzioni',
-                'upgrade.pro': 'Pro',
-                'upgrade.coach': 'Coach',
-                'upgrade.recomendado': 'CONSIGLIATO',
-                'upgrade.mensual': '/mese',
-                'upgrade.beneficios': 'Vantaggi inclusi:',
-                'upgrade.btn_upgrade': 'Migliora Ora',
-                
-                // General
-                'general.loading': 'Caricamento...',
-                'general.error': 'Errore',
-                'general.exito': 'Successo',
-                'general.cancelar': 'Annulla',
-                'general.guardar': 'Salva',
-                'general.cerrar': 'Chiudi',
-                'general.ver_mas': 'Vedi di più',
-                'general.ver_menos': 'Vedi meno'
-            }
-        };
-        
-        var langFlags = {
-            es: '🇪🇸', en: '🇬🇧', pt: '🇧🇷', fr: '🇫🇷', de: '🇩🇪', it: '🇮🇹'
-        };
-        
-        function toggleLangDropdown() {
-            document.getElementById('langDropdown').classList.toggle('show');
-        }
-        
-        function setLanguage(lang) {
-            currentLang = lang;
-            localStorage.setItem('fbt_lang', lang);
-            
-            // Actualizar selector
-            document.getElementById('currentLangFlag').textContent = langFlags[lang];
-            document.getElementById('currentLangCode').textContent = lang.toUpperCase();
-            
-            // Marcar opción activa
-            document.querySelectorAll('.lang-option').forEach(opt => {
-                opt.classList.toggle('active', opt.dataset.lang === lang);
-            });
-            
-            // Aplicar traducciones
-            applyTranslations();
-            
-            // Cerrar dropdown
-            document.getElementById('langDropdown').classList.remove('show');
-        }
-        
-        function applyTranslations() {
-            var t = translations[currentLang] || translations['es'];
-            
-            document.querySelectorAll('[data-i18n]').forEach(function(el) {
-                var key = el.getAttribute('data-i18n');
-                if (t[key]) {
-                    if (el.tagName === 'INPUT') {
-                        el.placeholder = t[key];
-                    } else {
-                        el.innerHTML = t[key];
-                    }
-                }
-            });
-        }
-        
-        function t(key) {
-            return (translations[currentLang] || translations['es'])[key] || key;
-        }
-        
-        // Cerrar dropdown al clicar fuera
-        document.addEventListener('click', function(e) {
-            if (!e.target.closest('.lang-selector')) {
-                var dropdown = document.getElementById('langDropdown');
-                if (dropdown) dropdown.classList.remove('show');
-            }
-        });
-
         // ==================== CONFIG ====================
         var SUPABASE_URL = localStorage.getItem('sb_url') || '';
         var SUPABASE_KEY = localStorage.getItem('sb_key') || '';
@@ -3259,9 +1748,6 @@
 
         // ==================== INIT ====================
         document.addEventListener('DOMContentLoaded', function() {
-            // Inicializar idioma
-            setLanguage(currentLang);
-            
             if (SUPABASE_URL && SUPABASE_KEY) {
                 db = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
                 checkAuth();
@@ -3417,11 +1903,6 @@
                     '<span class="racha-badge">🔥 ' + (p.racha_dias || 0) + '</span>' +
                     limitBadge +
                 '</div>' +
-                // BOTÓN PIZARRA DESTACADO
-                (plan === 'coach' 
-                    ? '<button class="btn-pizarra" onclick="abrirPizarraTactica()">🎯 Pizarra Táctica</button>'
-                    : '<button class="btn-pizarra btn-pizarra-locked" onclick="showUpgradeModal(\'pizarra\')" title="Exclusivo Coach">🔒 Pizarra</button>'
-                ) +
                 '<div class="notif-bell" onclick="toggleNotifications()">' +
                     '<span class="notif-bell-icon">🔔</span>' +
                     '<span class="notif-badge" id="notifBadge">0</span>' +
@@ -3439,8 +1920,7 @@
                         upgradeOption +
                         '<div class="user-dropdown-item" onclick="showMySessions()">📋 Mis Sesiones</div>' +
                         '<div class="user-dropdown-item" onclick="showUploadModal()">📤 Subir Ejercicio</div>' +
-                        (u.email === 'miguelangelminambres@gmail.com' ? '<div class="user-dropdown-item" onclick="location.href=\'admin.html\'">⚙️ Admin</div>' : '') +
-                        (plan === 'coach' ? '<div class="user-dropdown-item" onclick="abrirPizarraTactica()">🎯 Pizarra Táctica</div>' : '') +
+                        (plan === 'coach' ? '<div class="user-dropdown-item" onclick="location.href=\'admin.html\'">⚙️ Admin</div>' : '') +
                         '<div class="user-dropdown-item danger" onclick="logout()">🚪 Cerrar Sesión</div>' +
                     '</div>' +
                 '</div>';
@@ -3452,37 +1932,6 @@
             await db.auth.signOut();
             currentUser = null;
             location.reload();
-        }
-
-        // ========================================
-        // PIZARRA TÁCTICA - Generar token y abrir
-        // ========================================
-        async function abrirPizarraTactica() {
-            try {
-                // Mostrar loading en el botón
-                showToast('Abriendo Pizarra Táctica...', 'success');
-                
-                // Llamar a la función RPC para generar el token
-                const { data: token, error } = await db.rpc('generar_token_pizarra');
-                
-                if (error) {
-                    console.error('Error generando token:', error);
-                    showToast('Error al acceder a la Pizarra', 'error');
-                    return;
-                }
-                
-                if (!token) {
-                    showToast('No tienes acceso a la Pizarra (requiere plan Coach activo)', 'error');
-                    return;
-                }
-                
-                // Redirigir a la pizarra con el token
-                window.open('https://pizarra.toplidercoach.com?token=' + token, '_blank');
-                
-            } catch (err) {
-                console.error('Error:', err);
-                showToast('Error de conexión', 'error');
-            }
         }
 
         function showAuthModal(tab) {
@@ -3598,6 +2047,9 @@
             var search = document.getElementById('searchInput').value.trim();
             if (search) query = query.ilike('titulo_ejercicio', '%' + search + '%');
             
+            var familia = document.getElementById('filterFamilia').value;
+            if (familia) query = query.eq('familia', familia);
+            
             var cat = document.getElementById('filterCategoria').value;
             if (cat) query = query.contains('categorias', [cat]);
             
@@ -3628,6 +2080,8 @@
             updateStats();
         }
 
+        var FAMILIA_NAMES = { 'futbol_base': '⚽ Base', 'profesional': '🏟️ Pro', 'entrevista': '🎤 Entrev.', 'analisis': '📊 Análisis' };
+
         function renderExercises() {
             var grid = document.getElementById('exerciseGrid');
             if (!exercises.length) {
@@ -3638,10 +2092,12 @@
             grid.innerHTML = exercises.map(function(ex) {
                 var cats = (ex.categorias || []).slice(0, 2).map(function(c) { return '<span class="ejercicio-tag">' + c + '</span>'; }).join('');
                 var inSession = currentSession.some(function(s) { return s.id === ex.id; });
+                var familiaLabel = ex.familia ? FAMILIA_NAMES[ex.familia] || ex.familia : '';
                 return '<div class="ejercicio-card" onclick="openExercise(\'' + ex.id + '\')">' +
                     '<div class="ejercicio-thumbnail">' +
                         '<img src="' + (ex.thumbnail_url || 'https://via.placeholder.com/320x180/16162a/8b8ba7?text=Video') + '" alt="">' +
                         '<div class="ejercicio-play"></div>' +
+                        (familiaLabel ? '<div class="ejercicio-familia">' + familiaLabel + '</div>' : '') +
                         (ex.dificultad ? '<div class="ejercicio-difficulty">Dif ' + ex.dificultad + '</div>' : '') +
                         '<div class="ejercicio-lang">' + (LANG_FLAGS[ex.idioma] || '🌐') + '</div>' +
                         (ex.duracion ? '<div class="ejercicio-duration">' + ex.duracion + '</div>' : '') +
@@ -4288,8 +2744,7 @@
                 sistema: document.getElementById('uploadSistema') ? document.getElementById('uploadSistema').value : null,
                 subido_por: currentUser.id,
                 estado: 'pendiente',
-                aprobado: false,
-                sin_gamificacion: currentUser.email === 'miguelangelminambres@gmail.com'
+                aprobado: false
             };
             
             // Upload thumbnail image if source is imagen
