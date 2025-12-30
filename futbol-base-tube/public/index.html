@@ -551,6 +551,8 @@
         .state-title { font-size: 20px; font-weight: 600; margin-bottom: 8px; }
         .state-text { color: var(--text-muted); }
         .loading-spinner { width: 48px; height: 48px; border: 3px solid var(--dark-border); border-top-color: var(--primary); border-radius: 50%; animation: spin 0.8s linear infinite; margin: 0 auto 20px; }
+        .loading-spinner-small { width: 20px; height: 20px; border: 2px solid var(--dark-border); border-top-color: var(--primary); border-radius: 50%; animation: spin 0.8s linear infinite; }
+        .load-more-indicator { grid-column: 1 / -1; display: flex; align-items: center; justify-content: center; gap: 12px; padding: 30px; color: var(--text-muted); font-size: 14px; }
         @keyframes spin { to { transform: rotate(360deg); } }
 
         /* Modal */
@@ -4048,10 +4050,24 @@
         }
 
         // ==================== EXERCISES ====================
-        async function loadExercises() {
+        var exercisesPage = 0;
+        var exercisesPerPage = 12;
+        var loadingMore = false;
+        var hasMoreExercises = true;
+        
+        async function loadExercises(reset = true) {
             if (!db) return;
             var grid = document.getElementById('exerciseGrid');
-            grid.innerHTML = '<div class="state-container"><div class="loading-spinner"></div><p>Cargando...</p></div>';
+            
+            if (reset) {
+                exercisesPage = 0;
+                exercises = [];
+                hasMoreExercises = true;
+                grid.innerHTML = '<div class="state-container"><div class="loading-spinner"></div><p>Cargando...</p></div>';
+            }
+            
+            if (loadingMore || !hasMoreExercises) return;
+            loadingMore = true;
             
             var query = db.from('ejercicios').select('*').eq('estado', 'publicado').order('created_at', { ascending: false });
             
@@ -4082,14 +4098,48 @@
             var fuente = document.getElementById('filterFuente').value;
             if (fuente) query = query.eq('source', fuente);
             
-            var { data, error } = await query.limit(50);
+            var from = exercisesPage * exercisesPerPage;
+            var to = from + exercisesPerPage - 1;
             
-            if (error) { grid.innerHTML = '<div class="state-container"><div class="state-icon">❌</div><p>' + error.message + '</p></div>'; return; }
+            var { data, error } = await query.range(from, to);
             
-            exercises = data || [];
+            loadingMore = false;
+            
+            if (error) { 
+                grid.innerHTML = '<div class="state-container"><div class="state-icon">❌</div><p>' + error.message + '</p></div>'; 
+                return; 
+            }
+            
+            if (!data || data.length < exercisesPerPage) {
+                hasMoreExercises = false;
+            }
+            
+            if (data && data.length > 0) {
+                exercises = exercises.concat(data);
+                exercisesPage++;
+            }
+            
             renderExercises();
-            updateStats();
+            
+            if (reset) {
+                updateStats();
+            }
         }
+        
+        // Scroll infinito
+        function handleInfiniteScroll() {
+            var grid = document.getElementById('exerciseGrid');
+            if (!grid) return;
+            
+            var scrollPosition = window.innerHeight + window.scrollY;
+            var threshold = document.body.offsetHeight - 500;
+            
+            if (scrollPosition >= threshold && !loadingMore && hasMoreExercises) {
+                loadExercises(false);
+            }
+        }
+        
+        window.addEventListener('scroll', debounce(handleInfiniteScroll, 100));
 
         function renderExercises() {
             var grid = document.getElementById('exerciseGrid');
@@ -4126,6 +4176,11 @@
                     '</div>' +
                 '</div>';
             }).join('');
+            
+            // Añadir indicador de scroll infinito
+            if (hasMoreExercises) {
+                grid.innerHTML += '<div class="load-more-indicator" id="loadMoreIndicator"><div class="loading-spinner-small"></div><span>Cargando más ejercicios...</span></div>';
+            }
             
             document.getElementById('exerciseCount').textContent = exercises.length;
         }
