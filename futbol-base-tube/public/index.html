@@ -551,7 +551,13 @@
         .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
         .sessions-list { max-height: 250px; overflow-y: auto; margin-bottom: 16px; }
         .session-list-item { display: flex; align-items: center; justify-content: space-between; padding: 14px 16px; background: var(--dark); border: 2px solid var(--dark-border); border-radius: 12px; margin-bottom: 10px; cursor: pointer; transition: all 0.2s; }
-        .session-list-item:hover { border-color: var(--primary); }
+        .session-list-item:hover { border-color: var(--primary); background: rgba(13, 159, 79, 0.05); }
+        .session-list-info { flex: 1; }
+        .session-list-name { font-weight: 600; font-size: 14px; margin-bottom: 4px; }
+        .session-list-meta { font-size: 12px; color: var(--text-muted); }
+        .session-list-add { background: var(--primary); color: white; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+        .session-list-loading { text-align: center; padding: 30px; color: var(--text-muted); }
+        .session-list-empty { text-align: center; padding: 30px; color: var(--text-muted); font-size: 14px; }
         .session-list-item-info { flex: 1; }
         .session-list-item-name { font-weight: 600; font-size: 14px; margin-bottom: 4px; }
         .session-list-item-meta { font-size: 12px; color: var(--text-muted); }
@@ -4034,7 +4040,131 @@
 
         function addCurrentToSession() {
             if (!currentExercise) return;
+            if (!currentUser) { 
+                showAuthModal('login'); 
+                return; 
+            }
+            // Mostrar modal para elegir sesión
+            document.getElementById('addToSessionOverlay').classList.add('active');
+            loadSessionsForModal();
+        }
+        
+        function closeAddToSessionModal(e) {
+            if (!e || e.target === e.currentTarget) {
+                document.getElementById('addToSessionOverlay').classList.remove('active');
+            }
+        }
+        
+        async function loadSessionsForModal() {
+            var container = document.getElementById('sessionsListModal');
+            container.innerHTML = '<div class="session-list-loading">Cargando sesiones...</div>';
+            
+            try {
+                var { data, error } = await db.from('sesiones')
+                    .select('*')
+                    .eq('usuario_id', currentUser.id)
+                    .order('created_at', { ascending: false })
+                    .limit(10);
+                
+                if (error) throw error;
+                
+                if (!data || data.length === 0) {
+                    container.innerHTML = '<div class="session-list-empty">No tienes sesiones guardadas</div>';
+                    return;
+                }
+                
+                container.innerHTML = data.map(function(s) {
+                    var numEj = s.ejercicios ? s.ejercicios.length : 0;
+                    return '<div class="session-list-item" onclick="addToExistingSession(\'' + s.id + '\')">' +
+                        '<div class="session-list-info">' +
+                            '<div class="session-list-name">' + s.nombre + '</div>' +
+                            '<div class="session-list-meta">' + numEj + ' ejercicios • ' + (s.categoria_edad || 'Sin categoría') + '</div>' +
+                        '</div>' +
+                        '<div class="session-list-add">➕</div>' +
+                    '</div>';
+                }).join('');
+                
+            } catch (err) {
+                console.error('Error cargando sesiones:', err);
+                container.innerHTML = '<div class="session-list-empty">Error al cargar sesiones</div>';
+            }
+        }
+        
+        async function addToExistingSession(sessionId) {
+            if (!currentExercise) return;
+            
+            try {
+                // Obtener la sesión actual
+                var { data: session, error } = await db.from('sesiones')
+                    .select('*')
+                    .eq('id', sessionId)
+                    .single();
+                
+                if (error) throw error;
+                
+                // Verificar si ya está en la sesión
+                var ejercicios = session.ejercicios || [];
+                if (ejercicios.includes(currentExercise.id)) {
+                    showToast('Este ejercicio ya está en la sesión', 'error');
+                    return;
+                }
+                
+                // Añadir el ejercicio
+                ejercicios.push(currentExercise.id);
+                
+                var ejerciciosData = session.ejercicios_data || [];
+                ejerciciosData.push({
+                    id: currentExercise.id,
+                    titulo: currentExercise.titulo_ejercicio || currentExercise.titulo_video,
+                    thumbnail: currentExercise.thumbnail_url,
+                    duracion: currentExercise.duracion
+                });
+                
+                var duracionTotal = (session.duracion_total || 0) + (currentExercise.duracion_segundos || 0);
+                
+                // Actualizar en la base de datos
+                var { error: updateError } = await db.from('sesiones').update({
+                    ejercicios: ejercicios,
+                    ejercicios_data: ejerciciosData,
+                    duracion_total: duracionTotal
+                }).eq('id', sessionId);
+                
+                if (updateError) throw updateError;
+                
+                closeAddToSessionModal();
+                showToast('✅ Añadido a "' + session.nombre + '"', 'success');
+                
+                // Actualizar botón en el modal del ejercicio
+                updateAddToSessionButton();
+                
+            } catch (err) {
+                console.error('Error añadiendo a sesión:', err);
+                showToast('Error al añadir a la sesión', 'error');
+            }
+        }
+        
+        function createNewSessionFromModal() {
+            if (!currentExercise) return;
+            
+            // Añadir a la sesión temporal actual
             toggleInSession(currentExercise.id);
+            closeAddToSessionModal();
+            
+            // Abrir el drawer de sesión y el modal de guardar
+            document.getElementById('sessionDrawer').classList.add('open');
+            document.getElementById('drawerBackdrop').classList.add('show');
+            
+            showToast('Ejercicio añadido. Guarda la sesión cuando quieras.', 'success');
+        }
+        
+        function updateAddToSessionButton() {
+            var btn = document.getElementById('modalAddSession');
+            if (btn) {
+                btn.innerHTML = '✅ Añadido a la sesión';
+                setTimeout(function() {
+                    btn.innerHTML = '➕ Añadir a Sesión';
+                }, 2000);
+            }
         }
 
         function updateSessionUI() {
