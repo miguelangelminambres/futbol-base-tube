@@ -1269,7 +1269,7 @@
                 <div class="hero-stat"><div class="hero-stat-value" id="heroTotal">0</div><div class="hero-stat-label" data-i18n="hero.stat_ejercicios">Ejercicios</div></div>
                 <div class="hero-stat"><div class="hero-stat-value" id="heroEntrenadores">0</div><div class="hero-stat-label" data-i18n="hero.stat_entrenadores">Entrenadores</div></div>
                 <div class="hero-stat"><div class="hero-stat-value" id="heroCategorias">0</div><div class="hero-stat-label" data-i18n="hero.stat_categorias">Categorías</div></div>
-                <div class="hero-stat"><div class="hero-stat-value" id="heroUsuarios">+2K</div><div class="hero-stat-label" data-i18n="hero.stat_usuarios">Usuarios</div></div>
+                <div class="hero-stat"><div class="hero-stat-value" id="heroUsuarios">0</div><div class="hero-stat-label" data-i18n="hero.stat_usuarios">Usuarios</div></div>
             </div>
             
             <p class="hero-cta-text"><span data-i18n="hero.cta">¿Tienes un video de entrenamiento?</span> <a href="#" onclick="showAuthModal('register')" data-i18n="hero.cta_link">Compártelo con la comunidad →</a></p>
@@ -3976,6 +3976,10 @@
             var allCats = (cats || []).flatMap(function(c) { return c.categorias || []; });
             var uniqueCats = [...new Set(allCats)];
             document.getElementById('heroCategorias').textContent = uniqueCats.length;
+            
+            // Contador real de usuarios
+            var { count: userCount } = await db.from('perfiles').select('*', { count: 'exact', head: true });
+            document.getElementById('heroUsuarios').textContent = formatNumber(userCount || 0);
         }
 
         async function loadFilters() {
