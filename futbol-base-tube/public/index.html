@@ -190,7 +190,6 @@
         .ejercicio-card:hover .ejercicio-thumbnail img { transform: scale(1.05); }
         .ejercicio-duration { position: absolute; bottom: 12px; right: 12px; background: rgba(0,0,0,0.85); padding: 4px 10px; border-radius: 6px; font-size: 13px; font-weight: 600; }
         .ejercicio-difficulty { position: absolute; top: 12px; left: 12px; background: var(--accent); color: var(--dark); padding: 4px 10px; border-radius: 6px; font-size: 12px; font-weight: 700; }
-        .ejercicio-familia { position: absolute; bottom: 12px; left: 12px; background: var(--primary); color: white; padding: 4px 10px; border-radius: 6px; font-size: 11px; font-weight: 700; }
         .ejercicio-lang { position: absolute; top: 12px; right: 12px; background: rgba(0,0,0,0.85); padding: 4px 8px; border-radius: 6px; font-size: 14px; }
         .ejercicio-play { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0); width: 60px; height: 60px; background: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); box-shadow: 0 4px 20px rgba(13, 159, 79, 0.5); }
         .ejercicio-play::after { content: ''; border-left: 16px solid white; border-top: 10px solid transparent; border-bottom: 10px solid transparent; margin-left: 4px; }
@@ -1123,7 +1122,6 @@
                 <div class="filters-title">🎯 Filtros <span class="filters-badge" id="filtersBadge"></span></div>
                 <span class="filters-clear" onclick="clearFilters()">Limpiar</span>
             </div>
-            <div class="filter-group"><label class="filter-label">📂 Familia</label><select class="filter-select" id="filterFamilia"><option value="">Todas</option><option value="futbol_base">⚽ Fútbol Base</option><option value="profesional">🏟️ Profesional</option><option value="entrevista">🎤 Entrevista</option><option value="analisis">📊 Análisis Táctico</option></select></div>
             <div class="filter-group"><label class="filter-label">Categoría</label><select class="filter-select" id="filterCategoria"><option value="">Todas</option></select></div>
             <div class="filter-group"><label class="filter-label">Dificultad</label><div class="difficulty-pills" id="filterDificultad"><div class="difficulty-pill" data-value="1">1</div><div class="difficulty-pill" data-value="2">2</div><div class="difficulty-pill" data-value="3">3</div><div class="difficulty-pill" data-value="4">4</div><div class="difficulty-pill" data-value="5">5</div></div></div>
             <div class="filter-group"><label class="filter-label">Entrenador</label><select class="filter-select" id="filterEntrenador"><option value="">Todos</option></select></div>
@@ -2047,9 +2045,6 @@
             var search = document.getElementById('searchInput').value.trim();
             if (search) query = query.ilike('titulo_ejercicio', '%' + search + '%');
             
-            var familia = document.getElementById('filterFamilia').value;
-            if (familia) query = query.eq('familia', familia);
-            
             var cat = document.getElementById('filterCategoria').value;
             if (cat) query = query.contains('categorias', [cat]);
             
@@ -2080,8 +2075,6 @@
             updateStats();
         }
 
-        var FAMILIA_NAMES = { 'futbol_base': '⚽ Base', 'profesional': '🏟️ Pro', 'entrevista': '🎤 Entrev.', 'analisis': '📊 Análisis' };
-
         function renderExercises() {
             var grid = document.getElementById('exerciseGrid');
             if (!exercises.length) {
@@ -2092,12 +2085,10 @@
             grid.innerHTML = exercises.map(function(ex) {
                 var cats = (ex.categorias || []).slice(0, 2).map(function(c) { return '<span class="ejercicio-tag">' + c + '</span>'; }).join('');
                 var inSession = currentSession.some(function(s) { return s.id === ex.id; });
-                var familiaLabel = ex.familia ? FAMILIA_NAMES[ex.familia] || ex.familia : '';
                 return '<div class="ejercicio-card" onclick="openExercise(\'' + ex.id + '\')">' +
                     '<div class="ejercicio-thumbnail">' +
                         '<img src="' + (ex.thumbnail_url || 'https://via.placeholder.com/320x180/16162a/8b8ba7?text=Video') + '" alt="">' +
                         '<div class="ejercicio-play"></div>' +
-                        (familiaLabel ? '<div class="ejercicio-familia">' + familiaLabel + '</div>' : '') +
                         (ex.dificultad ? '<div class="ejercicio-difficulty">Dif ' + ex.dificultad + '</div>' : '') +
                         '<div class="ejercicio-lang">' + (LANG_FLAGS[ex.idioma] || '🌐') + '</div>' +
                         (ex.duracion ? '<div class="ejercicio-duration">' + ex.duracion + '</div>' : '') +
